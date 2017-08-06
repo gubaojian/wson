@@ -57,6 +57,7 @@ void msg_buffer_push_byte(msg_buffer* buffer, uint8_t bt);
  * push double or long to buffer, without type info
  * */
 void msg_buffer_push_double(msg_buffer* buffer, double num);
+void msg_buffer_push_long(msg_buffer* buffer, uint64_t num);
 
 /**
  * push double to buffer,  without type info
@@ -75,10 +76,10 @@ void msg_buffer_free(msg_buffer* buffer);
 int8_t msg_buffer_next_byte(msg_buffer* buffer);
 
 int32_t msg_buffer_next_int(msg_buffer* buffer);
-
 int32_t msg_buffer_next_varint(msg_buffer* buffer);
 
 double msg_buffer_next_double(msg_buffer* buffer);
+uint64_t msg_buffer_next_long(msg_buffer* buffer);
 
 uint8_t* msg_buffer_next_bts(msg_buffer* buffer, int length);
 
