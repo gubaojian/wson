@@ -14,7 +14,7 @@
 
 //#define  MSG_PLATFORM_BIG_ENDIAN  1
 
-void msg_buffer_resize(msg_buffer* buffer, int addSize){
+static void msg_buffer_resize(msg_buffer* buffer, int addSize){
     if(addSize < MSG_BUFFER_SIZE){
         addSize = MSG_BUFFER_SIZE;
     } else{
@@ -23,6 +23,19 @@ void msg_buffer_resize(msg_buffer* buffer, int addSize){
     addSize += buffer->length;
     buffer->data = realloc(buffer->data, addSize);
     buffer->length = addSize;
+}
+
+
+static inline int32_t msg_buffer_varint_Zag(uint32_t ziggedValue)
+{
+    int32_t value = (int32_t)ziggedValue;
+    return (-(value & 0x01)) ^ ((value >> 1) & ~( 1<< 31));
+}
+
+static inline uint32_t msg_buffer_varint_Zig(int32_t value)
+{
+    return (uint32_t)((value << 1) ^ (value >> 31));
+
 }
 
  msg_buffer* msg_buffer_new(){
@@ -36,7 +49,7 @@ void msg_buffer_resize(msg_buffer* buffer, int addSize){
 
 
 void msg_buffer_push_int(msg_buffer* buffer, uint32_t num){
-     MSG_BUFFER_ENSURE_SIZE(sizeof(int32_t));
+     MSG_BUFFER_ENSURE_SIZE(sizeof(uint32_t));
 #ifdef MSG_PLATFORM_BIG_ENDIAN
     uint8_t* data = (buffer->data + buffer->position);
     data[0] = (uint8_t)(num);
@@ -46,9 +59,21 @@ void msg_buffer_push_int(msg_buffer* buffer, uint32_t num){
 #else
     uint32_t * data = (buffer->data  + buffer->position);
     *data = num;
-    printf("\n num %d  %d\n", num, *data);
 #endif
     buffer->position += sizeof(uint32_t);
+}
+
+void msg_buffer_push_varint(msg_buffer* buffer, int32_t value){
+    uint32_t num = msg_buffer_varint_Zig(value);
+    MSG_BUFFER_ENSURE_SIZE(sizeof(uint32_t) + sizeof(uint8_t));
+    uint8_t * data = (buffer->data + buffer->position);
+    int size =0;
+    do{
+         data[size] = (uint8_t)((num & 0x7F) | 0x80);
+         size++;
+    }while((num >>= 7) != 0);
+    data[size - 1] &=0x7F;
+    buffer->position += size;
 }
 
 void msg_buffer_push_byte(msg_buffer* buffer, uint8_t bt){
@@ -112,6 +137,39 @@ int32_t msg_buffer_next_int(msg_buffer* buffer){
     return *ptr;
 }
 
+int32_t msg_buffer_next_varint(msg_buffer* buffer){
+    uint8_t *  ptr = (buffer->data + buffer->position);
+    uint32_t num = *ptr;
+    if((num & 0x80) == 0){
+        buffer->position +=1;
+        return  msg_buffer_varint_Zag(num);
+    }
+    num &=0x7F;
+    uint8_t chunk =  ptr[1];
+    num |= (chunk & 0x7F) << 7;
+    if((chunk & 0x80) == 0){
+        buffer->position += 2;
+        return  msg_buffer_varint_Zag(num);
+    }
+    chunk = ptr[2];
+    num |= (chunk & 0x7F) << 14;
+    if((chunk & 0x80) == 0){
+        buffer->position += 3;
+        return  msg_buffer_varint_Zag(num);
+    }
+
+    chunk = ptr[3];
+    num |= (chunk & 0x7F) << 21;
+    if((chunk & 0x80) == 0){
+        buffer->position += 4;
+        return  msg_buffer_varint_Zag(num);
+    }
+    chunk = ptr[4];
+    num |= (chunk & 0x0F) << 28;
+    buffer->position += 5;
+    return  msg_buffer_varint_Zag(num);
+}
+
 double msg_buffer_next_double(msg_buffer* buffer){
     double * ptr = (buffer->data + buffer->position);
     buffer->position += sizeof(double);
@@ -123,6 +181,7 @@ uint8_t* msg_buffer_next_bts(msg_buffer* buffer, int length){
     buffer->position += length;
     return ptr;
 }
+
 
 
 void msg_buffer_free(msg_buffer* buffer){

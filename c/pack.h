@@ -46,6 +46,7 @@ msg_buffer* msg_buffer_new();
  * push int to buffer, without type info
  * */
 void msg_buffer_push_int(msg_buffer* buffer, uint32_t num);
+void msg_buffer_push_varint(msg_buffer* buffer, int32_t num);
 
 /**
  * push one byte to buffer, without type info
@@ -74,6 +75,8 @@ void msg_buffer_free(msg_buffer* buffer);
 int8_t msg_buffer_next_byte(msg_buffer* buffer);
 
 int32_t msg_buffer_next_int(msg_buffer* buffer);
+
+int32_t msg_buffer_next_varint(msg_buffer* buffer);
 
 double msg_buffer_next_double(msg_buffer* buffer);
 
