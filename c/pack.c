@@ -3,7 +3,6 @@
 //
 
 #include <string.h>
-#include <printf.h>
 #include "pack.h"
 
 
@@ -107,7 +106,7 @@ void msg_buffer_push_double(msg_buffer* buffer, double num){
 }
 
 
-void msg_buffer_push_bytes(msg_buffer* buffer,  void* src, int32_t length){
+void msg_buffer_push_bytes(msg_buffer* buffer,  const void* src, int32_t length){
     MSG_BUFFER_ENSURE_SIZE(length);
     void* dst = buffer->data + buffer->position;
     memcpy(dst, src, length);

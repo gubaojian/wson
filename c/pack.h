@@ -28,14 +28,14 @@ typedef struct msg_buffer{
  * object type, one byte type flag
  * number two byte flag, two show int or double, number small ENDIAN
  * */
-#define  NULL_TYPE   '0'
-#define  NUMBER_TYPE  'n'
-#define  STRING_TYPE  's'
-#define  BOOLEAN_TYPE 'b'
-#define  NUMBER_INT_TYPE  'i'
-#define  NUMBER_DOUBLE_TYPE  'd'
-#define  ARRAY_TYPE  '['
-#define  MAP_TYPE   '{'
+#define  MSG_BUFFER_NULL_TYPE   '0'
+#define  MSG_BUFFER_NUMBER_TYPE  'n'
+#define  MSG_BUFFER_STRING_TYPE  's'
+#define  MSG_BUFFER_BOOLEAN_TYPE 'b'
+#define  MSG_BUFFER_NUMBER_INT_TYPE  'i'
+#define  MSG_BUFFER_NUMBER_DOUBLE_TYPE  'd'
+#define  MSG_BUFFER_ARRAY_TYPE  '['
+#define  MSG_BUFFER_MAP_TYPE   '{'
 
 /**
  * create msg buffer
@@ -62,7 +62,7 @@ void msg_buffer_push_long(msg_buffer* buffer, uint64_t num);
 /**
  * push double to buffer,  without type info
  * */
-void msg_buffer_push_bytes(msg_buffer* buffer,  void* src, int32_t length);
+void msg_buffer_push_bytes(msg_buffer* buffer,  const void* src, int32_t length);
 
 /**
  * free  buffer

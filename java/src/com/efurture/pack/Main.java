@@ -11,9 +11,6 @@ public class Main {
         byte[] bts = new byte[1024];
         int length = inputStream.read(bts);
         inputStream.close();
-        for(int i=0; i<8; i++){
-            System.out.println(bts[i]);
-        }
         if(Bits.getDouble(bts, 0) != 210.33576){
             throw new  RuntimeException("format not right match double " + Bits.getDouble(bts, 0));
         }
