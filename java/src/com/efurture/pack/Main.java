@@ -11,14 +11,25 @@ public class Main {
         byte[] bts = new byte[1024];
         int length = inputStream.read(bts);
         inputStream.close();
-        if(LittleEndianBits.getDouble(bts, 0) != 20.3356){
-            throw new  RuntimeException("format not right match double");
+        for(int i=0; i<8; i++){
+            System.out.println(bts[i]);
         }
-        if(LittleEndianBits.getInt(bts, 8) != 12345){
+        if(Bits.getDouble(bts, 0) != 210.33576){
+            throw new  RuntimeException("format not right match double " + Bits.getDouble(bts, 0));
+        }
+        if(Bits.getInt(bts, 8) != 12345){
             throw new  RuntimeException("format not right match int");
         }
-        System.out.println("first number  " +  LittleEndianBits.getDouble(bts, 0));
-        System.out.println("first int " +  LittleEndianBits.getInt(bts, 8));
-        System.out.println("first long " +  LittleEndianBits.getLong(bts, 12));
+        if(Bits.getVarInt(bts, 12) != -1){
+            throw new  RuntimeException("format not right match varint "
+            + Bits.getVarInt(bts, 12)  + "  " + Bits.getUInt(bts, 13));
+        }
+
+        if(Bits.getUInt(bts, 13) != 1){
+            throw new  RuntimeException("format not right match uint " + Bits.getUInt(bts, 13));
+        }
+        System.out.println("first number  " +  Bits.getDouble(bts, 0));
+        System.out.println("first int " +  Bits.getInt(bts, 8));
+        System.out.println("first long " +  Bits.getLong(bts, 12));
     }
 }

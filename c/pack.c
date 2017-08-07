@@ -64,12 +64,16 @@ void msg_buffer_push_int(msg_buffer* buffer, uint32_t num){
 
 void msg_buffer_push_varint(msg_buffer* buffer, int32_t value){
     uint32_t num = msg_buffer_varint_Zig(value);
+    msg_buffer_push_uint(buffer, num);
+}
+
+void msg_buffer_push_uint(msg_buffer* buffer, uint32_t num){
     MSG_BUFFER_ENSURE_SIZE(sizeof(uint32_t) + sizeof(uint8_t));
     uint8_t * data = (buffer->data + buffer->position);
     int size =0;
     do{
-         data[size] = (uint8_t)((num & 0x7F) | 0x80);
-         size++;
+        data[size] = (uint8_t)((num & 0x7F) | 0x80);
+        size++;
     }while((num >>= 7) != 0);
     data[size - 1] &=0x7F;
     buffer->position += size;
@@ -126,36 +130,40 @@ int32_t msg_buffer_next_int(msg_buffer* buffer){
 }
 
 int32_t msg_buffer_next_varint(msg_buffer* buffer){
+    return msg_buffer_varint_Zag(msg_buffer_next_uint(buffer));
+}
+
+uint32_t msg_buffer_next_uint(msg_buffer* buffer){
     uint8_t *  ptr = (buffer->data + buffer->position);
     uint32_t num = *ptr;
     if((num & 0x80) == 0){
         buffer->position +=1;
-        return  msg_buffer_varint_Zag(num);
+        return  num;
     }
     num &=0x7F;
     uint8_t chunk =  ptr[1];
     num |= (chunk & 0x7F) << 7;
     if((chunk & 0x80) == 0){
         buffer->position += 2;
-        return  msg_buffer_varint_Zag(num);
+        return  num;
     }
     chunk = ptr[2];
     num |= (chunk & 0x7F) << 14;
     if((chunk & 0x80) == 0){
         buffer->position += 3;
-        return  msg_buffer_varint_Zag(num);
+        return  num;
     }
 
     chunk = ptr[3];
     num |= (chunk & 0x7F) << 21;
     if((chunk & 0x80) == 0){
         buffer->position += 4;
-        return  msg_buffer_varint_Zag(num);
+        return  num;
     }
     chunk = ptr[4];
     num |= (chunk & 0x0F) << 28;
     buffer->position += 5;
-    return  msg_buffer_varint_Zag(num);
+    return  num;
 }
 
 uint64_t msg_buffer_next_long(msg_buffer* buffer){

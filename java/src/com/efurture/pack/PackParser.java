@@ -112,13 +112,28 @@ public class PackParser {
 
 
     protected   int readInt(){
-        int value = LittleEndianBits.getInt(buffer, position);
+        int value = Bits.getInt(buffer, position);
         position +=4;
         return  value;
     }
 
+    protected   int readUInt(){
+        int value = 0;
+        int i = 0;
+        int b;
+        while (((b = buffer[position]) & 0x80) != 0) {
+            value |= (b & 0x7F) << i;
+            i += 7;
+            position++;
+            if (i > 35) {
+                throw new IllegalArgumentException("Variable length quantity is too long");
+            }
+        }
+        return value | (b << i);
+    }
+
     protected  double readDouble(){
-        double number = LittleEndianBits.getDouble(buffer, position);
+        double number = Bits.getDouble(buffer, position);
         position += 8;
         return  number;
     }
