@@ -67,7 +67,7 @@ public class PackParser {
     }
 
     protected Object readMap(){
-        int size = readInt();
+        int size = readUInt();
         Map<String, Object> object = new HashMap<>();
         for(int i=0; i<size; i++){
             String key = readString();
@@ -78,7 +78,7 @@ public class PackParser {
     }
 
     protected Object readArray(){
-        int length = readInt();
+        int length = readUInt();
         ArrayList<Object> array = new ArrayList<>(length);
         for(int i=0; i<length; i++){
             array.add(readObject());
@@ -93,7 +93,7 @@ public class PackParser {
     }
 
     protected String readString(){
-        int length = readInt();
+        int length = readUInt();
         String string = null;
         try {
             string = new String(buffer, position, length, CHARSET_NAME);
@@ -124,11 +124,12 @@ public class PackParser {
         while (((b = buffer[position]) & 0x80) != 0) {
             value |= (b & 0x7F) << i;
             i += 7;
-            position++;
-            if (i > 35) {
+            position+=1;
+            if (i > 28) {
                 throw new IllegalArgumentException("Variable length quantity is too long");
             }
         }
+        position+=1;
         return value | (b << i);
     }
 
