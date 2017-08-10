@@ -64,6 +64,13 @@ void msg_buffer_push_long(msg_buffer* buffer, uint64_t num);
  * */
 void msg_buffer_push_bytes(msg_buffer* buffer,  const void* src, int32_t length);
 
+
+/**
+ * 1 true, 0 false, with type MSG_BUFFER_BOOLEAN_TYPE
+ */
+ void msg_buffer_push_boolean(msg_buffer* buffer, uint8_t value);
+
+
 /**
  * free  buffer
  * */

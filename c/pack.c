@@ -11,21 +11,24 @@ union number{
     uint64_t l;
 };
 
-#define MSG_BUFFER_SIZE  256
+#define MSG_BUFFER_SIZE  512
 
 #define MSG_BUFFER_ENSURE_SIZE(size)  {if(buffer->length < buffer->position + size){\
                                            msg_buffer_resize(buffer, size);\
                                       }}
 
-static void msg_buffer_resize(msg_buffer* buffer, int addSize){
-    if(addSize < MSG_BUFFER_SIZE){
-        addSize = MSG_BUFFER_SIZE;
-    } else{
-        addSize +=MSG_BUFFER_SIZE;
+static void msg_buffer_resize(msg_buffer* buffer, int size){
+    if(size < buffer->length){
+         size = buffer->length;
+        if( size > 1024*16){
+            size = 1024*16;
+        }
+    }else{
+        size +=MSG_BUFFER_SIZE;
     }
-    addSize += buffer->length;
-    buffer->data = realloc(buffer->data, addSize);
-    buffer->length = addSize;
+    size += buffer->length;
+    buffer->data = realloc(buffer->data, size);
+    buffer->length = size;
 }
 
 
@@ -85,6 +88,16 @@ void msg_buffer_push_byte(msg_buffer* buffer, uint8_t bt){
     buffer->position += sizeof(uint8_t);
 }
 
+
+ void msg_buffer_push_boolean(msg_buffer* buffer,  uint8_t value){
+      MSG_BUFFER_ENSURE_SIZE(sizeof(uint8_t) + sizeof(uint8_t));
+    uint8_t* data = (buffer->data + buffer->position);
+    *data = MSG_BUFFER_BOOLEAN_TYPE;
+    *(data + 1) = value;
+    buffer->position += (sizeof(uint8_t) + sizeof(uint8_t));
+ }
+
+
 void msg_buffer_push_long(msg_buffer* buffer, uint64_t num){
     MSG_BUFFER_ENSURE_SIZE(sizeof(uint64_t));
     uint8_t* data = (buffer->data + buffer->position);
@@ -118,6 +131,8 @@ int8_t msg_buffer_next_byte(msg_buffer* buffer){
     buffer->position += sizeof(int8_t);
     return *ptr;
 }
+
+
 
 int32_t msg_buffer_next_int(msg_buffer* buffer){
     uint8_t* data = (buffer->data + buffer->position);
