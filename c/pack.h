@@ -29,7 +29,6 @@ typedef struct msg_buffer{
  * number two byte flag, two show int or double, number small ENDIAN
  * */
 #define  MSG_BUFFER_NULL_TYPE   '0'
-#define  MSG_BUFFER_NUMBER_TYPE  'n'
 #define  MSG_BUFFER_STRING_TYPE  's'
 #define  MSG_BUFFER_BOOLEAN_TYPE 'b'
 #define  MSG_BUFFER_NUMBER_INT_TYPE  'i'

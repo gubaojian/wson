@@ -19,6 +19,7 @@
 package com.efurture.pack;
 
 import java.io.UnsupportedEncodingException;
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -26,31 +27,34 @@ import java.util.Map;
 /**
  * Created by furture on 2017/8/1.
  */
-public class PackParser {
-    private int position = 0;
-    private byte[] buffer;
+public class JSParser {
 
-    public PackParser(byte[] buffer) {
+    protected int position = 0;
+    protected byte[] buffer;
+
+    public JSParser(byte[] buffer) {
         this.buffer = buffer;
+    }
+
+    public JSParser(ByteBuffer byteBuffer) {
+        byte[] bts = new byte[byteBuffer.limit()];
+        byteBuffer.get(bts);
+        this.buffer = bts;
     }
 
     public  Object parse(){
          return  readObject();
     }
 
-    private Object readObject(){
+    protected Object readObject(){
         byte type  = readType();
         switch (type){
             case STRING_TYPE:
                 return  readString();
-            case NUMBER_TYPE:{
-                   byte flag = readType();
-                   if(flag == NUMBER_INT_TYPE){
-                        return  readInt();
-                   }else{ //default double
-                       return  readDouble();
-                   }
-                 }
+            case NUMBER_INT_TYPE :
+                return  readVarInt();
+            case NUMBER_DOUBLE_TYPE :
+                return readDouble();
             case BOOLEAN_TYPE:
                 return  readBoolean();
             case ARRAY_TYPE:
@@ -72,7 +76,9 @@ public class PackParser {
         for(int i=0; i<size; i++){
             String key = readString();
             Object value = readObject();
-            object.put(key, value);
+            if(value != null){
+                object.put(key, value);
+            }
         }
         return object;
     }
@@ -111,10 +117,14 @@ public class PackParser {
     }
 
 
-    protected   int readInt(){
-        int value = Bits.getInt(buffer, position);
-        position +=4;
-        return  value;
+    protected   int readVarInt(){
+        int raw = readUInt();
+        // This undoes the trick in putVarInt()
+        int num = (((raw << 31) >> 31) ^ raw) >> 1;
+        // This extra step lets us deal with the largest signed values by treating
+        // negative results from read unsigned methods as like unsigned values.
+        // Must re-flip the top bit if the original read value had it set.
+        return num ^ (raw & (1 << 31));
     }
 
     protected   int readUInt(){
@@ -158,4 +168,13 @@ public class PackParser {
 
 
     public static final String CHARSET_NAME = "UTF-8";
+
+    public static Object parse(Object data){
+        if(data instanceof  byte[]){
+            return new JSParser((byte[]) data).parse();
+        }else if(data instanceof ByteBuffer){
+            return  new JSParser((ByteBuffer) data).parse();
+        }
+        return data;
+    }
 }

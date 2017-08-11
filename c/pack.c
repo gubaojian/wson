@@ -11,7 +11,7 @@ union number{
     uint64_t l;
 };
 
-#define MSG_BUFFER_SIZE  512
+#define MSG_BUFFER_SIZE  1024
 
 #define MSG_BUFFER_ENSURE_SIZE(size)  {if(buffer->length < buffer->position + size){\
                                            msg_buffer_resize(buffer, size);\
@@ -19,9 +19,13 @@ union number{
 
 static void msg_buffer_resize(msg_buffer* buffer, int size){
     if(size < buffer->length){
-         size = buffer->length;
-        if( size > 1024*16){
+         if(buffer->length < 1024*16){
             size = 1024*16;
+         }else{
+            size = buffer->length;
+         }
+         if(size > 1024*64){
+            size = 1024*64;
         }
     }else{
         size +=MSG_BUFFER_SIZE;

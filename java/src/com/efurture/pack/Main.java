@@ -22,7 +22,19 @@ public class Main {
             + Bits.getVarInt(bts, 12)  + "  " + Bits.getUInt(bts, 13));
         }
 
-        if(Bits.getUInt(bts, 13) != 1){
+        if(Bits.getVarInt(bts, 13) != Integer.MAX_VALUE){
+            throw new  RuntimeException("format not right match varint MAX");
+        }
+
+        if(Bits.getVarInt(bts, 18) != Integer.MIN_VALUE){
+            throw new  RuntimeException("format not right match varint MIN ");
+        }
+
+        if(Bits.getUInt(bts, 23) != 1){
+            throw new  RuntimeException("format not right match uint " + Bits.getUInt(bts, 13));
+        }
+
+        if(Bits.getUInt(bts, 24) != Integer.MAX_VALUE){
             throw new  RuntimeException("format not right match uint " + Bits.getUInt(bts, 13));
         }
         System.out.println("first number  " +  Bits.getDouble(bts, 0));
