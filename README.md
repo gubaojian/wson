@@ -12,6 +12,8 @@ tiny binary json libaray inspired by bson and message pack
 | boolean    | 'b'   | signature + 1(true)/0(false)|
 | array    | '['   | signature + length + elements|
 | object(map)    | '{'   | signature + size + key, value, key, value|
+
+
 string length, map size ar store used usigned varint.
 
 here is an example, data in json as follows:
