@@ -1,5 +1,5 @@
 # tson
-tiny binary json libaray inspired by bson and message pack
+tiny binary json libaray inspired by bson and message pack，less than 500 line code you can embed in your application.
 
 
 ### tson data type
@@ -26,6 +26,4 @@ here is an example, data in json as follows:
 
 in tson
 
-
-
-like http://msgpack.org/  but more small and simple
+![tson](https://raw.githubusercontent.com/gubaojian/tson/master/image/TSON.png)
