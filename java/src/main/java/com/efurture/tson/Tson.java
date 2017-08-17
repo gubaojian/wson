@@ -10,21 +10,6 @@ import java.util.*;
 public class Tson {
 
     /**
-     * parse tson data  to object
-     * @param  data  byte array
-     * */
-    public static Object parse(byte[] data){
-        return new Parser(data).parse();
-    }
-
-    /**
-     * serialize object to tson data
-     * */
-    public static byte[] toTson(Object object){
-        return new Builder().toTson(object);
-    }
-
-    /**
      * tson data type
      * */
     public static final byte NULL_TYPE = '0';
@@ -42,6 +27,22 @@ public class Tson {
     public static final byte MAP_TYPE = '{';
 
     public static final String STRING_UTF8_CHARSET_NAME = "UTF-8";
+
+    /**
+     * parse tson data  to object
+     * @param  data  byte array
+     * */
+    public static Object parse(byte[] data){
+        return new Parser(data).parse();
+    }
+
+    /**
+     * serialize object to tson data
+     * */
+    public static byte[] toTson(Object object){
+        return new Builder().toTson(object);
+    }
+
 
     /**
      * tson data parser
