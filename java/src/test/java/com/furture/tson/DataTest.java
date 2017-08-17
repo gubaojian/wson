@@ -1,13 +1,18 @@
-package com.efurture.pack;
+package com.furture.tson;
+
+import junit.framework.TestCase;
 
 import java.io.IOException;
 import java.io.InputStream;
 
-public class Main {
+/**
+ * Created by 剑白(jianbai.gbj) on 2017/8/16.
+ */
+public class DataTest extends TestCase {
 
-    public static void main(String[] args) throws IOException {
-	// write your code here
-        InputStream inputStream = Main.class.getResourceAsStream("/data.dat");
+
+    public void  testData() throws IOException {
+        InputStream inputStream = getClass().getResourceAsStream("/data.dat");
         byte[] bts = new byte[1024];
         int length = inputStream.read(bts);
         inputStream.close();
@@ -19,7 +24,7 @@ public class Main {
         }
         if(Bits.getVarInt(bts, 12) != -1){
             throw new  RuntimeException("format not right match varint "
-            + Bits.getVarInt(bts, 12)  + "  " + Bits.getUInt(bts, 13));
+                    + Bits.getVarInt(bts, 12)  + "  " + Bits.getUInt(bts, 13));
         }
 
         if(Bits.getVarInt(bts, 13) != Integer.MAX_VALUE){

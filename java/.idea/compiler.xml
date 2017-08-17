@@ -18,5 +18,11 @@
         <processorPath useClasspath="true" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="com.furture.tson_main" target="1.8" />
+      <module name="com.furture.tson_test" target="1.8" />
+      <module name="tson_main" target="1.8" />
+      <module name="tson_test" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

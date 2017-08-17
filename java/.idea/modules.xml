@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/java.iml" filepath="$PROJECT_DIR$/java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/test/test.iml" filepath="$PROJECT_DIR$/.idea/modules/test/test.iml" group="test" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tson.iml" filepath="$PROJECT_DIR$/.idea/modules/tson.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tson_main.iml" filepath="$PROJECT_DIR$/.idea/modules/tson_main.iml" group="tson" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tson_test.iml" filepath="$PROJECT_DIR$/.idea/modules/tson_test.iml" group="tson" />
     </modules>
   </component>
 </project>
