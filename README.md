@@ -16,7 +16,7 @@ tiny binary json libaray inspired by bson and message pack，less than 500 line 
 
 string length, map size ar store used usigned varint. map key is always string with out type
 
-here is an example, data in json as follows:
+here is an example, data in json as follows 22 byte:
 
 ```json
 {
@@ -24,7 +24,7 @@ here is an example, data in json as follows:
 }
 ```
 
-in tson
+in tson 14 byte
 
 ![tson](https://raw.githubusercontent.com/gubaojian/tson/master/image/TSON.png)
 
