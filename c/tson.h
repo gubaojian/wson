@@ -57,6 +57,7 @@ void tson_push_type_null(tson_buffer *buffer);
 void tson_push_int(tson_buffer *buffer, int32_t num);
 void tson_push_uint(tson_buffer *buffer, uint32_t num);
 void tson_push_byte(tson_buffer *buffer, uint8_t bt);
+void tson_push_type(tson_buffer *buffer, uint8_t bt);
 void tson_push_double(tson_buffer *buffer, double num);
 void tson_push_long(tson_buffer *buffer, uint64_t num);
 void tson_push_bytes(tson_buffer *buffer, const void *src, int32_t length);
@@ -69,15 +70,17 @@ void tson_buffer_free(tson_buffer *buffer);
 
 
 /**
- * parse buffer, parse data
+ * parse buffer, return data from current position not include signature
  * */
 int8_t tson_next_byte(tson_buffer *buffer);
+int8_t tson_next_type(tson_buffer *buffer);
 int32_t tson_next_int(tson_buffer *buffer);
 uint32_t tson_next_uint(tson_buffer *buffer);
 double tson_next_double(tson_buffer *buffer);
 uint64_t tson_next_long(tson_buffer *buffer);
 uint8_t* tson_next_bts(tson_buffer *buffer, int length);
 
+/** constructor with data */
 tson_buffer* tson_buffer_from(void* data, int length);
 
 #ifdef __cplusplus

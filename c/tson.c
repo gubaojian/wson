@@ -89,6 +89,13 @@ void tson_push_byte(tson_buffer *buffer, uint8_t bt){
     buffer->position += sizeof(uint8_t);
 }
 
+void tson_push_type(tson_buffer *buffer, uint8_t bt){
+    TSON_BUFFER_ENSURE_SIZE(sizeof(uint8_t));
+    uint8_t* data = (buffer->data + buffer->position);
+    *data = bt;
+    buffer->position += sizeof(uint8_t);
+}
+
 
  void tson_push_type_boolean(tson_buffer *buffer, uint8_t value){
       TSON_BUFFER_ENSURE_SIZE(sizeof(uint8_t) + sizeof(uint8_t));
@@ -160,14 +167,17 @@ void tson_push_bytes(tson_buffer *buffer, const void *src, int32_t length){
     buffer->position += length;
 }
 
-int8_t tson_next_byte(tson_buffer *buffer){
+int8_t tson_next_type(tson_buffer *buffer){
     int8_t* ptr = (buffer->data + buffer->position);
     buffer->position += sizeof(int8_t);
     return *ptr;
 }
 
-
-
+int8_t tson_next_byte(tson_buffer *buffer){
+    int8_t* ptr = (buffer->data + buffer->position);
+    buffer->position += sizeof(int8_t);
+    return *ptr;
+}
 
 
 int32_t tson_next_int(tson_buffer *buffer){
