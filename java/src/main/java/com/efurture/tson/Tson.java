@@ -300,7 +300,7 @@ public class Tson {
         }
 
         protected byte[]  objectToBytes(Object value){
-             throw new IllegalArgumentException(value.getClass().getName() + " format is not supported in tson");
+             throw new IllegalArgumentException(value.getClass().getName() + " format is not supported in tson, please override objectToBytes method");
         }
 
         protected void writeString(String value){
