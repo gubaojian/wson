@@ -26,6 +26,8 @@ public class Tson {
 
     public static final byte MAP_TYPE = '{';
 
+    public static final byte EXTEND_TYPE = 'e';
+
     public static final String STRING_UTF8_CHARSET_NAME = "UTF-8";
 
     /**
@@ -78,6 +80,8 @@ public class Tson {
                     return readMap();
                 case NULL_TYPE:
                     return  null;
+                case EXTEND_TYPE:
+                    return readExtend();
                 default:
                     break;
             }
@@ -120,6 +124,19 @@ public class Tson {
             }
             position += length;
             return  string;
+        }
+
+        final Object readExtend(){
+            int length = readUInt();
+            Object object = convertExtend(buffer, position, length);
+            position += length;
+            return object;
+        }
+
+        protected Object convertExtend(byte[] buffer, int offset, int length){
+            byte[] bts = new byte[length];
+            System.arraycopy(buffer, offset, bts, 0, length);
+            return  bts;
         }
 
         protected   boolean readBoolean(){
@@ -258,7 +275,8 @@ public class Tson {
                     writeObject(value);
                 }
             }else{
-                throw new IllegalArgumentException(object.getClass().getName() + " format is not supported in tson");
+                writeByte(EXTEND_TYPE);
+                writeExtend(object);
             }
         }
 
@@ -272,6 +290,17 @@ public class Tson {
         protected void writeByte(byte type){
             buffer[position] = type;
             position++;
+        }
+
+        final void writeExtend(Object value){
+            byte[] bts  = objectToBytes(value);
+            ensureCapacity(bts.length + 8);
+            writeUInt(bts.length);
+            writeBytes(bts);
+        }
+
+        protected byte[]  objectToBytes(Object value){
+             throw new IllegalArgumentException(value.getClass().getName() + " format is not supported in tson");
         }
 
         protected void writeString(String value){
