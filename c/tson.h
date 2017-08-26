@@ -35,6 +35,7 @@ typedef struct tson_buffer{
 #define  TSON_NUMBER_DOUBLE_TYPE  'd'
 #define  TSON_ARRAY_TYPE  '['
 #define  TSON_MAP_TYPE   '{'
+#define  TSON_EXTEND_TYPE   'e'
 
 /**
  * create tson buffer
@@ -51,6 +52,10 @@ void tson_push_type_int(tson_buffer *buffer, int32_t num);
 void tson_push_type_double(tson_buffer *buffer, double num);
 void tson_push_type_string(tson_buffer *buffer, const void *src, int32_t length);
 void tson_push_type_null(tson_buffer *buffer);
+void tson_push_type_map(tson_buffer *buffer, uint32_t size);
+void tson_push_type_array(tson_buffer *buffer, uint32_t size);
+void tson_push_type_extend(tson_buffer *buffer, const void *src, int32_t length);
+
 /**
  * push int, varint uint byte int double bts to buffer, without type signature
  * */
