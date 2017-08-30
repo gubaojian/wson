@@ -20,7 +20,7 @@ here is an example, data in json as follows 22 byte:
 
 ```json
 {
-  "name" : "hello world"
+  "name" : "hello"
 }
 ```
 
