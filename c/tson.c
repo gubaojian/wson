@@ -3,6 +3,7 @@
 //
 
 #include "tson.h"
+#include <stdio.h>
 
 
 union number{
@@ -23,9 +24,6 @@ static void msg_buffer_resize(tson_buffer* buffer, int size){
          }else{
             size = buffer->length;
          }
-         if(size > 1024*64){
-            size = 1024*64;
-        }
     }else{
         size +=TSON_BUFFER_SIZE;
     }
@@ -97,7 +95,7 @@ void tson_push_type(tson_buffer *buffer, uint8_t bt){
 }
 
 
- void tson_push_type_boolean(tson_buffer *buffer, uint8_t value){
+void tson_push_type_boolean(tson_buffer *buffer, uint8_t value){
       TSON_BUFFER_ENSURE_SIZE(sizeof(uint8_t) + sizeof(uint8_t));
     uint8_t* data = (buffer->data + buffer->position);
     *data = TSON_BOOLEAN_TYPE;
@@ -131,6 +129,14 @@ void tson_push_type_string(tson_buffer *buffer, const void *src, int32_t length)
     tson_push_bytes(buffer, src, length);
 }
 
+void tson_push_type_string_length(tson_buffer *buffer, int32_t length){
+    TSON_BUFFER_ENSURE_SIZE(sizeof(uint8_t));
+    uint8_t* data = (buffer->data + buffer->position);
+    *data = TSON_STRING_TYPE;
+    buffer->position += (sizeof(uint8_t));
+    tson_push_uint(buffer, length);
+}
+
 void tson_push_type_null(tson_buffer *buffer){
     TSON_BUFFER_ENSURE_SIZE(sizeof(uint8_t));
     uint8_t* data = (buffer->data + buffer->position);
@@ -162,6 +168,10 @@ void tson_push_type_extend(tson_buffer *buffer, const void *src, int32_t length)
     buffer->position += (sizeof(uint8_t));
     tson_push_uint(buffer, length);
     tson_push_bytes(buffer, src, length);
+}
+
+void tson_push_ensure_size(tson_buffer *buffer, uint32_t dataSize){
+    TSON_BUFFER_ENSURE_SIZE(sizeof(uint8_t)*dataSize);
 }
 
 void tson_push_long(tson_buffer *buffer, uint64_t num){

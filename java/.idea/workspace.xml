@@ -55,20 +55,7 @@
     <favorites_list name="com.furture.tson" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Tson.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/efurture/tson/Tson.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="327">
-              <caret line="302" column="148" selection-start-line="302" selection-start-column="148" selection-end-line="302" selection-end-column="148" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -1096,34 +1083,34 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="DataTest_testData - 2017.08.26 at 10h 43m 45s.xml">
-      <configuration name="DataTest.testData" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="DataTest_testData - 2017.08.26 at 10h 43m 46s.xml">
-      <configuration name="DataTest.testData" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="DataTest_testData - 2017.08.26 at 10h 43m 48s.xml">
-      <configuration name="DataTest.testData" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="DataTest_testData - 2017.08.26 at 10h 43m 50s.xml">
-      <configuration name="DataTest.testData" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="DataTest_testData - 2017.08.26 at 10h 43m 51s.xml">
-      <configuration name="DataTest.testData" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="DataTest_testData - 2017.08.26 at 10h 43m 53s.xml">
-      <configuration name="DataTest.testData" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="DataTest_testData - 2017.08.26 at 10h 43m 54s.xml">
-      <configuration name="DataTest.testData" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="DataTest_testData - 2017.08.26 at 10h 43m 56s.xml">
-      <configuration name="DataTest.testData" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="DataTest_testData - 2017.08.26 at 10h 44m 38s.xml">
       <configuration name="DataTest.testData" configurationId="JUnit" />
     </history-entry>
     <history-entry file="DataTest_testData - 2017.08.26 at 10h 44m 40s.xml">
+      <configuration name="DataTest.testData" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DataTest_testData - 2017.08.26 at 10h 49m 13s.xml">
+      <configuration name="DataTest.testData" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DataTest_testData - 2017.08.26 at 10h 49m 34s.xml">
+      <configuration name="DataTest.testData" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DataTest_testData - 2017.08.26 at 10h 50m 17s.xml">
+      <configuration name="DataTest.testData" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DataTest_testData - 2017.08.26 at 10h 50m 19s.xml">
+      <configuration name="DataTest.testData" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DataTest_testData - 2017.08.26 at 10h 50m 21s.xml">
+      <configuration name="DataTest.testData" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DataTest_testData - 2017.08.26 at 10h 50m 23s.xml">
+      <configuration name="DataTest.testData" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DataTest_testData - 2017.08.26 at 10h 50m 24s.xml">
+      <configuration name="DataTest.testData" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DataTest_testData - 2017.08.26 at 10h 50m 26s.xml">
       <configuration name="DataTest.testData" configurationId="JUnit" />
     </history-entry>
   </component>
@@ -1136,10 +1123,10 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299363" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.43184713" sideWeight="0.5062992" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.42292994" sideWeight="0.41417322" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.43184713" sideWeight="0.49370077" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42292994" sideWeight="0.58582675" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.062420383" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1201,13 +1188,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/furture/tson/Bits.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="86" column="14" selection-start-line="86" selection-start-column="14" selection-end-line="86" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home/src.zip!/java/lang/String.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
@@ -1238,6 +1218,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="266">
           <caret line="14" column="62" selection-start-line="14" selection-start-column="62" selection-end-line="14" selection-end-column="62" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1385,8 +1366,8 @@
         <state relative-caret-position="147">
           <caret line="98" column="20" selection-start-line="98" selection-start-column="20" selection-end-line="98" selection-end-column="20" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3738#3746#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#3738#3746#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1399,18 +1380,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/data.dat">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/furture/tson/DataTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="20" column="9" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
+        <state relative-caret-position="133">
+          <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/furture/tson/Bits.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1444">
+          <caret line="86" column="14" selection-start-line="86" selection-start-column="14" selection-end-line="86" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/efurture/tson/Tson.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="302" column="148" selection-start-line="302" selection-start-column="148" selection-end-line="302" selection-end-column="148" />
+        <state relative-caret-position="197">
+          <caret line="359" column="23" selection-start-line="359" selection-start-column="23" selection-end-line="359" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
