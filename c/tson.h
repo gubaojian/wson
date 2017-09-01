@@ -18,8 +18,8 @@ extern "C" {
 
 typedef struct tson_buffer{
     void* data;
-    int32_t position;
-    int32_t length;
+    uint32_t position;
+    uint32_t length;
 } tson_buffer;
 
 
@@ -40,7 +40,7 @@ typedef struct tson_buffer{
 /**
  * create tson buffer
  * */
-tson_buffer* tson_buffer_new();
+tson_buffer* tson_buffer_new(void);
 
 
 /**
@@ -57,6 +57,8 @@ void tson_push_type_array(tson_buffer *buffer, uint32_t size);
 void tson_push_type_extend(tson_buffer *buffer, const void *src, int32_t length);
 void tson_push_ensure_size(tson_buffer *buffer, uint32_t dataSize);
 void tson_push_type_string_length(tson_buffer *buffer, int32_t length);
+void tson_push_property(tson_buffer *buffer, const void *src, int32_t length);
+    
 /**
  * push int, varint uint byte int double bts to buffer, without type signature
  * */
@@ -84,10 +86,13 @@ int32_t tson_next_int(tson_buffer *buffer);
 uint32_t tson_next_uint(tson_buffer *buffer);
 double tson_next_double(tson_buffer *buffer);
 uint64_t tson_next_long(tson_buffer *buffer);
-uint8_t* tson_next_bts(tson_buffer *buffer, int length);
+uint8_t* tson_next_bts(tson_buffer *buffer, uint32_t length);
+inline _Bool tson_has_next(tson_buffer *buffer){
+    return buffer->position < buffer->length;
+}
 
 /** constructor with data */
-tson_buffer* tson_buffer_from(void* data, int length);
+tson_buffer* tson_buffer_from(void* data, uint32_t length);
 
 #ifdef __cplusplus
 }
