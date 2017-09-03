@@ -1,9 +1,12 @@
 package com.furture.tson;
 
 import junit.framework.TestCase;
+import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 /**
  * Created by 剑白(jianbai.gbj) on 2017/8/16.
@@ -45,5 +48,30 @@ public class DataTest extends TestCase {
         System.out.println("first number  " +  Bits.getDouble(bts, 0));
         System.out.println("first int " +  Bits.getInt(bts, 8));
         System.out.println("first long " +  Bits.getLong(bts, 12));
+    }
+
+
+    public void testLinkedHashMapTest() {
+
+        //LRU
+        LruCache<String, String> map = new LruCache<>(12);
+        for (int i = 0; i < 16; i++) {
+            map.put(String.valueOf(i), String.valueOf(i + 1));
+        }
+
+        for (Map.Entry<String, String> entry : map.entrySet()) {
+            System.out.println("key=" + entry.getKey() + "---------value=" + entry.getValue());
+        }
+
+        System.out.println("----------华丽的分割线-------------");
+
+        map.get("3");
+        map.get("5");
+        map.put("6", "100");
+        map.put("18", "100");
+
+        for (Map.Entry<String, String> entry : map.entrySet()) {
+            System.out.println("key=" + entry.getKey() + "---------value=" + entry.getValue());
+        }
     }
 }

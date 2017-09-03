@@ -2,6 +2,9 @@ package com.efurture.tson;
 
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Array;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.util.*;
 
 /**
@@ -189,11 +192,21 @@ public class Tson {
      * tson builder
      * */
     public static class Builder {
+
+        public static final String METHOD_PREFIX_GET = "get";
+        public static final String METHOD_PREFIX_IS = "is";
+
+        private static Tson.LruCache<String, List<Method>> methodsCache = new Tson.LruCache<>(32);
+        private static Tson.LruCache<String, Field[]> fieldsCache = new Tson.LruCache<>(32);
+
+
         private byte[] buffer;
         private int position;
+        private ArrayList refsList;
 
         public Builder(){
             buffer = new byte[256];
+            refsList = new ArrayList<>();
         }
 
 
@@ -214,6 +227,12 @@ public class Tson {
                 writeByte(STRING_TYPE);
                 writeString((String) object);
             }else if (object instanceof Map){
+                if(refsList.contains(object)){
+                    ensureCapacity(2);
+                    writeByte(NULL_TYPE);
+                    return;
+                }
+                refsList.add(object);
                 Map<String,Object> map = (Map) object;
                 ensureCapacity(8);
                 writeByte(MAP_TYPE);
@@ -223,7 +242,14 @@ public class Tson {
                     writeString(entry.getKey().toString());
                     writeObject(entry.getValue());
                 }
+                refsList.remove(refsList.size()-1);
             }else if (object instanceof List){
+                if(refsList.contains(object)){
+                    ensureCapacity(2);
+                    writeByte(NULL_TYPE);
+                    return;
+                }
+                refsList.add(object);
                 ensureCapacity(8);
                 List list = (List) object;
                 writeByte(ARRAY_TYPE);
@@ -231,10 +257,11 @@ public class Tson {
                 for(Object value : list){
                     writeObject(value);
                 }
+                refsList.remove(refsList.size()-1);
             }else if (object instanceof Number){
                 ensureCapacity(12);
                 Number number = (Number) object;
-                if(object instanceof  Integer){
+                if(object instanceof  Integer || object instanceof  Short){
                     writeByte(NUMBER_INT_TYPE);
                     writeVarInt(number.intValue());
                 }else{
@@ -251,6 +278,12 @@ public class Tson {
                     writeByte((byte) 0);
                 }
             }else if (object.getClass().isArray()){
+                if(refsList.contains(object)){
+                    ensureCapacity(2);
+                    writeByte(NULL_TYPE);
+                    return;
+                }
+                refsList.add(object);
                 ensureCapacity(8);
                 int length = Array.getLength(object);
                 writeByte(ARRAY_TYPE);
@@ -259,8 +292,16 @@ public class Tson {
                     Object value = Array.get(object, i);
                     writeObject(value);
                 }
+                refsList.remove(refsList.size()-1);
             }else{
-                writeObject(toMap(object));
+                if(refsList.contains(object)){
+                    ensureCapacity(2);
+                    writeByte(NULL_TYPE);
+                }else {
+                    refsList.add(object);
+                    writeObject(toMap(object));
+                    refsList.remove(refsList.size()-1);
+                }
             }
         }
 
@@ -276,8 +317,69 @@ public class Tson {
             position++;
         }
 
-        protected Map  toMap(Object value){
-            throw new IllegalArgumentException(value.getClass().getName() + " format is not supported in tson, please override objectToBytes method");
+        protected Map  toMap(Object object){
+            Map map = new HashMap<>();
+            try {
+                Class<?> targetClass = object.getClass();
+                String key = targetClass.getName();
+                List<Method> methods = methodsCache.get(key);
+                if(methods == null){
+                    methods = new ArrayList<>();
+                    Class<?> parentClass =  targetClass;
+                    while (parentClass != Object.class){
+                        Method[] declaredMethods = parentClass.getDeclaredMethods();
+                        for(Method declaredMethod : declaredMethods){
+                            String methodName = declaredMethod.getName();
+                            if(methodName.startsWith(METHOD_PREFIX_GET)
+                                    || methodName.startsWith(METHOD_PREFIX_IS)) {
+                                if(Modifier.isPublic(declaredMethod.getModifiers())) {
+                                    methods.add(declaredMethod);
+                                }
+                            }
+                        }
+                        parentClass = parentClass.getSuperclass();
+                    }
+                    methodsCache.put(key, methods);
+                }
+                for (Method method : methods) {
+                    String methodName = method.getName();
+                    if (methodName.startsWith(METHOD_PREFIX_GET)) {
+                        Object value = method.invoke(object);
+                        if(value != null){
+                            StringBuilder builder = new StringBuilder(method.getName().substring(3));
+                            builder.setCharAt(0, Character.toLowerCase(builder.charAt(0)));
+                            map.put(builder.toString(), (Object) value);
+                        }
+                    }else if(methodName.startsWith(METHOD_PREFIX_IS)){
+                        Object value = method.invoke(object);
+                        if(value != null){
+                            StringBuilder builder = new StringBuilder(method.getName().substring(2));
+                            builder.setCharAt(0, Character.toLowerCase(builder.charAt(0)));
+                            map.put(builder.toString(), value);
+                        }
+                    }
+                }
+                Field[] fields = fieldsCache.get(key);
+                if(fields == null) {
+                    fields = targetClass.getFields();
+                    fieldsCache.put(key, fields);
+
+                }
+                for(Field field : fields){
+                    String fieldName = field.getName();
+                    if(map.containsKey(fieldName)){
+                        continue;
+                    }
+                    Object value  = field.get(object);
+                    if(value == null){
+                        continue;
+                    }
+                    map.put(fieldName, value);
+                }
+            }catch (Exception e){
+                throw  new RuntimeException(e);
+            }
+            return  map;
         }
 
         protected void writeString(String value){
@@ -339,4 +441,21 @@ public class Tson {
             }
         }
     }
+    /**
+     * lru cache
+     * */
+    public static class LruCache<K,V> extends LinkedHashMap<K,V> {
+        private int cacheSize;
+
+        public LruCache(int cacheSize) {
+            super(cacheSize, 0.75f, true);
+            this.cacheSize = cacheSize;
+        }
+
+        @Override
+        protected boolean removeEldestEntry(Map.Entry eldest) {
+            return size() > cacheSize;
+        }
+    }
+
 }
