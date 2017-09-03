@@ -56,16 +56,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ObjectToMapTest.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/furture/tson/ObjectToMapTest.java">
+      <file leaf-file-name="FastJsonVsTson.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/furture/tson/FastJsonVsTson.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1189#1190#0" expanded="true" />
-                <element signature="e#1217#1218#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="247">
+              <caret line="18" column="27" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -403,12 +399,13 @@
         <option value="$PROJECT_DIR$/src/test/java/com/furture/tson/TsonTest.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/test/java/com/furture/tson/LruCache.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/furture/tson/DataTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/furture/tson/Node.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/efurture/tson/Tson.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/furture/tson/FastJsonVsTson.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/furture/tson/User.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/furture/tson/ObjectToMapTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/efurture/tson/Tson.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/furture/tson/DataTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/furture/tson/DataFormatTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/furture/tson/FastJsonVsTson.java" />
       </list>
     </option>
   </component>
@@ -699,7 +696,7 @@
       <recent name="$PROJECT_DIR$/src/main/java/com/efurture/tson" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.FastJsonVsTson.testTson">
+  <component name="RunManager" selected="JUnit.FastJsonVsTson">
     <configuration default="false" name="ObjectToMapTest.testObjectToMap" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -714,32 +711,6 @@
       <option name="MAIN_CLASS_NAME" value="com.furture.tson.ObjectToMapTest" />
       <option name="METHOD_NAME" value="testObjectToMap" />
       <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="ObjectToMapTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.furture.tson.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="tson_test" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.furture.tson" />
-      <option name="MAIN_CLASS_NAME" value="com.furture.tson.ObjectToMapTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
@@ -818,6 +789,32 @@
       <option name="MAIN_CLASS_NAME" value="com.furture.tson.FastJsonVsTson" />
       <option name="METHOD_NAME" value="testFastJson" />
       <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="FastJsonVsTson" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.furture.tson.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="tson_test" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.furture.tson" />
+      <option name="MAIN_CLASS_NAME" value="com.furture.tson.FastJsonVsTson" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
@@ -1118,18 +1115,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="JUnit.ObjectToMapTest.testObjectToMap" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.ObjectToMapTest" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.ObjectToMapTest.testRecursice" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.FastJsonVsTson.testTson" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.FastJsonVsTson.testFastJson" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.ObjectToMapTest.testRecursice" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.FastJsonVsTson.testTson" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.FastJsonVsTson.testFastJson" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.FastJsonVsTson" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.FastJsonVsTson.testTson" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.FastJsonVsTson.testFastJson" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.ObjectToMapTest.testObjectToMap" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.ObjectToMapTest.testRecursice" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.ObjectToMapTest" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.FastJsonVsTson" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.FastJsonVsTson.testTson" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.FastJsonVsTson.testFastJson" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.ObjectToMapTest.testObjectToMap" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.ObjectToMapTest.testRecursice" />
       </list>
     </recent_temporary>
   </component>
@@ -1147,50 +1144,50 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="FastJsonVsTson_testTson - 2017.09.03 at 23h 29m 35s.xml">
-      <configuration name="FastJsonVsTson.testTson" configurationId="JUnit" />
+    <history-entry file="FastJsonVsTson - 2017.09.03 at 23h 39m 03s.xml">
+      <configuration name="FastJsonVsTson" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FastJsonVsTson_testTson - 2017.09.03 at 23h 29m 48s.xml">
-      <configuration name="FastJsonVsTson.testTson" configurationId="JUnit" />
+    <history-entry file="FastJsonVsTson - 2017.09.03 at 23h 39m 22s.xml">
+      <configuration name="FastJsonVsTson" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FastJsonVsTson_testTson - 2017.09.03 at 23h 29m 52s.xml">
-      <configuration name="FastJsonVsTson.testTson" configurationId="JUnit" />
+    <history-entry file="FastJsonVsTson - 2017.09.03 at 23h 39m 24s.xml">
+      <configuration name="FastJsonVsTson" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FastJsonVsTson_testTson - 2017.09.03 at 23h 29m 54s.xml">
-      <configuration name="FastJsonVsTson.testTson" configurationId="JUnit" />
+    <history-entry file="FastJsonVsTson - 2017.09.03 at 23h 39m 26s.xml">
+      <configuration name="FastJsonVsTson" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FastJsonVsTson_testTson - 2017.09.03 at 23h 29m 56s.xml">
-      <configuration name="FastJsonVsTson.testTson" configurationId="JUnit" />
+    <history-entry file="FastJsonVsTson - 2017.09.03 at 23h 39m 28s.xml">
+      <configuration name="FastJsonVsTson" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FastJsonVsTson_testTson - 2017.09.03 at 23h 29m 57s.xml">
-      <configuration name="FastJsonVsTson.testTson" configurationId="JUnit" />
+    <history-entry file="FastJsonVsTson - 2017.09.03 at 23h 39m 30s.xml">
+      <configuration name="FastJsonVsTson" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FastJsonVsTson_testTson - 2017.09.03 at 23h 29m 59s.xml">
-      <configuration name="FastJsonVsTson.testTson" configurationId="JUnit" />
+    <history-entry file="FastJsonVsTson - 2017.09.03 at 23h 39m 32s.xml">
+      <configuration name="FastJsonVsTson" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FastJsonVsTson_testTson - 2017.09.03 at 23h 30m 01s.xml">
-      <configuration name="FastJsonVsTson.testTson" configurationId="JUnit" />
+    <history-entry file="FastJsonVsTson - 2017.09.03 at 23h 39m 34s.xml">
+      <configuration name="FastJsonVsTson" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FastJsonVsTson_testTson - 2017.09.03 at 23h 30m 09s.xml">
-      <configuration name="FastJsonVsTson.testTson" configurationId="JUnit" />
+    <history-entry file="FastJsonVsTson - 2017.09.03 at 23h 39m 36s.xml">
+      <configuration name="FastJsonVsTson" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FastJsonVsTson_testTson - 2017.09.03 at 23h 34m 07s.xml">
-      <configuration name="FastJsonVsTson.testTson" configurationId="JUnit" />
+    <history-entry file="FastJsonVsTson - 2017.09.03 at 23h 39m 41s.xml">
+      <configuration name="FastJsonVsTson" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="84" y="23" width="1312" height="877" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299363" sideWeight="0.47795275" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33630574" sideWeight="0.43307087" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33630574" sideWeight="0.43307087" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33630574" sideWeight="0.56692916" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33630574" sideWeight="0.56692916" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.062420383" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1589,32 +1586,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/furture/tson/DataTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="16" column="24" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/furture/tson/FastJsonVsTson.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="37" column="23" selection-start-line="37" selection-start-column="23" selection-end-line="37" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/efurture/tson/Tson.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="430" column="3" selection-start-line="430" selection-start-column="3" selection-end-line="463" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/furture/tson/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="227">
@@ -1638,6 +1609,32 @@
             <element signature="e#1189#1190#0" expanded="true" />
             <element signature="e#1217#1218#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/efurture/tson/Tson.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="223" column="5" selection-start-line="223" selection-start-column="5" selection-end-line="223" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/furture/tson/DataFormatTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-837">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/furture/tson/FastJsonVsTson.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="18" column="27" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>

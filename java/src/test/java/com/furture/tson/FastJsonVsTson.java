@@ -55,8 +55,5 @@ public class FastJsonVsTson extends TestCase {
         end = System.currentTimeMillis();
 
         System.out.println("tson parse used " + (end - start));
-
-
-
     }
 }

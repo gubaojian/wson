@@ -5,13 +5,12 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
  * Created by 剑白(jianbai.gbj) on 2017/8/16.
  */
-public class DataTest extends TestCase {
+public class DataFormatTest extends TestCase {
 
 
     public void  testData() throws IOException {
