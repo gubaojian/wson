@@ -26,7 +26,6 @@ public class Tson {
 
     public static final byte MAP_TYPE = '{';
 
-    public static final byte EXTEND_TYPE = 'e';
 
     public static final String STRING_UTF8_CHARSET_NAME = "UTF-8";
 
@@ -80,8 +79,6 @@ public class Tson {
                     return readMap();
                 case NULL_TYPE:
                     return  null;
-                case EXTEND_TYPE:
-                    return readExtend();
                 default:
                     break;
             }
@@ -126,18 +123,6 @@ public class Tson {
             return  string;
         }
 
-        final Object readExtend(){
-            int length = readUInt();
-            Object object = convertExtend(buffer, position, length);
-            position += length;
-            return object;
-        }
-
-        protected Object convertExtend(byte[] buffer, int offset, int length){
-            byte[] bts = new byte[length];
-            System.arraycopy(buffer, offset, bts, 0, length);
-            return  bts;
-        }
 
         protected   boolean readBoolean(){
             byte bt = buffer[position];
@@ -275,8 +260,7 @@ public class Tson {
                     writeObject(value);
                 }
             }else{
-                writeByte(EXTEND_TYPE);
-                writeExtend(object);
+                writeObject(toMap(object));
             }
         }
 
@@ -292,15 +276,8 @@ public class Tson {
             position++;
         }
 
-        final void writeExtend(Object value){
-            byte[] bts  = objectToBytes(value);
-            ensureCapacity(bts.length + 8);
-            writeUInt(bts.length);
-            writeBytes(bts);
-        }
-
-        protected byte[]  objectToBytes(Object value){
-             throw new IllegalArgumentException(value.getClass().getName() + " format is not supported in tson, please override objectToBytes method");
+        protected Map  toMap(Object value){
+            throw new IllegalArgumentException(value.getClass().getName() + " format is not supported in tson, please override objectToBytes method");
         }
 
         protected void writeString(String value){
