@@ -193,13 +193,6 @@ public class Tson {
      * */
     public static class Builder {
 
-        public static final String METHOD_PREFIX_GET = "get";
-        public static final String METHOD_PREFIX_IS = "is";
-
-        private static Tson.LruCache<String, List<Method>> methodsCache = new Tson.LruCache<>(32);
-        private static Tson.LruCache<String, Field[]> fieldsCache = new Tson.LruCache<>(32);
-
-
         private byte[] buffer;
         private int position;
         private ArrayList refsList;
@@ -322,25 +315,7 @@ public class Tson {
             try {
                 Class<?> targetClass = object.getClass();
                 String key = targetClass.getName();
-                List<Method> methods = methodsCache.get(key);
-                if(methods == null){
-                    methods = new ArrayList<>();
-                    Class<?> parentClass =  targetClass;
-                    while (parentClass != Object.class){
-                        Method[] declaredMethods = parentClass.getDeclaredMethods();
-                        for(Method declaredMethod : declaredMethods){
-                            String methodName = declaredMethod.getName();
-                            if(methodName.startsWith(METHOD_PREFIX_GET)
-                                    || methodName.startsWith(METHOD_PREFIX_IS)) {
-                                if(Modifier.isPublic(declaredMethod.getModifiers())) {
-                                    methods.add(declaredMethod);
-                                }
-                            }
-                        }
-                        parentClass = parentClass.getSuperclass();
-                    }
-                    methodsCache.put(key, methods);
-                }
+                List<Method> methods = getBeanMethod(key, targetClass);
                 for (Method method : methods) {
                     String methodName = method.getName();
                     if (methodName.startsWith(METHOD_PREFIX_GET)) {
@@ -359,12 +334,7 @@ public class Tson {
                         }
                     }
                 }
-                Field[] fields = fieldsCache.get(key);
-                if(fields == null) {
-                    fields = targetClass.getFields();
-                    fieldsCache.put(key, fields);
-
-                }
+                Field[] fields = getBeanFields(key, targetClass);
                 for(Field field : fields){
                     String fieldName = field.getName();
                     if(map.containsKey(fieldName)){
@@ -458,4 +428,38 @@ public class Tson {
         }
     }
 
+    private static final String METHOD_PREFIX_GET = "get";
+    private static final String METHOD_PREFIX_IS = "is";
+    private static Tson.LruCache<String, List<Method>> methodsCache = new Tson.LruCache<>(32);
+    private static Tson.LruCache<String, Field[]> fieldsCache = new Tson.LruCache<>(32);
+
+
+    private static List<Method> getBeanMethod(String key, Class targetClass){
+        List<Method> methods = methodsCache.get(key);
+        if(methods == null){
+            methods = new ArrayList<>();
+            Method[]  allMethods = targetClass.getMethods();
+            for(Method method : allMethods){
+                if(method.getDeclaringClass() == Object.class){
+                    continue;
+                }
+                String methodName = method.getName();
+                if(methodName.startsWith(METHOD_PREFIX_GET)
+                        || methodName.startsWith(METHOD_PREFIX_IS)) {
+                    methods.add(method);
+                }
+            }
+            methodsCache.put(key, methods);
+        }
+        return methods;
+    }
+
+    private static  Field[] getBeanFields(String key, Class targetClass){
+        Field[] fields = fieldsCache.get(key);
+        if(fields == null) {
+            fields = targetClass.getFields();
+            fieldsCache.put(key, fields);
+        }
+        return  fields;
+    }
 }

@@ -30,7 +30,7 @@ public class FastJsonVsTson extends TestCase {
             JSON.parseObject(json);
         }
         end = System.currentTimeMillis();
-        System.out.println("tson used " + (end - start));
+        System.out.println("fastjson parse used " + (end - start));
     }
 
 

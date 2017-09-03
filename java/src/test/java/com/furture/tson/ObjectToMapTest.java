@@ -23,6 +23,11 @@ public class ObjectToMapTest extends TestCase {
         System.out.println(map);
 
         System.out.println(JSON.toJSONString(user));
+        System.out.println(JSON.toJSONString(user).getBytes().length);
+
+        System.out.println(new String(Tson.toTson(user)));
+
+        System.out.println(Tson.toTson(user).length);
     }
 
 
@@ -34,6 +39,12 @@ public class ObjectToMapTest extends TestCase {
         System.out.println(new String(Tson.toTson(node)));
     }
 
+
+    private Object mapToObject(Map map, Object targetClass){
+        return  null;
+    }
+
+
     private Map toMap(Object object) throws InvocationTargetException, IllegalAccessException {
         Map map = new HashMap<>();
         Class<?> targetClass = object.getClass();
@@ -41,19 +52,16 @@ public class ObjectToMapTest extends TestCase {
         List<Method> methods = methodsCache.get(key);
         if(methods == null){
             methods = new ArrayList<>();
-            Class<?> parentClass =  targetClass;
-            while (parentClass != Object.class){
-                Method[] declaredMethods = parentClass.getDeclaredMethods();
-                for(Method declaredMethod : declaredMethods){
-                    String methodName = declaredMethod.getName();
-                    if(methodName.startsWith(METHOD_PREFIX_GET)
-                            || methodName.startsWith(METHOD_PREFIX_IS)) {
-                        if(Modifier.isPublic(declaredMethod.getModifiers())) {
-                            methods.add(declaredMethod);
-                        }
-                    }
+            Method[]  allMethods = targetClass.getMethods();
+            for(Method method : allMethods){
+                if(method.getDeclaringClass() == Object.class){
+                    continue;
                 }
-                parentClass = parentClass.getSuperclass();
+                String methodName = method.getName();
+                if(methodName.startsWith(METHOD_PREFIX_GET)
+                        || methodName.startsWith(METHOD_PREFIX_IS)) {
+                    methods.add(method);
+                }
             }
             methodsCache.put(key, methods);
         }
@@ -113,11 +121,39 @@ public class ObjectToMapTest extends TestCase {
         return methods;
     }
 
-    public static final String METHOD_PREFIX_GET = "get";
-    public static final String METHOD_PREFIX_IS = "is";
-
+    private static final String METHOD_PREFIX_GET = "get";
+    private static final String METHOD_PREFIX_IS = "is";
     private static Tson.LruCache<String, List<Method>> methodsCache = new Tson.LruCache<>(32);
     private static Tson.LruCache<String, Field[]> fieldsCache = new Tson.LruCache<>(32);
 
+
+    private static List<Method> getBeanMethod(String key, Class targetClass){
+        List<Method> methods = methodsCache.get(key);
+        if(methods == null){
+            methods = new ArrayList<>();
+            Method[]  allMethods = targetClass.getMethods();
+            for(Method method : allMethods){
+                if(method.getDeclaringClass() == Object.class){
+                    continue;
+                }
+                String methodName = method.getName();
+                if(methodName.startsWith(METHOD_PREFIX_GET)
+                        || methodName.startsWith(METHOD_PREFIX_IS)) {
+                    methods.add(method);
+                }
+            }
+            methodsCache.put(key, methods);
+        }
+        return methods;
+    }
+
+    private static  Field[] getBeanFields(String key, Class targetClass){
+        Field[] fields = fieldsCache.get(key);
+        if(fields == null) {
+            fields = targetClass.getFields();
+            fieldsCache.put(key, fields);
+        }
+        return  fields;
+    }
 
 }
