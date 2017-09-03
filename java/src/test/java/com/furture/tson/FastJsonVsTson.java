@@ -56,4 +56,24 @@ public class FastJsonVsTson extends TestCase {
 
         System.out.println("tson parse used " + (end - start));
     }
+
+    public void testSerializable(){
+        User user = new User();
+        user.name = "中国";
+        user.country = "中国";
+
+        long start = System.currentTimeMillis();
+        for(int i=0; i<10000; i++) {
+           Tson.toTson(user);
+        }
+        long end = System.currentTimeMillis();
+        System.out.println("tson totson used " + (end - start));
+
+        start = System.currentTimeMillis();
+        for(int i=0; i<10000; i++) {
+            JSON.toJSONString(user);
+        }
+        end = System.currentTimeMillis();
+        System.out.println("json totson used " + (end - start));
+    }
 }
