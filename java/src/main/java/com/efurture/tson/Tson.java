@@ -115,10 +115,18 @@ public class Tson {
             return  type;
         }
 
+        /**
+         * FIXME proper Cache, reduct string object.
+         * */
+        private String readKey(){
+            return readString();
+        }
+
         private String readString(){
             int length = readUInt();
             String string = null;
             try {
+                //FIXME 性能优化
                 string = new String(buffer, position, length, STRING_UTF8_CHARSET_NAME);
             } catch (UnsupportedEncodingException e) {
                 string = new String(buffer, position, length);
@@ -368,6 +376,7 @@ public class Tson {
         }
 
         private  void writeString(String value){
+            //// FIXME: 2017/9/5 sysmbol get
             byte[] bts = null;
             try {
                 bts = value.getBytes(STRING_UTF8_CHARSET_NAME);
