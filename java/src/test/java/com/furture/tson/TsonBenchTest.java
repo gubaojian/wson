@@ -15,7 +15,7 @@ public class TsonBenchTest extends TestCase {
 
 
     public void testWeex5() throws IOException {
-        benchBuild("/weex5.json", 10000);
+        benchBuild("/weex4.json", 10000);
     }
 
     private void benchBuild(String file, int count) throws IOException {
@@ -28,6 +28,13 @@ public class TsonBenchTest extends TestCase {
         }
         long end = System.currentTimeMillis();
         System.out.println("TSON toTSON used " + (end - start));
+
+        start = System.currentTimeMillis();
+        for(int i=0; i<count; i++) {
+            JSON.toJSONString(map);
+        }
+        end = System.currentTimeMillis();
+        System.out.println("FASTJSON toJSON used " + (end - start));
     }
 
 

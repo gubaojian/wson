@@ -197,17 +197,27 @@ public class Tson {
         private byte[] buffer;
         private int position;
         private ArrayList refsList;
+        private final static ThreadLocal<byte[]> bufLocal = new ThreadLocal<byte[]>();
+
 
         public Builder(){
-            buffer = new byte[1024];
+            buffer =  bufLocal.get();
+            if(buffer != null) {
+                 bufLocal.set(null);
+            }else{
+                buffer = new byte[1024];
+            }
             refsList = new ArrayList<>();
         }
 
 
-        public byte[] toTson(Object object){
+        private byte[] toTson(Object object){
             writeObject(object);
             byte[] bts = new byte[position];
             System.arraycopy(buffer, 0, bts, 0, position);
+            if(buffer.length <= 1024*16){
+                bufLocal.set(buffer);
+            }
             refsList = null;
             buffer = null;
             position = 0;
@@ -218,7 +228,7 @@ public class Tson {
             if(object instanceof  String){
                 ensureCapacity(2);
                 writeByte(STRING_TYPE);
-                writeString((String) object);
+                writeString(object.toString());
                 return;
             }else if (object instanceof Map){
                 if(refsList.contains(object)){
@@ -275,6 +285,10 @@ public class Tson {
                     writeByte((byte) 0);
                 }
                 return;
+            }else if(object == null){
+                ensureCapacity(2);
+                writeByte(NULL_TYPE);
+                return;
             }else if (object.getClass().isArray()){
                 if(refsList.contains(object)){
                     ensureCapacity(2);
@@ -292,12 +306,7 @@ public class Tson {
                 }
                 refsList.remove(refsList.size()-1);
                 return;
-            }if(object == null){
-                ensureCapacity(2);
-                writeByte(NULL_TYPE);
-                return;
             }else{
-
                 if(refsList.contains(object)){
                     ensureCapacity(2);
                     writeByte(NULL_TYPE);
@@ -411,8 +420,12 @@ public class Tson {
             if (minCapacity - buffer.length > 0){
                 int oldCapacity = buffer.length;
                 int newCapacity = oldCapacity << 1;
-                if (newCapacity - minCapacity < 0)
+                if(newCapacity < 1024*16){
+                    newCapacity = 1024*16;
+                }
+                if (newCapacity - minCapacity < 0) {
                     newCapacity = minCapacity;
+                }
                 buffer = Arrays.copyOf(buffer, newCapacity);
             }
         }
