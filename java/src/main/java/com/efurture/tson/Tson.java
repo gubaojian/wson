@@ -5,6 +5,7 @@ import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.nio.ByteBuffer;
 import java.util.*;
 
 /**
@@ -53,8 +54,8 @@ public class Tson {
      * */
     public static class Parser {
 
-        protected int position = 0;
-        protected byte[] buffer;
+        private int position = 0;
+        private final byte[] buffer;
 
         public Parser(byte[] buffer) {
             this.buffer = buffer;
@@ -65,7 +66,7 @@ public class Tson {
             return  readObject();
         }
 
-        protected Object readObject(){
+        private Object readObject(){
             byte type  = readType();
             switch (type){
                 case STRING_TYPE:
@@ -88,7 +89,7 @@ public class Tson {
             return  null;
         }
 
-        protected Object readMap(){
+        private Object readMap(){
             int size = readUInt();
             Map<String, Object> object = createMap();
             for(int i=0; i<size; i++){
@@ -99,7 +100,7 @@ public class Tson {
             return object;
         }
 
-        protected Object readArray(){
+        private Object readArray(){
             int length = readUInt();
             List<Object> array = createArray(length);
             for(int i=0; i<length; i++){
@@ -108,13 +109,13 @@ public class Tson {
             return  array;
         }
 
-        protected  byte readType(){
+        private  byte readType(){
             byte type = buffer[position];
             position ++;
             return  type;
         }
 
-        protected String readString(){
+        private String readString(){
             int length = readUInt();
             String string = null;
             try {
@@ -127,14 +128,14 @@ public class Tson {
         }
 
 
-        protected   boolean readBoolean(){
+        private   boolean readBoolean(){
             byte bt = buffer[position];
             position++;
             return  bt != 0;
         }
 
 
-        protected   int readVarInt(){
+        private   int readVarInt(){
             int raw = readUInt();
             // This undoes the trick in putVarInt()
             int num = (((raw << 31) >> 31) ^ raw) >> 1;
@@ -144,7 +145,7 @@ public class Tson {
             return num ^ (raw & (1 << 31));
         }
 
-        protected   int readUInt(){
+        private   int readUInt(){
             int value = 0;
             int i = 0;
             int b;
@@ -160,7 +161,7 @@ public class Tson {
             return value | (b << i);
         }
 
-        protected long readLong(){
+        private long readLong(){
             long number = (((buffer[position + 7] & 0xFFL)      ) +
                     ((buffer[position + 6] & 0xFFL) <<  8) +
                     ((buffer[position + 5] & 0xFFL) << 16) +
@@ -173,7 +174,7 @@ public class Tson {
             return  number;
         }
 
-        protected  double readDouble(){
+        private  double readDouble(){
             double number = Double.longBitsToDouble(readLong());
             return  number;
         }
@@ -198,27 +199,27 @@ public class Tson {
         private ArrayList refsList;
 
         public Builder(){
-            buffer = new byte[256];
+            buffer = new byte[1024];
             refsList = new ArrayList<>();
         }
 
 
         public byte[] toTson(Object object){
             writeObject(object);
-            byte[] bts = Arrays.copyOf(buffer, position);
+            byte[] bts = new byte[position];
+            System.arraycopy(buffer, 0, bts, 0, position);
+            refsList = null;
             buffer = null;
             position = 0;
             return  bts;
         }
 
-        protected void writeObject(Object object) {
-            if(object == null){
-                ensureCapacity(2);
-                writeByte(NULL_TYPE);
-            }else if(object instanceof  String){
+        private void writeObject(Object object) {
+            if(object instanceof  String){
                 ensureCapacity(2);
                 writeByte(STRING_TYPE);
                 writeString((String) object);
+                return;
             }else if (object instanceof Map){
                 if(refsList.contains(object)){
                     ensureCapacity(2);
@@ -226,16 +227,17 @@ public class Tson {
                     return;
                 }
                 refsList.add(object);
-                Map<String,Object> map = (Map) object;
+                Map map = (Map) object;
                 ensureCapacity(8);
                 writeByte(MAP_TYPE);
                 writeUInt(map.size());
-                Set<Map.Entry<String,Object>>  entries = map.entrySet();
-                for(Map.Entry<String,Object> entry : entries){
+                Set<Map.Entry<Object,Object>>  entries = map.entrySet();
+                for(Map.Entry<Object,Object> entry : entries){
                     writeString(entry.getKey().toString());
                     writeObject(entry.getValue());
                 }
                 refsList.remove(refsList.size()-1);
+                return;
             }else if (object instanceof List){
                 if(refsList.contains(object)){
                     ensureCapacity(2);
@@ -251,6 +253,7 @@ public class Tson {
                     writeObject(value);
                 }
                 refsList.remove(refsList.size()-1);
+                return;
             }else if (object instanceof Number){
                 ensureCapacity(12);
                 Number number = (Number) object;
@@ -261,7 +264,8 @@ public class Tson {
                     writeByte(NUMBER_DOUBLE_TYPE);
                     writeDouble(number.doubleValue());
                 }
-            }else if (isBoolean(object)){
+                return;
+            }else if (object instanceof  Boolean){
                 ensureCapacity(2);
                 writeByte(BOOLEAN_TYPE);
                 Boolean value  = (Boolean) object;
@@ -270,6 +274,7 @@ public class Tson {
                 }else{
                     writeByte((byte) 0);
                 }
+                return;
             }else if (object.getClass().isArray()){
                 if(refsList.contains(object)){
                     ensureCapacity(2);
@@ -286,7 +291,13 @@ public class Tson {
                     writeObject(value);
                 }
                 refsList.remove(refsList.size()-1);
+                return;
+            }if(object == null){
+                ensureCapacity(2);
+                writeByte(NULL_TYPE);
+                return;
             }else{
+
                 if(refsList.contains(object)){
                     ensureCapacity(2);
                     writeByte(NULL_TYPE);
@@ -295,22 +306,17 @@ public class Tson {
                     writeObject(toMap(object));
                     refsList.remove(refsList.size()-1);
                 }
+                return;
             }
         }
 
-        protected boolean isBoolean(Object object){
-            if(object instanceof  Boolean){
-                return  true;
-            }
-            return  false;
-        }
 
-        protected void writeByte(byte type){
+        private final void writeByte(byte type){
             buffer[position] = type;
             position++;
         }
 
-        protected Map  toMap(Object object){
+        private Map  toMap(Object object){
             Map map = new HashMap<>();
             try {
                 Class<?> targetClass = object.getClass();
@@ -352,7 +358,7 @@ public class Tson {
             return  map;
         }
 
-        protected void writeString(String value){
+        private  void writeString(String value){
             byte[] bts = null;
             try {
                 bts = value.getBytes(STRING_UTF8_CHARSET_NAME);
@@ -364,11 +370,11 @@ public class Tson {
             writeBytes(bts);
         }
 
-        protected void writeDouble(double value){
+        private void writeDouble(double value){
             writeLong(Double.doubleToLongBits(value));
         }
 
-        protected void writeLong(long val){
+        private void writeLong(long val){
             buffer[position + 7] = (byte) (val       );
             buffer[position + 6] = (byte) (val >>>  8);
             buffer[position + 5] = (byte) (val >>> 16);
@@ -380,11 +386,11 @@ public class Tson {
             position += 8;
         }
 
-        protected void writeVarInt(int value){
+        private void writeVarInt(int value){
             writeUInt((value << 1) ^ (value >> 31));
         }
 
-        protected void  writeUInt(int value){
+        private void  writeUInt(int value){
             while ((value & 0xFFFFFF80) != 0) {
                 buffer[position] = (byte)((value & 0x7F) | 0x80);
                 position++;
@@ -394,7 +400,7 @@ public class Tson {
             position++;
         }
 
-        protected void  writeBytes(byte[] bts){
+        private void  writeBytes(byte[] bts){
             System.arraycopy(bts, 0, buffer, position, bts.length);
             position += bts.length;
         }

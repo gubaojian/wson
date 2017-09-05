@@ -13,6 +13,7 @@ import java.util.Map;
 public class FastJsonVsTson extends TestCase {
 
 
+
     public void testFastJson(){
         String json = null;
         long start = System.currentTimeMillis();
@@ -76,4 +77,7 @@ public class FastJsonVsTson extends TestCase {
         end = System.currentTimeMillis();
         System.out.println("json totson used " + (end - start));
     }
+
+
+
 }

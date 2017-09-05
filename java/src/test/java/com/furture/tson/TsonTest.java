@@ -114,6 +114,12 @@ public class TsonTest extends TestCase {
         Assert.assertEquals(names, parsed);
     }
 
+    public void  testObject(){
+        Map<Object, Object> map = new HashMap<>();
+        map.put(100, "333");
+        Tson.toTson(map);
+    }
+
 
 
 }

@@ -1,0 +1,41 @@
+{
+            "image": {
+                "width": 700,
+                "height": 700
+            },
+            "slider": {
+                "marginTop": 25,
+                "marginLeft": 25,
+                "width": 700,
+                "height": 700,
+                "borderWidth": 2,
+                "borderStyle": "solid",
+                "borderColor": "#41B883"
+            },
+            "title": {
+                "position": "absolute",
+                "top": 20,
+                "left": 20,
+                "paddingLeft": 20,
+                "width": 200,
+                "color": "#FFFFFF",
+                "fontSize": 36,
+                "lineHeight": 60,
+                "backgroundColor": "rgba(0,0,0,0.3)"
+            },
+            "frame": {
+                "width": 700,
+                "height": 700,
+                "position": "relative"
+            },
+            "indicator": {
+                "width": 700,
+                "height": 700,
+                "itemColor": "green",
+                "itemSelectedColor": "red",
+                "itemSize": 50,
+                "position": "absolute",
+                "top": 200,
+                "left": 200
+            }
+}

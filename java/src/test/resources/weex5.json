@@ -1,0 +1,32 @@
+{
+            "page-head": {
+                "width": 750,
+                "height": 200
+            },
+            "title-bg": {
+                "width": 750,
+                "height": 200
+            },
+            "title-box": {
+                "width": 750,
+                "height": 200,
+                "justifyContent": "center",
+                "alignItems": "center",
+                "position": "absolute",
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+            },
+            "title": {
+                "color": "#ffffff",
+                "fontSize": 32,
+                "fontWeight": "bold"
+            },
+            "article": {
+                "padding": 20
+            },
+            "paragraph": {
+                "marginBottom": 15
+            }
+        }

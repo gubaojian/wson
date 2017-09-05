@@ -21,6 +21,7 @@ public class ObjectToMapTest extends TestCase {
         user.country = "中国";
         Map map = toMap(user);
         System.out.println(map);
+        System.out.println(JSON.toJSON(user));
 
         System.out.println(JSON.toJSONString(user));
         System.out.println(JSON.toJSONString(user).getBytes().length);
@@ -123,8 +124,8 @@ public class ObjectToMapTest extends TestCase {
 
     private static final String METHOD_PREFIX_GET = "get";
     private static final String METHOD_PREFIX_IS = "is";
-    private static Tson.LruCache<String, List<Method>> methodsCache = new Tson.LruCache<>(32);
-    private static Tson.LruCache<String, Field[]> fieldsCache = new Tson.LruCache<>(32);
+    private static LruCache<String, List<Method>> methodsCache = new LruCache<>(32);
+    private static LruCache<String, Field[]> fieldsCache = new LruCache<>(32);
 
 
     private static List<Method> getBeanMethod(String key, Class targetClass){
