@@ -120,6 +120,17 @@ public class Tson {
             int length = readUInt();
             String  string;
             try {
+                int hash = hash(buffer, position, length);
+                int index = (stringBytesCache.length - 1)&hash;
+                StringCache cache = stringBytesCache[index];
+                if(cache != null &&  bytesEquals(buffer, position, length, cache.bts)){
+                    position += length;
+                    return cache.key;
+                }
+
+
+
+
                 /**
                 string = tables.findSymbol(buffer, position, length);
                 if(string != null){
@@ -128,9 +139,20 @@ public class Tson {
                 }*/
                 //FIXME 性能优化 reduct butter
                 string = new String(buffer, position, length, STRING_UTF8_CHARSET_NAME);
+                if(cache == null
+                        &&  length > 0
+                        &&  length <= 32
+                        && Character.isJavaIdentifierPart(position+1)){
+                    cache = new StringCache();
+                    cache.key = string;
+                    cache.bts = Arrays.copyOfRange(buffer, position, position + length);
+                    stringBytesCache[index] = cache;
+                }
+                //System.out.println("miss" + string);
             } catch (UnsupportedEncodingException e) {
                 string = new String(buffer, position, length);
             }
+
             position += length;
             return  string;
         }
@@ -547,5 +569,29 @@ public class Tson {
     private static final  class StringCache {
         String key;
         byte[] bts;
+    }
+
+
+    private static final int hash(byte[] bts, int offset, int len){
+        int h = 0;
+        int end = offset + len;
+        for (int i=offset; i<end; i++) {
+            h = 31 * h + bts[i];
+        }
+        return h;
+    }
+
+    private static final boolean bytesEquals(byte[] buffer, int offset, int len,
+                                             byte[] bts){
+        if(len != bts.length){
+            return  false;
+        }
+        for(byte bt : bts){
+            if(bt != buffer[offset]){
+                return  false;
+            }
+            offset ++;
+        }
+        return  true;
     }
 }

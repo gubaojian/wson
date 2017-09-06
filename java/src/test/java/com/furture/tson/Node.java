@@ -13,13 +13,23 @@ public class Node {
     public Node next;
 
     public static void main(String[] args) throws UnsupportedEncodingException {
-        String ch = "adddd";
+        String ch = "adddda";
         byte[] bts = ch.getBytes("UTF-8");
         System.out.println("ddd"
         +  ch.hashCode()  + "  " + hash(bts, 0, bts.length));
 
 
         System.out.println(bytesEquals("adddds".getBytes(), 0, bts.length, bts));
+
+
+        System.out.println(new String("ddd") == new String("ddd").intern());
+
+        long start = System.currentTimeMillis();
+        for(int i=0; i<10000; i++){
+            new String(bts, 0, bts.length-1 , "UTF-8");
+        }
+        long end = System.currentTimeMillis();
+        System.out.println("used " + (end- start));
     }
 
     private static final int hash(byte[] bts, int offset, int len){
