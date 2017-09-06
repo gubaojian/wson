@@ -19,7 +19,7 @@ public class WeexBenchTest extends TestCase {
     }
 
     public void testWeex2() throws IOException {
-        benchFile("/weex2.json");
+        benchFile("/weex2.json", 10000);
     }
 
     public void testWeex3() throws IOException {
@@ -63,28 +63,17 @@ public class WeexBenchTest extends TestCase {
 
     private void benchFile(String file, int count) throws IOException {
         //System.gc();
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        //try {
+         //   Thread.sleep(1000);
+        //} catch (InterruptedException e) {
+          //  e.printStackTrace();
+        //}
         String data = readFile(file);
         Object map = JSON.parse(data);
         byte[] tson = Tson.toTson(map);
         System.out.println("\nbench file " + file + ":\n");
-        long start = System.currentTimeMillis();
-        for(int i=0; i<count; i++) {
-            map = JSON.parse(data);
-        }
-        long end = System.currentTimeMillis();
-        System.out.println("FastJSON parse used " + (end - start));
-
-        start = System.currentTimeMillis();
-        for(int i=0; i<count; i++) {
-            JSON.toJSONString(map);
-        }
-        end = System.currentTimeMillis();
-        System.out.println("FastJSON toJSON used " + (end - start));
+        long start = 0;
+        long end = 0;
 
 
         start = System.currentTimeMillis();
@@ -101,6 +90,43 @@ public class WeexBenchTest extends TestCase {
         }
         end = System.currentTimeMillis();
         System.out.println("TSON toTSON used " + (end - start));
+
+
+        /**
+        System.gc();
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }*/
+
+
+
+        start = System.currentTimeMillis();
+        for(int i=0; i<count; i++) {
+            map = JSON.parse(data);
+        }
+        end = System.currentTimeMillis();
+        System.out.println("FastJSON parse used " + (end - start));
+
+        start = System.currentTimeMillis();
+        for(int i=0; i<count; i++) {
+            JSON.toJSONString(map);
+        }
+        end = System.currentTimeMillis();
+        System.out.println("FastJSON toJSON used " + (end - start));
+
+
+        /**
+        System.gc();
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }*/
+
+
+
     }
 
 

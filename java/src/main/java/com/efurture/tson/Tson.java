@@ -4,8 +4,6 @@ import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
-import java.nio.ByteBuffer;
 import java.util.*;
 
 /**
@@ -52,7 +50,7 @@ public class Tson {
     /**
      * tson data parser
      * */
-    public static class Parser {
+    public static final class Parser {
 
         private int position = 0;
         private final byte[] buffer;
@@ -66,7 +64,7 @@ public class Tson {
             return  readObject();
         }
 
-        private Object readObject(){
+        private final Object readObject(){
             byte type  = readType();
             switch (type){
                 case STRING_TYPE:
@@ -89,18 +87,18 @@ public class Tson {
             return  null;
         }
 
-        private Object readMap(){
+        private final Object readMap(){
             int size = readUInt();
             Map<String, Object> object = createMap();
             for(int i=0; i<size; i++){
-                String key = readString();
+                String key = readMapKey();
                 Object value = readObject();
                 object.put(key, value);
             }
             return object;
         }
 
-        private Object readArray(){
+        private final Object readArray(){
             int length = readUInt();
             List<Object> array = createArray(length);
             for(int i=0; i<length; i++){
@@ -109,7 +107,7 @@ public class Tson {
             return  array;
         }
 
-        private  byte readType(){
+        private  final byte readType(){
             byte type = buffer[position];
             position ++;
             return  type;
@@ -118,15 +116,30 @@ public class Tson {
         /**
          * FIXME proper Cache, reduct string object.
          * */
-        private String readKey(){
-            return readString();
+        private final String readMapKey() {
+            int length = readUInt();
+            String  string;
+            try {
+                /**
+                string = tables.findSymbol(buffer, position, length);
+                if(string != null){
+                    position += length;
+                    return string;
+                }*/
+                //FIXME 性能优化 reduct butter
+                string = new String(buffer, position, length, STRING_UTF8_CHARSET_NAME);
+            } catch (UnsupportedEncodingException e) {
+                string = new String(buffer, position, length);
+            }
+            position += length;
+            return  string;
         }
 
-        private String readString(){
+        private final String readString(){
             int length = readUInt();
             String string = null;
             try {
-                //FIXME 性能优化
+                //FIXME 性能优化 reduct butter
                 string = new String(buffer, position, length, STRING_UTF8_CHARSET_NAME);
             } catch (UnsupportedEncodingException e) {
                 string = new String(buffer, position, length);
@@ -136,14 +149,14 @@ public class Tson {
         }
 
 
-        private   boolean readBoolean(){
+        private  final boolean readBoolean(){
             byte bt = buffer[position];
             position++;
             return  bt != 0;
         }
 
 
-        private   int readVarInt(){
+        private   final int readVarInt(){
             int raw = readUInt();
             // This undoes the trick in putVarInt()
             int num = (((raw << 31) >> 31) ^ raw) >> 1;
@@ -153,7 +166,7 @@ public class Tson {
             return num ^ (raw & (1 << 31));
         }
 
-        private   int readUInt(){
+        private final  int readUInt(){
             int value = 0;
             int i = 0;
             int b;
@@ -169,7 +182,7 @@ public class Tson {
             return value | (b << i);
         }
 
-        private long readLong(){
+        private final long readLong(){
             long number = (((buffer[position + 7] & 0xFFL)      ) +
                     ((buffer[position + 6] & 0xFFL) <<  8) +
                     ((buffer[position + 5] & 0xFFL) << 16) +
@@ -182,16 +195,16 @@ public class Tson {
             return  number;
         }
 
-        private  double readDouble(){
+        private  final double readDouble(){
             double number = Double.longBitsToDouble(readLong());
             return  number;
         }
 
-        protected Map<String,Object> createMap(){
+        private final Map<String,Object> createMap(){
             return new HashMap<>();
         }
 
-        protected List<Object> createArray(int length){
+        private final List<Object> createArray(int length){
             return new ArrayList<>(length);
         }
 
@@ -200,7 +213,7 @@ public class Tson {
     /**
      * tson builder
      * */
-    public static class Builder {
+    public static final class Builder {
 
         private byte[] buffer;
         private int position;
@@ -232,7 +245,7 @@ public class Tson {
             return  bts;
         }
 
-        private void writeObject(Object object) {
+        private final void writeObject(Object object) {
             if(object instanceof  String){
                 ensureCapacity(2);
                 writeByte(STRING_TYPE);
@@ -251,7 +264,7 @@ public class Tson {
                 writeUInt(map.size());
                 Set<Map.Entry<Object,Object>>  entries = map.entrySet();
                 for(Map.Entry<Object,Object> entry : entries){
-                    writeString(entry.getKey().toString());
+                    writeKey(entry.getKey().toString());
                     writeObject(entry.getValue());
                 }
                 refsList.remove(refsList.size()-1);
@@ -333,7 +346,7 @@ public class Tson {
             position++;
         }
 
-        private Map  toMap(Object object){
+        private  final Map  toMap(Object object){
             Map map = new HashMap<>();
             try {
                 Class<?> targetClass = object.getClass();
@@ -375,8 +388,40 @@ public class Tson {
             return  map;
         }
 
-        private  void writeString(String value){
-            //// FIXME: 2017/9/5 sysmbol get
+        private  final void writeKey(String value){
+            if(value.length() == 0){
+                ensureCapacity(2);
+                writeUInt(0);
+                return;
+            }
+            int  index = value.hashCode() & (stringBytesCache.length - 1);
+            BuilderCache cache  = stringBytesCache[index];
+            byte[] bts = null;
+            if(cache != null && value.equals(cache.key)){
+                bts = cache.bts;
+            }
+            if(bts == null){
+                try {
+                    bts = value.getBytes(STRING_UTF8_CHARSET_NAME);
+                } catch (UnsupportedEncodingException e) {
+                    bts = value.getBytes();
+                }
+                if(cache == null
+                        && Character.isJavaIdentifierPart(value.charAt(0))
+                        && bts.length <= 64){
+                    cache = new BuilderCache();
+                    cache.key = value;
+                    cache.bts = bts;
+                    stringBytesCache[index] = cache;
+                }
+            }
+            ensureCapacity(bts.length + 8);
+            writeUInt(bts.length);
+            if(bts.length > 0) {
+                writeBytes(bts);
+            }
+        }
+        private  final void writeString(String value){
             byte[] bts = null;
             try {
                 bts = value.getBytes(STRING_UTF8_CHARSET_NAME);
@@ -385,14 +430,16 @@ public class Tson {
             }
             ensureCapacity(bts.length + 8);
             writeUInt(bts.length);
-            writeBytes(bts);
+            if(bts.length > 0) {
+                writeBytes(bts);
+            }
         }
 
-        private void writeDouble(double value){
+        private final void writeDouble(double value){
             writeLong(Double.doubleToLongBits(value));
         }
 
-        private void writeLong(long val){
+        private final void writeLong(long val){
             buffer[position + 7] = (byte) (val       );
             buffer[position + 6] = (byte) (val >>>  8);
             buffer[position + 5] = (byte) (val >>> 16);
@@ -404,11 +451,11 @@ public class Tson {
             position += 8;
         }
 
-        private void writeVarInt(int value){
+        private final void writeVarInt(int value){
             writeUInt((value << 1) ^ (value >> 31));
         }
 
-        private void  writeUInt(int value){
+        private final void  writeUInt(int value){
             while ((value & 0xFFFFFF80) != 0) {
                 buffer[position] = (byte)((value & 0x7F) | 0x80);
                 position++;
@@ -418,12 +465,12 @@ public class Tson {
             position++;
         }
 
-        private void  writeBytes(byte[] bts){
+        private final void  writeBytes(byte[] bts){
             System.arraycopy(bts, 0, buffer, position, bts.length);
             position += bts.length;
         }
 
-        private void ensureCapacity(int minCapacity) {
+        private final void ensureCapacity(int minCapacity) {
             minCapacity += position;
             // overflow-conscious code
             if (minCapacity - buffer.length > 0){
@@ -489,5 +536,14 @@ public class Tson {
             fieldsCache.put(key, fields);
         }
         return  fields;
+    }
+
+    private static final SymbolTable tables = new SymbolTable(1024);
+
+    private static final BuilderCache[] stringBytesCache = new BuilderCache[1024*2];
+
+    private static final  class BuilderCache {
+        String key;
+        byte[] bts;
     }
 }
