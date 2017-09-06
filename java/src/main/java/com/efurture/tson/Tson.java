@@ -395,7 +395,7 @@ public class Tson {
                 return;
             }
             int  index = value.hashCode() & (stringBytesCache.length - 1);
-            BuilderCache cache  = stringBytesCache[index];
+            StringCache cache  = stringBytesCache[index];
             byte[] bts = null;
             if(cache != null && value.equals(cache.key)){
                 bts = cache.bts;
@@ -408,8 +408,8 @@ public class Tson {
                 }
                 if(cache == null
                         && Character.isJavaIdentifierPart(value.charAt(0))
-                        && bts.length <= 64){
-                    cache = new BuilderCache();
+                        && bts.length <= 32){
+                    cache = new StringCache();
                     cache.key = value;
                     cache.bts = bts;
                     stringBytesCache[index] = cache;
@@ -540,9 +540,11 @@ public class Tson {
 
     private static final SymbolTable tables = new SymbolTable(1024);
 
-    private static final BuilderCache[] stringBytesCache = new BuilderCache[1024*2];
-
-    private static final  class BuilderCache {
+    /**
+     * cache json property key, most of them all same
+     * */
+    private static final StringCache[] stringBytesCache = new StringCache[1024*2];
+    private static final  class StringCache {
         String key;
         byte[] bts;
     }
