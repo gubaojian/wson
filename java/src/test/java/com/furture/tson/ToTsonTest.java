@@ -11,7 +11,7 @@ import java.io.InputStream;
 /**
  * Created by 剑白(jianbai.gbj) on 2017/9/6.
  */
-public class ParseBenchTest extends TestCase {
+public class ToTsonTest extends TestCase {
 
 
     public void testWeex5() throws IOException {
@@ -23,30 +23,43 @@ public class ParseBenchTest extends TestCase {
     }
 
     private void benchFile(String jsonFile, String tsonFile, int count) throws IOException {
+        //System.gc();
+        //try {
+        //   Thread.sleep(1000);
+        //} catch (InterruptedException e) {
+        //  e.printStackTrace();
+        //}
         String data = readFile(jsonFile);
         byte[] tson = readBytes(tsonFile);
+        JSON.parse(data);
+        Object map = Tson.parse(tson);
         System.out.println("\nbench file " + jsonFile + tsonFile + ":\n");
         long start = 0;
         long end = 0;
 
 
-        start = System.currentTimeMillis();
-        for(int i=0; i<count; i++) {
-            Tson.parse(tson);
-        }
-        end = System.currentTimeMillis();
-        System.out.println("TSON parse used " + (end - start));
-
-
 
         start = System.currentTimeMillis();
         for(int i=0; i<count; i++) {
-           JSON.parse(data);
+            Tson.toTson(map);
         }
         end = System.currentTimeMillis();
-        System.out.println("FastJSON parse used " + (end - start));
+        System.out.println("TSON toTSON used " + (end - start));
+
+
+        start = System.currentTimeMillis();
+        for(int i=0; i<count; i++) {
+            JSON.toJSONString(map);
+        }
+        end = System.currentTimeMillis();
+        System.out.println("FastJSON toJSON used " + (end - start));
+
+
+
+
 
     }
+
 
     private String readFile(String file) throws IOException {
         ByteOutputStream outputStream = new ByteOutputStream(1024);
@@ -58,6 +71,7 @@ public class ParseBenchTest extends TestCase {
         }
         return  new String(outputStream.getBytes());
     }
+
 
     private byte[] readBytes(String file) throws IOException {
         ByteOutputStream outputStream = new ByteOutputStream(1024);

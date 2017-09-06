@@ -10,7 +10,6 @@ import java.util.*;
  * Created by 剑白(jianbai.gbj) on 2017/8/16.
  */
 public class Tson {
-
     /**
      * tson data type
      * */
@@ -36,32 +35,63 @@ public class Tson {
      * @param  data  byte array
      * */
     public static Object parse(byte[] data){
-        return new Parser(data).parse();
+        if(data == null){
+            return  null;
+        }
+        Parser parser =  new Parser(data);
+        Object object = parser.parse();
+        parser.close();
+        return object;
     }
 
     /**
      * serialize object to tson data
      * */
     public static byte[] toTson(Object object){
-        return new Builder().toTson(object);
+        if(object == null){
+            return  null;
+        }
+        Builder builder = new Builder();
+        byte[]  bts  = builder.toTson(object);
+        builder.close();
+        return bts;
     }
 
 
     /**
      * tson data parser
      * */
-    public static final class Parser {
+    private static final class Parser {
 
         private int position = 0;
-        private final byte[] buffer;
+        private byte[] buffer;
+        /**
+         * identifer cache for tson
+         * */
+        private StringCache[] stringCache;
 
         public Parser(byte[] buffer) {
             this.buffer = buffer;
+            stringCache = localStringBytesCache.get();
+            if(stringCache != null){
+                localStringBytesCache.set(null);
+            }else{
+                stringCache = new StringCache[128];
+            }
         }
 
 
-        public  Object parse(){
+        public  final Object parse(){
             return  readObject();
+        }
+
+        public final void close(){
+            position = 0;
+            buffer = null;
+            if(stringCache != null){
+                localStringBytesCache.set(stringCache);
+            }
+            stringCache = null;
         }
 
         private final Object readObject(){
@@ -121,34 +151,37 @@ public class Tson {
             String  string;
             try {
                 int hash = hash(buffer, position, length);
-                int index = (stringBytesCache.length - 1)&hash;
-                StringCache cache = stringBytesCache[index];
+                int globalIndex = (globalStringBytesCache.length - 1)&hash;
+                StringCache cache = globalStringBytesCache[globalIndex];
                 if(cache != null &&  bytesEquals(buffer, position, length, cache.bts)){
                     position += length;
                     return cache.key;
                 }
-
-
-
-
-                /**
-                string = tables.findSymbol(buffer, position, length);
-                if(string != null){
+                boolean globalEmpty = (cache == null);
+                int localIndex = (stringCache.length - 1)&hash;
+                cache = stringCache[localIndex];
+                if(cache != null &&  bytesEquals(buffer, position, length, cache.bts)){
                     position += length;
-                    return string;
-                }*/
-                //FIXME 性能优化 reduct butter
-                string = new String(buffer, position, length, STRING_UTF8_CHARSET_NAME);
-                if(cache == null
-                        &&  length > 0
-                        &&  length <= 32
-                        && Character.isJavaIdentifierPart(position+1)){
-                    cache = new StringCache();
-                    cache.key = string;
-                    cache.bts = Arrays.copyOfRange(buffer, position, position + length);
-                    stringBytesCache[index] = cache;
+                    return cache.key;
                 }
-                //System.out.println("miss" + string);
+                string = new String(buffer, position, length, STRING_UTF8_CHARSET_NAME);
+                if(length > 0
+                        &&  length <= 32
+                        && Character.isJavaIdentifierPart(string.charAt(0))){
+                    if(globalEmpty){
+                        cache = new StringCache();
+                        cache.key = string;
+                        cache.bts = Arrays.copyOfRange(buffer, position, position + length);
+                        globalStringBytesCache[globalIndex] = cache;
+                    }else{
+                        if(cache == null){
+                            cache = new StringCache();
+                        }
+                        cache.key = string;
+                        cache.bts = Arrays.copyOfRange(buffer, position, position + length);
+                        stringCache[localIndex] = cache;
+                    }
+                }
             } catch (UnsupportedEncodingException e) {
                 string = new String(buffer, position, length);
             }
@@ -161,7 +194,6 @@ public class Tson {
             int length = readUInt();
             String string = null;
             try {
-                //FIXME 性能优化 reduct butter
                 string = new String(buffer, position, length, STRING_UTF8_CHARSET_NAME);
             } catch (UnsupportedEncodingException e) {
                 string = new String(buffer, position, length);
@@ -239,8 +271,9 @@ public class Tson {
 
         private byte[] buffer;
         private int position;
-        private ArrayList refsList;
+        private ArrayList refs;
         private final static ThreadLocal<byte[]> bufLocal = new ThreadLocal<byte[]>();
+        private final static ThreadLocal<ArrayList> refsLocal = new ThreadLocal<ArrayList>();
 
 
         public Builder(){
@@ -250,21 +283,34 @@ public class Tson {
             }else{
                 buffer = new byte[1024];
             }
-            refsList = new ArrayList<>();
+            refs = refsLocal.get();
+            if(refs != null){
+                refsLocal.set(null);
+            }else{
+                refs = new ArrayList<>(16);
+            }
         }
 
 
-        private byte[] toTson(Object object){
+        private final byte[] toTson(Object object){
             writeObject(object);
             byte[] bts = new byte[position];
             System.arraycopy(buffer, 0, bts, 0, position);
+            return  bts;
+        }
+
+        private final void close(){
             if(buffer.length <= 1024*16){
                 bufLocal.set(buffer);
             }
-            refsList = null;
+            if(refs.isEmpty()){
+                refsLocal.set(refs);
+            }else{
+                refs.clear();
+            }
+            refs = null;
             buffer = null;
             position = 0;
-            return  bts;
         }
 
         private final void writeObject(Object object) {
@@ -274,12 +320,12 @@ public class Tson {
                 writeString(object.toString());
                 return;
             }else if (object instanceof Map){
-                if(refsList.contains(object)){
+                if(refs.contains(object)){
                     ensureCapacity(2);
                     writeByte(NULL_TYPE);
                     return;
                 }
-                refsList.add(object);
+                refs.add(object);
                 Map map = (Map) object;
                 ensureCapacity(8);
                 writeByte(MAP_TYPE);
@@ -289,15 +335,15 @@ public class Tson {
                     writeKey(entry.getKey().toString());
                     writeObject(entry.getValue());
                 }
-                refsList.remove(refsList.size()-1);
+                refs.remove(refs.size()-1);
                 return;
             }else if (object instanceof List){
-                if(refsList.contains(object)){
+                if(refs.contains(object)){
                     ensureCapacity(2);
                     writeByte(NULL_TYPE);
                     return;
                 }
-                refsList.add(object);
+                refs.add(object);
                 ensureCapacity(8);
                 List list = (List) object;
                 writeByte(ARRAY_TYPE);
@@ -305,7 +351,7 @@ public class Tson {
                 for(Object value : list){
                     writeObject(value);
                 }
-                refsList.remove(refsList.size()-1);
+                refs.remove(refs.size()-1);
                 return;
             }else if (object instanceof Number){
                 ensureCapacity(12);
@@ -333,12 +379,12 @@ public class Tson {
                 writeByte(NULL_TYPE);
                 return;
             }else if (object.getClass().isArray()){
-                if(refsList.contains(object)){
+                if(refs.contains(object)){
                     ensureCapacity(2);
                     writeByte(NULL_TYPE);
                     return;
                 }
-                refsList.add(object);
+                refs.add(object);
                 ensureCapacity(8);
                 int length = Array.getLength(object);
                 writeByte(ARRAY_TYPE);
@@ -347,16 +393,21 @@ public class Tson {
                     Object value = Array.get(object, i);
                     writeObject(value);
                 }
-                refsList.remove(refsList.size()-1);
+                refs.remove(refs.size()-1);
                 return;
+            }else  if(object instanceof  Date){
+                ensureCapacity(10);
+                double date = ((Date)object).getTime();
+                writeByte(NUMBER_DOUBLE_TYPE);
+                writeDouble(date);
             }else{
-                if(refsList.contains(object)){
+                if(refs.contains(object)){
                     ensureCapacity(2);
                     writeByte(NULL_TYPE);
                 }else {
-                    refsList.add(object);
+                    refs.add(object);
                     writeObject(toMap(object));
-                    refsList.remove(refsList.size()-1);
+                    refs.remove(refs.size()-1);
                 }
                 return;
             }
@@ -416,8 +467,8 @@ public class Tson {
                 writeUInt(0);
                 return;
             }
-            int  index = value.hashCode() & (stringBytesCache.length - 1);
-            StringCache cache  = stringBytesCache[index];
+            int  index = value.hashCode() & (globalStringBytesCache.length - 1);
+            StringCache cache  = globalStringBytesCache[index];
             byte[] bts = null;
             if(cache != null && value.equals(cache.key)){
                 bts = cache.bts;
@@ -434,7 +485,7 @@ public class Tson {
                     cache = new StringCache();
                     cache.key = value;
                     cache.bts = bts;
-                    stringBytesCache[index] = cache;
+                    globalStringBytesCache[index] = cache;
                 }
             }
             ensureCapacity(bts.length + 8);
@@ -560,12 +611,12 @@ public class Tson {
         return  fields;
     }
 
-    private static final SymbolTable tables = new SymbolTable(1024);
 
+    private static final ThreadLocal<StringCache[]> localStringBytesCache = new ThreadLocal<>();
     /**
      * cache json property key, most of them all same
      * */
-    private static final StringCache[] stringBytesCache = new StringCache[1024*2];
+    private static final StringCache[] globalStringBytesCache = new StringCache[1024*2];
     private static final  class StringCache {
         String key;
         byte[] bts;

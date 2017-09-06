@@ -72,5 +72,10 @@ public class DataFormatTest extends TestCase {
         for (Map.Entry<String, String> entry : map.entrySet()) {
             System.out.println("key=" + entry.getKey() + "---------value=" + entry.getValue());
         }
+
+        double num = 20.0;
+        long numl  = 20;
+
+        System.out.println(Double.doubleToLongBits(num));
     }
 }

@@ -5,6 +5,11 @@ import junit.framework.TestCase;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.ByteBuffer;
+import java.nio.CharBuffer;
+import java.nio.charset.Charset;
+import java.nio.charset.CharsetDecoder;
+import java.nio.charset.CoderResult;
 import java.nio.charset.StandardCharsets;
 import java.util.Random;
 
@@ -22,12 +27,15 @@ public class StringCodingTest extends TestCase {
 
 
 
+        byte[] bts = content.getBytes("UTF-8");
         start = System.currentTimeMillis();
         for(int i=0; i<10000; i++){
             content.getBytes("UTF-8");
         }
         end = System.currentTimeMillis();
         System.out.println("utf-8 used "+ (end - start));
+
+
 
 
 
@@ -38,8 +46,29 @@ public class StringCodingTest extends TestCase {
         end = System.currentTimeMillis();
         System.out.println("used "+ (end - start));
 
+        start = System.currentTimeMillis();
+        CharsetDecoder decoder = Charset.forName("UTF-8").newDecoder();
+        CharBuffer charBuffer = CharBuffer.allocate(1024);
+        for(int i=0; i<10000; i++) {
+            ByteBuffer byteBuffer = ByteBuffer.wrap(bts);
+            CoderResult result = decoder.decode(byteBuffer, charBuffer, true);
+            if (!result.isUnderflow())
+                result.throwException();
+            result = decoder.flush(charBuffer);
+            if (!result.isUnderflow())
+                result.throwException();
+            charBuffer.flip();
+            decoder.reset();
+        }
+        end = System.currentTimeMillis();
+        System.out.println("end used "+ (end - start));
 
-
+        start = System.currentTimeMillis();
+        for(int i=0; i<10000; i++) {
+           new String(bts, "UTF-8");
+        }
+        end = System.currentTimeMillis();
+        System.out.println("new string end used "+ (end - start));
     }
 
 

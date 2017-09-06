@@ -151,9 +151,9 @@ public class WeexBenchTest extends TestCase {
     }
 
     public void  testConvert() throws IOException {
-        String data = readFile("/data.json");
+        String data = readFile("/weex4.json");
         Object map = JSON.parse(data);
         byte[] tson = Tson.toTson(map);
-        saveFile("data.tson", tson);
+        saveFile("weex4.tson", tson);
     }
 }
