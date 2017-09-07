@@ -633,10 +633,10 @@ public class Tson {
     }
 
 
-    private static final ThreadLocal<StringCache[]> localStringBytesCache = new ThreadLocal<>();
     /**
      * cache json property key, most of them all same
      * */
+    private static final ThreadLocal<StringCache[]> localStringBytesCache = new ThreadLocal<>();
     private static final StringCache[] globalStringBytesCache = new StringCache[1024*2];
     private static final  class StringCache {
         String key;
