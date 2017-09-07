@@ -14,21 +14,18 @@ import java.io.InputStream;
 public class ToTsonTest extends TestCase {
 
 
-    public void testWeex5() throws IOException {
+
+
+    public void testWeex5() throws IOException, InterruptedException {
         benchFile("/weex5.json", "/weex5.tson", 100000);
     }
 
-    public void testWeex4() throws IOException {
+    public void testWeex4() throws IOException, InterruptedException {
+       // Thread.sleep(15000);
         benchFile("/weex4.json", "/weex4.tson", 100000);
     }
 
     private void benchFile(String jsonFile, String tsonFile, int count) throws IOException {
-        //System.gc();
-        //try {
-        //   Thread.sleep(1000);
-        //} catch (InterruptedException e) {
-        //  e.printStackTrace();
-        //}
         String data = readFile(jsonFile);
         byte[] tson = readBytes(tsonFile);
         JSON.parse(data);
@@ -45,6 +42,7 @@ public class ToTsonTest extends TestCase {
         }
         end = System.currentTimeMillis();
         System.out.println("TSON toTSON used " + (end - start));
+
 
 
         start = System.currentTimeMillis();

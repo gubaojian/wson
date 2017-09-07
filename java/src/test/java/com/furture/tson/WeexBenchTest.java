@@ -24,7 +24,7 @@ public class WeexBenchTest extends TestCase {
     }
 
     public void testWeex3() throws IOException {
-        benchFile("/weex3.json");
+        benchFile("/weex3.json", 100000);
     }
 
     public void testWeex4() throws IOException {

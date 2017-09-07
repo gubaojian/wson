@@ -17,6 +17,7 @@
   "text": {
     "fontSize": 60,
     "color": "#666666",
-    "textAlign": "center"
+    "textAlign": "center",
+    "value":"你好"
   }
 }

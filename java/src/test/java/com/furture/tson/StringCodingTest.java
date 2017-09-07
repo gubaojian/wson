@@ -7,10 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
-import java.nio.charset.Charset;
-import java.nio.charset.CharsetDecoder;
-import java.nio.charset.CoderResult;
-import java.nio.charset.StandardCharsets;
+import java.nio.charset.*;
 import java.util.Random;
 
 /**
@@ -20,6 +17,7 @@ public class StringCodingTest extends TestCase {
 
 
     public void  testEncoding() throws IOException {
+        Charset charset = Charset.forName("UTF-8");
         String content = readFile("/weex.json");
         Random random = new Random();
         long start = 0;
@@ -33,8 +31,7 @@ public class StringCodingTest extends TestCase {
             content.getBytes("UTF-8");
         }
         end = System.currentTimeMillis();
-        System.out.println("utf-8 used "+ (end - start));
-
+        System.out.println("get utf-8 used "+ (end - start));
 
 
 
@@ -44,13 +41,13 @@ public class StringCodingTest extends TestCase {
             content.getBytes(StandardCharsets.UTF_8);
         }
         end = System.currentTimeMillis();
-        System.out.println("used "+ (end - start));
+        System.out.println("std used "+ (end - start));
 
         start = System.currentTimeMillis();
-        CharsetDecoder decoder = Charset.forName("UTF-8").newDecoder();
+        CharsetDecoder decoder = charset.newDecoder();
         CharBuffer charBuffer = CharBuffer.allocate(1024);
+        ByteBuffer byteBuffer = ByteBuffer.wrap(bts);
         for(int i=0; i<10000; i++) {
-            ByteBuffer byteBuffer = ByteBuffer.wrap(bts);
             CoderResult result = decoder.decode(byteBuffer, charBuffer, true);
             if (!result.isUnderflow())
                 result.throwException();
@@ -58,6 +55,7 @@ public class StringCodingTest extends TestCase {
             if (!result.isUnderflow())
                 result.throwException();
             charBuffer.flip();
+            byteBuffer.flip();
             decoder.reset();
         }
         end = System.currentTimeMillis();

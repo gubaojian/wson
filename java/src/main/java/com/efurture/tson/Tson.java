@@ -7,7 +7,7 @@ import java.lang.reflect.Method;
 import java.util.*;
 
 /**
- * Created by 剑白(jianbai.gbj) on 2017/8/16.
+ * Created by efurture on 2017/8/16.
  */
 public class Tson {
     /**
@@ -144,7 +144,8 @@ public class Tson {
         }
 
         /**
-         * FIXME proper Cache, reduct string object.
+         * most of json object, has repeat property key,
+         * property cache, reduce string object.
          * */
         private final String readMapKey() {
             int length = readUInt();
@@ -400,6 +401,26 @@ public class Tson {
                 double date = ((Date)object).getTime();
                 writeByte(NUMBER_DOUBLE_TYPE);
                 writeDouble(date);
+            }else  if(object instanceof  Calendar){
+                ensureCapacity(10);
+                double date = ((Calendar)object).getTime().getTime();
+                writeByte(NUMBER_DOUBLE_TYPE);
+                writeDouble(date);
+            }else  if(object instanceof  Collection){
+                if(refs.contains(object)){
+                    ensureCapacity(2);
+                    writeByte(NULL_TYPE);
+                    return;
+                }
+                refs.add(object);
+                ensureCapacity(8);
+                Collection list = (Collection) object;
+                writeByte(ARRAY_TYPE);
+                writeUInt(list.size());
+                for(Object value : list){
+                    writeObject(value);
+                }
+                refs.remove(refs.size()-1);
             }else{
                 if(refs.contains(object)){
                     ensureCapacity(2);
@@ -578,8 +599,8 @@ public class Tson {
 
     private static final String METHOD_PREFIX_GET = "get";
     private static final String METHOD_PREFIX_IS = "is";
-    private static Tson.LruCache<String, List<Method>> methodsCache = new Tson.LruCache<>(32);
-    private static Tson.LruCache<String, Field[]> fieldsCache = new Tson.LruCache<>(32);
+    private static Tson.LruCache<String, List<Method>> methodsCache = new Tson.LruCache<>(128);
+    private static Tson.LruCache<String, Field[]> fieldsCache = new Tson.LruCache<>(128);
 
 
     private static List<Method> getBeanMethod(String key, Class targetClass){
