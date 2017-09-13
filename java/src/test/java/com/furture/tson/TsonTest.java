@@ -24,7 +24,7 @@ public class TsonTest extends TestCase {
         Assert.assertEquals(bts.length, 14);
         Assert.assertEquals(Bits.getUInt(bts, 1), 1);
         Assert.assertEquals(Bits.getUInt(bts, 2), 4);
-        Assert.assertEquals(bts[7], Tson.STRING_TYPE);
+        Assert.assertEquals(bts[7], 's');
         Assert.assertEquals(bts.length, 14);
         Map<String, Object> parsed = (Map<String, Object>) Tson.parse(bts);
         Assert.assertEquals(map, parsed);

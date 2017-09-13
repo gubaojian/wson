@@ -13,22 +13,21 @@ public class Tson {
     /**
      * tson data type
      * */
-    public static final byte NULL_TYPE = '0';
+    private static final byte NULL_TYPE = '0';
 
-    public static final byte STRING_TYPE = 's';
+    private static final byte STRING_TYPE = 's';
 
-    public static final byte BOOLEAN_TYPE = 'b';
+    private static final byte BOOLEAN_TYPE = 'b';
 
-    public static final byte NUMBER_INT_TYPE = 'i';
+    private static final byte NUMBER_INT_TYPE = 'i';
 
-    public static final byte NUMBER_DOUBLE_TYPE = 'd';
+    private static final byte NUMBER_DOUBLE_TYPE = 'd';
 
-    public static final byte ARRAY_TYPE = '[';
+    private static final byte ARRAY_TYPE = '[';
 
-    public static final byte MAP_TYPE = '{';
+    private static final byte MAP_TYPE = '{';
 
-
-    public static final String STRING_UTF8_CHARSET_NAME = "UTF-8";
+    private static final String STRING_UTF8_CHARSET_NAME = "UTF-8";
 
     /**
      * parse tson data  to object

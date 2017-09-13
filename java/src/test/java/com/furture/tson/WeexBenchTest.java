@@ -50,7 +50,7 @@ public class WeexBenchTest extends TestCase {
     }
 
     public void testHome() throws IOException {
-        benchFile("/home.json", 100);
+        benchFile("/home.json", 10000);
     }
     public void testData() throws IOException {
         benchFile("/data.json", 10);
