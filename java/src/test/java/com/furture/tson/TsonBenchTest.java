@@ -15,20 +15,16 @@ public class TsonBenchTest extends TestCase {
 
 
     public void testWeex5() throws IOException {
-        benchBuild("/data.json", 100);
+        benchBuild("/data.json", 1000);
     }
 
     private void benchBuild(String file, int count) throws IOException {
 
         String data = readFile(file);
         Object map = JSON.parse(data);
-        long start = System.currentTimeMillis();
+        long start = 0;
+        long end = 0;
         int length = 0;
-        for(int i=0; i<count; i++) {
-            length = Tson.toTson(map).length;
-        }
-        long end = System.currentTimeMillis();
-        System.out.println(length + "TSON toTSON used " + (end - start));
 
         start = System.currentTimeMillis();
         for(int i=0; i<count; i++) {
@@ -36,6 +32,14 @@ public class TsonBenchTest extends TestCase {
         }
         end = System.currentTimeMillis();
         System.out.println("FASTJSON toJSON used " + (end - start));
+
+        start = System.currentTimeMillis();
+        for(int i=0; i<count; i++) {
+            Tson.toTson(map);
+        }
+        end = System.currentTimeMillis();
+        System.out.println(length + "TSON toTSON used " + (end - start));
+
     }
 
 

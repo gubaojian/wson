@@ -17,7 +17,9 @@ public class Tson {
 
     private static final byte STRING_TYPE = 's';
 
-    private static final byte BOOLEAN_TYPE = 'b';
+    private static final byte BOOLEAN_TYPE_TRUE = 't';
+
+    private static final byte BOOLEAN_TYPE_FALSE = 'f';
 
     private static final byte NUMBER_INT_TYPE = 'i';
 
@@ -100,14 +102,16 @@ public class Tson {
                     return  readString();
                 case NUMBER_INT_TYPE :
                     return  readVarInt();
-                case NUMBER_DOUBLE_TYPE :
-                    return readDouble();
-                case BOOLEAN_TYPE:
-                    return  readBoolean();
-                case ARRAY_TYPE:
-                    return readArray();
                 case MAP_TYPE:
                     return readMap();
+                case ARRAY_TYPE:
+                    return readArray();
+                case NUMBER_DOUBLE_TYPE :
+                    return readDouble();
+                case BOOLEAN_TYPE_FALSE:
+                    return  Boolean.FALSE;
+                case BOOLEAN_TYPE_TRUE:
+                    return  Boolean.TRUE;
                 case NULL_TYPE:
                     return  null;
                 default:
@@ -366,12 +370,11 @@ public class Tson {
                 return;
             }else if (object instanceof  Boolean){
                 ensureCapacity(2);
-                writeByte(BOOLEAN_TYPE);
                 Boolean value  = (Boolean) object;
                 if(value){
-                    writeByte((byte) 1);
+                    writeByte(BOOLEAN_TYPE_TRUE);
                 }else{
-                    writeByte((byte) 0);
+                    writeByte(BOOLEAN_TYPE_FALSE);
                 }
                 return;
             }else if(object == null){

@@ -221,8 +221,8 @@
       <file leaf-file-name="Tson.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/efurture/tson/Tson.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="29" column="11" selection-start-line="29" selection-start-column="11" selection-end-line="29" selection-end-column="11" />
+            <state relative-caret-position="247">
+              <caret line="302" column="24" selection-start-line="302" selection-start-column="24" selection-end-line="302" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -231,8 +231,18 @@
       <file leaf-file-name="TsonBenchTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/furture/tson/TsonBenchTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="17" column="36" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
+            <state relative-caret-position="143">
+              <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="15" column="25" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -598,8 +608,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="113" />
-    <option name="y" value="23" />
+    <option name="x" value="83" />
+    <option name="y" value="78" />
     <option name="width" value="1312" />
     <option name="height" value="877" />
   </component>
@@ -668,20 +678,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Gradle: com.alibaba:fastjson:1.1.61.android" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tson" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -697,40 +693,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tson" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tson" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1282,39 +1244,39 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TsonBenchTest_testWeex5 - 2017.09.13 at 16h 18m 43s.xml">
+    <history-entry file="TsonBenchTest_testWeex5 - 2017.09.13 at 16h 32m 40s.xml">
       <configuration name="TsonBenchTest.testWeex5" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TsonBenchTest_testWeex5 - 2017.09.13 at 16h 18m 46s.xml">
+    <history-entry file="TsonBenchTest_testWeex5 - 2017.09.13 at 16h 32m 48s.xml">
       <configuration name="TsonBenchTest.testWeex5" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TsonBenchTest_testWeex5 - 2017.09.13 at 16h 18m 49s.xml">
+    <history-entry file="TsonBenchTest_testWeex5 - 2017.09.13 at 16h 33m 55s.xml">
       <configuration name="TsonBenchTest.testWeex5" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TsonBenchTest_testWeex5 - 2017.09.13 at 16h 18m 52s.xml">
+    <history-entry file="TsonBenchTest_testWeex5 - 2017.09.13 at 16h 34m 06s.xml">
       <configuration name="TsonBenchTest.testWeex5" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TsonBenchTest_testWeex5 - 2017.09.13 at 16h 18m 55s.xml">
+    <history-entry file="TsonBenchTest_testWeex5 - 2017.09.13 at 16h 34m 20s.xml">
       <configuration name="TsonBenchTest.testWeex5" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TsonBenchTest_testWeex5 - 2017.09.13 at 16h 18m 59s.xml">
+    <history-entry file="TsonBenchTest_testWeex5 - 2017.09.13 at 16h 34m 28s.xml">
       <configuration name="TsonBenchTest.testWeex5" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TsonBenchTest_testWeex5 - 2017.09.13 at 16h 19m 22s.xml">
+    <history-entry file="TsonBenchTest_testWeex5 - 2017.09.13 at 16h 35m 26s.xml">
       <configuration name="TsonBenchTest.testWeex5" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TsonBenchTest_testWeex5 - 2017.09.13 at 16h 19m 25s.xml">
+    <history-entry file="TsonBenchTest_testWeex5 - 2017.09.13 at 16h 35m 34s.xml">
       <configuration name="TsonBenchTest.testWeex5" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TsonBenchTest_testWeex5 - 2017.09.13 at 16h 19m 28s.xml">
+    <history-entry file="TsonBenchTest_testWeex5 - 2017.09.13 at 16h 35m 52s.xml">
       <configuration name="TsonBenchTest.testWeex5" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TsonBenchTest_testWeex5 - 2017.09.13 at 16h 19m 31s.xml">
+    <history-entry file="TsonBenchTest_testWeex5 - 2017.09.13 at 16h 36m 11s.xml">
       <configuration name="TsonBenchTest.testWeex5" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="113" y="23" width="1312" height="877" extended-state="0" />
+    <frame x="83" y="78" width="1312" height="877" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1354,7 +1316,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/src/main/java/com/efurture/tson/Tson.java</url>
-          <line>599</line>
+          <line>602</line>
           <properties field="METHOD_PREFIX_IS" class="com.efurture.tson.Tson" />
           <option name="timeStamp" value="12" />
         </line-breakpoint>
@@ -1368,20 +1330,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home/src.zip!/java/nio/ByteBuffer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="368" column="29" selection-start-line="368" selection-start-column="29" selection-end-line="368" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home/src.zip!/java/nio/charset/CharsetDecoder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="571" column="0" selection-start-line="571" selection-start-column="0" selection-end-line="571" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/furture/tson/ParseBenchTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
@@ -1723,18 +1671,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="15" column="25" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home/src.zip!/java/lang/Boolean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="149" column="21" selection-start-line="149" selection-start-column="21" selection-end-line="149" selection-end-column="21" />
+          <folding>
+            <element signature="e#4590#4591#0" expanded="true" />
+            <element signature="e#4631#4632#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/furture/tson/TsonBenchTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="17" column="36" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
+        <state relative-caret-position="143">
+          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/efurture/tson/Tson.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="29" column="11" selection-start-line="29" selection-start-column="11" selection-end-line="29" selection-end-column="11" />
+        <state relative-caret-position="247">
+          <caret line="302" column="24" selection-start-line="302" selection-start-column="24" selection-end-line="302" selection-end-column="24" />
           <folding />
         </state>
       </provider>
