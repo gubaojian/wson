@@ -77,7 +77,7 @@ public class Tson {
             if(stringCache != null){
                 localStringBytesCache.set(null);
             }else{
-                stringCache = new StringCache[128];
+                stringCache = new StringCache[LOCAL_STRING_CACHE_SIZE];
             }
         }
 
@@ -161,7 +161,6 @@ public class Tson {
                     position += length;
                     return cache.key;
                 }
-                boolean globalEmpty = (cache == null);
                 int localIndex = (stringCache.length - 1)&hash;
                 cache = stringCache[localIndex];
                 if(cache != null &&  bytesEquals(buffer, position, length, cache.bts)){
@@ -170,19 +169,14 @@ public class Tson {
                 }
                 string = new String(buffer, position, length, STRING_UTF8_CHARSET_NAME);
                 if(length > 0
-                        &&  length <= 32
+                        &&  length <= CACHE_STRING_MAX_LENGTH
                         && Character.isJavaIdentifierPart(string.charAt(0))){
-                    if(globalEmpty){
-                        cache = new StringCache();
-                        cache.key = string;
-                        cache.bts = Arrays.copyOfRange(buffer, position, position + length);
+                    cache = new StringCache();
+                    cache.key = string;
+                    cache.bts = Arrays.copyOfRange(buffer, position, position + length);
+                    if(globalStringBytesCache[globalIndex] == null){
                         globalStringBytesCache[globalIndex] = cache;
                     }else{
-                        if(cache == null){
-                            cache = new StringCache();
-                        }
-                        cache.key = string;
-                        cache.bts = Arrays.copyOfRange(buffer, position, position + length);
                         stringCache[localIndex] = cache;
                     }
                 }
@@ -276,6 +270,7 @@ public class Tson {
         private byte[] buffer;
         private int position;
         private ArrayList refs;
+        private StringCache[] stringCache;
         private final static ThreadLocal<byte[]> bufLocal = new ThreadLocal<byte[]>();
         private final static ThreadLocal<ArrayList> refsLocal = new ThreadLocal<ArrayList>();
 
@@ -292,6 +287,11 @@ public class Tson {
                 refsLocal.set(null);
             }else{
                 refs = new ArrayList<>(16);
+            }
+            if(stringCache != null){
+                localStringBytesCache.set(null);
+            }else{
+                stringCache = new StringCache[LOCAL_STRING_CACHE_SIZE];
             }
         }
 
@@ -312,6 +312,10 @@ public class Tson {
             }else{
                 refs.clear();
             }
+            if(stringCache != null){
+                localStringBytesCache.set(stringCache);
+            }
+            stringCache = null;
             refs = null;
             buffer = null;
             position = 0;
@@ -336,7 +340,7 @@ public class Tson {
                 writeUInt(map.size());
                 Set<Map.Entry<Object,Object>>  entries = map.entrySet();
                 for(Map.Entry<Object,Object> entry : entries){
-                    writeKey(entry.getKey().toString());
+                    writeMapKey(entry.getKey().toString());
                     writeObject(entry.getValue());
                 }
                 refs.remove(refs.size()-1);
@@ -484,31 +488,43 @@ public class Tson {
             return  map;
         }
 
-        private  final void writeKey(String value){
+        private  final void writeMapKey(String value){
             if(value.length() == 0){
                 ensureCapacity(2);
                 writeUInt(0);
                 return;
             }
-            int  index = value.hashCode() & (globalStringBytesCache.length - 1);
-            StringCache cache  = globalStringBytesCache[index];
+            int hash = value.hashCode();
+            int  globalIndex = hash & (globalStringBytesCache.length - 1);
+            StringCache cache  = globalStringBytesCache[globalIndex];
             byte[] bts = null;
             if(cache != null && value.equals(cache.key)){
                 bts = cache.bts;
             }
             if(bts == null){
-                try {
-                    bts = value.getBytes(STRING_UTF8_CHARSET_NAME);
-                } catch (UnsupportedEncodingException e) {
-                    bts = value.getBytes();
+                int localIndex = (stringCache.length - 1)&hash;
+                cache = stringCache[localIndex];
+                if(cache != null &&  value.equals(cache.key)){
+                     bts = cache.bts;
                 }
-                if(cache == null
-                        && Character.isJavaIdentifierPart(value.charAt(0))
-                        && bts.length <= 32){
-                    cache = new StringCache();
-                    cache.key = value;
-                    cache.bts = bts;
-                    globalStringBytesCache[index] = cache;
+                if(bts == null){
+                    try {
+                        bts = value.getBytes(STRING_UTF8_CHARSET_NAME);
+                    } catch (UnsupportedEncodingException e) {
+                        bts = value.getBytes();
+                    }
+                    if(bts.length > 0
+                            && Character.isJavaIdentifierPart(value.charAt(0))
+                            && bts.length <= CACHE_STRING_MAX_LENGTH){
+                        cache = new StringCache();
+                        cache.key = value;
+                        cache.bts = bts;
+                        if(globalStringBytesCache[globalIndex] == null) {
+                            globalStringBytesCache[globalIndex] = cache;
+                        }else{
+                            stringCache[localIndex] = cache;
+                        }
+                    }
                 }
             }
             ensureCapacity(bts.length + 8);
@@ -635,17 +651,24 @@ public class Tson {
     }
 
 
+
+    private static final int LOCAL_STRING_CACHE_SIZE = 256;
+    private static final int GLOBAL_STRING_CACHE_SIZE = 4*1024;
+    private static final int CACHE_STRING_MAX_LENGTH = 32;
     /**
      * cache json property key, most of them all same
      * */
     private static final ThreadLocal<StringCache[]> localStringBytesCache = new ThreadLocal<>();
-    private static final StringCache[] globalStringBytesCache = new StringCache[1024*2];
+    private static final StringCache[] globalStringBytesCache = new StringCache[GLOBAL_STRING_CACHE_SIZE];
     private static final  class StringCache {
         String key;
         byte[] bts;
     }
 
 
+    /**
+     * keep same with string hash
+     * */
     private static final int hash(byte[] bts, int offset, int len){
         int h = 0;
         int end = offset + len;
@@ -668,4 +691,6 @@ public class Tson {
         }
         return  true;
     }
+
+
 }

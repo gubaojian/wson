@@ -14,11 +14,16 @@ import java.io.InputStream;
 public class TsonBenchTest extends TestCase {
 
 
-    public void testWeex5() throws IOException {
-        benchBuild("/data.json", 1000);
+    public void testDataTson() throws IOException {
+        benchBuild("/data.json", 1000, true);
     }
 
-    private void benchBuild(String file, int count) throws IOException {
+    public void testDataJSON() throws IOException {
+        benchBuild("/data.json", 1000, false);
+    }
+
+
+    private void benchBuild(String file, int count, boolean tson) throws IOException {
 
         String data = readFile(file);
         Object map = JSON.parse(data);
@@ -26,20 +31,21 @@ public class TsonBenchTest extends TestCase {
         long end = 0;
         int length = 0;
 
-        start = System.currentTimeMillis();
-        for(int i=0; i<count; i++) {
-            JSON.toJSONString(map);
+        if(tson) {
+            start = System.currentTimeMillis();
+            for (int i = 0; i < count; i++) {
+                Tson.toTson(map);
+            }
+            end = System.currentTimeMillis();
+            System.out.println(length + "TSON toTSON used " + (end - start));
+        }else{
+            start = System.currentTimeMillis();
+            for(int i=0; i<count; i++) {
+                JSON.toJSONString(map);
+            }
+            end = System.currentTimeMillis();
+            System.out.println("FASTJSON toJSON used " + (end - start));
         }
-        end = System.currentTimeMillis();
-        System.out.println("FASTJSON toJSON used " + (end - start));
-
-        start = System.currentTimeMillis();
-        for(int i=0; i<count; i++) {
-            Tson.toTson(map);
-        }
-        end = System.currentTimeMillis();
-        System.out.println(length + "TSON toTSON used " + (end - start));
-
     }
 
 
