@@ -1,8 +1,8 @@
-# tson
+# wson
 tiny binary json libaray inspired by bson and message pack，less than 500 line code you can embed in your application.
 
 
-### tson data type
+### wson data type
 | type |  signature | format |
 | -------- | -------- | -------- |
 | number int     | 'i'    | signature + varint    |
@@ -23,6 +23,6 @@ here is an example, data in json as follows:
 }
 ```
 
-in tson
+in wson
 
-![tson](https://raw.githubusercontent.com/gubaojian/tson/master/image/TSON.png)
+![wson](https://raw.githubusercontent.com/gubaojian/tson/master/image/TSON.png)
