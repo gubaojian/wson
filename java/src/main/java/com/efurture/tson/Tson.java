@@ -1,9 +1,11 @@
 package com.efurture.tson;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Array;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 import java.util.*;
 
 /**
@@ -253,11 +255,11 @@ public class Tson {
         }
 
         private final Map<String,Object> createMap(){
-            return new HashMap<>();
+            return new JSONObject();
         }
 
         private final List<Object> createArray(int length){
-            return new ArrayList<>(length);
+            return new JSONArray(length);
         }
 
     }
@@ -273,6 +275,7 @@ public class Tson {
         private StringCache[] stringCache;
         private final static ThreadLocal<byte[]> bufLocal = new ThreadLocal<byte[]>();
         private final static ThreadLocal<ArrayList> refsLocal = new ThreadLocal<ArrayList>();
+
 
 
         public Builder(){
@@ -447,45 +450,7 @@ public class Tson {
         }
 
         private  final Map  toMap(Object object){
-            Map map = new HashMap<>();
-            try {
-                Class<?> targetClass = object.getClass();
-                String key = targetClass.getName();
-                List<Method> methods = getBeanMethod(key, targetClass);
-                for (Method method : methods) {
-                    String methodName = method.getName();
-                    if (methodName.startsWith(METHOD_PREFIX_GET)) {
-                        Object value = method.invoke(object);
-                        if(value != null){
-                            StringBuilder builder = new StringBuilder(method.getName().substring(3));
-                            builder.setCharAt(0, Character.toLowerCase(builder.charAt(0)));
-                            map.put(builder.toString(), (Object) value);
-                        }
-                    }else if(methodName.startsWith(METHOD_PREFIX_IS)){
-                        Object value = method.invoke(object);
-                        if(value != null){
-                            StringBuilder builder = new StringBuilder(method.getName().substring(2));
-                            builder.setCharAt(0, Character.toLowerCase(builder.charAt(0)));
-                            map.put(builder.toString(), value);
-                        }
-                    }
-                }
-                Field[] fields = getBeanFields(key, targetClass);
-                for(Field field : fields){
-                    String fieldName = field.getName();
-                    if(map.containsKey(fieldName)){
-                        continue;
-                    }
-                    Object value  = field.get(object);
-                    if(value == null){
-                        continue;
-                    }
-                    map.put(fieldName, value);
-                }
-            }catch (Exception e){
-                throw  new RuntimeException(e);
-            }
-            return  map;
+            return (Map)JSON.toJSON(object);
         }
 
         private  final void writeMapKey(String value){
@@ -534,6 +499,24 @@ public class Tson {
             }
         }
         private  final void writeString(String value){
+            int utf8Length = value.length();
+            int i = 0;
+            // This loop optimizes for pure ASCII.
+            while (i < utf8Length && value.charAt(i) < 0x80) {
+                i++;
+            }
+            if(i == utf8Length){
+                i = 0;
+                ensureCapacity(utf8Length + 8);
+                writeUInt(utf8Length);
+                while (i < utf8Length){
+                    buffer[position + i] = (byte)value.charAt(i);
+                    i++;
+                }
+                this.position += utf8Length;
+                return;
+            }
+
             byte[] bts = null;
             try {
                 bts = value.getBytes(STRING_UTF8_CHARSET_NAME);
@@ -545,6 +528,60 @@ public class Tson {
             if(bts.length > 0) {
                 writeBytes(bts);
             }
+            bts = null;
+        }
+
+        final  int encodeUtf8(CharSequence in, byte[] out, int offset, int length) {
+            int utf16Length = in.length();
+            int j = offset;
+            int i = 0;
+            int limit = offset + length;
+            // Designed to take advantage of
+            // https://wikis.oracle.com/display/HotSpotInternals/RangeCheckElimination
+            for (char c; i < utf16Length && i + j < limit && (c = in.charAt(i)) < 0x80; i++) {
+                out[j + i] = (byte) c;
+            }
+            if (i == utf16Length) {
+                return j + utf16Length;
+            }
+            j += i;
+            for (char c; i < utf16Length; i++) {
+                c = in.charAt(i);
+                if (c < 0x80 && j < limit) {
+                    out[j++] = (byte) c;
+                } else if (c < 0x800 && j <= limit - 2) { // 11 bits, two UTF-8 bytes
+                    out[j++] = (byte) ((0xF << 6) | (c >>> 6));
+                    out[j++] = (byte) (0x80 | (0x3F & c));
+                } else if ((c < Character.MIN_SURROGATE || Character.MAX_SURROGATE < c) && j <= limit - 3) {
+                    // Maximum single-char code point is 0xFFFF, 16 bits, three UTF-8 bytes
+                    out[j++] = (byte) ((0xF << 5) | (c >>> 12));
+                    out[j++] = (byte) (0x80 | (0x3F & (c >>> 6)));
+                    out[j++] = (byte) (0x80 | (0x3F & c));
+                } else if (j <= limit - 4) {
+                    // Minimum code point represented by a surrogate pair is 0x10000, 17 bits,
+                    // four UTF-8 bytes
+                    final char low;
+                    if (i + 1 == in.length()
+                            || !Character.isSurrogatePair(c, (low = in.charAt(++i)))) {
+                        throw new IllegalArgumentException("error utf-8 byte format");
+                    }
+                    int codePoint = Character.toCodePoint(c, low);
+                    out[j++] = (byte) ((0xF << 4) | (codePoint >>> 18));
+                    out[j++] = (byte) (0x80 | (0x3F & (codePoint >>> 12)));
+                    out[j++] = (byte) (0x80 | (0x3F & (codePoint >>> 6)));
+                    out[j++] = (byte) (0x80 | (0x3F & codePoint));
+                } else {
+                    // If we are surrogates and we're not a surrogate pair, always throw an
+                    // UnpairedSurrogateException instead of an ArrayOutOfBoundsException.
+                    if ((Character.MIN_SURROGATE <= c && c <= Character.MAX_SURROGATE)
+                            && (i + 1 == in.length()
+                            || !Character.isSurrogatePair(c, in.charAt(i + 1)))) {
+                        throw new IllegalArgumentException("error utf-8 byte format");
+                    }
+                    throw new ArrayIndexOutOfBoundsException("Failed writing " + c + " at index " + j);
+                }
+            }
+            return j;
         }
 
         private final void writeDouble(double value){
@@ -598,58 +635,6 @@ public class Tson {
             }
         }
     }
-    /**
-     * lru cache
-     * */
-    public static class LruCache<K,V> extends LinkedHashMap<K,V> {
-        private int cacheSize;
-
-        public LruCache(int cacheSize) {
-            super(cacheSize, 0.75f, true);
-            this.cacheSize = cacheSize;
-        }
-
-        @Override
-        protected boolean removeEldestEntry(Map.Entry eldest) {
-            return size() > cacheSize;
-        }
-    }
-
-    private static final String METHOD_PREFIX_GET = "get";
-    private static final String METHOD_PREFIX_IS = "is";
-    private static Tson.LruCache<String, List<Method>> methodsCache = new Tson.LruCache<>(128);
-    private static Tson.LruCache<String, Field[]> fieldsCache = new Tson.LruCache<>(128);
-
-
-    private static List<Method> getBeanMethod(String key, Class targetClass){
-        List<Method> methods = methodsCache.get(key);
-        if(methods == null){
-            methods = new ArrayList<>();
-            Method[]  allMethods = targetClass.getMethods();
-            for(Method method : allMethods){
-                if(method.getDeclaringClass() == Object.class){
-                    continue;
-                }
-                String methodName = method.getName();
-                if(methodName.startsWith(METHOD_PREFIX_GET)
-                        || methodName.startsWith(METHOD_PREFIX_IS)) {
-                    methods.add(method);
-                }
-            }
-            methodsCache.put(key, methods);
-        }
-        return methods;
-    }
-
-    private static  Field[] getBeanFields(String key, Class targetClass){
-        Field[] fields = fieldsCache.get(key);
-        if(fields == null) {
-            fields = targetClass.getFields();
-            fieldsCache.put(key, fields);
-        }
-        return  fields;
-    }
-
 
 
     private static final int LOCAL_STRING_CACHE_SIZE = 256;

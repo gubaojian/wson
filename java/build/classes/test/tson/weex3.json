@@ -1,0 +1,20 @@
+{
+            "panel": {
+                "width": 600,
+                "height": 250,
+                "marginLeft": 75,
+                "marginTop": 35,
+                "marginBottom": 35,
+                "flexDirection": "column",
+                "justifyContent": "center",
+                "borderWidth": 2,
+                "borderStyle": "solid",
+                "borderColor": "rgb(162,217,192)",
+                "backgroundColor": "rgba(162,217,192,0.2)"
+            },
+            "text": {
+                "fontSize": 50,
+                "textAlign": "center",
+                "color": "#41B883"
+            }
+        }

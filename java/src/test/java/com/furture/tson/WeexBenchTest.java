@@ -5,6 +5,7 @@ import com.efurture.tson.Tson;
 import com.sun.xml.internal.messaging.saaj.util.ByteOutputStream;
 import junit.framework.TestCase;
 
+import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -14,6 +15,10 @@ import java.io.InputStream;
  */
 public class WeexBenchTest extends TestCase {
 
+
+    public void  testFileSize() throws IOException {
+        System.out.println("fileSize " + readFile("/weex.json").length());
+    }
 
     public void testWeex() throws IOException {
         benchFile("/weex.json");
@@ -132,14 +137,15 @@ public class WeexBenchTest extends TestCase {
 
 
     private String readFile(String file) throws IOException {
-        ByteOutputStream outputStream = new ByteOutputStream(1024);
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream(1024);
         InputStream inputStream = this.getClass().getResourceAsStream(file);
         byte[] buffer = new byte[1024];
         int length = 0;
         while ((length = inputStream.read(buffer)) >=  0){
             outputStream.write(buffer, 0, length);
+            System.out.println("length " + length);
         }
-        return  new String(outputStream.getBytes());
+        return  new String(outputStream.toByteArray());
     }
 
 
