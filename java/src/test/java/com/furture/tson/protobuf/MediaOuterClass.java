@@ -923,7 +923,7 @@ public final class MediaOuterClass {
                   com.furture.tson.protobuf.MediaOuterClass.MediaImage.Media.class, com.furture.tson.protobuf.MediaOuterClass.MediaImage.Media.Builder.class);
         }
 
-        // Construct using com.furture.tson.protobuf.MediaOuterClass.MediaImage.Media.newBuilder()
+        // Construct using com.furture.wson.protobuf.MediaOuterClass.MediaImage.Media.newBuilder()
         private Builder() {
           maybeForceBuilderInitialization();
         }
@@ -2208,7 +2208,7 @@ public final class MediaOuterClass {
                   com.furture.tson.protobuf.MediaOuterClass.MediaImage.Image.class, com.furture.tson.protobuf.MediaOuterClass.MediaImage.Image.Builder.class);
         }
 
-        // Construct using com.furture.tson.protobuf.MediaOuterClass.MediaImage.Image.newBuilder()
+        // Construct using com.furture.wson.protobuf.MediaOuterClass.MediaImage.Image.newBuilder()
         private Builder() {
           maybeForceBuilderInitialization();
         }
@@ -2900,7 +2900,7 @@ public final class MediaOuterClass {
                 com.furture.tson.protobuf.MediaOuterClass.MediaImage.class, com.furture.tson.protobuf.MediaOuterClass.MediaImage.Builder.class);
       }
 
-      // Construct using com.furture.tson.protobuf.MediaOuterClass.MediaImage.newBuilder()
+      // Construct using com.furture.wson.protobuf.MediaOuterClass.MediaImage.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -3505,7 +3505,7 @@ public final class MediaOuterClass {
       "ns\030\t \003(\t\022\016\n\006player\030\n \001(\t\022\021\n\tcopyright\030\013 " +
       "\001(\t\032P\n\005Image\022\013\n\003uri\030\001 \001(\t\022\r\n\005title\030\002 \001(\t" +
       "\022\r\n\005width\030\003 \001(\005\022\016\n\006height\030\004 \001(\005\022\014\n\004size\030" +
-      "\005 \001(\tB\033\n\031com.furture.tson.protobufb\006prot",
+      "\005 \001(\tB\033\n\031com.furture.wson.protobufb\006prot",
       "o3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =

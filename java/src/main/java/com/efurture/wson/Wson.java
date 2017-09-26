@@ -1,4 +1,4 @@
-package com.efurture.tson;
+package com.efurture.wson;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
@@ -11,9 +11,9 @@ import java.util.*;
 /**
  * Created by efurture on 2017/8/16.
  */
-public class Tson {
+public class Wson {
     /**
-     * tson data type
+     * wson data type
      * */
     private static final byte NULL_TYPE = '0';
 
@@ -34,7 +34,7 @@ public class Tson {
     private static final String STRING_UTF8_CHARSET_NAME = "UTF-8";
 
     /**
-     * parse tson data  to object
+     * parse wson data  to object
      * @param  data  byte array
      * */
     public static Object parse(byte[] data){
@@ -48,28 +48,28 @@ public class Tson {
     }
 
     /**
-     * serialize object to tson data
+     * serialize object to wson data
      * */
-    public static byte[] toTson(Object object){
+    public static byte[] toWson(Object object){
         if(object == null){
             return  null;
         }
         Builder builder = new Builder();
-        byte[]  bts  = builder.toTson(object);
+        byte[]  bts  = builder.toWson(object);
         builder.close();
         return bts;
     }
 
 
     /**
-     * tson data parser
+     * wson data parser
      * */
     private static final class Parser {
 
         private int position = 0;
         private byte[] buffer;
         /**
-         * identifer cache for tson
+         * identifer cache for wson
          * */
         private StringCache[] stringCache;
 
@@ -265,7 +265,7 @@ public class Tson {
     }
 
     /**
-     * tson builder
+     * wson builder
      * */
     public static final class Builder {
 
@@ -299,7 +299,7 @@ public class Tson {
         }
 
 
-        private final byte[] toTson(Object object){
+        private final byte[] toWson(Object object){
             writeObject(object);
             byte[] bts = new byte[position];
             System.arraycopy(buffer, 0, bts, 0, position);

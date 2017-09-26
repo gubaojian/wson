@@ -8,7 +8,7 @@ import java.io.IOException;
 /**
  * Created by 剑白(jianbai.gbj) on 2017/9/25.
  */
-public class Protobuf3TsonBenchTest extends TestCase {
+public class Protobuf3WsonBenchTest extends TestCase {
 
 
     public void  testProtobuf() throws IOException {
@@ -25,6 +25,17 @@ public class Protobuf3TsonBenchTest extends TestCase {
         }
         long end = System.currentTimeMillis();
         System.out.println("protobuf length " + bts.length + " used " + (end -start));
+
+
+        start = System.currentTimeMillis();
+        for(int i=0; i<10000; i++) {
+            MediaOuterClass.MediaImage.parseFrom(bts);
+        }
+        end = System.currentTimeMillis();
+        System.out.println("protobuf parse length " + bts.length + " used " + (end -start));
+
+
+
     }
 
 

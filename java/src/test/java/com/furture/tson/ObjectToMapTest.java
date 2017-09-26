@@ -1,7 +1,7 @@
 package com.furture.tson;
 
 import com.alibaba.fastjson.JSON;
-import com.efurture.tson.Tson;
+import com.efurture.wson.Wson;
 import junit.framework.TestCase;
 
 import java.lang.reflect.Field;
@@ -26,9 +26,9 @@ public class ObjectToMapTest extends TestCase {
         System.out.println(JSON.toJSONString(user));
         System.out.println(JSON.toJSONString(user).getBytes().length);
 
-        System.out.println(new String(Tson.toTson(user)));
+        System.out.println(new String(Wson.toWson(user)));
 
-        System.out.println(Tson.toTson(user).length);
+        System.out.println(Wson.toWson(user).length);
     }
 
 
@@ -37,7 +37,7 @@ public class ObjectToMapTest extends TestCase {
         node.name = "测试";
         node.next = node;
         System.out.println(JSON.toJSONString(node));
-        System.out.println(new String(Tson.toTson(node)));
+        System.out.println(new String(Wson.toWson(node)));
     }
 
 

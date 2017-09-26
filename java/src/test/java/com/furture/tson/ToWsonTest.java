@@ -1,7 +1,7 @@
 package com.furture.tson;
 
 import com.alibaba.fastjson.JSON;
-import com.efurture.tson.Tson;
+import com.efurture.wson.Wson;
 import com.sun.xml.internal.messaging.saaj.util.ByteOutputStream;
 import junit.framework.TestCase;
 
@@ -11,7 +11,7 @@ import java.io.InputStream;
 /**
  * Created by 剑白(jianbai.gbj) on 2017/9/6.
  */
-public class ToTsonTest extends TestCase {
+public class ToWsonTest extends TestCase {
 
 
 
@@ -29,7 +29,7 @@ public class ToTsonTest extends TestCase {
         String data = readFile(jsonFile);
         byte[] tson = readBytes(tsonFile);
         JSON.parse(data);
-        Object map = Tson.parse(tson);
+        Object map = Wson.parse(tson);
         System.out.println("\nbench file " + jsonFile + tsonFile + ":\n");
         long start = 0;
         long end = 0;
@@ -38,7 +38,7 @@ public class ToTsonTest extends TestCase {
 
         start = System.currentTimeMillis();
         for(int i=0; i<count; i++) {
-            Tson.toTson(map);
+            Wson.toWson(map);
         }
         end = System.currentTimeMillis();
         System.out.println("TSON toTSON used " + (end - start));

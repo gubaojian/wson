@@ -1,8 +1,7 @@
 package com.furture.tson.bench;
 
 import com.alibaba.fastjson.JSON;
-import com.efurture.tson.Tson;
-import com.sun.xml.internal.messaging.saaj.util.ByteOutputStream;
+import com.efurture.wson.Wson;
 import junit.framework.TestCase;
 
 import java.io.ByteArrayOutputStream;
@@ -12,7 +11,7 @@ import java.io.InputStream;
 /**
  * Created by 剑白(jianbai.gbj) on 2017/9/5.
  */
-public class TsonFastJSONDeSerializeBenchTest extends TestCase {
+public class WsonFastJSONDeSerializeBenchTest extends TestCase {
 
 
     public void testMediaTson() throws IOException {
@@ -20,7 +19,7 @@ public class TsonFastJSONDeSerializeBenchTest extends TestCase {
     }
 
     public void testMediaJSON() throws IOException {
-        benchBuild("/media.json", 1000, false);
+        benchBuild("/media.json", 10000, false);
     }
 
     public void testMedia2Tson() throws IOException {
@@ -76,16 +75,16 @@ public class TsonFastJSONDeSerializeBenchTest extends TestCase {
 
         String data = readFile(file);
         Object map = JSON.parse(data);
-        byte[] bts = Tson.toTson(map);
+        byte[] bts = Wson.toWson(map);
 
         long start = 0;
         long end = 0;
 
         if(tson) {
-            Tson.parse(bts);
+            Wson.parse(bts);
             start = System.currentTimeMillis();
             for(int i=0; i<count; i++) {
-                Tson.parse(bts);
+                Wson.parse(bts);
             }
             end = System.currentTimeMillis();
             System.out.println("TSON parse used " + (end - start));
