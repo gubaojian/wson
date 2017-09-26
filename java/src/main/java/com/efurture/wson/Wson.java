@@ -5,6 +5,7 @@ import java.lang.reflect.Array;
 import java.util.*;
 
 /**
+ * fast binary json format for parse map and serialize map
  * Created by efurture on 2017/8/16.
  */
 public class Wson {
