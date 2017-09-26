@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 
-option java_package = "com.furture.tson.protobuf";
+option java_package = "com.furture.wson.bench.protobuf";
 
 message MediaImage{
    message Media{

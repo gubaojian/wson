@@ -1,17 +1,20 @@
-package com.furture.tson;
+package com.furture.wson;
 
 import com.alibaba.fastjson.JSON;
 import com.efurture.wson.Wson;
 import com.sun.xml.internal.messaging.saaj.util.ByteOutputStream;
+import junit.framework.TestCase;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * Created by 剑白(jianbai.gbj) on 2017/9/25.
+ * Created by 剑白(jianbai.gbj) on 2017/9/15.
  */
-public class PrepareProtobufFile {
+public class PrepareTsonFile extends TestCase {
+
+
 
     /**
      * prepare wson file
@@ -29,13 +32,21 @@ public class PrepareProtobufFile {
                 "/weex4.json",
                 "/weex5.json"};
         for(String file : files) {
-            convertToProtobuf(file);
+            convertToTson(file);
         }
     }
 
 
-
     public void  convertToProtobuf(String jsonFile) throws IOException {
+        String data = readFile(jsonFile);
+        Object map = JSON.parse(data);
+        byte[] tson = Wson.toWson(map);
+        String tsonFile = "src/test/resources/" + (jsonFile.substring(1, jsonFile.indexOf('.')) + ".wson");
+        saveFile(tsonFile, tson);
+    }
+
+
+    public void  convertToTson(String jsonFile) throws IOException {
         String data = readFile(jsonFile);
         Object map = JSON.parse(data);
         byte[] tson = Wson.toWson(map);

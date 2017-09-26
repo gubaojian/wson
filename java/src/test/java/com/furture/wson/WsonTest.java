@@ -1,6 +1,9 @@
-package com.furture.tson;
+package com.furture.wson;
 
+import com.alibaba.fastjson.JSON;
 import com.efurture.wson.Wson;
+import com.furture.wson.domain.Node;
+import com.furture.wson.util.Bits;
 import junit.framework.TestCase;
 import org.junit.Assert;
 
@@ -8,6 +11,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 
 /**
  * Created by 剑白(jianbai.gbj) on 2017/8/16.
@@ -120,6 +124,16 @@ public class WsonTest extends TestCase {
         Wson.toWson(map);
     }
 
+
+    public void  testRecursive(){
+        Node node = new Node();
+        node.name = "测试";
+        node.next = node;
+        Wson.toWson(node);
+        System.out.println(new String(Wson.toWson(node)));
+
+        System.out.println(JSON.toJSONString(node));
+    }
 
 
 }

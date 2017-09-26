@@ -1,7 +1,8 @@
-package com.furture.tson;
+package com.furture.wson.bench;
 
 import com.alibaba.fastjson.JSON;
 import com.efurture.wson.Wson;
+import com.furture.wson.domain.User;
 import junit.framework.TestCase;
 
 import java.util.HashMap;

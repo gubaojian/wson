@@ -1,4 +1,4 @@
-package com.furture.tson;
+package com.furture.wson.util;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

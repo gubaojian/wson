@@ -1,11 +1,11 @@
-package com.furture.tson;
+package com.furture.wson.domain;
 
 import java.io.Serializable;
 
 /**
  * Created by 剑白(jianbai.gbj) on 2017/9/3.
  */
-public class User  implements Serializable{
+public class User extends  Base  implements Serializable{
 
 
     private static final long serialVersionUID = 4015482440089425674L;

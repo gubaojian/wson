@@ -1,4 +1,4 @@
-package com.furture.tson;
+package com.furture.wson.bench;
 
 import com.alibaba.fastjson.JSON;
 import com.efurture.wson.Wson;

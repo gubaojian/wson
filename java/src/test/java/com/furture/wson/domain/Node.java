@@ -1,14 +1,15 @@
-package com.furture.tson;
+package com.furture.wson.domain;
 
 import java.io.UnsupportedEncodingException;
-import java.util.Arrays;
 
 /**
  * Created by 剑白(jianbai.gbj) on 2017/9/3.
  */
-public class Node {
+public class Node extends  Base {
 
     public String name;
+
+    public static  int id = 32;
 
     public Node next;
 

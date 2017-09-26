@@ -1,7 +1,6 @@
-package com.furture.tson;
+package com.furture.wson.bench;
 
-import com.alibaba.fastjson.JSONObject;
-import com.furture.tson.protobuf.MediaOuterClass;
+import com.furture.wson.bench.protobuf.MediaOuterClass;
 import junit.framework.TestCase;
 import java.io.IOException;
 
@@ -15,6 +14,8 @@ public class Protobuf3WsonBenchTest extends TestCase {
 
         MediaOuterClass.MediaImage mediaImage = buildMediaImageProtobuf();
         mediaImage.toByteArray();
+
+
 
 
         byte[] bts = null;
@@ -33,6 +34,8 @@ public class Protobuf3WsonBenchTest extends TestCase {
         }
         end = System.currentTimeMillis();
         System.out.println("protobuf parse length " + bts.length + " used " + (end -start));
+
+
 
 
 

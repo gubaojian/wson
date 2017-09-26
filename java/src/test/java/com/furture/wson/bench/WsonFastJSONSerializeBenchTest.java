@@ -1,4 +1,4 @@
-package com.furture.tson.bench;
+package com.furture.wson.bench;
 
 import com.alibaba.fastjson.JSON;
 import com.efurture.wson.Wson;
@@ -11,7 +11,7 @@ import java.io.InputStream;
 /**
  * Created by 剑白(jianbai.gbj) on 2017/9/5.
  */
-public class WsonFastJSONDeSerializeBenchTest extends TestCase {
+public class WsonFastJSONSerializeBenchTest extends TestCase {
 
 
     public void testMediaTson() throws IOException {
@@ -30,7 +30,13 @@ public class WsonFastJSONDeSerializeBenchTest extends TestCase {
         benchBuild("/media2.json", 1000, false);
     }
 
+    public void testWeexTson() throws IOException {
+        benchBuild("/weex.json", 1000, true);
+    }
 
+    public void testWeexJSON() throws IOException {
+        benchBuild("/weex.json", 1000, false);
+    }
 
 
     public void testMiddleTson() throws IOException {
@@ -42,13 +48,6 @@ public class WsonFastJSONDeSerializeBenchTest extends TestCase {
     }
 
 
-    public void testWeexTson() throws IOException {
-        benchBuild("/weex.json", 1000, true);
-    }
-
-    public void testWeexJSON() throws IOException {
-        benchBuild("/weex.json", 1000, false);
-    }
 
 
 
@@ -72,30 +71,27 @@ public class WsonFastJSONDeSerializeBenchTest extends TestCase {
 
 
     private void benchBuild(String file, int count, boolean tson) throws IOException {
-
         String data = readFile(file);
         Object map = JSON.parse(data);
-        byte[] bts = Wson.toWson(map);
-
         long start = 0;
         long end = 0;
 
         if(tson) {
-            Wson.parse(bts);
             start = System.currentTimeMillis();
-            for(int i=0; i<count; i++) {
-                Wson.parse(bts);
+            for (int i = 0; i < count; i++) {
+               Wson.toWson(map);
             }
             end = System.currentTimeMillis();
-            System.out.println("TSON parse used " + (end - start));
+            System.out.println("TSON toTSON used " + (end - start));
+            System.out.println("wson size " + Wson.toWson(map).length);
         }else{
-            JSON.parse(data);
             start = System.currentTimeMillis();
             for(int i=0; i<count; i++) {
-                JSON.parse(data);
+                JSON.toJSONString(map);
             }
             end = System.currentTimeMillis();
-            System.out.println("FastJSON parse used " + (end - start));
+            System.out.println("FASTJSON toJSON used " + (end - start));
+            System.out.println("json size " + JSON.toJSONString(map).getBytes("UTF-8").length);
         }
     }
 

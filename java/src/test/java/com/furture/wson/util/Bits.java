@@ -1,23 +1,23 @@
-package com.furture.tson;
+package com.furture.wson.util;
 
 /**
  * Utility methods for packing/unpacking primitive values in/out of byte arrays
  * big endian, java is big endian
  */
-class Bits {
+public class Bits {
 
-    static boolean getBoolean(byte[] b, int off) {
+    public  final static boolean getBoolean(byte[] b, int off) {
         return b[off] != 0;
     }
 
-    static int getInt(byte[] b, int off) {
+    public  final static int getInt(byte[] b, int off) {
         return ((b[off + 3] & 0xFF)      ) +
                 ((b[off + 2] & 0xFF) <<  8) +
                 ((b[off + 1] & 0xFF) << 16) +
                 ((b[off    ]       ) << 24);
     }
 
-    static long getLong(byte[] b, int off) {
+    public  final static long getLong(byte[] b, int off) {
         return ((b[off + 7] & 0xFFL)      ) +
                 ((b[off + 6] & 0xFFL) <<  8) +
                 ((b[off + 5] & 0xFFL) << 16) +
@@ -28,16 +28,16 @@ class Bits {
                 (((long) b[off])      << 56);
     }
 
-    static double getDouble(byte[] b, int off) {
+    public  final static double getDouble(byte[] b, int off) {
         return Double.longBitsToDouble(getLong(b, off));
     }
 
-    static void putBoolean(byte[] b, int off, boolean val) {
+    public  final  static void putBoolean(byte[] b, int off, boolean val) {
         b[off] = (byte) (val ? 1 : 0);
     }
 
 
-    static void putInt(byte[] b, int off, int val) {
+    public  final static void putInt(byte[] b, int off, int val) {
         b[off + 3] = (byte) (val       );
         b[off + 2] = (byte) (val >>>  8);
         b[off + 1] = (byte) (val >>> 16);
@@ -46,7 +46,7 @@ class Bits {
 
 
 
-    static void putLong(byte[] b, int off, long val) {
+    public  final static void putLong(byte[] b, int off, long val) {
         b[off + 7] = (byte) (val       );
         b[off + 6] = (byte) (val >>>  8);
         b[off + 5] = (byte) (val >>> 16);
@@ -57,15 +57,15 @@ class Bits {
         b[off    ] = (byte) (val >>> 56);
     }
 
-    static void putDouble(byte[] b, int off, double val) {
+    public  final static void putDouble(byte[] b, int off, double val) {
         putLong(b, off, Double.doubleToLongBits(val));
     }
 
-    static int putVarInt(byte[] bts, int off, int value){
+    public  final static int putVarInt(byte[] bts, int off, int value){
         return putUInt(bts, off, (value << 1) ^ (value >> 31));
     }
 
-    static int getVarInt(byte[] bts, int off){
+    public  final static int getVarInt(byte[] bts, int off){
         int raw = getUInt(bts, off);
         // This undoes the trick in putVarInt()
         int temp = (((raw << 31) >> 31) ^ raw) >> 1;
@@ -75,7 +75,7 @@ class Bits {
         return temp ^ (raw & (1 << 31));
     }
 
-    static int putUInt(byte[] bts, int off, int value){
+    public  final static int putUInt(byte[] bts, int off, int value){
         int size = 0;
         while ((value & 0xFFFFFF80) != 0) {
             bts[off] = (byte)((value & 0x7F) | 0x80);
@@ -89,7 +89,7 @@ class Bits {
         return size;
     }
 
-    static int getUInt(byte[] bts, int off){
+    public  final static int getUInt(byte[] bts, int off){
         int value = 0;
         int i = 0;
         int b;

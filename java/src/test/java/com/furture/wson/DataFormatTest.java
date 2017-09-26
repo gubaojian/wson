@@ -1,7 +1,8 @@
-package com.furture.tson;
+package com.furture.wson;
 
+import com.furture.wson.util.Bits;
+import com.furture.wson.util.LruCache;
 import junit.framework.TestCase;
-import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -45,7 +46,7 @@ public class DataFormatTest extends TestCase {
             throw new  RuntimeException("format not right match uint " + Bits.getUInt(bts, 13));
         }
         System.out.println("first number  " +  Bits.getDouble(bts, 0));
-        System.out.println("first int " +  Bits.getInt(bts, 8));
+        System.out.println("first int " +   Bits.getInt(bts, 8));
         System.out.println("first long " +  Bits.getLong(bts, 12));
     }
 
@@ -62,7 +63,7 @@ public class DataFormatTest extends TestCase {
             System.out.println("key=" + entry.getKey() + "---------value=" + entry.getValue());
         }
 
-        System.out.println("----------华丽的分割线-------------");
+        System.out.println("--------------------------");
 
         map.get("3");
         map.get("5");

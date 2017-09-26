@@ -1,6 +1,5 @@
 package com.efurture.wson;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
@@ -124,7 +123,7 @@ public class Wson {
 
         private final Object readMap(){
             int size = readUInt();
-            Map<String, Object> object = createMap();
+            Map<String, Object> object = WsonAdapter.createMap();
             for(int i=0; i<size; i++){
                 String key = readMapKey();
                 Object value = readObject();
@@ -135,7 +134,7 @@ public class Wson {
 
         private final Object readArray(){
             int length = readUInt();
-            List<Object> array = createArray(length);
+            List<Object> array = WsonAdapter.createArray(length);
             for(int i=0; i<length; i++){
                 array.add(readObject());
             }
@@ -203,11 +202,6 @@ public class Wson {
         }
 
 
-        private  final boolean readBoolean(){
-            byte bt = buffer[position];
-            position++;
-            return  bt != 0;
-        }
 
 
         private   final int readVarInt(){
@@ -253,15 +247,6 @@ public class Wson {
             double number = Double.longBitsToDouble(readLong());
             return  number;
         }
-
-        private final Map<String,Object> createMap(){
-            return new JSONObject();
-        }
-
-        private final List<Object> createArray(int length){
-            return new JSONArray(length);
-        }
-
     }
 
     /**
@@ -450,7 +435,7 @@ public class Wson {
         }
 
         private  final Map  toMap(Object object){
-            return (Map)JSON.toJSON(object);
+            return WsonAdapter.toMap(object);
         }
 
         private  final void writeMapKey(String value){

@@ -1,4 +1,4 @@
-package com.furture.tson;
+package com.furture.wson.feature;
 
 import com.sun.xml.internal.messaging.saaj.util.ByteOutputStream;
 import junit.framework.TestCase;

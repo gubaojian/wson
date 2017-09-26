@@ -1,4 +1,4 @@
-package com.furture.tson;
+package com.furture.wson.feature;
 
 import junit.framework.TestCase;
 import sun.misc.Unsafe;
