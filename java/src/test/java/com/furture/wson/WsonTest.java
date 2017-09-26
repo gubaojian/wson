@@ -118,10 +118,15 @@ public class WsonTest extends TestCase {
         Assert.assertEquals(names, parsed);
     }
 
+    /**
+     * map key will be conver to string
+     * */
     public void  testObject(){
         Map<Object, Object> map = new HashMap<>();
-        map.put(100, "333");
-        Wson.toWson(map);
+        map.put("100", "333");
+        byte[] bts = Wson.toWson(map);
+        Map parseMap = (Map)Wson.parse(bts);
+        Assert.assertEquals(JSON.toJSONString(parseMap), JSON.toJSONString(map));
     }
 
 
@@ -130,7 +135,9 @@ public class WsonTest extends TestCase {
         node.name = "测试";
         node.next = node;
         Wson.toWson(node);
-        System.out.println(new String(Wson.toWson(node)));
+        String tson = new String(Wson.toWson(node));
+        Assert.assertTrue(tson.indexOf("id") < 0);
+        System.out.println(tson);
 
         System.out.println(JSON.toJSONString(node));
     }
