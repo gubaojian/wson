@@ -9,7 +9,7 @@ import java.lang.reflect.Modifier;
 import java.util.*;
 
 /**
- * adapter for different environment
+ * adapter for different environment, adapter for fastjson
  * Created by 剑白(jianbai.gbj) on 2017/9/26.
  */
 class WsonAdapter {
