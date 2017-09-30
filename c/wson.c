@@ -2,7 +2,7 @@
 // Created by furture on 2017/8/4.
 //
 
-#include "tson.h"
+#include "wson.h"
 #include <stdio.h>
 
 
@@ -11,13 +11,13 @@ union number{
     uint64_t l;
 };
 
-#define TSON_BUFFER_SIZE  1024
+#define WSON_BUFFER_SIZE  1024
 
-#define TSON_BUFFER_ENSURE_SIZE(size)  {if((buffer->length) < (buffer->position + size)){\
+#define WSON_BUFFER_ENSURE_SIZE(size)  {if((buffer->length) < (buffer->position + size)){\
                                            msg_buffer_resize(buffer, size);\
                                       }}
 
-static void msg_buffer_resize(tson_buffer* buffer, uint32_t size){
+static void msg_buffer_resize(wson_buffer* buffer, uint32_t size){
     if(size < buffer->length){
          if(buffer->length < 1024*16){
             size = 1024*16;
@@ -25,7 +25,7 @@ static void msg_buffer_resize(tson_buffer* buffer, uint32_t size){
             size = buffer->length;
          }
     }else{
-        size +=TSON_BUFFER_SIZE;
+        size +=WSON_BUFFER_SIZE;
     }
     size += buffer->length;
     buffer->data = realloc(buffer->data, size);
@@ -45,16 +45,16 @@ static inline uint32_t msg_buffer_varint_Zig(int32_t value)
 
 }
 
- tson_buffer* tson_buffer_new(void){
-    tson_buffer* ptr = malloc(sizeof(tson_buffer));
-    ptr->data = malloc(sizeof(int8_t)*TSON_BUFFER_SIZE);
+ wson_buffer* wson_buffer_new(void){
+    wson_buffer* ptr = malloc(sizeof(wson_buffer));
+    ptr->data = malloc(sizeof(int8_t)*WSON_BUFFER_SIZE);
     ptr->position = 0;
-    ptr->length = TSON_BUFFER_SIZE;
+    ptr->length = WSON_BUFFER_SIZE;
     return ptr;
 }
 
-tson_buffer* tson_buffer_from(void* data, uint32_t length){
-    tson_buffer* ptr = malloc(sizeof(tson_buffer));
+wson_buffer* wson_buffer_from(void* data, uint32_t length){
+    wson_buffer* ptr = malloc(sizeof(wson_buffer));
     ptr->data = data;
     ptr->position = 0;
     ptr->length = length;
@@ -63,13 +63,13 @@ tson_buffer* tson_buffer_from(void* data, uint32_t length){
 
 
 
-void tson_push_int(tson_buffer *buffer, int32_t value){
+void wson_push_int(wson_buffer *buffer, int32_t value){
     uint32_t num = msg_buffer_varint_Zig(value);
-    tson_push_uint(buffer, num);
+    wson_push_uint(buffer, num);
 }
 
-void tson_push_uint(tson_buffer *buffer, uint32_t num){
-    TSON_BUFFER_ENSURE_SIZE(sizeof(uint32_t) + sizeof(uint8_t));
+void wson_push_uint(wson_buffer *buffer, uint32_t num){
+    WSON_BUFFER_ENSURE_SIZE(sizeof(uint32_t) + sizeof(uint8_t));
     uint8_t * data = ((uint8_t*)buffer->data + buffer->position);
     int size =0;
     do{
@@ -80,107 +80,110 @@ void tson_push_uint(tson_buffer *buffer, uint32_t num){
     buffer->position += size;
 }
 
-void tson_push_byte(tson_buffer *buffer, uint8_t bt){
-    TSON_BUFFER_ENSURE_SIZE(sizeof(uint8_t));
+void wson_push_byte(wson_buffer *buffer, uint8_t bt){
+    WSON_BUFFER_ENSURE_SIZE(sizeof(uint8_t));
     uint8_t* data = ((uint8_t*)buffer->data + buffer->position);
     *data = bt;
     buffer->position += sizeof(uint8_t);
 }
 
-void tson_push_type(tson_buffer *buffer, uint8_t bt){
-    TSON_BUFFER_ENSURE_SIZE(sizeof(uint8_t));
+void wson_push_type(wson_buffer *buffer, uint8_t bt){
+    WSON_BUFFER_ENSURE_SIZE(sizeof(uint8_t));
     uint8_t* data = ((uint8_t*)buffer->data + buffer->position);
     *data = bt;
     buffer->position += sizeof(uint8_t);
 }
 
 
-void tson_push_type_boolean(tson_buffer *buffer, uint8_t value){
-      TSON_BUFFER_ENSURE_SIZE(sizeof(uint8_t) + sizeof(uint8_t));
+void wson_push_type_boolean(wson_buffer *buffer, uint8_t value){
+      WSON_BUFFER_ENSURE_SIZE(sizeof(uint8_t) + sizeof(uint8_t));
     uint8_t* data = ((uint8_t*)buffer->data + buffer->position);
-    *data = TSON_BOOLEAN_TYPE;
-    *(data + 1) = value;
-    buffer->position += (sizeof(uint8_t) + sizeof(uint8_t));
+    if(value){
+       *data = WSON_BOOLEAN_TYPE_TRUE;
+    }else{
+        *data = WSON_BOOLEAN_TYPE_FALSE;
+    }
+    buffer->position += sizeof(uint8_t);
  }
 
 
-void tson_push_type_int(tson_buffer *buffer, int32_t num){
-    TSON_BUFFER_ENSURE_SIZE(sizeof(uint8_t));
+void wson_push_type_int(wson_buffer *buffer, int32_t num){
+    WSON_BUFFER_ENSURE_SIZE(sizeof(uint8_t));
     uint8_t* data = ((uint8_t*)buffer->data + buffer->position);
-    *data = TSON_NUMBER_INT_TYPE;
+    *data = WSON_NUMBER_INT_TYPE;
     buffer->position += (sizeof(uint8_t));
-    tson_push_int(buffer, num);
+    wson_push_int(buffer, num);
 }
 
-void tson_push_type_double(tson_buffer *buffer, double num){
-    TSON_BUFFER_ENSURE_SIZE(sizeof(uint8_t));
+void wson_push_type_double(wson_buffer *buffer, double num){
+    WSON_BUFFER_ENSURE_SIZE(sizeof(uint8_t));
     uint8_t* data = ((uint8_t*)buffer->data + buffer->position);
-    *data = TSON_NUMBER_DOUBLE_TYPE;
+    *data = WSON_NUMBER_DOUBLE_TYPE;
     buffer->position += (sizeof(uint8_t));
-    tson_push_double(buffer, num);
+    wson_push_double(buffer, num);
 }
 
-void tson_push_type_string(tson_buffer *buffer, const void *src, int32_t length){
-    TSON_BUFFER_ENSURE_SIZE(sizeof(uint8_t));
+void wson_push_type_string(wson_buffer *buffer, const void *src, int32_t length){
+    WSON_BUFFER_ENSURE_SIZE(sizeof(uint8_t));
     uint8_t* data = ((uint8_t*)buffer->data + buffer->position);
-    *data = TSON_STRING_TYPE;
+    *data = WSON_STRING_TYPE;
     buffer->position += (sizeof(uint8_t));
-    tson_push_uint(buffer, length);
-    tson_push_bytes(buffer, src, length);
+    wson_push_uint(buffer, length);
+    wson_push_bytes(buffer, src, length);
 }
 
-void tson_push_property(tson_buffer *buffer, const void *src, int32_t length){
-    tson_push_uint(buffer, length);
-    tson_push_bytes(buffer, src, length);
+void wson_push_property(wson_buffer *buffer, const void *src, int32_t length){
+    wson_push_uint(buffer, length);
+    wson_push_bytes(buffer, src, length);
 }
 
-void tson_push_type_string_length(tson_buffer *buffer, int32_t length){
-    TSON_BUFFER_ENSURE_SIZE(sizeof(uint8_t));
+void wson_push_type_string_length(wson_buffer *buffer, int32_t length){
+    WSON_BUFFER_ENSURE_SIZE(sizeof(uint8_t));
     uint8_t* data = ((uint8_t*)buffer->data + buffer->position);
-    *data = TSON_STRING_TYPE;
+    *data = WSON_STRING_TYPE;
     buffer->position += (sizeof(uint8_t));
-    tson_push_uint(buffer, length);
+    wson_push_uint(buffer, length);
 }
 
-void tson_push_type_null(tson_buffer *buffer){
-    TSON_BUFFER_ENSURE_SIZE(sizeof(uint8_t));
+void wson_push_type_null(wson_buffer *buffer){
+    WSON_BUFFER_ENSURE_SIZE(sizeof(uint8_t));
     uint8_t* data = ((uint8_t*)buffer->data + buffer->position);
-    *data = TSON_NULL_TYPE;
+    *data = WSON_NULL_TYPE;
     buffer->position += (sizeof(uint8_t));
 }
 
-void tson_push_type_map(tson_buffer *buffer, uint32_t size){
-    TSON_BUFFER_ENSURE_SIZE(sizeof(uint8_t));
+void wson_push_type_map(wson_buffer *buffer, uint32_t size){
+    WSON_BUFFER_ENSURE_SIZE(sizeof(uint8_t));
     uint8_t* data = ((uint8_t*)buffer->data + buffer->position);
-    *data = TSON_MAP_TYPE;
+    *data = WSON_MAP_TYPE;
     buffer->position += (sizeof(uint8_t));
-    tson_push_uint(buffer, size);
+    wson_push_uint(buffer, size);
 }
 
-void tson_push_type_array(tson_buffer *buffer, uint32_t size){
-    TSON_BUFFER_ENSURE_SIZE(sizeof(uint8_t));
+void wson_push_type_array(wson_buffer *buffer, uint32_t size){
+    WSON_BUFFER_ENSURE_SIZE(sizeof(uint8_t));
     uint8_t* data = ((uint8_t*)buffer->data + buffer->position);
-    *data = TSON_ARRAY_TYPE;
+    *data = WSON_ARRAY_TYPE;
     buffer->position += (sizeof(uint8_t));
-    tson_push_uint(buffer, size);
+    wson_push_uint(buffer, size);
 }
 
 
-void tson_push_type_extend(tson_buffer *buffer, const void *src, int32_t length){
-    TSON_BUFFER_ENSURE_SIZE(sizeof(uint8_t));
+void wson_push_type_extend(wson_buffer *buffer, const void *src, int32_t length){
+    WSON_BUFFER_ENSURE_SIZE(sizeof(uint8_t));
     uint8_t* data = ((uint8_t*)buffer->data + buffer->position);
-    *data = TSON_EXTEND_TYPE;
+    *data = WSON_EXTEND_TYPE;
     buffer->position += (sizeof(uint8_t));
-    tson_push_uint(buffer, length);
-    tson_push_bytes(buffer, src, length);
+    wson_push_uint(buffer, length);
+    wson_push_bytes(buffer, src, length);
 }
 
-void tson_push_ensure_size(tson_buffer *buffer, uint32_t dataSize){
-    TSON_BUFFER_ENSURE_SIZE(sizeof(uint8_t)*dataSize);
+void wson_push_ensure_size(wson_buffer *buffer, uint32_t dataSize){
+    WSON_BUFFER_ENSURE_SIZE(sizeof(uint8_t)*dataSize);
 }
 
-void tson_push_long(tson_buffer *buffer, uint64_t num){
-    TSON_BUFFER_ENSURE_SIZE(sizeof(uint64_t));
+void wson_push_long(wson_buffer *buffer, uint64_t num){
+    WSON_BUFFER_ENSURE_SIZE(sizeof(uint64_t));
     uint8_t* data = ((uint8_t*)buffer->data + buffer->position);
     data[7] = (uint8_t)(num & 0xFF);
     data[6] = (uint8_t)((num >> 8) & 0xFF);
@@ -193,38 +196,38 @@ void tson_push_long(tson_buffer *buffer, uint64_t num){
     buffer->position += sizeof(uint64_t);
 }
 
-void tson_push_double(tson_buffer *buffer, double num){
+void wson_push_double(wson_buffer *buffer, double num){
     union number ld;
     ld.d = num;
-    tson_push_long(buffer, ld.l);
+    wson_push_long(buffer, ld.l);
 }
 
 
-void tson_push_bytes(tson_buffer *buffer, const void *src, int32_t length){
-    TSON_BUFFER_ENSURE_SIZE(length);
+void wson_push_bytes(wson_buffer *buffer, const void *src, int32_t length){
+    WSON_BUFFER_ENSURE_SIZE(length);
     void* dst = ((uint8_t*)buffer->data + buffer->position);
     memcpy(dst, src, length);
     buffer->position += length;
 }
 
-int8_t tson_next_type(tson_buffer *buffer){
+int8_t wson_next_type(wson_buffer *buffer){
     int8_t* ptr = (int8_t*)((uint8_t*)buffer->data + buffer->position);
     buffer->position += sizeof(int8_t);
     return *ptr;
 }
 
-int8_t tson_next_byte(tson_buffer *buffer){
+int8_t wson_next_byte(wson_buffer *buffer){
     int8_t* ptr = (int8_t*)(((uint8_t*)buffer->data + buffer->position));
     buffer->position += sizeof(int8_t);
     return *ptr;
 }
 
 
-int32_t tson_next_int(tson_buffer *buffer){
-    return msg_buffer_varint_Zag(tson_next_uint(buffer));
+int32_t wson_next_int(wson_buffer *buffer){
+    return msg_buffer_varint_Zag(wson_next_uint(buffer));
 }
 
-uint32_t tson_next_uint(tson_buffer *buffer){
+uint32_t wson_next_uint(wson_buffer *buffer){
     uint8_t *  ptr = ((uint8_t*)buffer->data + buffer->position);
     uint32_t num = *ptr;
     if((num & 0x80) == 0){
@@ -257,7 +260,7 @@ uint32_t tson_next_uint(tson_buffer *buffer){
     return  num;
 }
 
-uint64_t tson_next_long(tson_buffer *buffer){
+uint64_t wson_next_long(wson_buffer *buffer){
     uint8_t* data = ((uint8_t*)buffer->data + buffer->position);
     buffer->position += sizeof(uint64_t);
     return (((uint64_t)data[7]) & 0xFF)
@@ -270,20 +273,20 @@ uint64_t tson_next_long(tson_buffer *buffer){
            + ((((uint64_t)data[0]) & 0xFF) << 56);
 }
 
-double tson_next_double(tson_buffer *buffer){
+double wson_next_double(wson_buffer *buffer){
     union number ld;
-    ld.l = tson_next_long(buffer);
+    ld.l = wson_next_long(buffer);
     return ld.d;
 }
 
 
-uint8_t* tson_next_bts(tson_buffer *buffer, uint32_t length){
+uint8_t* wson_next_bts(wson_buffer *buffer, uint32_t length){
     uint8_t * ptr = ((uint8_t*)buffer->data + buffer->position);
     buffer->position += length;
     return ptr;
 }
 
-void tson_buffer_free(tson_buffer *buffer){
+void wson_buffer_free(wson_buffer *buffer){
     if(buffer->data){
         free(buffer->data);
         buffer->data = NULL;

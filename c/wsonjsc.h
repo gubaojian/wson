@@ -1,30 +1,30 @@
 //
-//  tsonjsc.hpp
+//  wsonjsc.hpp
 //  JavaScriptCore
 //
 //  Created by furture on 2017/8/30.
 //
 //
 
-#ifndef tsonjsc_h
-#define tsonjsc_h
+#ifndef wsonjsc_h
+#define wsonjsc_h
 #include "config.h"
 #include "JSCInlines.h"
 #include "PropertyNameArray.h"
 #include "IdentifierInlines.h"
 #include "LocalScope.h"
 #include "BooleanObject.h"
-#include "tson.h"
+#include "wson.h"
 
 using namespace JSC;
 
 
-namespace tson {
-    tson_buffer* toTson(ExecState* state, JSValue val);
-    JSValue toJSValue(ExecState* state, tson_buffer* buffer);
+namespace wson {
+    wson_buffer* toWson(ExecState* state, JSValue val);
+    JSValue toJSValue(ExecState* state, wson_buffer* buffer);
 
     /**
-     * performance improve tson toJSValue. very big import improve
+     * performance improve wson toJSValue. very big import improve
      */
     void init(VM* vm);
     void destory();
@@ -32,4 +32,4 @@ namespace tson {
 
 
 
-#endif /* tsonjsc_hpp */
+#endif /* wsonjsc_hpp */
