@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+
+option java_package = "com.furture.wson.bench.protobuf";
+
+message MediaImage{
+   message Media{
+        string uri  = 1;
+        string title = 2;
+        float width = 3;
+        float height = 4;
+        string format = 5;
+        int32 duration = 6;
+        int32 size = 7;
+        int32 bitrate = 8;
+        repeated string persons = 9;
+        string player = 10;
+        string copyright = 11;
+   }
+   Media media = 1;
+   message Image{
+     string uri = 1;
+     string title = 2;
+     int32 width = 3;
+     int32 height = 4;
+     string size = 5;
+   }
+
+   repeated Image images = 2;
+}
