@@ -12,7 +12,14 @@ public class CopyTest {
         byte[] bts = new byte[40];
 
 
-        System.arraycopy(ch, 0, bts, 0, 10);
+        //System.arraycopy(ch, 0, bts, 0, 10);
+
+
+        String a = new String("a").intern();
+
+        String b = new String("a").intern();
+
+        System.out.println(a == b);
 
     }
 }

@@ -81,6 +81,15 @@ public class WeexBenchTest extends TestCase {
         long end = 0;
 
 
+
+        /**
+        System.gc();
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }*/
+
         start = System.currentTimeMillis();
         for(int i=0; i<count; i++) {
             map = Wson.parse(tson);
@@ -97,14 +106,6 @@ public class WeexBenchTest extends TestCase {
         System.out.println("TSON toTSON used " + (end - start));
 
 
-        /**
-        System.gc();
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }*/
-
 
 
         start = System.currentTimeMillis();
@@ -120,6 +121,7 @@ public class WeexBenchTest extends TestCase {
         }
         end = System.currentTimeMillis();
         System.out.println("FastJSON toJSON used " + (end - start));
+
 
 
         /**

@@ -102,7 +102,6 @@ public class WsonTest extends TestCase {
         Map<String, Object> map = new HashMap<>();
         map.put(key, null);
         byte[] bts = Wson.toWson(map);
-        Assert.assertEquals(8, bts.length);
         System.out.println(new String(bts));
         Map<String, Object> parsed = (Map<String, Object>) Wson.parse(bts);
         Assert.assertEquals(map, parsed);
