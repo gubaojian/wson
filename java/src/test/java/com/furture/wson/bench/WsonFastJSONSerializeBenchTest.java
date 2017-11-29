@@ -14,7 +14,7 @@ import java.io.InputStream;
 public class WsonFastJSONSerializeBenchTest extends TestCase {
 
 
-    public void testMediaTson() throws IOException {
+    public void testMediaWson() throws IOException {
         benchBuild("/media.json", 10000, true);
     }
 
@@ -22,7 +22,7 @@ public class WsonFastJSONSerializeBenchTest extends TestCase {
         benchBuild("/media.json", 10000, false);
     }
 
-    public void testMedia2Tson() throws IOException {
+    public void testMedia2Wson() throws IOException {
         benchBuild("/media2.json", 1000, true);
     }
 
@@ -30,7 +30,7 @@ public class WsonFastJSONSerializeBenchTest extends TestCase {
         benchBuild("/media2.json", 1000, false);
     }
 
-    public void testWeexTson() throws IOException {
+    public void testWeexWson() throws IOException {
         benchBuild("/weex.json", 1000, true);
     }
 
@@ -39,7 +39,7 @@ public class WsonFastJSONSerializeBenchTest extends TestCase {
     }
 
 
-    public void testMiddleTson() throws IOException {
+    public void testMiddleWson() throws IOException {
         benchBuild("/middle.json", 1000, true);
     }
 
@@ -52,21 +52,21 @@ public class WsonFastJSONSerializeBenchTest extends TestCase {
 
 
     /** 下面两个数据太大,单次存性能对比, 多次就是对比GC了 */
-    public void testHomeTson() throws IOException {
-        benchBuild("/home.json", 1, true);
+    public void testHomeWson() throws IOException {
+        benchBuild("/home.json", 100, true);
     }
 
     public void testHomeJSON() throws IOException {
-        benchBuild("/home.json", 1, false);
+        benchBuild("/home.json", 100, false);
     }
 
 
-    public void testDataTson() throws IOException {
-        benchBuild("/data.json", 1, true);
+    public void testDataWson() throws IOException {
+        benchBuild("/data.json", 100, true);
     }
 
     public void testDataJSON() throws IOException {
-        benchBuild("/data.json", 1, false);
+        benchBuild("/data.json", 100, false);
     }
 
 
@@ -83,7 +83,7 @@ public class WsonFastJSONSerializeBenchTest extends TestCase {
             }
             end = System.currentTimeMillis();
             System.out.println("TSON toTSON used " + (end - start));
-            System.out.println("wson size " + Wson.toWson(map).length);
+           // System.out.println("wson size " + Wson.toWson(map).length);
         }else{
             start = System.currentTimeMillis();
             for(int i=0; i<count; i++) {

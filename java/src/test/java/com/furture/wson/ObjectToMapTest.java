@@ -22,6 +22,8 @@ public class ObjectToMapTest extends TestCase {
         User user = new User();
         user.name = "中国";
         user.country = "中国";
+        user.next = new User();
+        user.next.name = "Next中国";
         Map map = toMap(user);
         System.out.println(map);
         System.out.println(JSON.toJSON(user));

@@ -13,14 +13,14 @@ import java.io.InputStream;
 /**
  * Created by 剑白(jianbai.gbj) on 2017/9/15.
  */
-public class PrepareTsonFile extends TestCase {
+public class PrepareWsonFile extends TestCase {
 
 
 
     /**
      * prepare wson file
      * */
-    public void testPrepareTson() throws IOException {
+    public void testPrepareWson() throws IOException {
         String[] files = {"/data.json",
                 "/home.json",
                 "/middle.json",
@@ -33,7 +33,7 @@ public class PrepareTsonFile extends TestCase {
                 "/weex4.json",
                 "/weex5.json"};
         for(String file : files) {
-            convertToTson(file);
+            convertToWson(file);
         }
     }
 
@@ -47,7 +47,7 @@ public class PrepareTsonFile extends TestCase {
     }
 
 
-    public void  convertToTson(String jsonFile) throws IOException {
+    public void  convertToWson(String jsonFile) throws IOException {
         String data = readFile(jsonFile);
         Object map = JSON.parse(data);
         byte[] tson = Wson.toWson(map);

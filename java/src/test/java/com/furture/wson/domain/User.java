@@ -19,6 +19,7 @@ public class User extends  Base  implements Serializable{
     }
 
 
+    public User next;
     public String name;
 
     public String country;

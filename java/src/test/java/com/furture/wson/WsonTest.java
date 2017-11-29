@@ -7,6 +7,10 @@ import com.furture.wson.util.Bits;
 import junit.framework.TestCase;
 import org.junit.Assert;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteOrder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -25,13 +29,10 @@ public class WsonTest extends TestCase {
         map.put("name", "hello");
         byte[] bts = Wson.toWson(map);
         System.out.println(new String(bts));
-        Assert.assertEquals(bts.length, 14);
-        Assert.assertEquals(Bits.getUInt(bts, 1), 1);
-        Assert.assertEquals(Bits.getUInt(bts, 2), 4);
-        Assert.assertEquals(bts[7], 's');
-        Assert.assertEquals(bts.length, 14);
         Map<String, Object> parsed = (Map<String, Object>) Wson.parse(bts);
         Assert.assertEquals(map, parsed);
+
+        System.out.println(ByteOrder.nativeOrder());
 
     }
 
@@ -142,5 +143,25 @@ public class WsonTest extends TestCase {
         System.out.println(JSON.toJSONString(node));
     }
 
+
+    public void  testRecommend() throws IOException {
+        String json = readFile("/recommend2.json");
+        byte[] bts = Wson.toWson(JSON.parse(json));
+        Object src = Wson.parse(bts);
+
+        Assert.assertEquals(json, JSON.toJSONString(src));
+    }
+
+
+    private String readFile(String file) throws IOException {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream(1024);
+        InputStream inputStream = this.getClass().getResourceAsStream(file);
+        byte[] buffer = new byte[1024];
+        int length = 0;
+        while ((length = inputStream.read(buffer)) >=  0){
+            outputStream.write(buffer, 0, length);
+        }
+        return  new String(outputStream.toByteArray());
+    }
 
 }

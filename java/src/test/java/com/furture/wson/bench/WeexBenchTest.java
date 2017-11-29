@@ -142,8 +142,9 @@ public class WeexBenchTest extends TestCase {
         int length = 0;
         while ((length = inputStream.read(buffer)) >=  0){
             outputStream.write(buffer, 0, length);
-            System.out.println("length " + length);
         }
+
+        System.out.println(file + "length ");
         return  new String(outputStream.toByteArray());
     }
 

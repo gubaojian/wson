@@ -2,6 +2,7 @@ package com.efurture.wson;
 
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Array;
+import java.nio.ByteOrder;
 import java.util.*;
 
 /**
@@ -29,6 +30,15 @@ public class Wson {
     private static final byte MAP_TYPE = '{';
 
     private static final String STRING_UTF8_CHARSET_NAME = "UTF-8";
+
+
+    private static final  boolean USE_CHARS = true;
+    /**
+     * StringUTF-16, byte order with native byte order
+     * */
+    private static final byte STRING_TYPE_UTF16 = 's';
+    private static final boolean IS_NATIVE_LITTLE_ENDIAN = (ByteOrder.nativeOrder() == ByteOrder.LITTLE_ENDIAN);
+
 
     /**
      * parse wson data  to object
@@ -98,7 +108,13 @@ public class Wson {
             byte type  = readType();
             switch (type){
                 case STRING_TYPE:
-                    return  readString();
+                {
+                    if(USE_CHARS){
+                        return readChars();
+                    }else {
+                        return  readString();
+                    }
+                }
                 case NUMBER_INT_TYPE :
                     return  readVarInt();
                 case MAP_TYPE:
@@ -187,8 +203,32 @@ public class Wson {
             return  string;
         }
 
+        private final String readChars(){
+            int length = readUInt();
+            StringBuilder stringBuilder = new StringBuilder(length/2);
+            if(IS_NATIVE_LITTLE_ENDIAN){
+                for(int i=0; i<length/2; i++){
+                    char ch = (char) ((buffer[position] & 0xFF) +
+                            (buffer[position + 1] << 8));
+                    stringBuilder.append(ch);
+                    position+=2;
+                }
+            }else{
+                for(int i=0; i<length/2; i++){
+                    char ch = (char) ((buffer[position + 1] & 0xFF) +
+                            (buffer[position] << 8));
+                    stringBuilder.append(ch);
+                    position+=2;
+                }
+            }
+            return  stringBuilder.toString();
+        }
+
         private final String readString(){
             int length = readUInt();
+
+
+
             String string = null;
             try {
                 string = new String(buffer, position, length, STRING_UTF8_CHARSET_NAME);
@@ -308,10 +348,14 @@ public class Wson {
         }
 
         private final void writeObject(Object object) {
-            if(object instanceof  String){
+            if(object instanceof  CharSequence){
                 ensureCapacity(2);
                 writeByte(STRING_TYPE);
-                writeString(object.toString());
+                if(USE_CHARS){
+                    writeChars((CharSequence) object);
+                }else {
+                    writeString(object.toString());
+                }
                 return;
             }else if (object instanceof Map){
                 if(refs.contains(object)){
@@ -427,6 +471,8 @@ public class Wson {
         }
 
 
+
+
         private final void writeByte(byte type){
             buffer[position] = type;
             position++;
@@ -481,6 +527,35 @@ public class Wson {
                 writeBytes(bts);
             }
         }
+
+        /**
+         * writeString UTF-16
+         * */
+        private  final void writeChars(CharSequence value){
+            int length = value.length();
+            ensureCapacity(length*2 + 8);
+            writeUInt(length*2);
+            if(IS_NATIVE_LITTLE_ENDIAN){
+                for(int i=0; i<length; i++){
+                    char ch = value.charAt(i);
+                    buffer[position] = (byte) (ch);
+                    buffer[position+1] = (byte) (ch >>> 8);
+                    position+=2;
+                }
+            }else{
+                for(int i=0; i<length; i++){
+                    char ch = value.charAt(i);
+                    buffer[position + 1] = (byte) (ch      );
+                    buffer[position] = (byte) (ch >>> 8);
+                    position+=2;
+                }
+            }
+        }
+
+
+        /**
+         * writeString UTF-8
+         * */
         private  final void writeString(String value){
             int utf8Length = value.length();
             int i = 0;
@@ -514,58 +589,6 @@ public class Wson {
             bts = null;
         }
 
-        final  int encodeUtf8(CharSequence in, byte[] out, int offset, int length) {
-            int utf16Length = in.length();
-            int j = offset;
-            int i = 0;
-            int limit = offset + length;
-            // Designed to take advantage of
-            // https://wikis.oracle.com/display/HotSpotInternals/RangeCheckElimination
-            for (char c; i < utf16Length && i + j < limit && (c = in.charAt(i)) < 0x80; i++) {
-                out[j + i] = (byte) c;
-            }
-            if (i == utf16Length) {
-                return j + utf16Length;
-            }
-            j += i;
-            for (char c; i < utf16Length; i++) {
-                c = in.charAt(i);
-                if (c < 0x80 && j < limit) {
-                    out[j++] = (byte) c;
-                } else if (c < 0x800 && j <= limit - 2) { // 11 bits, two UTF-8 bytes
-                    out[j++] = (byte) ((0xF << 6) | (c >>> 6));
-                    out[j++] = (byte) (0x80 | (0x3F & c));
-                } else if ((c < Character.MIN_SURROGATE || Character.MAX_SURROGATE < c) && j <= limit - 3) {
-                    // Maximum single-char code point is 0xFFFF, 16 bits, three UTF-8 bytes
-                    out[j++] = (byte) ((0xF << 5) | (c >>> 12));
-                    out[j++] = (byte) (0x80 | (0x3F & (c >>> 6)));
-                    out[j++] = (byte) (0x80 | (0x3F & c));
-                } else if (j <= limit - 4) {
-                    // Minimum code point represented by a surrogate pair is 0x10000, 17 bits,
-                    // four UTF-8 bytes
-                    final char low;
-                    if (i + 1 == in.length()
-                            || !Character.isSurrogatePair(c, (low = in.charAt(++i)))) {
-                        throw new IllegalArgumentException("error utf-8 byte format");
-                    }
-                    int codePoint = Character.toCodePoint(c, low);
-                    out[j++] = (byte) ((0xF << 4) | (codePoint >>> 18));
-                    out[j++] = (byte) (0x80 | (0x3F & (codePoint >>> 12)));
-                    out[j++] = (byte) (0x80 | (0x3F & (codePoint >>> 6)));
-                    out[j++] = (byte) (0x80 | (0x3F & codePoint));
-                } else {
-                    // If we are surrogates and we're not a surrogate pair, always throw an
-                    // UnpairedSurrogateException instead of an ArrayOutOfBoundsException.
-                    if ((Character.MIN_SURROGATE <= c && c <= Character.MAX_SURROGATE)
-                            && (i + 1 == in.length()
-                            || !Character.isSurrogatePair(c, in.charAt(i + 1)))) {
-                        throw new IllegalArgumentException("error utf-8 byte format");
-                    }
-                    throw new ArrayIndexOutOfBoundsException("Failed writing " + c + " at index " + j);
-                }
-            }
-            return j;
-        }
 
         private final void writeDouble(double value){
             writeLong(Double.doubleToLongBits(value));
