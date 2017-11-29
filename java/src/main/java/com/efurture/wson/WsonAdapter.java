@@ -26,7 +26,7 @@ class WsonAdapter {
      * convert object to map, only first layer is convert to map.
      * */
     static Map toMap(Object object){
-        Map map = createMap();
+        Map map = new JSONObject();
         try {
             Class<?> targetClass = object.getClass();
             String key = targetClass.getName();

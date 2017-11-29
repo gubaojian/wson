@@ -533,10 +533,10 @@ public class Wson {
     }
 
 
-    private static final int GLOBAL_STRING_CACHE_SIZE = 2*1024;
     /**
      * cache json property key, most of them all same
      * */
+    private static final int GLOBAL_STRING_CACHE_SIZE = 2*1024;
     private static final ThreadLocal<char[]> localCharsBufferCache = new ThreadLocal<>();
     private static final String[] globalStringBytesCache = new String[GLOBAL_STRING_CACHE_SIZE];
 }
