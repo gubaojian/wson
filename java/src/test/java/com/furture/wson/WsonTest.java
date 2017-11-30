@@ -1,11 +1,13 @@
 package com.furture.wson;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.efurture.wson.Wson;
 import com.furture.wson.domain.Node;
 import com.furture.wson.util.Bits;
 import junit.framework.TestCase;
 import org.junit.Assert;
+import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -163,4 +165,15 @@ public class WsonTest extends TestCase {
         return  new String(outputStream.toByteArray());
     }
 
+
+    @Test
+    public void trimNull(){
+        String json = "[{\"args\":[\"4\",{\"type\":\"change\",\"module\":\"connection\",\"data\":null},null],\"method\":\"callback\"}]";
+        JSONArray object = JSON.parseArray(json);
+        System.out.println(JSON.toJSONString(object));
+        Assert.assertNotEquals(object, Wson.parse(Wson.toWson(object)));
+        Assert.assertEquals(JSON.parse(JSON.toJSONString(object)), Wson.parse(Wson.toWson(object)));
+        System.out.println(JSON.toJSONString(Wson.toWson(object)));
+
+    }
 }

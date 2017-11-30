@@ -1,10 +1,29 @@
+/**
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
 package com.efurture.wson;
 
+
+import android.util.Log;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
-import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Array;
 import java.nio.ByteOrder;
 import java.util.*;
@@ -14,6 +33,11 @@ import java.util.*;
  * Created by efurture on 2017/8/16.
  */
 public class Wson {
+
+    /**
+     * skip map null values
+     * */
+    public static final boolean WriteMapNullValue = false;
     /**
      * wson data type
      * */
@@ -47,10 +71,15 @@ public class Wson {
         if(data == null){
             return  null;
         }
-        Parser parser =  new Parser(data);
-        Object object = parser.parse();
-        parser.close();
-        return object;
+        try{
+            Parser parser =  new Parser(data);
+            Object object = parser.parse();
+            parser.close();
+            return object;
+        }catch (Exception e){
+            e.printStackTrace();
+            return  null;
+        }
     }
 
 
@@ -121,9 +150,9 @@ public class Wson {
                 case NULL_TYPE:
                     return  null;
                 default:
-                    break;
+                    throw new RuntimeException("wson unhandled type " + type + " " +
+                     position  +  " length " + buffer.length);
             }
-            return  null;
         }
 
         private final Object readMap(){
@@ -335,14 +364,7 @@ public class Wson {
                 }
                 refs.add(object);
                 Map map = (Map) object;
-                ensureCapacity(8);
-                writeByte(MAP_TYPE);
-                writeUInt(map.size());
-                Set<Map.Entry<Object,Object>>  entries = map.entrySet();
-                for(Map.Entry<Object,Object> entry : entries){
-                    writeMapKeyUTF16(entry.getKey().toString());
-                    writeObject(entry.getValue());
-                }
+                writeMap(map);
                 refs.remove(refs.size()-1);
                 return;
             }else if (object instanceof List){
@@ -362,15 +384,8 @@ public class Wson {
                 refs.remove(refs.size()-1);
                 return;
             }else if (object instanceof Number){
-                ensureCapacity(12);
                 Number number = (Number) object;
-                if(object instanceof  Integer || object instanceof  Short){
-                    writeByte(NUMBER_INT_TYPE);
-                    writeVarInt(number.intValue());
-                }else{
-                    writeByte(NUMBER_DOUBLE_TYPE);
-                    writeDouble(number.doubleValue());
-                }
+                writeNumber(number);
                 return;
             }else if (object instanceof  Boolean){
                 ensureCapacity(2);
@@ -433,14 +448,69 @@ public class Wson {
                     writeByte(NULL_TYPE);
                 }else {
                     refs.add(object);
-                    writeObject(toMap(object));
+                    writeMap(toMap(object));
                     refs.remove(refs.size()-1);
                 }
                 return;
             }
         }
 
+        private final void writeNumber(Number number) {
+            ensureCapacity(12);
+            if(number instanceof  Integer
+                    || number instanceof  Short
+                    || number instanceof  Byte){
+                writeByte(NUMBER_INT_TYPE);
+                writeVarInt(number.intValue());
+            }else{
+                if(number instanceof  Float){
+                    float value = number.floatValue();
+                    if(value == Math.ceil(value)){
+                        writeByte(NUMBER_INT_TYPE);
+                        writeVarInt(number.intValue());
+                        return;
+                    }
+                }
+                writeByte(NUMBER_DOUBLE_TYPE);
+                if(number instanceof Double){
+                    writeDouble(number.doubleValue());
+                }else{
+                    writeDouble(Double.parseDouble(number.toString()));
+                }
+            }
+        }
 
+        private final  void writeMap(Map map) {
+            if(WriteMapNullValue){
+                ensureCapacity(8);
+                writeByte(MAP_TYPE);
+                writeUInt(map.size());
+                Set<Map.Entry<Object,Object>>  entries = map.entrySet();
+                for(Map.Entry<Object,Object> entry : entries){
+                    writeMapKeyUTF16(entry.getKey().toString());
+                    writeObject(entry.getValue());
+                }
+            }else{
+                Set<Map.Entry<Object,Object>>  entries = map.entrySet();
+                int nullValueSize = 0;
+                for(Map.Entry<Object,Object> entry : entries){
+                    if(entry.getValue() == null){
+                        nullValueSize++;
+                    }
+                }
+
+                ensureCapacity(8);
+                writeByte(MAP_TYPE);
+                writeUInt(map.size()-nullValueSize);
+                for(Map.Entry<Object,Object> entry : entries){
+                    if(entry.getValue() == null){
+                        continue;
+                    }
+                    writeMapKeyUTF16(entry.getKey().toString());
+                    writeObject(entry.getValue());
+                }
+            }
+        }
 
 
         private final void writeByte(byte type){
