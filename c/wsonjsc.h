@@ -22,6 +22,7 @@ using namespace JSC;
 namespace wson {
     wson_buffer* toWson(ExecState* state, JSValue val);
     JSValue toJSValue(ExecState* state, wson_buffer* buffer);
+    JSValue toJSValue(ExecState* state, void* buffer, int length);
 
     /**
      * performance improve wson toJSValue. very big import improve

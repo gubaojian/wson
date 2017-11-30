@@ -98,7 +98,7 @@ class WsonAdapter {
         }
 
         @Override
-        protected boolean removeEldestEntry(Entry eldest) {
+        protected boolean removeEldestEntry(Map.Entry eldest) {
             return size() > cacheSize;
         }
     }

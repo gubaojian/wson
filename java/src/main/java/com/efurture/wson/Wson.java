@@ -19,7 +19,6 @@
 package com.efurture.wson;
 
 
-import android.util.Log;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;

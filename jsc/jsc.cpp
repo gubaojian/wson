@@ -1362,8 +1362,10 @@ protected:
         addFunction(vm, "tsonInit", functionTsonInit, 0);
         addFunction(vm, "tsonDestroy", functionTsonDestroy, 0);
         addFunction(vm, "toTson", functionTson, 1);
-        addFunction(vm, "functionMultiThreadTest", functionMultiThreadTest, 1);
         addFunction(vm, "parseTson", functionParseTson, 1);
+        
+        addFunction(vm, "functionMultiThreadTest", functionMultiThreadTest, 1);
+    
         addFunction(vm, "read", functionReadFile, 2);
         addFunction(vm, "checkSyntax", functionCheckSyntax, 1);
         addFunction(vm, "sleepSeconds", functionSleepSeconds, 1);
@@ -2102,7 +2104,7 @@ EncodedJSValue JSC_HOST_CALL functionCreateDOMJITCheckSubClassObject(ExecState* 
     Structure* structure = DOMJITCheckSubClassObject::createStructure(exec->vm(), exec->lexicalGlobalObject(), jsNull());
     DOMJITCheckSubClassObject* result = DOMJITCheckSubClassObject::create(exec->vm(), exec->lexicalGlobalObject(), structure);
     return JSValue::encode(result);
-}
+}/Users/furture/code/pack/jsc/jsc.cpp
 
 EncodedJSValue JSC_HOST_CALL functionSetImpureGetterDelegate(ExecState* exec)
 {
@@ -2337,6 +2339,9 @@ EncodedJSValue JSC_HOST_CALL functionReadFile(ExecState* exec)
     return JSValue::encode(result);
 }
 
+
+
+
 EncodedJSValue JSC_HOST_CALL functionTsonInit(ExecState* exec){
      tson::init(exec);
      return JSValue::encode(jsBoolean(true));
@@ -2347,6 +2352,38 @@ EncodedJSValue JSC_HOST_CALL functionTsonDestroy(ExecState* exec){
     tson::destory();
     return JSValue::encode(jsBoolean(true));
 }
+
+EncodedJSValue JSC_HOST_CALL functionParseTson(ExecState* exec)
+{
+    //VM& vm = exec->vm();
+    //auto scope = DECLARE_THROW_SCOPE(vm);
+    JSValue value = exec->argument(0);
+    JSValue result;
+    if(value.isString()){
+        String string = value.toWTFString(exec);
+        double start = now_ms();
+        for(int i=0; i<10000; i++){
+            result = JSONParse(exec, string);
+        }
+        printf("json parse used %f ms \n", (now_ms()-start));
+    }else{
+        JSUint8Array* array = (JSUint8Array*)asObject(value);
+        uint8_t* ptr = array->typedVector();
+        tson_buffer* buffer = tson_buffer_from(ptr, array->byteLength());
+        double start = now_ms();
+        for(int i=0; i<10000; i++){
+            buffer->position = 0;
+            result = tson::toJSValue(exec, buffer);
+        }
+        double used = (now_ms()-start);
+        
+        // String string = JSONStringify(exec, result, 1);
+        //printf("result %s\n", string.utf8().data());
+        printf("tson parse used %f ms  \n", used);
+    }
+    return JSValue::encode(result);
+}
+
 
 EncodedJSValue JSC_HOST_CALL functionTson(ExecState* exec)
 {
