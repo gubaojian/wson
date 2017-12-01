@@ -2,7 +2,7 @@
 tiny binary json libaray inspired by bson and message pack，less than 500 line code you can embed in your application.
 
 
-### wson data type
+### wson data format
 | type |  signature | format |
 | -------- | -------- | -------- |
 | number int     | 'i'    | signature + varint    |
