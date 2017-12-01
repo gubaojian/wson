@@ -7,7 +7,8 @@ tiny binary json libaray inspired by bson and message pack，less than 500 line 
 | -------- | -------- | -------- |
 | number int     | 'i'    | signature + varint    |
 | number double    | 'd'   | signature + 8 byte (big endian)|
-| string   | 's'   | signature + var length + bytes(utf-8)|
+| number float    | 'F'   | signature + 4 byte (big endian)|
+| string   | 's'   | signature + var length + bytes( unicoder utf-16)|
 | null    | '0'   |  signature |
 | boolean    | 't' or 'f'   | signature |
 | array    | '['   | signature + var length + elements|
