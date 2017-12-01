@@ -2,6 +2,7 @@ package com.furture.wson;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.efurture.wson.Wson;
 import com.furture.wson.domain.Node;
 import com.furture.wson.util.Bits;
@@ -13,6 +14,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteOrder;
+import java.nio.FloatBuffer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -174,6 +176,15 @@ public class WsonTest extends TestCase {
         Assert.assertNotEquals(object, Wson.parse(Wson.toWson(object)));
         Assert.assertEquals(JSON.parse(JSON.toJSONString(object)), Wson.parse(Wson.toWson(object)));
         System.out.println(JSON.toJSONString(Wson.toWson(object)));
+    }
 
+    @Test
+    public void  testFloat(){
+        Map<String,Object> map = new HashMap<>();
+        map.put("number", 1.0f);
+        JSONObject object = (JSONObject) Wson.parse(Wson.toWson(map));
+        System.out.println(object.get("number").getClass());
+
+        Assert.assertEquals(object.get("number").getClass(), Float.class);
     }
 }

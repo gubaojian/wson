@@ -52,6 +52,8 @@ public class Wson {
 
     private static final byte NUMBER_DOUBLE_TYPE = 'd';
 
+    private static final byte NUMBER_FLOAT_TYPE = 'F';
+
     private static final byte ARRAY_TYPE = '[';
 
     private static final byte MAP_TYPE = '{';
@@ -136,6 +138,8 @@ public class Wson {
                     return readUTF16String();
                 case NUMBER_INT_TYPE :
                     return  readVarInt();
+                case NUMBER_FLOAT_TYPE :
+                    return  readFloat();
                 case MAP_TYPE:
                     return readMap();
                 case ARRAY_TYPE:
@@ -153,6 +157,8 @@ public class Wson {
                      position  +  " length " + buffer.length);
             }
         }
+
+
 
         private final Object readMap(){
             int size = readUInt();
@@ -296,6 +302,15 @@ public class Wson {
         private  final double readDouble(){
             double number = Double.longBitsToDouble(readLong());
             return  number;
+        }
+
+        private Object readFloat() {
+            int number = (((buffer[position + 3] & 0xFF)      ) +
+                    ((buffer[position + 2] & 0xFF) <<  8) +
+                    ((buffer[position + 1] & 0xFF) << 16) +
+                    ((buffer[position  ] & 0xFF) << 24));
+            position +=4;
+            return  Float.intBitsToFloat(number);
         }
     }
 
@@ -456,27 +471,32 @@ public class Wson {
 
         private final void writeNumber(Number number) {
             ensureCapacity(12);
-            if(number instanceof  Integer
-                    || number instanceof  Short
+            if(number instanceof  Integer){
+                writeByte(NUMBER_INT_TYPE);
+                writeVarInt(number.intValue());
+                return;
+            }
+
+            if(number instanceof Float){
+                writeByte(NUMBER_FLOAT_TYPE);
+                writeFloat(number.floatValue());
+                return;
+            }
+            if(number instanceof  Double){
+                writeByte(NUMBER_DOUBLE_TYPE);
+                writeDouble(number.doubleValue());
+                return;
+            }
+
+            if(number instanceof  Short
                     || number instanceof  Byte){
                 writeByte(NUMBER_INT_TYPE);
                 writeVarInt(number.intValue());
-            }else{
-                if(number instanceof  Float){
-                    float value = number.floatValue();
-                    if(value == Math.ceil(value)){
-                        writeByte(NUMBER_INT_TYPE);
-                        writeVarInt(number.intValue());
-                        return;
-                    }
-                }
-                writeByte(NUMBER_DOUBLE_TYPE);
-                if(number instanceof Double){
-                    writeDouble(number.doubleValue());
-                }else{
-                    writeDouble(Double.parseDouble(number.toString()));
-                }
+                return;
             }
+
+            writeByte(NUMBER_DOUBLE_TYPE);
+            writeDouble(number.doubleValue());
         }
 
         private final  void writeMap(Map map) {
@@ -555,6 +575,15 @@ public class Wson {
 
         private final void writeDouble(double value){
             writeLong(Double.doubleToLongBits(value));
+        }
+
+        private final void writeFloat(float value){
+            int val = Float.floatToIntBits(value);
+            buffer[position + 3] = (byte) (val       );
+            buffer[position + 2] = (byte) (val >>>  8);
+            buffer[position + 1] = (byte) (val >>> 16);
+            buffer[position ] = (byte) (val >>> 24);
+            position += 4;
         }
 
         private final void writeLong(long val){

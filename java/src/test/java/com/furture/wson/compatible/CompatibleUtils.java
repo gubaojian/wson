@@ -78,6 +78,11 @@ public class CompatibleUtils {
                 return;
             }
         }
+        if(dest instanceof  Float){
+            if(((Float) dest).doubleValue() == ((Number)src).floatValue()){
+                return;
+            }
+        }
         throw new RuntimeException(src  + " " +  dest + " not same Object");
     }
 }
