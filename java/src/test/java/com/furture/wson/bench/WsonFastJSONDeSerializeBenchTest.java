@@ -15,11 +15,11 @@ public class WsonFastJSONDeSerializeBenchTest extends TestCase {
 
 
     public void testMediaWson() throws IOException {
-        benchBuild("/media.json", 10000, true);
+        benchBuild("/media.json", 1000, true);
     }
 
     public void testMediaJSON() throws IOException {
-        benchBuild("/media.json", 10000, false);
+        benchBuild("/media.json", 1000, false);
     }
 
     public void testMedia2Wson() throws IOException {

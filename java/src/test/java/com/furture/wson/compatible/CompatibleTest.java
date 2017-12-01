@@ -27,4 +27,8 @@ public class CompatibleTest extends TestCase {
 
         System.out.println(JSON.toJSONString(Wson.parse(Wson.toWson(map))));
     }
+
+    public void  testMediaBench(){
+        CompatibleUtils.testMediaBench();
+    }
 }

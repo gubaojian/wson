@@ -85,4 +85,114 @@ public class CompatibleUtils {
         }
         throw new RuntimeException(src  + " " +  dest + " not same Object");
     }
+
+
+
+    public static void  benchParse(String data, byte[] bts){
+        int count = 1000;
+        benchWsonParse(bts, count);
+        benchJSONParse(data, count);
+
+        benchJSONParse(data, count);
+        benchWsonParse(bts, count);
+
+
+        benchWsonParse(bts, count);
+        benchJSONParse(data, count);
+    }
+
+    private static void benchWsonParse(byte[] bts, int count){
+        Wson.parse(bts);
+        long start = System.currentTimeMillis();
+        for(int i=0; i<count; i++) {
+            Wson.parse(bts);
+        }
+        long end = System.currentTimeMillis();
+        System.out.println("WSON parse used " + (end - start));
+    }
+
+    private static void benchJSONParse(String data, int count){
+        JSON.parse(data);
+        long start = System.currentTimeMillis();
+        for(int i=0; i<count; i++) {
+            JSON.parse(data);
+        }
+        long end = System.currentTimeMillis();
+        System.out.println("FastJSON parse used " + (end - start));
+    }
+
+
+    public static void  benchSerialize(Object object){
+        int count  = 1000;
+        benchWsonSerialize(object, count);
+        benchJsonSerialize(object, count);
+
+        benchWsonSerialize(object, count);
+        benchJsonSerialize(object, count);
+
+        benchWsonSerialize(object, count);
+        benchJsonSerialize(object, count);
+    }
+
+    private static void benchWsonSerialize(Object map, int count){
+        long start = System.currentTimeMillis();
+        for (int i = 0; i < count; i++) {
+            Wson.toWson(map);
+        }
+        long end = System.currentTimeMillis();
+        System.out.println("WSON serialize used " + (end - start));
+    }
+
+    private static void benchJsonSerialize(Object map, int count){
+        long start = System.currentTimeMillis();
+        for(int i=0; i<count; i++) {
+            JSON.toJSONString(map);
+        }
+        long end = System.currentTimeMillis();
+        System.out.println("FASTJSON serialize used " + (end - start));
+
+    }
+
+
+    public static  void  testMediaBench(){
+        String media = "{\n" +
+                "  \"media\": {\n" +
+                "    \"uri\": \"g\",\n" +
+                "    \"title\": \"J\",\n" +
+                "    \"width\": 640,\n" +
+                "    \"height\": 480,\n" +
+                "    \"format\": \"v\",\n" +
+                "    \"duration\": 18000000,\n" +
+                "    \"size\": 58982400,\n" +
+                "    \"bitrate\": 262144,\n" +
+                "    \"persons\": [\n" +
+                "      \"B\",\n" +
+                "      \"S\"\n" +
+                "    ],\n" +
+                "    \"player\": \"JAVA\",\n" +
+                "    \"copyright\": null\n" +
+                "  },\n" +
+                "  \"images\": [\n" +
+                "    {\n" +
+                "      \"uri\": \"h\",\n" +
+                "      \"title\": \"J\",\n" +
+                "      \"width\": 1024,\n" +
+                "      \"height\": 768,\n" +
+                "      \"size\": \"LARGE\"\n" +
+                "    },\n" +
+                "    {\n" +
+                "      \"uri\": \"h\",\n" +
+                "      \"title\": \"J\",\n" +
+                "      \"width\": 320,\n" +
+                "      \"height\": 240,\n" +
+                "      \"size\": \"SMALL\"\n" +
+                "    }\n" +
+                "  ]\n" +
+                "}";
+        Object object = JSON.parse(media);
+        byte[] bts = Wson.toWson(object);
+        CompatibleUtils.benchParse(JSON.toJSONString(object), bts);
+        CompatibleUtils.benchSerialize(object);
+    }
+
 }
