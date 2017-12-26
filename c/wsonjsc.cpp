@@ -9,16 +9,17 @@
 #include "wsonjsc.h"
 #include "ObjectConstructor.h"
 #include "JSONObject.h"
+#include "JSCJSValueInlines.h"
 #include <wtf/Vector.h>
 #include <wtf/HashMap.h>
 
 #ifdef  __ANDROID__
-    #define WSON_JSC_DEBUG  true;
+    //#define WSON_JSC_DEBUG  true;
     #include <android/log.h>
     #define TAG "weex"
     #define LOGE(...) __android_log_print(ANDROID_LOG_ERROR, TAG, __VA_ARGS__)
 #else
-#define LOGE(...)  {}
+#define LOGE(...)  printf(__VA_ARGS__)
 #endif
 
 
@@ -30,7 +31,7 @@ using namespace JSC;
  */
 #define WSON_MAX_DEEP  40000
 #define WSON_SYSTEM_IDENTIFIER_CACHE_COUNT (1024*4)
-#define WSON_LOCAL_IDENTIFIER_CACHE_COUNT 64
+#define WSON_LOCAL_IDENTIFIER_CACHE_COUNT 32
 
 namespace wson {
     struct IdentifierCache{
@@ -43,7 +44,7 @@ namespace wson {
     static  IdentifierCache* systemIdentifyCache = nullptr;
     static  VM* systemIdentifyCacheVM = nullptr;
     void wson_push_js_value(ExecState* exec, JSValue val, wson_buffer* buffer, Vector<JSObject*, 16>& objectStack);
-    JSValue wson_to_js_value(ExecState* state, wson_buffer* buffer, IdentifierCache* localIdentifiers);
+    JSValue wson_to_js_value(ExecState* state, wson_buffer* buffer, IdentifierCache* localIdentifiers, int localCount);
     inline void wson_push_js_string(ExecState* exec,  JSValue val, wson_buffer* buffer);
     inline void wson_push_js_identifier(Identifier val, wson_buffer* buffer);
     inline JSValue call_object_js_value_to_json(ExecState* exec, JSValue val, VM& vm, Identifier* identifier);
@@ -84,24 +85,51 @@ namespace wson {
      */
     JSValue toJSValue(ExecState* exec, wson_buffer* buffer){
         VM& vm =exec->vm();
-        
         LocalScope scope(vm);
         if(systemIdentifyCacheVM && systemIdentifyCacheVM == &vm){
-            IdentifierCache localIdentifiers[WSON_LOCAL_IDENTIFIER_CACHE_COUNT];
-            return wson_to_js_value(exec, buffer, localIdentifiers);
+            if(buffer->length < 256){// small amount, less memory
+               IdentifierCache localIdentifiers[WSON_LOCAL_IDENTIFIER_CACHE_COUNT];
+               return wson_to_js_value(exec, buffer, localIdentifiers, WSON_LOCAL_IDENTIFIER_CACHE_COUNT);
+            }else if(buffer->length < 512){// small amount, less memory
+               IdentifierCache localIdentifiers[WSON_LOCAL_IDENTIFIER_CACHE_COUNT*2];
+               return wson_to_js_value(exec, buffer, localIdentifiers, WSON_LOCAL_IDENTIFIER_CACHE_COUNT*2);
+            }else if(buffer->length < 1024){// small amount, less memory
+               IdentifierCache localIdentifiers[WSON_LOCAL_IDENTIFIER_CACHE_COUNT*3];
+               return wson_to_js_value(exec, buffer, localIdentifiers, WSON_LOCAL_IDENTIFIER_CACHE_COUNT*3);
+            }else{
+               IdentifierCache localIdentifiers[WSON_LOCAL_IDENTIFIER_CACHE_COUNT*4];
+               return wson_to_js_value(exec, buffer, localIdentifiers, WSON_LOCAL_IDENTIFIER_CACHE_COUNT*4);
+            }
         }
-        IdentifierCache localIdentifiers[WSON_LOCAL_IDENTIFIER_CACHE_COUNT*2];
-        JSValue value =  wson_to_js_value(exec, buffer, localIdentifiers);
-        
-#ifdef  WSON_JSC_DEBUG 
-        LOGE("weex wson toJSValue %s", JSONStringify(exec,value, 0).utf8().data());
-#endif         
+
+        if(buffer->length < 256){
+               IdentifierCache localIdentifiers[WSON_LOCAL_IDENTIFIER_CACHE_COUNT];
+               return wson_to_js_value(exec, buffer, localIdentifiers, WSON_LOCAL_IDENTIFIER_CACHE_COUNT);
+        }
+
+        if(buffer->length < 1024*2){
+               IdentifierCache localIdentifiers[WSON_LOCAL_IDENTIFIER_CACHE_COUNT*2];
+               return wson_to_js_value(exec, buffer, localIdentifiers, WSON_LOCAL_IDENTIFIER_CACHE_COUNT*2);
+        }
+        IdentifierCache localIdentifiers[WSON_LOCAL_IDENTIFIER_CACHE_COUNT*4];
+        JSValue value =  wson_to_js_value(exec, buffer, localIdentifiers, WSON_LOCAL_IDENTIFIER_CACHE_COUNT*4);
+               
         return value;
     }
 
      JSValue toJSValue(ExecState* state, void* data, int length){
          wson_buffer* buffer = wson_buffer_from(data, length);
+#ifdef  WSON_JSC_DEBUG
+        LOGE("weex wson toJSValue length %d  %d", buffer->position, buffer->length);
+#endif  
          JSValue ret = toJSValue(state, buffer);
+
+#ifdef  WSON_JSC_DEBUG
+        LOGE("weex wson toJSValue %s", JSONStringify(state, ret, 0).utf8().data());
+        wson_buffer* backBuffer = toWson(state, ret);
+        LOGE("weex wson toJSValue backBuffer length %d",  backBuffer->position);
+        wson_buffer_free(backBuffer);
+#endif  
          buffer->data = nullptr;
          wson_buffer_free(buffer);
          return ret;
@@ -183,9 +211,10 @@ namespace wson {
     }
 
     /**
-     * most of json identifer is repeat, cache can improve performance
+     * most of json identifer is repeat, cache can improve performance fixme 
+     * cache global, improve performance
      */
-    inline Identifier makeIdentifer(VM* vm, IdentifierCache* localIdentifiers, const UChar* utf16, size_t length){
+    inline Identifier makeIdentifer(VM* vm, IdentifierCache* localIdentifiers, int localCount, const UChar* utf16, size_t length){
         if(length <= 0){
            return vm->propertyNames->emptyIdentifier;
         }
@@ -203,7 +232,7 @@ namespace wson {
         if(systemIdentifyCacheVM && systemIdentifyCacheVM == vm){
             key = hash(utf16, length);
             systemIdentifyCacheIndex = (WSON_SYSTEM_IDENTIFIER_CACHE_COUNT - 1)&key;
-            localIndex = (WSON_LOCAL_IDENTIFIER_CACHE_COUNT - 1) & key;
+            localIndex = (localCount - 1) & key;
             if(systemIdentifyCache != nullptr){
                 cache = systemIdentifyCache[systemIdentifyCacheIndex];
                 if(cache.length == length
@@ -218,7 +247,7 @@ namespace wson {
             }
         }else{
             key = hash2(utf16, length);
-            localIndex = (WSON_LOCAL_IDENTIFIER_CACHE_COUNT*2 - 1) & key;
+            localIndex = (localCount - 1) & key;
         }
 
         cache = localIdentifiers[localIndex];
@@ -246,10 +275,12 @@ namespace wson {
         return identifier;
     }
 
-    JSValue wson_to_js_value(ExecState* exec, wson_buffer* buffer,  IdentifierCache* localIdentifiers){
+    JSValue wson_to_js_value(ExecState* exec, wson_buffer* buffer,  IdentifierCache* localIdentifiers, int localCount){
         uint8_t  type = wson_next_type(buffer);
         switch (type) {
-            case WSON_STRING_TYPE:{
+            case WSON_STRING_TYPE:
+            case WSON_NUMBER_BIG_INT_TYPE:
+            case WSON_NUMBER_BIG_DECIMAL_TYPE:{
                     uint32_t length = wson_next_uint(buffer);
                     UChar* destination;
                     String s = String::createUninitialized(length/sizeof(UChar), destination);
@@ -263,7 +294,7 @@ namespace wson {
                     JSArray* array = constructEmptyArray(exec, 0);
                     for(uint32_t i=0; i<length; i++){
                         if(wson_has_next(buffer)){
-                            array->putDirectIndex(exec, i, wson_to_js_value(exec, buffer, localIdentifiers));
+                            array->putDirectIndex(exec, i, wson_to_js_value(exec, buffer, localIdentifiers, localCount));
                         }else{
                             break;
                         }
@@ -279,11 +310,11 @@ namespace wson {
                       if(wson_has_next(buffer)){
                           int propertyLength = wson_next_uint(buffer);
                           const UChar* data = (const UChar*)wson_next_bts(buffer, propertyLength);
-                          PropertyName name = makeIdentifer(&vm, localIdentifiers, data, propertyLength/sizeof(UChar));
+                          PropertyName name = makeIdentifer(&vm, localIdentifiers, localCount, data, propertyLength/sizeof(UChar));
                           if (std::optional<uint32_t> index = parseIndex(name)){
-                              object->putDirectIndex(exec, index.value(), wson_to_js_value(exec, buffer, localIdentifiers));
+                              object->putDirectIndex(exec, index.value(), wson_to_js_value(exec, buffer, localIdentifiers, localCount));
                           }else{
-                              object->putDirect(vm, name, wson_to_js_value(exec, buffer, localIdentifiers));
+                              object->putDirect(vm, name, wson_to_js_value(exec, buffer, localIdentifiers, localCount));
                           }
                       }else{
                           break;
@@ -308,6 +339,16 @@ namespace wson {
             case WSON_NUMBER_DOUBLE_TYPE:{
                  double  num = wson_next_double(buffer);
                  return  jsNumber(num);
+                }
+                break;
+           case WSON_NUMBER_FLOAT_TYPE:{
+                 float  num = wson_next_float(buffer);
+                 return  jsNumber(num);
+                }
+                break;
+            case WSON_NUMBER_LONG_TYPE:{
+                  int64_t  num = wson_next_long(buffer);
+                  return  jsNumber(num);
                 }
                 break;
             case WSON_NULL_TYPE:{
@@ -381,10 +422,21 @@ namespace wson {
         if(val.isNumber()){
             if(val.isInt32()){
                 wson_push_type_int(buffer, val.asInt32());
-            }else{
-                double number = val.asNumber();
-                wson_push_type_double(buffer, number);
+                return;
             }
+            
+            if(val.isAnyInt()){
+                int64_t int64Number = val.asAnyInt();
+                wson_push_type_long(buffer, int64Number);
+                return;
+            }
+            
+            if(val.isDouble()){
+                double number = val.asDouble();
+                wson_push_type_double(buffer, number);
+                return;
+            }
+            wson_push_js_string(exec, val, buffer);
             return;
         }
 
@@ -415,10 +467,25 @@ namespace wson {
                 wson_push_js_string(exec, object->toString(exec), buffer);
                 return;
             }
-
             if (object->inherits(vm, NumberObject::info())){
-                double number = object->toNumber(exec);
-                wson_push_type_double(buffer, number);
+                JSValue number = jsNumber(object->toNumber(exec));
+                if(number.isInt32()){
+                    wson_push_type_int(buffer, number.asInt32());
+                    return;
+                }
+                
+                if(number.isAnyInt()){
+                    int64_t int64Number = number.asAnyInt();
+                    wson_push_type_long(buffer, int64Number);
+                    return;
+                }
+                
+                if(val.isDouble()){
+                    double d = val.asDouble();
+                    wson_push_type_double(buffer, d);
+                    return;
+                }
+                wson_push_js_string(exec, number, buffer);
                 return;
             }
 
@@ -459,7 +526,7 @@ namespace wson {
                       undefinedOrFunctionSize++;
                  }
             }
-            /** skip them */
+            /** skip them undefined or function value */
             wson_push_type_map(buffer, size - undefinedOrFunctionSize);
             objectStack.append(object);
             for(uint32_t i=0; i<size; i++){

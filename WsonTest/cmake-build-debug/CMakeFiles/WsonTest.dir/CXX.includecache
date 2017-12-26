@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/furture/code/trylearn/WsonTest/WsonTest.cpp
+
+/Users/furture/code/trylearn/WsonTest/main.cpp
+iostream
+-
+fstream
+-
+JavaScriptCore/JavaScriptCore.h
+-
+wson/wson.h
+/Users/furture/code/trylearn/WsonTest/wson/wson.h
+
+/Users/furture/code/trylearn/WsonTest/wson/wson.h
+inttypes.h
+-
+stdlib.h
+-
+string.h
+-
+

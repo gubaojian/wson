@@ -1,0 +1,1 @@
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -g -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/WsonTest.dir/main.cpp.o CMakeFiles/WsonTest.dir/wson/wson.c.o CMakeFiles/WsonTest.dir/WsonTest.cpp.o  -o WsonTest 
