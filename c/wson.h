@@ -30,7 +30,7 @@ typedef struct wson_buffer{
  * */
 #define  WSON_NULL_TYPE   '0'
 #define  WSON_STRING_TYPE  's'
-#define  WSON_BOOLEAN_TYPE_TRUE 'T'
+#define  WSON_BOOLEAN_TYPE_TRUE 't'
 #define  WSON_BOOLEAN_TYPE_FALSE 'f'
 #define  WSON_NUMBER_INT_TYPE  'i'
 #define  WSON_NUMBER_DOUBLE_TYPE  'd'

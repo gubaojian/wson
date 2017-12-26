@@ -22,32 +22,53 @@ public class DataFormatTest extends TestCase {
         if(Bits.getDouble(bts, 0) != 210.33576){
             throw new  RuntimeException("format not right match double " + Bits.getDouble(bts, 0));
         }
-        if(Bits.getInt(bts, 8) != 12345){
+        if(Bits.getVarInt(bts, 8) != 12345){
             throw new  RuntimeException("format not right match int");
         }
-        if(Bits.getVarInt(bts, 12) != -1){
+        if(Bits.getVarInt(bts, 10) != -1){
             throw new  RuntimeException("format not right match varint "
-                    + Bits.getVarInt(bts, 12)  + "  " + Bits.getUInt(bts, 13));
+                    + Bits.getVarInt(bts, 10)  + "  " + Bits.getUInt(bts, 11));
         }
 
-        if(Bits.getVarInt(bts, 13) != Integer.MAX_VALUE){
-            throw new  RuntimeException("format not right match varint MAX");
+        if(Bits.getVarInt(bts, 12) != Integer.MAX_VALUE){
+            throw new  RuntimeException("format not right match varint MAX"
+             + Bits.getVarInt(bts, 12)
+            + "  " + Integer.MAX_VALUE);
         }
 
-        if(Bits.getVarInt(bts, 18) != Integer.MIN_VALUE){
+        if(Bits.getVarInt(bts, 17) != Integer.MIN_VALUE){
             throw new  RuntimeException("format not right match varint MIN ");
         }
 
-        if(Bits.getUInt(bts, 23) != 1){
-            throw new  RuntimeException("format not right match uint " + Bits.getUInt(bts, 13));
+        if(Bits.getUInt(bts, 22) != 1){
+            throw new  RuntimeException("1 format not right match uint " + Bits.getUInt(bts, 22));
         }
 
-        if(Bits.getUInt(bts, 24) != Integer.MAX_VALUE){
-            throw new  RuntimeException("format not right match uint " + Bits.getUInt(bts, 13));
+        if(Bits.getUInt(bts, 23) != Integer.MAX_VALUE){
+            throw new  RuntimeException("max format not right match uint " + Bits.getUInt(bts, 23));
+        }
+
+        System.out.println(bts[28] == 'l');
+
+        if(Bits.getLong(bts, 29) != Long.MAX_VALUE){
+            throw new  RuntimeException("max format not right match uint " + Bits.getUInt(bts, 25)
+             +  " " + Long.MAX_VALUE);
+        }
+
+        if(Bits.getLong(bts, 38) != Long.MAX_VALUE - 1){
+            throw new  RuntimeException("max format not right match uint " + Bits.getUInt(bts, 25)
+                    +  " " + Long.MAX_VALUE);
+        }
+
+
+        if(Bits.getLong(bts, 47) != -(Long.MAX_VALUE - 1)){
+            throw new  RuntimeException("max format not right match uint " + Bits.getUInt(bts, 25)
+                    +  " " + Long.MAX_VALUE);
         }
         System.out.println("first number  " +  Bits.getDouble(bts, 0));
         System.out.println("first int " +   Bits.getInt(bts, 8));
         System.out.println("first long " +  Bits.getLong(bts, 12));
+
     }
 
 

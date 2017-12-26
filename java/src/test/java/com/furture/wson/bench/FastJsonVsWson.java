@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * Created by 剑白(jianbai.gbj) on 2017/8/16.
  */
-public class FastJsonVsTson extends TestCase {
+public class FastJsonVsWson extends TestCase {
 
 
 
@@ -37,7 +37,7 @@ public class FastJsonVsTson extends TestCase {
 
 
 
-    public void testTson(){
+    public void testWson(){
         byte[] data = null;
         long start = System.currentTimeMillis();
         for(int i=0; i<10000; i++) {

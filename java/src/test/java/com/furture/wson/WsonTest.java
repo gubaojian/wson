@@ -1,12 +1,20 @@
 package com.furture.wson;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.efurture.wson.Wson;
 import com.furture.wson.domain.Node;
 import com.furture.wson.util.Bits;
 import junit.framework.TestCase;
 import org.junit.Assert;
+import org.junit.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteOrder;
+import java.nio.FloatBuffer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -25,13 +33,10 @@ public class WsonTest extends TestCase {
         map.put("name", "hello");
         byte[] bts = Wson.toWson(map);
         System.out.println(new String(bts));
-        Assert.assertEquals(bts.length, 14);
-        Assert.assertEquals(Bits.getUInt(bts, 1), 1);
-        Assert.assertEquals(Bits.getUInt(bts, 2), 4);
-        Assert.assertEquals(bts[7], 's');
-        Assert.assertEquals(bts.length, 14);
         Map<String, Object> parsed = (Map<String, Object>) Wson.parse(bts);
         Assert.assertEquals(map, parsed);
+
+        System.out.println(ByteOrder.nativeOrder());
 
     }
 
@@ -101,7 +106,6 @@ public class WsonTest extends TestCase {
         Map<String, Object> map = new HashMap<>();
         map.put(key, null);
         byte[] bts = Wson.toWson(map);
-        Assert.assertEquals(8, bts.length);
         System.out.println(new String(bts));
         Map<String, Object> parsed = (Map<String, Object>) Wson.parse(bts);
         Assert.assertEquals(map, parsed);
@@ -143,4 +147,44 @@ public class WsonTest extends TestCase {
     }
 
 
+    public void  testRecommend() throws IOException {
+        String json = readFile("/recommend2.json");
+        byte[] bts = Wson.toWson(JSON.parse(json));
+        Object src = Wson.parse(bts);
+
+        Assert.assertEquals(json, JSON.toJSONString(src));
+    }
+
+
+    private String readFile(String file) throws IOException {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream(1024);
+        InputStream inputStream = this.getClass().getResourceAsStream(file);
+        byte[] buffer = new byte[1024];
+        int length = 0;
+        while ((length = inputStream.read(buffer)) >=  0){
+            outputStream.write(buffer, 0, length);
+        }
+        return  new String(outputStream.toByteArray());
+    }
+
+
+    @Test
+    public void trimNull(){
+        String json = "[{\"args\":[\"4\",{\"type\":\"change\",\"module\":\"connection\",\"data\":null},null],\"method\":\"callback\"}]";
+        JSONArray object = JSON.parseArray(json);
+        System.out.println(JSON.toJSONString(object));
+        Assert.assertNotEquals(object, Wson.parse(Wson.toWson(object)));
+        Assert.assertEquals(JSON.parse(JSON.toJSONString(object)), Wson.parse(Wson.toWson(object)));
+        System.out.println(JSON.toJSONString(Wson.toWson(object)));
+    }
+
+    @Test
+    public void  testFloat(){
+        Map<String,Object> map = new HashMap<>();
+        map.put("number", 1.0f);
+        JSONObject object = (JSONObject) Wson.parse(Wson.toWson(map));
+        System.out.println(object.get("number").getClass());
+
+        Assert.assertEquals(object.get("number").getClass(), Float.class);
+    }
 }

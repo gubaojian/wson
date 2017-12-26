@@ -14,15 +14,15 @@ import java.io.InputStream;
 public class WsonFastJSONDeSerializeBenchTest extends TestCase {
 
 
-    public void testMediaTson() throws IOException {
-        benchBuild("/media.json", 10000, true);
+    public void testMediaWson() throws IOException {
+        benchBuild("/media.json", 1000, true);
     }
 
     public void testMediaJSON() throws IOException {
-        benchBuild("/media.json", 10000, false);
+        benchBuild("/media.json", 1000, false);
     }
 
-    public void testMedia2Tson() throws IOException {
+    public void testMedia2Wson() throws IOException {
         benchBuild("/media2.json", 1000, true);
     }
 
@@ -33,7 +33,7 @@ public class WsonFastJSONDeSerializeBenchTest extends TestCase {
 
 
 
-    public void testMiddleTson() throws IOException {
+    public void testMiddleWson() throws IOException {
         benchBuild("/middle.json", 1000, true);
     }
 
@@ -42,7 +42,7 @@ public class WsonFastJSONDeSerializeBenchTest extends TestCase {
     }
 
 
-    public void testWeexTson() throws IOException {
+    public void testWeexWson() throws IOException {
         benchBuild("/weex.json", 1000, true);
     }
 
@@ -53,7 +53,7 @@ public class WsonFastJSONDeSerializeBenchTest extends TestCase {
 
 
     /** 下面两个数据太大,单次存性能对比, 多次就是对比GC了 */
-    public void testHomeTson() throws IOException {
+    public void testHomeWson() throws IOException {
         benchBuild("/home.json", 1, true);
     }
 
@@ -62,7 +62,7 @@ public class WsonFastJSONDeSerializeBenchTest extends TestCase {
     }
 
 
-    public void testDataTson() throws IOException {
+    public void testDataWson() throws IOException {
         benchBuild("/data.json", 1, true);
     }
 

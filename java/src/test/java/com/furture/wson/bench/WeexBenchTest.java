@@ -24,11 +24,11 @@ public class WeexBenchTest extends TestCase {
     }
 
     public void testWeex2() throws IOException {
-        benchFile("/weex2.json", 10000);
+        benchFile("/weex2.json", 1000);
     }
 
     public void testWeex3() throws IOException {
-        benchFile("/weex3.json", 100000);
+        benchFile("/weex3.json", 1000);
     }
 
     public void testWeex4() throws IOException {
@@ -81,6 +81,15 @@ public class WeexBenchTest extends TestCase {
         long end = 0;
 
 
+
+        /**
+        System.gc();
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }*/
+
         start = System.currentTimeMillis();
         for(int i=0; i<count; i++) {
             map = Wson.parse(tson);
@@ -97,14 +106,6 @@ public class WeexBenchTest extends TestCase {
         System.out.println("TSON toTSON used " + (end - start));
 
 
-        /**
-        System.gc();
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }*/
-
 
 
         start = System.currentTimeMillis();
@@ -120,6 +121,7 @@ public class WeexBenchTest extends TestCase {
         }
         end = System.currentTimeMillis();
         System.out.println("FastJSON toJSON used " + (end - start));
+
 
 
         /**
@@ -142,8 +144,9 @@ public class WeexBenchTest extends TestCase {
         int length = 0;
         while ((length = inputStream.read(buffer)) >=  0){
             outputStream.write(buffer, 0, length);
-            System.out.println("length " + length);
         }
+
+        System.out.println(file + "length ");
         return  new String(outputStream.toByteArray());
     }
 

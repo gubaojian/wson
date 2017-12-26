@@ -1,7 +1,32 @@
+/**
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
 package com.efurture.wson;
 
-import java.io.UnsupportedEncodingException;
+
+
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+
 import java.lang.reflect.Array;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.nio.ByteOrder;
 import java.util.*;
 
 /**
@@ -9,6 +34,11 @@ import java.util.*;
  * Created by efurture on 2017/8/16.
  */
 public class Wson {
+
+    /**
+     * skip map null values
+     * */
+    public static final boolean WriteMapNullValue = false;
     /**
      * wson data type
      * */
@@ -22,13 +52,26 @@ public class Wson {
 
     private static final byte NUMBER_INT_TYPE = 'i';
 
+    private static final byte NUMBER_LONG_TYPE = 'l';
+
+    private static final byte NUMBER_BIG_INTEGER_TYPE = 'g';
+
+    private static final byte NUMBER_BIG_DECIMAL_TYPE = 'e';
+
+
     private static final byte NUMBER_DOUBLE_TYPE = 'd';
+
+    private static final byte NUMBER_FLOAT_TYPE = 'F';
 
     private static final byte ARRAY_TYPE = '[';
 
     private static final byte MAP_TYPE = '{';
 
-    private static final String STRING_UTF8_CHARSET_NAME = "UTF-8";
+    /**
+     * StringUTF-16, byte order with native byte order
+     * */
+    private static final boolean IS_NATIVE_LITTLE_ENDIAN = (ByteOrder.nativeOrder() == ByteOrder.LITTLE_ENDIAN);
+
 
     /**
      * parse wson data  to object
@@ -38,11 +81,17 @@ public class Wson {
         if(data == null){
             return  null;
         }
-        Parser parser =  new Parser(data);
-        Object object = parser.parse();
-        parser.close();
-        return object;
+        try{
+            Parser parser =  new Parser(data);
+            Object object = parser.parse();
+            parser.close();
+            return object;
+        }catch (Exception e){
+            e.printStackTrace();
+            return  null;
+        }
     }
+
 
     /**
      * serialize object to wson data
@@ -65,18 +114,15 @@ public class Wson {
 
         private int position = 0;
         private byte[] buffer;
-        /**
-         * identifer cache for wson
-         * */
-        private StringCache[] stringCache;
+        private char[]  charsBuffer;
 
         public Parser(byte[] buffer) {
             this.buffer = buffer;
-            stringCache = localStringBytesCache.get();
-            if(stringCache != null){
-                localStringBytesCache.set(null);
+            charsBuffer = localCharsBufferCache.get();
+            if(charsBuffer != null){
+                localCharsBufferCache.set(null);
             }else{
-                stringCache = new StringCache[LOCAL_STRING_CACHE_SIZE];
+                charsBuffer = new char[512];
             }
         }
 
@@ -88,25 +134,33 @@ public class Wson {
         public final void close(){
             position = 0;
             buffer = null;
-            if(stringCache != null){
-                localStringBytesCache.set(stringCache);
+            if(charsBuffer != null){
+                localCharsBufferCache.set(charsBuffer);
             }
-            stringCache = null;
+            charsBuffer = null;
         }
 
         private final Object readObject(){
             byte type  = readType();
             switch (type){
                 case STRING_TYPE:
-                    return  readString();
+                    return readUTF16String();
                 case NUMBER_INT_TYPE :
                     return  readVarInt();
+                case NUMBER_FLOAT_TYPE :
+                    return  readFloat();
                 case MAP_TYPE:
                     return readMap();
                 case ARRAY_TYPE:
                     return readArray();
                 case NUMBER_DOUBLE_TYPE :
                     return readDouble();
+                case NUMBER_LONG_TYPE :
+                    return  readLong();
+                case NUMBER_BIG_INTEGER_TYPE :
+                    return  new BigInteger(readUTF16String());
+                case NUMBER_BIG_DECIMAL_TYPE :
+                    return  new BigDecimal(readUTF16String());
                 case BOOLEAN_TYPE_FALSE:
                     return  Boolean.FALSE;
                 case BOOLEAN_TYPE_TRUE:
@@ -114,16 +168,18 @@ public class Wson {
                 case NULL_TYPE:
                     return  null;
                 default:
-                    break;
+                    throw new RuntimeException("wson unhandled type " + type + " " +
+                     position  +  " length " + buffer.length);
             }
-            return  null;
         }
+
+
 
         private final Object readMap(){
             int size = readUInt();
-            Map<String, Object> object = WsonAdapter.createMap();
+            Map<String, Object> object = new JSONObject();;
             for(int i=0; i<size; i++){
-                String key = readMapKey();
+                String key = readMapKeyUTF16();
                 Object value = readObject();
                 object.put(key, value);
             }
@@ -132,7 +188,7 @@ public class Wson {
 
         private final Object readArray(){
             int length = readUInt();
-            List<Object> array = WsonAdapter.createArray(length);
+            List<Object> array = new JSONArray(length);
             for(int i=0; i<length; i++){
                 array.add(readObject());
             }
@@ -145,59 +201,76 @@ public class Wson {
             return  type;
         }
 
-        /**
-         * most of json object, has repeat property key,
-         * property cache, reduce string object.
-         * */
-        private final String readMapKey() {
-            int length = readUInt();
-            String  string;
-            try {
-                int hash = hash(buffer, position, length);
-                int globalIndex = (globalStringBytesCache.length - 1)&hash;
-                StringCache cache = globalStringBytesCache[globalIndex];
-                if(cache != null &&  bytesEquals(buffer, position, length, cache.bts)){
-                    position += length;
-                    return cache.key;
+
+        private final String readMapKeyUTF16() {
+                int length = readUInt();
+                length = length/2;
+                if(charsBuffer.length < length){
+                    charsBuffer = new char[length];
                 }
-                int localIndex = (stringCache.length - 1)&hash;
-                cache = stringCache[localIndex];
-                if(cache != null &&  bytesEquals(buffer, position, length, cache.bts)){
-                    position += length;
-                    return cache.key;
-                }
-                string = new String(buffer, position, length, STRING_UTF8_CHARSET_NAME);
-                if(length > 0
-                        &&  length <= CACHE_STRING_MAX_LENGTH
-                        && Character.isJavaIdentifierPart(string.charAt(0))){
-                    cache = new StringCache();
-                    cache.key = string;
-                    cache.bts = Arrays.copyOfRange(buffer, position, position + length);
-                    if(globalStringBytesCache[globalIndex] == null){
-                        globalStringBytesCache[globalIndex] = cache;
-                    }else{
-                        stringCache[localIndex] = cache;
+                int hash = 5381;
+                if(IS_NATIVE_LITTLE_ENDIAN){
+                    for(int i=0; i<length; i++){
+                        char ch = (char) ((buffer[position] & 0xFF) +
+                                (buffer[position + 1] << 8));
+                        charsBuffer[i] = (ch);
+                        hash = ((hash << 5) + hash)  + ch;
+                        position+=2;
+                    }
+                }else{
+                    for(int i=0; i<length; i++){
+                        char ch = (char) ((buffer[position + 1] & 0xFF) +
+                                (buffer[position] << 8));
+                        charsBuffer[i] = (ch);
+                        hash = ((hash << 5) + hash)  + ch;
+                        position+=2;
                     }
                 }
-            } catch (UnsupportedEncodingException e) {
-                string = new String(buffer, position, length);
-            }
-
-            position += length;
-            return  string;
+                int globalIndex = (globalStringBytesCache.length - 1)&hash;
+               String cache = globalStringBytesCache[globalIndex];
+                if(cache != null
+                        && cache.length() == length){
+                    boolean isStringEqual  = true;
+                    for(int i=0; i<length; i++){
+                        if(charsBuffer[i] != cache.charAt(i)){
+                            isStringEqual = false;
+                            break;
+                        }
+                    }
+                    if(isStringEqual) {
+                        return cache;
+                    }
+                }
+                cache = new String(charsBuffer, 0, length);
+                if(length < 64) {
+                    globalStringBytesCache[globalIndex] = cache;
+                }
+                return  cache;
         }
 
-        private final String readString(){
-            int length = readUInt();
-            String string = null;
-            try {
-                string = new String(buffer, position, length, STRING_UTF8_CHARSET_NAME);
-            } catch (UnsupportedEncodingException e) {
-                string = new String(buffer, position, length);
+        private final String readUTF16String(){
+            int length = readUInt()/2;
+            if(charsBuffer.length < length){
+                charsBuffer = new char[length];
             }
-            position += length;
-            return  string;
+            if(IS_NATIVE_LITTLE_ENDIAN){
+                for(int i=0; i<length; i++){
+                    char ch = (char) ((buffer[position] & 0xFF) +
+                            (buffer[position + 1] << 8));
+                    charsBuffer[i] = (ch);
+                    position+=2;
+                }
+            }else{
+                for(int i=0; i<length; i++){
+                    char ch = (char) ((buffer[position + 1] & 0xFF) +
+                            (buffer[position] << 8));
+                    charsBuffer[i] = (ch);
+                    position+=2;
+                }
+            }
+            return  new String(charsBuffer, 0, length);
         }
+
 
 
 
@@ -245,6 +318,15 @@ public class Wson {
             double number = Double.longBitsToDouble(readLong());
             return  number;
         }
+
+        private Object readFloat() {
+            int number = (((buffer[position + 3] & 0xFF)      ) +
+                    ((buffer[position + 2] & 0xFF) <<  8) +
+                    ((buffer[position + 1] & 0xFF) << 16) +
+                    ((buffer[position  ] & 0xFF) << 24));
+            position +=4;
+            return  Float.intBitsToFloat(number);
+        }
     }
 
     /**
@@ -255,7 +337,6 @@ public class Wson {
         private byte[] buffer;
         private int position;
         private ArrayList refs;
-        private StringCache[] stringCache;
         private final static ThreadLocal<byte[]> bufLocal = new ThreadLocal<byte[]>();
         private final static ThreadLocal<ArrayList> refsLocal = new ThreadLocal<ArrayList>();
 
@@ -273,11 +354,6 @@ public class Wson {
                 refsLocal.set(null);
             }else{
                 refs = new ArrayList<>(16);
-            }
-            if(stringCache != null){
-                localStringBytesCache.set(null);
-            }else{
-                stringCache = new StringCache[LOCAL_STRING_CACHE_SIZE];
             }
         }
 
@@ -298,20 +374,16 @@ public class Wson {
             }else{
                 refs.clear();
             }
-            if(stringCache != null){
-                localStringBytesCache.set(stringCache);
-            }
-            stringCache = null;
             refs = null;
             buffer = null;
             position = 0;
         }
 
         private final void writeObject(Object object) {
-            if(object instanceof  String){
+            if(object instanceof  CharSequence){
                 ensureCapacity(2);
                 writeByte(STRING_TYPE);
-                writeString(object.toString());
+                writeUTF16String((CharSequence) object);
                 return;
             }else if (object instanceof Map){
                 if(refs.contains(object)){
@@ -321,14 +393,7 @@ public class Wson {
                 }
                 refs.add(object);
                 Map map = (Map) object;
-                ensureCapacity(8);
-                writeByte(MAP_TYPE);
-                writeUInt(map.size());
-                Set<Map.Entry<Object,Object>>  entries = map.entrySet();
-                for(Map.Entry<Object,Object> entry : entries){
-                    writeMapKey(entry.getKey().toString());
-                    writeObject(entry.getValue());
-                }
+                writeMap(map);
                 refs.remove(refs.size()-1);
                 return;
             }else if (object instanceof List){
@@ -348,15 +413,8 @@ public class Wson {
                 refs.remove(refs.size()-1);
                 return;
             }else if (object instanceof Number){
-                ensureCapacity(12);
                 Number number = (Number) object;
-                if(object instanceof  Integer || object instanceof  Short){
-                    writeByte(NUMBER_INT_TYPE);
-                    writeVarInt(number.intValue());
-                }else{
-                    writeByte(NUMBER_DOUBLE_TYPE);
-                    writeDouble(number.doubleValue());
-                }
+                writeNumber(number);
                 return;
             }else if (object instanceof  Boolean){
                 ensureCapacity(2);
@@ -419,10 +477,90 @@ public class Wson {
                     writeByte(NULL_TYPE);
                 }else {
                     refs.add(object);
-                    writeObject(toMap(object));
+                    writeMap(toMap(object));
                     refs.remove(refs.size()-1);
                 }
                 return;
+            }
+        }
+
+        private final void writeNumber(Number number) {
+            ensureCapacity(12);
+            if(number instanceof  Integer){
+                writeByte(NUMBER_INT_TYPE);
+                writeVarInt(number.intValue());
+                return;
+            }
+
+            if(number instanceof Float){
+                writeByte(NUMBER_FLOAT_TYPE);
+                writeFloat(number.floatValue());
+                return;
+            }
+            if(number instanceof  Double){
+                writeByte(NUMBER_DOUBLE_TYPE);
+                writeDouble(number.doubleValue());
+                return;
+            }
+
+            if(number instanceof  Long){
+                writeByte(NUMBER_LONG_TYPE);
+                writeLong(number.longValue());
+                return;
+            }
+
+
+            if(number instanceof  Short
+                    || number instanceof  Byte){
+                writeByte(NUMBER_INT_TYPE);
+                writeVarInt(number.intValue());
+                return;
+            }
+
+            if(number instanceof BigInteger){
+                writeByte(NUMBER_BIG_INTEGER_TYPE);
+                writeUTF16String(number.toString());
+                return;
+            }
+
+            if(number instanceof BigDecimal){
+                writeByte(NUMBER_BIG_DECIMAL_TYPE);
+                writeUTF16String(number.toString());
+                return;
+            }
+            writeByte(STRING_TYPE);
+            writeUTF16String(number.toString());
+        }
+
+        private final  void writeMap(Map map) {
+            if(WriteMapNullValue){
+                ensureCapacity(8);
+                writeByte(MAP_TYPE);
+                writeUInt(map.size());
+                Set<Map.Entry<Object,Object>>  entries = map.entrySet();
+                for(Map.Entry<Object,Object> entry : entries){
+                    writeMapKeyUTF16(entry.getKey().toString());
+                    writeObject(entry.getValue());
+                }
+            }else{
+                Set<Map.Entry<Object,Object>>  entries = map.entrySet();
+                int nullValueSize = 0;
+                for(Map.Entry<Object,Object> entry : entries){
+                    if(entry.getValue() == null){
+                        nullValueSize++;
+                    }
+                }
+
+                ensureCapacity(8);
+                writeByte(MAP_TYPE);
+                writeUInt(map.size()-nullValueSize);
+                for(Map.Entry<Object,Object> entry : entries){
+                    if(entry.getValue() == null){
+                        continue;
+                    }
+                    writeMapKeyUTF16(entry.getKey().toString());
+                    writeObject(entry.getValue());
+                }
             }
         }
 
@@ -436,139 +574,49 @@ public class Wson {
             return WsonAdapter.toMap(object);
         }
 
-        private  final void writeMapKey(String value){
-            if(value.length() == 0){
-                ensureCapacity(2);
-                writeUInt(0);
-                return;
-            }
-            int hash = value.hashCode();
-            int  globalIndex = hash & (globalStringBytesCache.length - 1);
-            StringCache cache  = globalStringBytesCache[globalIndex];
-            byte[] bts = null;
-            if(cache != null && value.equals(cache.key)){
-                bts = cache.bts;
-            }
-            if(bts == null){
-                int localIndex = (stringCache.length - 1)&hash;
-                cache = stringCache[localIndex];
-                if(cache != null &&  value.equals(cache.key)){
-                     bts = cache.bts;
-                }
-                if(bts == null){
-                    try {
-                        bts = value.getBytes(STRING_UTF8_CHARSET_NAME);
-                    } catch (UnsupportedEncodingException e) {
-                        bts = value.getBytes();
-                    }
-                    if(bts.length > 0
-                            && Character.isJavaIdentifierPart(value.charAt(0))
-                            && bts.length <= CACHE_STRING_MAX_LENGTH){
-                        cache = new StringCache();
-                        cache.key = value;
-                        cache.bts = bts;
-                        if(globalStringBytesCache[globalIndex] == null) {
-                            globalStringBytesCache[globalIndex] = cache;
-                        }else{
-                            stringCache[localIndex] = cache;
-                        }
-                    }
-                }
-            }
-            ensureCapacity(bts.length + 8);
-            writeUInt(bts.length);
-            if(bts.length > 0) {
-                writeBytes(bts);
-            }
-        }
-        private  final void writeString(String value){
-            int utf8Length = value.length();
-            int i = 0;
-            // This loop optimizes for pure ASCII.
-            while (i < utf8Length && value.charAt(i) < 0x80) {
-                i++;
-            }
-            if(i == utf8Length){
-                i = 0;
-                ensureCapacity(utf8Length + 8);
-                writeUInt(utf8Length);
-                while (i < utf8Length){
-                    buffer[position + i] = (byte)value.charAt(i);
-                    i++;
-                }
-                this.position += utf8Length;
-                return;
-            }
-
-            byte[] bts = null;
-            try {
-                bts = value.getBytes(STRING_UTF8_CHARSET_NAME);
-            } catch (UnsupportedEncodingException e) {
-                bts = value.getBytes();
-            }
-            ensureCapacity(bts.length + 8);
-            writeUInt(bts.length);
-            if(bts.length > 0) {
-                writeBytes(bts);
-            }
-            bts = null;
+        private  final void writeMapKeyUTF16(String value){
+            writeUTF16String(value);
         }
 
-        final  int encodeUtf8(CharSequence in, byte[] out, int offset, int length) {
-            int utf16Length = in.length();
-            int j = offset;
-            int i = 0;
-            int limit = offset + length;
-            // Designed to take advantage of
-            // https://wikis.oracle.com/display/HotSpotInternals/RangeCheckElimination
-            for (char c; i < utf16Length && i + j < limit && (c = in.charAt(i)) < 0x80; i++) {
-                out[j + i] = (byte) c;
-            }
-            if (i == utf16Length) {
-                return j + utf16Length;
-            }
-            j += i;
-            for (char c; i < utf16Length; i++) {
-                c = in.charAt(i);
-                if (c < 0x80 && j < limit) {
-                    out[j++] = (byte) c;
-                } else if (c < 0x800 && j <= limit - 2) { // 11 bits, two UTF-8 bytes
-                    out[j++] = (byte) ((0xF << 6) | (c >>> 6));
-                    out[j++] = (byte) (0x80 | (0x3F & c));
-                } else if ((c < Character.MIN_SURROGATE || Character.MAX_SURROGATE < c) && j <= limit - 3) {
-                    // Maximum single-char code point is 0xFFFF, 16 bits, three UTF-8 bytes
-                    out[j++] = (byte) ((0xF << 5) | (c >>> 12));
-                    out[j++] = (byte) (0x80 | (0x3F & (c >>> 6)));
-                    out[j++] = (byte) (0x80 | (0x3F & c));
-                } else if (j <= limit - 4) {
-                    // Minimum code point represented by a surrogate pair is 0x10000, 17 bits,
-                    // four UTF-8 bytes
-                    final char low;
-                    if (i + 1 == in.length()
-                            || !Character.isSurrogatePair(c, (low = in.charAt(++i)))) {
-                        throw new IllegalArgumentException("error utf-8 byte format");
-                    }
-                    int codePoint = Character.toCodePoint(c, low);
-                    out[j++] = (byte) ((0xF << 4) | (codePoint >>> 18));
-                    out[j++] = (byte) (0x80 | (0x3F & (codePoint >>> 12)));
-                    out[j++] = (byte) (0x80 | (0x3F & (codePoint >>> 6)));
-                    out[j++] = (byte) (0x80 | (0x3F & codePoint));
-                } else {
-                    // If we are surrogates and we're not a surrogate pair, always throw an
-                    // UnpairedSurrogateException instead of an ArrayOutOfBoundsException.
-                    if ((Character.MIN_SURROGATE <= c && c <= Character.MAX_SURROGATE)
-                            && (i + 1 == in.length()
-                            || !Character.isSurrogatePair(c, in.charAt(i + 1)))) {
-                        throw new IllegalArgumentException("error utf-8 byte format");
-                    }
-                    throw new ArrayIndexOutOfBoundsException("Failed writing " + c + " at index " + j);
+
+
+
+        /**
+         * writeString UTF-16
+         * */
+        private  final void writeUTF16String(CharSequence value){
+            int length = value.length();
+            ensureCapacity(length*2 + 8);
+            writeUInt(length*2);
+            if(IS_NATIVE_LITTLE_ENDIAN){
+                for(int i=0; i<length; i++){
+                    char ch = value.charAt(i);
+                    buffer[position] = (byte) (ch);
+                    buffer[position+1] = (byte) (ch >>> 8);
+                    position+=2;
+                }
+            }else{
+                for(int i=0; i<length; i++){
+                    char ch = value.charAt(i);
+                    buffer[position + 1] = (byte) (ch      );
+                    buffer[position] = (byte) (ch >>> 8);
+                    position+=2;
                 }
             }
-            return j;
         }
+
 
         private final void writeDouble(double value){
             writeLong(Double.doubleToLongBits(value));
+        }
+
+        private final void writeFloat(float value){
+            int val = Float.floatToIntBits(value);
+            buffer[position + 3] = (byte) (val       );
+            buffer[position + 2] = (byte) (val >>>  8);
+            buffer[position + 1] = (byte) (val >>> 16);
+            buffer[position ] = (byte) (val >>> 24);
+            position += 4;
         }
 
         private final void writeLong(long val){
@@ -597,10 +645,6 @@ public class Wson {
             position++;
         }
 
-        private final void  writeBytes(byte[] bts){
-            System.arraycopy(bts, 0, buffer, position, bts.length);
-            position += bts.length;
-        }
 
         private final void ensureCapacity(int minCapacity) {
             minCapacity += position;
@@ -620,43 +664,10 @@ public class Wson {
     }
 
 
-    private static final int LOCAL_STRING_CACHE_SIZE = 256;
-    private static final int GLOBAL_STRING_CACHE_SIZE = 4*1024;
-    private static final int CACHE_STRING_MAX_LENGTH = 32;
     /**
      * cache json property key, most of them all same
      * */
-    private static final ThreadLocal<StringCache[]> localStringBytesCache = new ThreadLocal<>();
-    private static final StringCache[] globalStringBytesCache = new StringCache[GLOBAL_STRING_CACHE_SIZE];
-    private static final  class StringCache {
-        String key;
-        byte[] bts;
-    }
-
-
-    /**
-     * keep same with string hash
-     * */
-    private static final int hash(byte[] bts, int offset, int len){
-        int h = 0;
-        int end = offset + len;
-        for (int i=offset; i<end; i++) {
-            h = 31 * h + bts[i];
-        }
-        return h;
-    }
-
-    private static final boolean bytesEquals(byte[] buffer, int offset, int len,
-                                             byte[] bts){
-        if(len != bts.length){
-            return  false;
-        }
-        for(byte bt : bts){
-            if(bt != buffer[offset]){
-                return  false;
-            }
-            offset ++;
-        }
-        return  true;
-    }
+    private static final int GLOBAL_STRING_CACHE_SIZE = 2*1024;
+    private static final ThreadLocal<char[]> localCharsBufferCache = new ThreadLocal<>();
+    private static final String[] globalStringBytesCache = new String[GLOBAL_STRING_CACHE_SIZE];
 }
