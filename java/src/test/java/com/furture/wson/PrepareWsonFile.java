@@ -41,18 +41,18 @@ public class PrepareWsonFile extends TestCase {
     public void  convertToProtobuf(String jsonFile) throws IOException {
         String data = readFile(jsonFile);
         Object map = JSON.parse(data);
-        byte[] tson = Wson.toWson(map);
-        String tsonFile = "src/test/resources/" + (jsonFile.substring(1, jsonFile.indexOf('.')) + ".wson");
-        saveFile(tsonFile, tson);
+        byte[] wson = Wson.toWson(map);
+        String wsonFile = "src/test/resources/" + (jsonFile.substring(1, jsonFile.indexOf('.')) + ".wson");
+        saveFile(wsonFile, wson);
     }
 
 
     public void  convertToWson(String jsonFile) throws IOException {
         String data = readFile(jsonFile);
         Object map = JSON.parse(data);
-        byte[] tson = Wson.toWson(map);
-        String tsonFile = "src/test/resources/" + (jsonFile.substring(1, jsonFile.indexOf('.')) + ".wson");
-        saveFile(tsonFile, tson);
+        byte[] wson = Wson.toWson(map);
+        String wsonFile = "src/test/resources/" + (jsonFile.substring(1, jsonFile.indexOf('.')) + ".wson");
+        saveFile(wsonFile, wson);
     }
 
     private String readFile(String file) throws IOException {

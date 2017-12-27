@@ -71,7 +71,7 @@ public class WsonFastJSONDeSerializeBenchTest extends TestCase {
     }
 
 
-    private void benchBuild(String file, int count, boolean tson) throws IOException {
+    private void benchBuild(String file, int count, boolean wson) throws IOException {
 
         String data = readFile(file);
         Object map = JSON.parse(data);
@@ -80,7 +80,7 @@ public class WsonFastJSONDeSerializeBenchTest extends TestCase {
         long start = 0;
         long end = 0;
 
-        if(tson) {
+        if(wson) {
             Wson.parse(bts);
             start = System.currentTimeMillis();
             for(int i=0; i<count; i++) {

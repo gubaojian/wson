@@ -80,12 +80,10 @@ public class WsonTest extends TestCase {
         Map<String, Object> map = new HashMap<>();
         map.put(key, Long.MAX_VALUE);
         byte[] bts = Wson.toWson(map);
-        map.put(key, (double)Long.MAX_VALUE);
+        map.put(key, Long.MAX_VALUE);
         System.out.println(new String(bts));
         Map<String, Object> parsed = (Map<String, Object>) Wson.parse(bts);
         Assert.assertEquals(map, parsed);
-        long max =  ((Double)parsed.get(key)).longValue();
-        Assert.assertEquals(max, Long.MAX_VALUE);
     }
 
     public void testLongMin(){
@@ -93,11 +91,11 @@ public class WsonTest extends TestCase {
         Map<String, Object> map = new HashMap<>();
         map.put(key, Long.MIN_VALUE);
         byte[] bts = Wson.toWson(map);
-        map.put(key, (double)Long.MIN_VALUE);
+        map.put(key, Long.MIN_VALUE);
         System.out.println(new String(bts));
         Map<String, Object> parsed = (Map<String, Object>) Wson.parse(bts);
         Assert.assertEquals(map, parsed);
-        long max =  ((Double)parsed.get(key)).longValue();
+        long max =  ((Number)parsed.get(key)).longValue();
         Assert.assertEquals(max, Long.MIN_VALUE);
     }
 
@@ -108,8 +106,8 @@ public class WsonTest extends TestCase {
         byte[] bts = Wson.toWson(map);
         System.out.println(new String(bts));
         Map<String, Object> parsed = (Map<String, Object>) Wson.parse(bts);
-        Assert.assertEquals(map, parsed);
-        Assert.assertTrue(parsed.containsKey(key));
+        Assert.assertNotEquals(map, parsed);
+        Assert.assertTrue(parsed.size()  == 0);
     }
 
 
@@ -139,9 +137,9 @@ public class WsonTest extends TestCase {
         node.name = "测试";
         node.next = node;
         Wson.toWson(node);
-        String tson = new String(Wson.toWson(node));
-        Assert.assertTrue(tson.indexOf("id") < 0);
-        System.out.println(tson);
+        String wson = new String(Wson.toWson(node));
+        Assert.assertTrue(wson.indexOf("id") < 0);
+        System.out.println(wson);
 
         System.out.println(JSON.toJSONString(node));
     }

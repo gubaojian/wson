@@ -75,7 +75,7 @@ public class WeexBenchTest extends TestCase {
         //}
         String data = readFile(file);
         Object map = JSON.parse(data);
-        byte[] tson = Wson.toWson(map);
+        byte[] wson = Wson.toWson(map);
         System.out.println("\nbench file " + file + ":\n");
         long start = 0;
         long end = 0;
@@ -92,10 +92,10 @@ public class WeexBenchTest extends TestCase {
 
         start = System.currentTimeMillis();
         for(int i=0; i<count; i++) {
-            map = Wson.parse(tson);
+            map = Wson.parse(wson);
         }
         end = System.currentTimeMillis();
-        System.out.println("TSON parse used " + (end - start));
+        System.out.println("WSON parse used " + (end - start));
 
 
         start = System.currentTimeMillis();
@@ -103,7 +103,7 @@ public class WeexBenchTest extends TestCase {
             Wson.toWson(map);
         }
         end = System.currentTimeMillis();
-        System.out.println("TSON toTSON used " + (end - start));
+        System.out.println("WSON toWSON used " + (end - start));
 
 
 
@@ -161,7 +161,7 @@ public class WeexBenchTest extends TestCase {
     public void  testConvert() throws IOException {
         String data = readFile("/weex4.json");
         Object map = JSON.parse(data);
-        byte[] tson = Wson.toWson(map);
-        saveFile("weex4.tson", tson);
+        byte[] wson = Wson.toWson(map);
+        saveFile("weex4.wson", wson);
     }
 }

@@ -48,7 +48,7 @@ public class FastJsonVsWson extends TestCase {
         }
         long end = System.currentTimeMillis();
 
-        System.out.println("wson totson used " + (end - start));
+        System.out.println("wson towson used " + (end - start));
 
         start = System.currentTimeMillis();
         for(int i=0; i<10000; i++) {
@@ -69,14 +69,14 @@ public class FastJsonVsWson extends TestCase {
            Wson.toWson(user);
         }
         long end = System.currentTimeMillis();
-        System.out.println("wson totson used " + (end - start));
+        System.out.println("wson towson used " + (end - start));
 
         start = System.currentTimeMillis();
         for(int i=0; i<10000; i++) {
             JSON.toJSONString(user);
         }
         end = System.currentTimeMillis();
-        System.out.println("json totson used " + (end - start));
+        System.out.println("json tojson used " + (end - start));
     }
 
 
