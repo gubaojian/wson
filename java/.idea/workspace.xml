@@ -70,7 +70,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WsonTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="WsonTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/furture/wson/WsonTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="187">
@@ -110,11 +110,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PrepareWsonFile.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PrepareWsonFile.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/furture/wson/PrepareWsonFile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="53" column="23" selection-start-line="53" selection-start-column="23" selection-end-line="53" selection-end-column="23" />
+            <state relative-caret-position="266">
+              <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -510,8 +510,8 @@
         <option value="$PROJECT_DIR$/src/test/java/com/furture/wson/bench/FastJsonVsWson.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/furture/wson/bench/WsonFastJSONSerializeBenchTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/furture/wson/bench/WeexBenchTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/furture/wson/PrepareWsonFile.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/furture/wson/WsonTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/furture/wson/PrepareWsonFile.java" />
       </list>
     </option>
   </component>
@@ -612,6 +612,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wson" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bug" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -788,33 +814,7 @@
       <recent name="$PROJECT_DIR$/src/main/java/com/efurture/tson" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.WsonTest.testMapValueNull">
-    <configuration default="false" name="BigNumberTest.testBigNumber" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.furture.wson.bug.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="wson_test" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.furture.wson.bug" />
-      <option name="MAIN_CLASS_NAME" value="com.furture.wson.bug.BigNumberTest" />
-      <option name="METHOD_NAME" value="testBigNumber" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="JUnit.PrepareWsonFile.testPrepareWson">
     <configuration default="false" name="PrepareWsonFile" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -906,6 +906,32 @@
       <option name="PACKAGE_NAME" value="com.furture.wson" />
       <option name="MAIN_CLASS_NAME" value="com.furture.wson.WsonTest" />
       <option name="METHOD_NAME" value="testMapValueNull" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="PrepareWsonFile.testPrepareWson" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.furture.wson.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="wson_test" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.furture.wson" />
+      <option name="MAIN_CLASS_NAME" value="com.furture.wson.PrepareWsonFile" />
+      <option name="METHOD_NAME" value="testPrepareWson" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -1206,19 +1232,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.BigNumberTest.testBigNumber" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.PrepareWsonFile" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.DoubleTest.testDouble" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.WsonTest" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.WsonTest.testMapValueNull" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.PrepareWsonFile" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.DoubleTest.testDouble" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.WsonTest" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.WsonTest.testMapValueNull" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.PrepareWsonFile.testPrepareWson" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.WsonTest.testMapValueNull" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.WsonTest" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.DoubleTest.testDouble" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.PrepareWsonFile" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.BigNumberTest.testBigNumber" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.PrepareWsonFile.testPrepareWson" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.WsonTest.testMapValueNull" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.WsonTest" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.DoubleTest.testDouble" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.PrepareWsonFile" />
       </list>
     </recent_temporary>
   </component>
@@ -1239,9 +1265,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="DataFormatTest_testData - 2017.12.22 at 14h 57m 01s.xml">
-      <configuration name="DataFormatTest.testData" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="DataFormatTest_testData - 2017.12.22 at 14h 57m 27s.xml">
       <configuration name="DataFormatTest.testData" configurationId="JUnit" />
     </history-entry>
@@ -1256,6 +1279,9 @@
     </history-entry>
     <history-entry file="PrepareWsonFile - 2017.12.28 at 00h 22m 36s.xml">
       <configuration name="PrepareWsonFile" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PrepareWsonFile_testPrepareWson - 2017.12.28 at 00h 35m 44s.xml">
+      <configuration name="PrepareWsonFile.testPrepareWson" configurationId="JUnit" />
     </history-entry>
     <history-entry file="WsonTest - 2017.12.28 at 00h 28m 38s.xml">
       <configuration name="WsonTest" configurationId="JUnit" />
@@ -1280,8 +1306,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="176" y="23" width="1312" height="877" extended-state="0" />
-    <editor active="true" />
+    <frame x="176" y="23" width="1312" height="877" extended-state="1" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38726115" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1291,7 +1317,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.45859873" sideWeight="0.43779528" order="7" side_tool="true" content_ui="tabs" x="149" y="281" width="1270" height="360" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39363056" sideWeight="0.5622047" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3044586" sideWeight="0.5622047" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.062420383" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1758,14 +1784,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/furture/wson/PrepareWsonFile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="53" column="23" selection-start-line="53" selection-start-column="23" selection-end-line="53" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/furture/wson/DoubleTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="301">
@@ -1790,6 +1808,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="101" column="30" selection-start-line="101" selection-start-column="30" selection-end-line="101" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/furture/wson/PrepareWsonFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
           <folding />
         </state>
       </provider>

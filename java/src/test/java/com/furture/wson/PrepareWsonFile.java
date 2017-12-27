@@ -31,7 +31,9 @@ public class PrepareWsonFile extends TestCase {
                 "/weex2.json",
                 "/weex3.json",
                 "/weex4.json",
-                "/weex5.json"};
+                "/weex5.json",
+                "/bug/bigNumber.json",
+                "/bug/bugintdouble.json"};
         for(String file : files) {
             convertToWson(file);
         }
