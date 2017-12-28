@@ -23,7 +23,7 @@ union float_number{
                                            msg_buffer_resize(buffer, size);\
                                       }}
 
-static void msg_buffer_resize(wson_buffer* buffer, uint32_t size){
+static inline void msg_buffer_resize(wson_buffer* buffer, uint32_t size){
     if(size < buffer->length){
          if(buffer->length < 1024*16){
             size = 1024*16;
@@ -68,17 +68,17 @@ wson_buffer* wson_buffer_from(void* data, uint32_t length){
 }
 
 
-void wson_buffer_require(wson_buffer *buffer, size_t size){
+inline void wson_buffer_require(wson_buffer *buffer, size_t size){
     WSON_BUFFER_ENSURE_SIZE(size*sizeof(uint8_t));
 }
 
 
-void wson_push_int(wson_buffer *buffer, int32_t value){
+inline void wson_push_int(wson_buffer *buffer, int32_t value){
     uint32_t num = msg_buffer_varint_Zig(value);
     wson_push_uint(buffer, num);
 }
 
-void wson_push_uint(wson_buffer *buffer, uint32_t num){
+inline void wson_push_uint(wson_buffer *buffer, uint32_t num){
     WSON_BUFFER_ENSURE_SIZE(sizeof(uint32_t) + sizeof(uint8_t));
     uint8_t * data = ((uint8_t*)buffer->data + buffer->position);
     int size =0;
@@ -90,14 +90,14 @@ void wson_push_uint(wson_buffer *buffer, uint32_t num){
     buffer->position += size;
 }
 
-void wson_push_byte(wson_buffer *buffer, uint8_t bt){
+inline void wson_push_byte(wson_buffer *buffer, uint8_t bt){
     WSON_BUFFER_ENSURE_SIZE(sizeof(uint8_t));
     uint8_t* data = ((uint8_t*)buffer->data + buffer->position);
     *data = bt;
     buffer->position += sizeof(uint8_t);
 }
 
-void wson_push_type(wson_buffer *buffer, uint8_t bt){
+inline void wson_push_type(wson_buffer *buffer, uint8_t bt){
     WSON_BUFFER_ENSURE_SIZE(sizeof(uint8_t));
     uint8_t* data = ((uint8_t*)buffer->data + buffer->position);
     *data = bt;
@@ -105,7 +105,7 @@ void wson_push_type(wson_buffer *buffer, uint8_t bt){
 }
 
 
-void wson_push_type_boolean(wson_buffer *buffer, uint8_t value){
+inline void wson_push_type_boolean(wson_buffer *buffer, uint8_t value){
       WSON_BUFFER_ENSURE_SIZE(sizeof(uint8_t) + sizeof(uint8_t));
     uint8_t* data = ((uint8_t*)buffer->data + buffer->position);
     if(value){
@@ -117,7 +117,7 @@ void wson_push_type_boolean(wson_buffer *buffer, uint8_t value){
  }
 
 
-void wson_push_type_int(wson_buffer *buffer, int32_t num){
+inline void wson_push_type_int(wson_buffer *buffer, int32_t num){
     WSON_BUFFER_ENSURE_SIZE(sizeof(uint8_t));
     uint8_t* data = ((uint8_t*)buffer->data + buffer->position);
     *data = WSON_NUMBER_INT_TYPE;
@@ -125,7 +125,7 @@ void wson_push_type_int(wson_buffer *buffer, int32_t num){
     wson_push_int(buffer, num);
 }
 
-void wson_push_type_double(wson_buffer *buffer, double num){
+inline void wson_push_type_double(wson_buffer *buffer, double num){
     WSON_BUFFER_ENSURE_SIZE(sizeof(uint8_t));
     uint8_t* data = ((uint8_t*)buffer->data + buffer->position);
     *data = WSON_NUMBER_DOUBLE_TYPE;
@@ -133,7 +133,7 @@ void wson_push_type_double(wson_buffer *buffer, double num){
     wson_push_double(buffer, num);
 }
 
-void wson_push_type_long(wson_buffer *buffer, int64_t num){
+inline void wson_push_type_long(wson_buffer *buffer, int64_t num){
     WSON_BUFFER_ENSURE_SIZE(sizeof(uint8_t));
     uint8_t* data = ((uint8_t*)buffer->data + buffer->position);
     *data = WSON_NUMBER_LONG_TYPE;
@@ -141,7 +141,7 @@ void wson_push_type_long(wson_buffer *buffer, int64_t num){
     wson_push_ulong(buffer, num);
 }
 
-void wson_push_type_string(wson_buffer *buffer, const void *src, int32_t length){
+inline void wson_push_type_string(wson_buffer *buffer, const void *src, int32_t length){
     WSON_BUFFER_ENSURE_SIZE(sizeof(uint8_t));
     uint8_t* data = ((uint8_t*)buffer->data + buffer->position);
     *data = WSON_STRING_TYPE;
@@ -150,12 +150,12 @@ void wson_push_type_string(wson_buffer *buffer, const void *src, int32_t length)
     wson_push_bytes(buffer, src, length);
 }
 
-void wson_push_property(wson_buffer *buffer, const void *src, int32_t length){
+inline void wson_push_property(wson_buffer *buffer, const void *src, int32_t length){
     wson_push_uint(buffer, length);
     wson_push_bytes(buffer, src, length);
 }
 
-void wson_push_type_string_length(wson_buffer *buffer, int32_t length){
+inline void wson_push_type_string_length(wson_buffer *buffer, int32_t length){
     WSON_BUFFER_ENSURE_SIZE(sizeof(uint8_t));
     uint8_t* data = ((uint8_t*)buffer->data + buffer->position);
     *data = WSON_STRING_TYPE;
@@ -170,7 +170,7 @@ inline void wson_push_type_null(wson_buffer *buffer){
     buffer->position += (sizeof(uint8_t));
 }
 
-void wson_push_type_map(wson_buffer *buffer, uint32_t size){
+inline void wson_push_type_map(wson_buffer *buffer, uint32_t size){
     WSON_BUFFER_ENSURE_SIZE(sizeof(uint8_t));
     uint8_t* data = ((uint8_t*)buffer->data + buffer->position);
     *data = WSON_MAP_TYPE;
@@ -178,7 +178,7 @@ void wson_push_type_map(wson_buffer *buffer, uint32_t size){
     wson_push_uint(buffer, size);
 }
 
-void wson_push_type_array(wson_buffer *buffer, uint32_t size){
+inline void wson_push_type_array(wson_buffer *buffer, uint32_t size){
     WSON_BUFFER_ENSURE_SIZE(sizeof(uint8_t));
     uint8_t* data = ((uint8_t*)buffer->data + buffer->position);
     *data = WSON_ARRAY_TYPE;
@@ -187,7 +187,7 @@ void wson_push_type_array(wson_buffer *buffer, uint32_t size){
 }
 
 
-void wson_push_type_extend(wson_buffer *buffer, const void *src, int32_t length){
+inline void wson_push_type_extend(wson_buffer *buffer, const void *src, int32_t length){
     WSON_BUFFER_ENSURE_SIZE(sizeof(uint8_t));
     uint8_t* data = ((uint8_t*)buffer->data + buffer->position);
     *data = WSON_EXTEND_TYPE;
@@ -196,11 +196,11 @@ void wson_push_type_extend(wson_buffer *buffer, const void *src, int32_t length)
     wson_push_bytes(buffer, src, length);
 }
 
-void wson_push_ensure_size(wson_buffer *buffer, uint32_t dataSize){
+inline void wson_push_ensure_size(wson_buffer *buffer, uint32_t dataSize){
     WSON_BUFFER_ENSURE_SIZE(sizeof(uint8_t)*dataSize);
 }
 
-void wson_push_ulong(wson_buffer *buffer, uint64_t num){
+inline void wson_push_ulong(wson_buffer *buffer, uint64_t num){
     WSON_BUFFER_ENSURE_SIZE(sizeof(uint64_t));
     uint8_t* data = ((uint8_t*)buffer->data + buffer->position);
     data[7] = (uint8_t)(num & 0xFF);
@@ -234,20 +234,20 @@ void wson_push_float(wson_buffer *buffer, float f){
 }
 
 
-void wson_push_bytes(wson_buffer *buffer, const void *src, int32_t length){
+inline void wson_push_bytes(wson_buffer *buffer, const void *src, int32_t length){
     WSON_BUFFER_ENSURE_SIZE(length);
     void* dst = ((uint8_t*)buffer->data + buffer->position);
     memcpy(dst, src, length);
     buffer->position += length;
 }
 
-int8_t wson_next_type(wson_buffer *buffer){
+inline int8_t wson_next_type(wson_buffer *buffer){
     int8_t* ptr = (int8_t*)((uint8_t*)buffer->data + buffer->position);
     buffer->position += sizeof(int8_t);
     return *ptr;
 }
 
-int8_t wson_next_byte(wson_buffer *buffer){
+inline int8_t wson_next_byte(wson_buffer *buffer){
     int8_t* ptr = (int8_t*)(((uint8_t*)buffer->data + buffer->position));
     buffer->position += sizeof(int8_t);
     return *ptr;
@@ -295,7 +295,7 @@ int64_t wson_next_long(wson_buffer *buffer){
     return wson_next_ulong(buffer);
 }
 
-uint64_t wson_next_ulong(wson_buffer *buffer){
+inline uint64_t wson_next_ulong(wson_buffer *buffer){
     uint8_t* data = ((uint8_t*)buffer->data + buffer->position);
     buffer->position += sizeof(uint64_t);
     return (((uint64_t)data[7]) & 0xFF)
@@ -314,7 +314,7 @@ double wson_next_double(wson_buffer *buffer){
     return ld.d;
 }
 
-float wson_next_float(wson_buffer *buffer){
+inline float wson_next_float(wson_buffer *buffer){
     union float_number fn;
     uint8_t* data = ((uint8_t*)buffer->data + buffer->position);
     fn.i = ((data[3]) & 0xFF)
@@ -326,7 +326,7 @@ float wson_next_float(wson_buffer *buffer){
 }
 
 
-uint8_t* wson_next_bts(wson_buffer *buffer, uint32_t length){
+inline uint8_t* wson_next_bts(wson_buffer *buffer, uint32_t length){
     uint8_t * ptr = ((uint8_t*)buffer->data + buffer->position);
     buffer->position += length;
     return ptr;

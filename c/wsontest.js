@@ -186,6 +186,11 @@ var wsonTestSuit = {
             _self.testWSONFile(dir + "/data/page_model_cached.wson", dir + "/data/page_model_cached.json");
             _self.testWSONFile(dir + "/data/string_array_10000.wson", dir + "/data/string_array_10000.json");
             _self.testWSONFile(dir + "/data/trade.wson", dir + "/data/trade.json");
+            _self.testWSONFile(dir + "/data/monitor.wson", dir + "/data/monitor.json");
+            _self.testWSONFile(dir + "/data/Bug_2_Test.wson", dir + "/data/Bug_2_Test.json");
+            _self.testWSONFile(dir + "/data/Bug_0_Test.wson", dir + "/data/Bug_0_Test.json");
+            _self.testWSONFile(dir + "/data/json.wson", dir + "/data/json.json");
+            _self.testWSONFile(dir + "/data/wuyexiong.wson", dir + "/data/wuyexiong.json");
         },
         testWSONJSONBenchmarkOneFile : function(fileName){
             var _self = this;
@@ -200,13 +205,22 @@ var wsonTestSuit = {
             _self.testWSONJSONBenchmarkOneFile(dir + "/media2.json");
             _self.testWSONJSONBenchmarkOneFile(dir + "/middle.json");
             _self.testWSONJSONBenchmarkOneFile(dir + "/weex.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/data/2.json");
             _self.testWSONJSONBenchmarkOneFile(dir + "/data/group.json");
             _self.testWSONJSONBenchmarkOneFile(dir + "/data/epub.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/data/int_100.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/data/int_500.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/data/int_array_100.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/data/int_array_500.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/data/maiksagill.json");
+            
+            
             _self.testWSONJSONBenchmarkOneFile(dir + "/data/page_model_cached.json");
             _self.testWSONJSONBenchmarkOneFile(dir + "/data/object_f_string_10000.json");
             _self.testWSONJSONBenchmarkOneFile(dir + "/data/object_f_null_10000.json");
             _self.testWSONJSONBenchmarkOneFile(dir + "/data/string_array_10000.json");
             _self.testWSONJSONBenchmarkOneFile(dir + "/data/trade.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/data/monitor.json");
         },
 }
 
@@ -219,9 +233,9 @@ function runWsonTestSuit(){
     wsonTestSuit.testString();
     wsonTestSuit.testJSONFileList();
     wsonTestSuit.testWSONFileList();
-    var end = new Date().getTime();
     wsonTestSuit.testWSONJSONBenchmark();
-    console.log("runing runWsonTestSuit end used " + (end-start)  + "ms");
+    var end = new Date().getTime();
+    console.log("runing runWsonTestSuit end used " + (end - start)  + "ms");
 }
 runWsonTestSuit();
 wsonDestroy();

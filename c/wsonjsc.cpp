@@ -12,6 +12,7 @@
 #include "JSCJSValueInlines.h"
 #include <wtf/Vector.h>
 #include <wtf/HashMap.h>
+#include <wtf/unicode/UTF8.h>
 
 
 #ifdef  __ANDROID__
@@ -48,8 +49,8 @@ namespace wson {
     JSValue wson_to_js_value(ExecState* state, wson_buffer* buffer, IdentifierCache* localIdentifiers, const int& localCount);
     inline void wson_push_js_string(ExecState* exec,  JSValue val, wson_buffer* buffer);
     inline void wson_push_js_identifier(Identifier val, wson_buffer* buffer);
-    inline JSValue call_object_js_value_to_json(ExecState* exec, JSValue val, VM& vm, Identifier* identifier);
-    inline JSValue call_object_js_value_to_json(ExecState* exec, JSValue val, VM& vm, uint32_t index);
+    JSValue call_object_js_value_to_json(ExecState* exec, JSValue val, VM& vm, Identifier* identifier);
+    JSValue call_object_js_value_to_json(ExecState* exec, JSValue val, VM& vm, uint32_t index);
 
 
 
@@ -61,7 +62,9 @@ namespace wson {
         VM& vm = exec->vm();
         LocalScope localScope(exec->vm());
         Identifier emptyIdentifier = vm.propertyNames->emptyIdentifier;
-        val = call_object_js_value_to_json(exec, val, vm, &emptyIdentifier);
+        if(val.isObject()){
+            val = call_object_js_value_to_json(exec, val, vm, &emptyIdentifier);
+        }
         wson_buffer* buffer = wson_buffer_new();
         Vector<JSObject*, 16> objectStack;
         wson_push_js_value(exec, val, buffer, objectStack);
@@ -323,43 +326,40 @@ namespace wson {
     }
 
     
-    inline JSValue call_object_js_value_to_json(ExecState* exec, JSValue val, VM& vm, Identifier* identifier){
-        if(val.isObject()){
-            JSObject* object = asObject(val);
-            PropertySlot slot(object, PropertySlot::InternalMethodType::Get);
-            bool hasProperty = object->getPropertySlot(exec, vm.propertyNames->toJSON, slot);
-            if (hasProperty){
-                JSValue toJSONFunction = slot.getValue(exec, vm.propertyNames->toJSON);
-                CallType callType;
-                CallData callData;
-                if (toJSONFunction.isCallable(callType, callData)){
-                    MarkedArgumentBuffer args;
-                    args.append(jsString(exec, identifier->string()));
-                    return call(exec, asObject(toJSONFunction), callType, callData, val, args);
-                }
+    JSValue call_object_js_value_to_json(ExecState* exec, JSValue val, VM& vm, Identifier* identifier){
+     
+        JSObject* object = asObject(val);
+        PropertySlot slot(object, PropertySlot::InternalMethodType::Get);
+        bool hasProperty = object->getPropertySlot(exec, vm.propertyNames->toJSON, slot);
+        if (hasProperty){
+            JSValue toJSONFunction = slot.getValue(exec, vm.propertyNames->toJSON);
+            CallType callType;
+            CallData callData;
+            if (toJSONFunction.isCallable(callType, callData)){
+                MarkedArgumentBuffer args;
+                args.append(jsString(exec, identifier->string()));
+                return call(exec, asObject(toJSONFunction), callType, callData, val, args);
             }
-         }
+        }
         return val;
     }
     
-    inline JSValue call_object_js_value_to_json(ExecState* exec, JSValue val, VM& vm, uint32_t index){
-        if(val.isObject()){
-            JSObject* object = asObject(val);
-            PropertySlot slot(object, PropertySlot::InternalMethodType::Get);
-            bool hasProperty = object->getPropertySlot(exec, vm.propertyNames->toJSON, slot);
-            if (hasProperty){
-                JSValue toJSONFunction = slot.getValue(exec, vm.propertyNames->toJSON);
-                CallType callType;
-                CallData callData;
-                if (toJSONFunction.isCallable(callType, callData)){
-                    MarkedArgumentBuffer args;
-                    if(index <= 9){
-                        args.append(vm.smallStrings.singleCharacterString(index + '0'));
-                    }else{
-                        args.append(jsNontrivialString(&vm, vm.numericStrings.add(index)));
-                    }
-                    return call(exec, asObject(toJSONFunction), callType, callData, val, args);
+    JSValue call_object_js_value_to_json(ExecState* exec, JSValue val, VM& vm, uint32_t index){
+        JSObject* object = asObject(val);
+        PropertySlot slot(object, PropertySlot::InternalMethodType::Get);
+        bool hasProperty = object->getPropertySlot(exec, vm.propertyNames->toJSON, slot);
+        if (hasProperty){
+            JSValue toJSONFunction = slot.getValue(exec, vm.propertyNames->toJSON);
+            CallType callType;
+            CallData callData;
+            if (toJSONFunction.isCallable(callType, callData)){
+                MarkedArgumentBuffer args;
+                if(index <= 9){
+                    args.append(vm.smallStrings.singleCharacterString(index + '0'));
+                }else{
+                    args.append(jsNontrivialString(&vm, vm.numericStrings.add(index)));
                 }
+                return call(exec, asObject(toJSONFunction), callType, callData, val, args);
             }
         }
         return val;
@@ -410,7 +410,9 @@ namespace wson {
             objectStack.append(array);
             for(uint32_t index=0; index<length; index++){
                 JSValue ele = array->getIndex(exec, index);
-                val = call_object_js_value_to_json(exec, val, vm, index);
+                if(ele.isObject()){
+                     ele = call_object_js_value_to_json(exec, ele, vm, index);
+                }
                 wson_push_js_value(exec, ele, buffer, objectStack);
             }
             objectStack.removeLast();
@@ -494,7 +496,9 @@ namespace wson {
                      if(propertyValue.isUndefined() || propertyValue.isFunction()){
                           continue;
                      }
-                     propertyValue = call_object_js_value_to_json(exec, propertyValue, vm, &propertyName);
+                     if(propertyValue.isObject()){
+                         propertyValue = call_object_js_value_to_json(exec, propertyValue, vm, &propertyName);
+                     }
                      wson_push_js_identifier(propertyName , buffer);
                      wson_push_js_value(exec, propertyValue, buffer,objectStack);
                  }
@@ -557,6 +561,7 @@ namespace wson {
              wson_push_uint(buffer, length*sizeof(UChar));
              wson_buffer_require(buffer, length*sizeof(UChar));
              UChar* jchars = (UChar*)((uint8_t*)buffer->data + buffer->position);
+             
              for (unsigned i = 0; i < length; i++) {
 #ifdef __ANDROID__
                  jchars[i] = s.at(i);
