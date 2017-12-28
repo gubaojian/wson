@@ -57,7 +57,14 @@ public class PrepareWsonFile extends TestCase {
                 "/data/object_f_true_10000.json",
                 "/data/page_model_cached.json",
                 "/data/string_array_10000.json",
-                "/data/trade.json"
+                "/data/trade.json",
+                "/data/monitor.json",
+                "/data/Bug_2_Test.json",
+                "/data/Bug_0_Test.json",
+                "/data/json.json",
+                "/data/wuyexiong.json"
+
+
         };
 
 
