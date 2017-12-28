@@ -47,7 +47,7 @@ typedef struct wson_buffer{
  * */
 wson_buffer* wson_buffer_new(void);
 
-
+void wson_buffer_require(wson_buffer *buffer, size_t size);
 /**
  * push value with type signature; 1 true, 0 false, with type WSON_BOOLEAN_TYPE
  * signature  + byte

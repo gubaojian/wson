@@ -13,6 +13,7 @@
 #include <wtf/Vector.h>
 #include <wtf/HashMap.h>
 
+
 #ifdef  __ANDROID__
     //#define WSON_JSC_DEBUG  true;
     #include <android/log.h>
@@ -44,7 +45,7 @@ namespace wson {
     static  IdentifierCache* systemIdentifyCache = nullptr;
     static  VM* systemIdentifyCacheVM = nullptr;
     void wson_push_js_value(ExecState* exec, JSValue val, wson_buffer* buffer, Vector<JSObject*, 16>& objectStack);
-    JSValue wson_to_js_value(ExecState* state, wson_buffer* buffer, IdentifierCache* localIdentifiers, int localCount);
+    JSValue wson_to_js_value(ExecState* state, wson_buffer* buffer, IdentifierCache* localIdentifiers, const int& localCount);
     inline void wson_push_js_string(ExecState* exec,  JSValue val, wson_buffer* buffer);
     inline void wson_push_js_identifier(Identifier val, wson_buffer* buffer);
     inline JSValue call_object_js_value_to_json(ExecState* exec, JSValue val, VM& vm, Identifier* identifier);
@@ -57,12 +58,11 @@ namespace wson {
 #ifdef  WSON_JSC_DEBUG  
          LOGE("weex wson pre %s", JSONStringify(exec, val, 0).utf8().data());
 #endif
-        
-        VM& vm =exec->vm();
+        VM& vm = exec->vm();
+        LocalScope localScope(exec->vm());
         Identifier emptyIdentifier = vm.propertyNames->emptyIdentifier;
         val = call_object_js_value_to_json(exec, val, vm, &emptyIdentifier);
         wson_buffer* buffer = wson_buffer_new();
-        LocalScope localScope(exec->vm());
         Vector<JSObject*, 16> objectStack;
         wson_push_js_value(exec, val, buffer, objectStack);
         
@@ -87,19 +87,7 @@ namespace wson {
         VM& vm =exec->vm();
         LocalScope scope(vm);
         if(systemIdentifyCacheVM && systemIdentifyCacheVM == &vm){
-            if(buffer->length < 256){// small amount, less memory
-               IdentifierCache localIdentifiers[WSON_LOCAL_IDENTIFIER_CACHE_COUNT];
-               return wson_to_js_value(exec, buffer, localIdentifiers, WSON_LOCAL_IDENTIFIER_CACHE_COUNT);
-            }else if(buffer->length < 512){// small amount, less memory
-               IdentifierCache localIdentifiers[WSON_LOCAL_IDENTIFIER_CACHE_COUNT*2];
-               return wson_to_js_value(exec, buffer, localIdentifiers, WSON_LOCAL_IDENTIFIER_CACHE_COUNT*2);
-            }else if(buffer->length < 1024){// small amount, less memory
-               IdentifierCache localIdentifiers[WSON_LOCAL_IDENTIFIER_CACHE_COUNT*3];
-               return wson_to_js_value(exec, buffer, localIdentifiers, WSON_LOCAL_IDENTIFIER_CACHE_COUNT*3);
-            }else{
-               IdentifierCache localIdentifiers[WSON_LOCAL_IDENTIFIER_CACHE_COUNT*4];
-               return wson_to_js_value(exec, buffer, localIdentifiers, WSON_LOCAL_IDENTIFIER_CACHE_COUNT*4);
-            }
+             return wson_to_js_value(exec, buffer, systemIdentifyCache, WSON_SYSTEM_IDENTIFIER_CACHE_COUNT);
         }
 
         if(buffer->length < 256){
@@ -214,42 +202,17 @@ namespace wson {
      * most of json identifer is repeat, cache can improve performance fixme 
      * cache global, improve performance
      */
-    inline Identifier makeIdentifer(VM* vm, IdentifierCache* localIdentifiers, int localCount, const UChar* utf16, size_t length){
+    inline Identifier makeIdentifer(VM* vm, IdentifierCache* localIdentifiers, const int& localCount, const UChar* utf16, const size_t length){
         if(length <= 0){
            return vm->propertyNames->emptyIdentifier;
         }
         if (utf16[0] <= 0 || utf16[0] >= 127 || length > 32){//only cache short identifier
-            UChar* destination;
-            String string = String::createUninitialized(length, destination);
-            memcpy((void*)destination, (void*)utf16, length*sizeof(UChar));
-            return  Identifier::fromString(vm, string);
-        }
-        uint32_t key = 0;
-        uint32_t systemIdentifyCacheIndex = 0;
-        IdentifierCache cache;
-        bool saveGlobal = false;
-        uint32_t localIndex = 0;
-        if(systemIdentifyCacheVM && systemIdentifyCacheVM == vm){
-            key = hash(utf16, length);
-            systemIdentifyCacheIndex = (WSON_SYSTEM_IDENTIFIER_CACHE_COUNT - 1)&key;
-            localIndex = (localCount - 1) & key;
-            if(systemIdentifyCache != nullptr){
-                cache = systemIdentifyCache[systemIdentifyCacheIndex];
-                if(cache.length == length
-                   && cache.key == key
-                   && memcmp((void*)cache.utf16, (void*)utf16, length*sizeof(UChar)) == 0
-                   && !cache.identifer.isNull()){
-                    return cache.identifer;
-                }
-                if(!cache.utf16 && cache.length == 0){
-                    saveGlobal = true;
-                }
-            }
-        }else{
-            key = hash2(utf16, length);
-            localIndex = (localCount - 1) & key;
+            return  Identifier::fromString(vm, utf16, length);
         }
 
+        IdentifierCache cache;
+        uint32_t key= hash(utf16, length);
+        uint32_t localIndex = (localCount - 1) & key;
         cache = localIdentifiers[localIndex];
         if(cache.length == length
            && cache.key == key
@@ -257,7 +220,6 @@ namespace wson {
            && !cache.identifer.isNull()){
             return cache.identifer;
         }
-
         UChar* destination;
         String string = String::createUninitialized(length, destination);
         memcpy((void*)destination, (void*)utf16, length*sizeof(UChar));
@@ -265,17 +227,12 @@ namespace wson {
         cache.identifer = identifier;
         cache.length = length;
         cache.key = key;
-        if(saveGlobal && length <= 32){
-            cache.utf16 = destination;
-            systemIdentifyCache[systemIdentifyCacheIndex] = cache;
-        }else{
-            cache.utf16 = destination;
-            localIdentifiers[localIndex] = cache;
-        }
+        cache.utf16 = destination;
+        localIdentifiers[localIndex] = cache;
         return identifier;
     }
 
-    JSValue wson_to_js_value(ExecState* exec, wson_buffer* buffer,  IdentifierCache* localIdentifiers, int localCount){
+    JSValue wson_to_js_value(ExecState* exec, wson_buffer* buffer,  IdentifierCache* localIdentifiers, const int& localCount){
         uint8_t  type = wson_next_type(buffer);
         switch (type) {
             case WSON_STRING_TYPE:
@@ -310,7 +267,8 @@ namespace wson {
                       if(wson_has_next(buffer)){
                           int propertyLength = wson_next_uint(buffer);
                           const UChar* data = (const UChar*)wson_next_bts(buffer, propertyLength);
-                          PropertyName name = makeIdentifer(&vm, localIdentifiers, localCount, data, propertyLength/sizeof(UChar));
+                          Identifier  identifer = makeIdentifer(&vm, localIdentifiers, localCount, data, propertyLength/sizeof(UChar));
+                          PropertyName name = identifer;
                           if (std::optional<uint32_t> index = parseIndex(name)){
                               object->putDirectIndex(exec, index.value(), wson_to_js_value(exec, buffer, localIdentifiers, localCount));
                           }else{
@@ -571,7 +529,10 @@ namespace wson {
         size_t length = s.length();
         if (s.is8Bit()) {
             // Convert latin1 chars to unicode.
-            Vector<UChar> jchars(s.length());
+            wson_push_type(buffer, WSON_STRING_TYPE);
+            wson_push_uint(buffer, length*sizeof(UChar));
+            wson_buffer_require(buffer, length*sizeof(UChar));
+            UChar* jchars = (UChar*)((uint8_t*)buffer->data + buffer->position);
             for (unsigned i = 0; i < length; i++) {
 #ifdef __ANDROID__
                 jchars[i] = s.at(i);
@@ -579,9 +540,7 @@ namespace wson {
                 jchars[i] = s.characterAt(i);
 #endif
             }
-            wson_push_type(buffer, WSON_STRING_TYPE);  
-            wson_push_uint(buffer, length*sizeof(UChar));
-            wson_push_bytes(buffer, jchars.data(), s.length()*sizeof(UChar));
+            buffer->position +=length*sizeof(UChar);
        } else {
            wson_push_type(buffer, WSON_STRING_TYPE);  
            wson_push_uint(buffer, length*sizeof(UChar));
@@ -595,16 +554,17 @@ namespace wson {
          size_t  length = s.length();
          if (s.is8Bit()) {
             // Convert latin1 chars to unicode.
-            Vector<UChar> jchars(s.length());
-            for (unsigned i = 0; i < length; i++) {
+             wson_push_uint(buffer, length*sizeof(UChar));
+             wson_buffer_require(buffer, length*sizeof(UChar));
+             UChar* jchars = (UChar*)((uint8_t*)buffer->data + buffer->position);
+             for (unsigned i = 0; i < length; i++) {
 #ifdef __ANDROID__
-                jchars[i] = s.at(i);
+                 jchars[i] = s.at(i);
 #else
-                jchars[i] = s.characterAt(i);
+                 jchars[i] = s.characterAt(i);
 #endif
-            }
-            wson_push_uint(buffer, length*sizeof(UChar));
-            wson_push_bytes(buffer, jchars.data(), s.length()*sizeof(UChar));
+             }
+             buffer->position +=length*sizeof(UChar);
         } else { 
            wson_push_uint(buffer, length*sizeof(UChar));
            wson_push_bytes(buffer, s.characters16(), s.length()*sizeof(UChar));

@@ -68,6 +68,10 @@ wson_buffer* wson_buffer_from(void* data, uint32_t length){
 }
 
 
+void wson_buffer_require(wson_buffer *buffer, size_t size){
+    WSON_BUFFER_ENSURE_SIZE(size*sizeof(uint8_t));
+}
+
 
 void wson_push_int(wson_buffer *buffer, int32_t value){
     uint32_t num = msg_buffer_varint_Zig(value);
@@ -159,7 +163,7 @@ void wson_push_type_string_length(wson_buffer *buffer, int32_t length){
     wson_push_uint(buffer, length);
 }
 
-void wson_push_type_null(wson_buffer *buffer){
+inline void wson_push_type_null(wson_buffer *buffer){
     WSON_BUFFER_ENSURE_SIZE(sizeof(uint8_t));
     uint8_t* data = ((uint8_t*)buffer->data + buffer->position);
     *data = WSON_NULL_TYPE;
