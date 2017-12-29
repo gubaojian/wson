@@ -1,0 +1,44 @@
+{
+  "api": "mtop.taobao.amp.im.group.getgroupuserinfonotnulllistbyuseridlist",
+  "data": {
+    "result": [{
+      "bizId": "0",
+      "ccode": "0_G_299499117_1508861090063",
+      "checkInType": "2",
+      "createTime": "1508893944000",
+      "groupType": "G",
+      "groupUserName": "19u4JgSWjsbiezrlvt3apA==",
+      "groupUserNick": "19u4JgSWjsbiezrlvt3apA==",
+      "hasNoticeAuth": "0",
+      "headUrl": "https://gw.alicdn.com/sns_logo/i3/T1ZPqTXetlXXb1upjX.jpg",
+      "identity": "0",
+      "invitorId": "781019970",
+      "isInGroup": "true",
+      "isRemind": "true",
+      "modifyTime": "1512614711000",
+      "nick": "19u4JgSWjsbiezrlvt3apA==",
+      "remindType": "F",
+      "userId": "801208498"
+    }, {
+      "bizId": "0",
+      "ccode": "0_G_299499117_1508861090063",
+      "checkInType": "2",
+      "createTime": "1508897851000",
+      "groupType": "G",
+      "groupUserName": "Jm+t9yQ7EsFkDPojB3WL9A==",
+      "groupUserNick": "Jm+t9yQ7EsFkDPojB3WL9A==",
+      "hasNoticeAuth": "0",
+      "headUrl": "https://gw.alicdn.com/sns_logo/TB1.TkfPXXXXXbkXpXXXXXXXXXX",
+      "identity": "0",
+      "invitorId": "90367541",
+      "isInGroup": "false",
+      "isRemind": "false",
+      "modifyTime": "1510792820000",
+      "nick": "Jm+t9yQ7EsFkDPojB3WL9A==",
+      "remindType": "E",
+      "userId": "110442022"
+    }]
+  },
+  "ret": ["SUCCESS::调用成功"],
+  "v": "2.0"
+}

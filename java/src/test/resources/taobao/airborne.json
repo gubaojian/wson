@@ -1,0 +1,28 @@
+{
+  "api": "mtop.taobao.wireless.airborne.reinforce",
+  "data": {
+    "bucket": {
+      "bucketId": "2629",
+      "des": "视频灰度",
+      "matchRule": "{\"query\":[],\"url\":\"market.m.taobao.com/apps/market/qingdan/list-11.html\"}",
+      "name": "视频灰度",
+      "operation": "{\"host\":\"market.m.taobao.com\",\"path\":\"/apps/market/qingdan/list-video.html\",\"query\":[]}",
+      "secure": "758ae1b892d508ec799b3da9aeef489e",
+      "version": "0"
+    },
+    "exp": {
+      "des": "首页视频清单灰度",
+      "expId": "1419",
+      "expireTime": "1520524800000",
+      "name": "首页视频清单灰度",
+      "type": "abtest",
+      "version": "1514528063000"
+    },
+    "expPageId": "1054",
+    "pages": [],
+    "productId": "59",
+    "token": "17.1419.6"
+  },
+  "ret": ["SUCCESS::调用成功"],
+  "v": "1.0"
+}

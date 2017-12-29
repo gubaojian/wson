@@ -1,0 +1,42 @@
+{
+  "api": "mtop.order.queryboughtlist",
+  "data": {
+    "data": {
+      "meta": {
+        "template": {
+          "cellType": "template",
+          "cellData": [{
+            "tag": "template",
+            "id": "1",
+            "type": "biz",
+            "fields": {
+              "isForce": "false",
+              "tfsId": "TB170EfkwvD8KJjy0FlhA1gBFXa"
+            }
+          }]
+        },
+        "page": {
+          "tag": "page",
+          "id": "1",
+          "type": "biz",
+          "fields": {
+            "totalNumber": "0",
+            "totalPage": "0",
+            "pageSize": "15",
+            "queryForTitle": "false",
+            "currentPage": "1"
+          }
+        },
+        "loadTemplate": "true"
+      },
+      "group": []
+    },
+    "endpoint": {
+      "mode": "wireless_andorid",
+      "osVersion": "ANDROID"
+    },
+    "reload": "false"
+  },
+  "ret": ["SUCCESS::调用成功"],
+  "v": "4.0"
+}

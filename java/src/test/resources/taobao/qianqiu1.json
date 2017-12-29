@@ -1,0 +1,258 @@
+{
+  "api": "mtop.taobao.need.graphql.gate",
+  "appConf": "",
+  "data": {
+    "response": {
+      "left": [{
+        "start": 1.5143904E12,
+        "end": 1.514476799E12,
+        "pic": "https://gw.alicdn.com/tfs/TB11M5jh5qAXuNjy1XdXXaYcVXa-345-540.png",
+        "id": 200485876774,
+        "type": "trend",
+        "url": null
+      }, {
+        "start": 1.5144768E12,
+        "end": 1.514563199E12,
+        "pic": "https://gw.alicdn.com/tfs/TB1NUBVkBfH8KJjy1XbXXbLdXXa-345-540.png",
+        "id": 200448441895,
+        "type": "trend",
+        "url": null
+      }, {
+        "start": 1.513872E12,
+        "end": 1.513958399E12,
+        "pic": "https://gw.alicdn.com/tfs/TB1CxeejBHH8KJjy0FbXXcqlpXa-345-540.png",
+        "id": 200475065743,
+        "type": "trend",
+        "url": null
+      }, {
+        "start": 1.5141312E12,
+        "end": 1.514217599E12,
+        "pic": "https://gw.alicdn.com/tfs/TB1NZFqjN6I8KJjy0FgXXXXzVXa-345-540.png",
+        "id": 200456825989,
+        "type": "trend",
+        "url": null
+      }, {
+        "start": 1.51344E12,
+        "end": 1.513526399E12,
+        "pic": "https://gw.alicdn.com/tfs/TB1fU4AgiqAXuNjy1XdXXaYcVXa-345-540.png",
+        "id": 200460782555,
+        "type": "trend",
+        "url": null
+      }, {
+        "start": 1.5135264E12,
+        "end": 1.513612799E12,
+        "pic": "https://gw.alicdn.com/tfs/TB120HLgiqAXuNjy1XdXXaYcVXa-345-540.png",
+        "id": 200454236805,
+        "type": "trend",
+        "url": null
+      }],
+      "center": [{
+        "start": 1.5143904E12,
+        "end": 1.514476799E12,
+        "pic": "https://gw.alicdn.com/tfs/TB1uwoVkfDH8KJjy1XcXXcpdXXa-345-540.png",
+        "id": 200484628920,
+        "type": "trend",
+        "url": null
+      }, {
+        "start": 1.5144768E12,
+        "end": 1.514563199E12,
+        "pic": "https://gw.alicdn.com/tfs/TB1ycAxh5qAXuNjy1XdXXaYcVXa-345-540.png",
+        "id": 200458549590,
+        "type": "trend",
+        "url": null
+      }, {
+        "start": 1.513872E12,
+        "end": 1.513958399E12,
+        "pic": "https://gw.alicdn.com/tfs/TB1wheejBHH8KJjy0FbXXcqlpXa-345-540.png",
+        "id": 200452226223,
+        "type": "trend",
+        "url": null
+      }, {
+        "start": 1.5141312E12,
+        "end": 1.514217599E12,
+        "pic": "https://gw.alicdn.com/tfs/TB18LADjsrI8KJjy0FhXXbfnpXa-345-540.png",
+        "id": 200433057831,
+        "type": "trend",
+        "url": null
+      }, {
+        "start": 1.51344E12,
+        "end": 1.513526399E12,
+        "pic": "https://gw.alicdn.com/tfs/TB1b.4AgiqAXuNjy1XdXXaYcVXa-345-540.png",
+        "id": 200456325491,
+        "type": "trend",
+        "url": null
+      }, {
+        "start": 1.5135264E12,
+        "end": 1.513612799E12,
+        "pic": "https://gw.alicdn.com/tfs/TB11JHLgiqAXuNjy1XdXXaYcVXa-345-540.png",
+        "id": 200457640645,
+        "type": "trend",
+        "url": null
+      }],
+      "right": [{
+        "start": 1.5143904E12,
+        "end": 1.514476799E12,
+        "pic": "https://gw.alicdn.com/tfs/TB1YrnKklfH8KJjy1XbXXbLdXXa-345-540.png",
+        "id": 200467110475,
+        "type": "brand",
+        "url": null
+      }, {
+        "start": 1.5144768E12,
+        "end": 1.514563199E12,
+        "pic": "https://gw.alicdn.com/tfs/TB1qHLpkr_I8KJjy1XaXXbsxpXa-345-540.png",
+        "id": 200454258507,
+        "type": "brand",
+        "url": null
+      }, {
+        "start": 1.513872E12,
+        "end": 1.513958399E12,
+        "pic": "https://gw.alicdn.com/tfs/TB1pbF8jtfJ8KJjy0FeXXXKEXXa-345-540.png",
+        "id": 200386375957,
+        "type": "brand",
+        "url": null
+      }, {
+        "start": 1.5141312E12,
+        "end": 1.514217599E12,
+        "pic": "https://gw.alicdn.com/tfs/TB1_jFEjILJ8KJjy0FnXXcFDpXa-345-540.png",
+        "id": 200459203057,
+        "type": "brand",
+        "url": null
+      }, {
+        "start": 1.51344E12,
+        "end": 1.513526399E12,
+        "pic": "https://gw.alicdn.com/tfs/TB1z.4AgiqAXuNjy1XdXXaYcVXa-345-540.png",
+        "id": 200475523021,
+        "type": "brand",
+        "url": null
+      }, {
+        "start": 1.5135264E12,
+        "end": 1.513612799E12,
+        "pic": "https://gw.alicdn.com/tfs/TB1x59riLDH8KJjy1XcXXcpdXXa-345-540.png",
+        "id": 200473924633,
+        "type": "brand",
+        "url": null
+      }],
+      "rightRmd": {
+        "bannerConfigs": []
+      }
+    },
+    "time": 1514534268126,
+    "topBpus": [{
+      "itemId": "535769448152",
+      "bpuId": 732885157,
+      "mainPic": "//gw.alicdn.com/tps/TB1kWlaRXXXXXcCaXXXL6TaGpXX",
+      "title": "孕期纯棉哺乳文胸BR1602紫罗兰",
+      "brand": {
+        "name": "INUJIRUSHI",
+        "locationPic": "//g.alicdn.com/mui/flag-img/circle/JP.png"
+      },
+      "rawPrice": "358.00",
+      "price": "218.00"
+    }, {
+      "itemId": "539025838941",
+      "bpuId": 898550063,
+      "mainPic": "//gw.alicdn.com/tps/TB1yKPtawvD8KJjSsplL6SIEFXa",
+      "title": "丝带低腰内裤女三角裤P000BGDW白色/黑色/灰色/酒红色",
+      "brand": {
+        "name": "chuu",
+        "locationPic": "//g.alicdn.com/mui/flag-img/circle/KR.png"
+      },
+      "rawPrice": "184.00",
+      "price": "129.00"
+    }],
+    "recommend": {
+      "result": [{
+        "utLogMap": {
+          "pvid": "7403f161-510c-4a31-b8d8-f1a5118715fa",
+          "bpuId": "882242440",
+          "scm": "1007.12144.81309.45579_0"
+        },
+        "itemId": 558851960100,
+        "rawPrice": "200.0",
+        "price": "55",
+        "bpu_id_broadcast": "882242440",
+        "bpuId": 882242440,
+        "mainPic": "//gw.alicdn.com/tps/TB1.B22bqigSKJjSsppL6SbnpXa",
+        "title": "富果乐水果谷物燕麦片800g",
+        "brand": {
+          "name": "Calbee/卡乐B",
+          "locationPic": "//g.alicdn.com/mui/flag-img/circle/JP.png"
+        }
+      }, {
+        "utLogMap": {
+          "pvid": "7403f161-510c-4a31-b8d8-f1a5118715fa",
+          "bpuId": "878598403",
+          "scm": "1007.12144.81309.45579_0"
+        },
+        "itemId": 542057981344,
+        "rawPrice": "155.0",
+        "price": "108",
+        "bpu_id_broadcast": "888093101",
+        "bpuId": 888093101,
+        "mainPic": "//gw.alicdn.com/tps/TB1apQud93PL1JjSZFxL6UBBVXa",
+        "title": "成人奶粉1KG*2",
+        "brand": {
+          "name": "Devondale",
+          "locationPic": "//g.alicdn.com/mui/flag-img/circle/AU.png"
+        }
+      }, {
+        "utLogMap": {
+          "pvid": "7403f161-510c-4a31-b8d8-f1a5118715fa",
+          "bpuId": "888089808",
+          "scm": "1007.12144.81309.45579_0"
+        },
+        "itemId": 557800856696,
+        "rawPrice": "198.0",
+        "price": "45.9",
+        "bpu_id_broadcast": "888089808",
+        "bpuId": 888089808,
+        "mainPic": "//gw.alicdn.com/tps/TB13.QSf0.LL1JjSZFEL6UVmXXa",
+        "title": "超辣火鸡味拉面 140g*10包",
+        "brand": {
+          "name": "Samyang",
+          "locationPic": "//g.alicdn.com/mui/flag-img/circle/KR.png"
+        }
+      }, {
+        "utLogMap": {
+          "pvid": "7403f161-510c-4a31-b8d8-f1a5118715fa",
+          "bpuId": "890611767",
+          "scm": "1007.12144.81309.45579_0"
+        },
+        "itemId": 520185325306,
+        "rawPrice": "598.0",
+        "price": "79",
+        "bpu_id_broadcast": "890611767",
+        "bpuId": 890611767,
+        "mainPic": "//gw.alicdn.com/tps/TB1mRC0SXXXXXb8XpXXL6TaGpXX",
+        "title": "怡然植物无氨植物染发膏*2盒",
+        "brand": {
+          "name": "Schwarzkopf",
+          "locationPic": "//g.alicdn.com/mui/flag-img/circle/FR.png"
+        }
+      }, {
+        "utLogMap": {
+          "pvid": "7403f161-510c-4a31-b8d8-f1a5118715fa",
+          "bpuId": "888089771",
+          "scm": "1007.12144.81309.45579_0"
+        },
+        "itemId": 558218001017,
+        "rawPrice": "248.0",
+        "price": "92",
+        "bpu_id_broadcast": "888089771",
+        "bpuId": 888089771,
+        "mainPic": "//gw.alicdn.com/tps/TB1zN8LeIhmZKJjSZFPL6U5_XXa",
+        "title": "活泉喷雾300ml",
+        "brand": {
+          "name": "Avène",
+          "locationPic": "//g.alicdn.com/mui/flag-img/circle/FR.png"
+        }
+      }]
+    },
+    "success": true
+  },
+  "resultSerializeConfig": {
+    "commonVOResult": false
+  },
+  "ret": ["SUCCESS::调用成功"],
+  "v": "1.0"
+}

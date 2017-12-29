@@ -1,0 +1,3041 @@
+{
+  "api": "mtop.ju.data.get",
+  "data": {
+    "count": "33",
+    "currentPage": "1",
+    "data": {
+      "tqgLogoPic": "https://img.alicdn.com/tfs/TB1K8iQRFXXXXXNXpXXXXXXXXXX-474-132.png",
+      "optStr": "biqiangJuid:10000066827973;",
+      "boxtop": {
+        "defaultPic": "",
+        "boxType": null,
+        "sha": "500d43766813d0218a0bc81142d25dc1529e8124c564f92ac27ec01fd2a23d5a",
+        "url": "https://gjusp.alicdn.com/midway-luaView/tqj_box-c8c84430-9d28-11e7-a051-99cc2d5594c8.szip",
+        "height": "175"
+      },
+      "batch": {
+        "selectedPicture": "https://img.alicdn.com/tfs/TB1fgwRRFXXXXXUXXXXXXXXXXXX-284-150.png",
+        "batchList": [{
+          "endDate": "2017-12-28 18:59:59",
+          "endDateOnSell": "2017-12-29 16:59:59",
+          "id": "-1",
+          "startDate": "2017-12-28 17:00:00",
+          "startTime": "20171228170000",
+          "status": "past",
+          "statusDesc": "已开抢",
+          "title": "热卖榜单"
+        }, {
+          "endDate": "2017-12-29 16:59:59",
+          "endDateOnSell": "2017-12-30 14:59:59",
+          "id": "201712291500",
+          "startDate": "2017-12-29 15:00:00",
+          "startTime": "20171229150000",
+          "status": "current",
+          "statusDesc": "抢购进行中"
+        }, {
+          "endDate": "2017-12-29 18:59:59",
+          "endDateOnSell": "2017-12-30 16:59:59",
+          "id": "201712291700",
+          "startDate": "2017-12-29 17:00:00",
+          "startTime": "20171229170000",
+          "status": "future",
+          "statusDesc": "即将开场"
+        }, {
+          "endDate": "2017-12-29 20:59:59",
+          "endDateOnSell": "2017-12-30 18:59:59",
+          "id": "201712291900",
+          "startDate": "2017-12-29 19:00:00",
+          "startTime": "20171229190000",
+          "status": "future",
+          "statusDesc": "即将开场"
+        }, {
+          "endDate": "2017-12-29 21:59:59",
+          "endDateOnSell": "2017-12-30 20:59:59",
+          "id": "201712292100",
+          "startDate": "2017-12-29 21:00:00",
+          "startTime": "20171229210000",
+          "status": "future",
+          "statusDesc": "即将开场"
+        }, {
+          "endDate": "2017-12-29 22:59:59",
+          "endDateOnSell": "2017-12-30 21:59:59",
+          "id": "201712292200",
+          "startDate": "2017-12-29 22:00:00",
+          "startTime": "20171229220000",
+          "status": "future",
+          "statusDesc": "即将开场"
+        }, {
+          "endDate": "2017-12-29 23:59:59",
+          "endDateOnSell": "2017-12-30 22:59:59",
+          "id": "201712292300",
+          "startDate": "2017-12-29 23:00:00",
+          "startTime": "20171229230000",
+          "status": "future",
+          "statusDesc": "即将开场"
+        }, {
+          "endDate": "2017-12-30 07:59:59",
+          "endDateOnSell": "2017-12-30 23:59:59",
+          "id": "201712300000",
+          "startDate": "2017-12-30 00:00:00",
+          "startTime": "20171230000000",
+          "status": "future",
+          "statusDesc": "明日开场"
+        }, {
+          "endDate": "2017-12-30 09:59:59",
+          "endDateOnSell": "2017-12-31 07:59:59",
+          "id": "201712300800",
+          "startDate": "2017-12-30 08:00:00",
+          "startTime": "20171230080000",
+          "status": "future",
+          "statusDesc": "明日开场"
+        }, {
+          "endDate": "2017-12-30 10:59:59",
+          "endDateOnSell": "2017-12-31 09:59:59",
+          "id": "201712301000",
+          "startDate": "2017-12-30 10:00:00",
+          "startTime": "20171230100000",
+          "status": "future",
+          "statusDesc": "明日开场"
+        }, {
+          "endDate": "2017-12-30 11:59:59",
+          "endDateOnSell": "2017-12-31 10:59:59",
+          "id": "201712301100",
+          "startDate": "2017-12-30 11:00:00",
+          "startTime": "20171230110000",
+          "status": "future",
+          "statusDesc": "明日开场"
+        }, {
+          "endDate": "2017-12-30 12:59:59",
+          "endDateOnSell": "2017-12-31 11:59:59",
+          "id": "201712301200",
+          "startDate": "2017-12-30 12:00:00",
+          "startTime": "20171230120000",
+          "status": "future",
+          "statusDesc": "明日开场"
+        }, {
+          "endDate": "2017-12-30 13:59:59",
+          "endDateOnSell": "2017-12-31 12:59:59",
+          "id": "201712301300",
+          "startDate": "2017-12-30 13:00:00",
+          "startTime": "20171230130000",
+          "status": "future",
+          "statusDesc": "明日开场"
+        }, {
+          "endDate": "2017-12-30 14:59:59",
+          "endDateOnSell": "2017-12-31 13:59:59",
+          "id": "201712301400",
+          "startDate": "2017-12-30 14:00:00",
+          "startTime": "20171230140000",
+          "status": "future",
+          "statusDesc": "明日开场"
+        }, {
+          "endDate": "2017-12-30 16:59:59",
+          "endDateOnSell": "2017-12-31 14:59:59",
+          "id": "201712301500",
+          "startDate": "2017-12-30 15:00:00",
+          "startTime": "20171230150000",
+          "status": "future",
+          "statusDesc": "明日开场"
+        }, {
+          "endDate": "2017-12-30 18:59:59",
+          "endDateOnSell": "2017-12-31 16:59:59",
+          "id": "201712301700",
+          "startDate": "2017-12-30 17:00:00",
+          "startTime": "20171230170000",
+          "status": "future",
+          "statusDesc": "明日开场"
+        }, {
+          "endDate": "2017-12-30 20:59:59",
+          "endDateOnSell": "2017-12-31 18:59:59",
+          "id": "201712301900",
+          "startDate": "2017-12-30 19:00:00",
+          "startTime": "20171230190000",
+          "status": "future",
+          "statusDesc": "明日开场"
+        }, {
+          "endDate": "2017-12-30 21:59:59",
+          "endDateOnSell": "2017-12-31 20:59:59",
+          "id": "201712302100",
+          "startDate": "2017-12-30 21:00:00",
+          "startTime": "20171230210000",
+          "status": "future",
+          "statusDesc": "明日开场"
+        }, {
+          "endDate": "2017-12-30 22:59:59",
+          "endDateOnSell": "2017-12-31 21:59:59",
+          "id": "201712302200",
+          "startDate": "2017-12-30 22:00:00",
+          "startTime": "20171230220000",
+          "status": "future",
+          "statusDesc": "明日开场"
+        }, {
+          "endDate": "2017-12-31 22:59:59",
+          "endDateOnSell": "2017-12-31 22:59:59",
+          "id": "201712302300",
+          "startDate": "2017-12-30 23:00:00",
+          "startTime": "20171230230000",
+          "status": "future",
+          "statusDesc": "明日开场"
+        }],
+        "backgroundPicture": "",
+        "md5": "a3df77fa8e6a856d22b7b4f16ab8aab6"
+      },
+      "tqgThirdFloor": "",
+      "itemList": [{
+        "data": {
+          "baseinfo": {
+            "allPlatformIds": ["70", "34330"],
+            "encode64ItemId": "8c5TWSR",
+            "frontFirstCatIds": ["71000", "126000", "193000", "199000", "230000", "266000", "296000", "296000", "309000", "328000", "375000", "380000", "381000", "400000", "428000", "452000", "457000", "479000", "490000"],
+            "goJuH5": "false",
+            "itemActSignId": "29242855",
+            "itemId": "562739260853",
+            "itemLabel": ["qtth", "yhq", "sys_sign_1", "sys_ict_5895", "sys_domestic", "sys_ict_16779", "jinribiqiang", "sys_kcgj", "yhbltqg", "tqgt15", "mjs", "sys_qghome", "sys_sucai_entry", "sys_sucai_png", "sys_market_0"],
+            "itemStatus": "avil",
+            "itemUrl": "https://item.taobao.com/item.htm?id=562739260853",
+            "juId": "10000066827973",
+            "leftTime": "23小时9分钟",
+            "limitNum": "10",
+            "oetime": "1514617199000",
+            "oldbiz30day": "243",
+            "ostime": "1514530800000",
+            "ostimeText": "12月29日 15:00准时开抢",
+            "picUrl": "//gju4.alicdn.com/tps/i1/0/TB2krOldlfM8KJjSZFhXXcRyFXa_!!0-juitemmedia.jpg",
+            "picUrlFromIc": "//gju4.alicdn.com/tps/i4/775640620/TB1GMfNkDnI8KJjSszbXXb4KFXa_!!0-item_pic.jpg",
+            "picUrlM": "//gju4.alicdn.com/tps/i1/0/TB2krOldlfM8KJjSZFhXXcRyFXa_!!0-juitemmedia.jpg",
+            "picUrlNew": "//gju4.alicdn.com/tps/i4/775640620/TB1GMfNkDnI8KJjSszbXXb4KFXa_!!0-item_pic.jpg",
+            "platformId": "70",
+            "postage": "true",
+            "preRemindTime": "",
+            "preSale": "false",
+            "push": "false",
+            "salesSite": "2",
+            "sellerId": "775640620",
+            "setime": "1514617199000",
+            "shopType": "1",
+            "soldAmount": "0",
+            "soldRatio": "38",
+            "sstime": "1514433600000",
+            "stock": "999",
+            "tbFirstCatId": "50014812",
+            "tbLeafCatId": "50012413",
+            "totalStock": "1610"
+          },
+          "extend": {
+            "fwIcon": "",
+            "fwType": "",
+            "titleIcon": "",
+            "titleIcons": [],
+            "titleIconsNew": [],
+            "titleIconsV50": [],
+            "titleIconsV50New": [],
+            "titleIconsDacu": [],
+            "titleIconSmall": "",
+            "marketingCopyWriting": "",
+            "dailyMarketingIcon": "",
+            "actIcon": "",
+            "pcActIcon": "",
+            "bizHomeIcon": "",
+            "bizChannelIcon": "",
+            "ppjItemMerit": "",
+            "itemActSignId": "29242855",
+            "lfBizIcon": "",
+            "lfHongBaoPeriod": [],
+            "labelPics": {
+              "jinribiqiang": "http://img.alicdn.com/tps/TB1k8b.LpXXXXbMXpXXXXXXXXXX-114-114.png"
+            },
+            "xpName": "",
+            "xpSelling": "",
+            "xpImg": "",
+            "qgjText": "",
+            "tqgShowStockPercent": "true",
+            "tqgLabelPics": {
+              "jinribiqiang": "https://img.alicdn.com/tfs/TB1SdCtSpXXXXcxXpXXXXXXXXXX-132-36.png"
+            },
+            "tqgZdqText": "",
+            "tqgZdqEndTime": "1514530800000",
+            "tqgQhbText": "",
+            "tqgDetailUrl": "//a.m.taobao.com/i562739260853.htm?umpChannel=qianggou&u_channel=qianggou",
+            "biqiangActIcon": "https://img.alicdn.com/tfs/TB1gN1pRFXXXXbHXVXXXXXXXXXX-168-71.png",
+            "biqiangLabelText": "https://img.alicdn.com/tfs/TB1moeURFXXXXasXXXXXXXXXXXX-390-105.png",
+            "biqiangModelPic": "https://gw.alicdn.com/tfs/TB1aMYNRVXXXXaNXVXXXXXXXXXX-1125-555.png",
+            "tqgTemplate": "tbqgitem",
+            "tqgRemindTime": "180",
+            "pics": [],
+            "remindType": "1",
+            "brandName": "CLASSIC TEDDY/精典泰迪",
+            "itemLogoMoheXinPicV2": "//gju4.alicdn.com/tps/i1/6000000000494/TB2fiJSi_TI8KJjSsphXXcFppXa_!!6000000000494-2-jupush.png",
+            "biqiangSellPoint_70": "+20元换购纱布汗巾",
+            "appEntryImage": "//gju1.alicdn.com/tps/i3/0/TB25v4ycAfb_uJkHFrdXXX2IVXa_!!0-juitemmedia.jpg",
+            "biqiangSellPoint": "+20元换购纱布汗巾",
+            "benefit": "+15元换购食饭兜",
+            "brandId": "766398241",
+            "tqgSellPoint": "前1小时 买2免1",
+            "hyalineItemPic": "i4/0/TB2dS4Oi3vD8KJjSsplXXaIEFXa_!!2-juitemmedia.png",
+            "itemLogoMoheXinPicV2_70": "//gju4.alicdn.com/tps/i1/6000000000494/TB2fiJSi_TI8KJjSsphXXcFppXa_!!6000000000494-2-jupush.png",
+            "brandLogo": "//gju2.alicdn.com/tps/TB1YY.AIpXXXXcLXXXXSutbFXXX.jpg",
+            "tqgSellPoint_70": "+15元换购食饭兜",
+            "benefit_70": "+15元换购食饭兜",
+            "goodMeritIcon": "",
+            "zrtGroupNum": "",
+            "zrtCurGroupNum": "0",
+            "qcNewDetail": "true",
+            "flashBenefit": "",
+            "goNewDetail": "false",
+            "itemComments": [],
+            "firstSellPointIcons": [],
+            "secondSellPointIcons": "",
+            "secondSellPointTexts": "过敏无忧",
+            "thirdSellPointInfos": ["", ""],
+            "isSpecial": "false",
+            "promotionColor": "#FE371E",
+            "promotionPicUrl": "//gju4.alicdn.com/tps/TB1ldeXSXXXXXbxXVXXXXXXXXXX-540-156.png",
+            "promotionBigPicUrl": "//gju3.alicdn.com/tps/TB19saZSXXXXXXuXXXXXXXXXXXX-582-156.png",
+            "promotionContent": "立 即 购 买",
+            "promotionContentNew": "",
+            "promotionComparePrice": ["", "298"],
+            "personalSellPoint": "",
+            "itemOfflineFinalScore": "0.3",
+            "hookBenefit": "",
+            "huopinBenefit": "",
+            "campaignIconUrl": "",
+            "couponTemplateIconUrl": "",
+            "itemShopName": "苏迪母婴专营店"
+          },
+          "general": {
+            "mixBlockSize": "2",
+            "mixType": "1"
+          },
+          "global": {
+            "isBaoshui": "false",
+            "isZhiyou": "false"
+          },
+          "jiaZhuang": {
+            "brandDesc": "",
+            "brandLogo": "",
+            "customerService": "品质保障"
+          },
+          "merit": {},
+          "name": {
+            "longName": "精典泰迪 婴儿睡袋秋冬防踢被",
+            "prefix": [],
+            "shortName": "精典泰迪 婴儿睡袋秋冬防踢被",
+            "tags": [{
+              "tag": "by",
+              "text": "包邮"
+            }]
+          },
+          "price": {
+            "actPrice": "139",
+            "actPriceRaw": "139",
+            "discount": "2.8",
+            "expandMoney": "",
+            "frontMoney": "",
+            "hangtagPrice": "false",
+            "longerPrice": "false",
+            "origPrice": "298.00",
+            "priceParts": ["139", ""],
+            "timeLimited": "false",
+            "timeLimitedList": []
+          },
+          "promotion": {
+            "hongbaoPrice": "0",
+            "hongbaoTotalCount": "0",
+            "marketing": {
+              "crossShop": null
+            }
+          },
+          "remind": {
+            "fire": "false",
+            "remindNum": "1083",
+            "soldCount": "611"
+          }
+        },
+        "type": "4"
+      }, {
+        "data": {
+          "mixType": "5",
+          "titlePicture": "//img.alicdn.com/tfs/TB1SU1jRFXXXXbFXVXXXXXXXXXX-750-105.png",
+          "itemList": [{
+            "itemId": "559906629071",
+            "price": "988.00",
+            "pictureUrl": "//gju1.alicdn.com/tps/i3/81548469/TB2jNedkfNNTKJjSspeXXaSwpXa_!!0-juitemmedia.jpg",
+            "juId": "10000066539713",
+            "remainText": "已抢84%",
+            "title": "2017新款狐狸毛领中长款羽绒服",
+            "url": "//a.m.taobao.com/i559906629071.htm?umpChannel=qianggou&u_channel=qianggou",
+            "actPrice": "298",
+            "status": "avil"
+          }, {
+            "itemId": "561847492026",
+            "price": "199.00",
+            "pictureUrl": "//gju4.alicdn.com/tps/i1/0/TB2Q.rJjJbJ8KJjy1zjXXaqapXa_!!0-juitemmedia.jpg",
+            "juId": "10000067360770",
+            "remainText": "拍下送小熊挂饰",
+            "title": "希梵复古拼接修改百搭双肩包",
+            "url": "//a.m.taobao.com/i561847492026.htm?umpChannel=qianggou&u_channel=qianggou",
+            "actPrice": "159",
+            "status": "avil"
+          }, {
+            "itemId": "553220835622",
+            "price": "398.00",
+            "pictureUrl": "//gju4.alicdn.com/tps/i2/0/TB2cCS0bjv85uJjSZFNXXcJApXa_!!0-juitemmedia.jpg",
+            "juId": "10000066713064",
+            "remainText": "已抢76%",
+            "title": "真皮腰带 牛皮自动扣皮带正品",
+            "url": "//a.m.taobao.com/i553220835622.htm?umpChannel=qianggou&u_channel=qianggou",
+            "actPrice": "89",
+            "status": "avil"
+          }],
+          "title": "专属推荐"
+        },
+        "type": "5"
+      }, {
+        "data": {
+          "mixType": "6",
+          "titlePicture": "//img.alicdn.com/tfs/TB11UGvRFXXXXatXFXXXXXXXXXX-750-105.png",
+          "itemList": [{
+            "baseinfo": {
+              "goJuH5": "false",
+              "itemActSignId": "29282046",
+              "itemId": "561998219335",
+              "itemLabel": ["qtth", "yhq", "sys_sign_1", "sys_domestic", "sys_ict_16779", "yhbltqg", "sys_wrfq", "mjs", "tqgt8", "sys_qghome", "sys_sucai_entry", "sys_sucai_png", "sys_market_0"],
+              "itemStatus": "avil",
+              "itemUrl": "https://item.taobao.com/item.htm?id=561998219335",
+              "juId": "10000067001597",
+              "limitNum": "0",
+              "oetime": "1514591999000",
+              "ostime": "1514505600000",
+              "picUrl": "//gju3.alicdn.com/tps/i2/0/TB2RaiRilDH8KJjSspnXXbNAVXa_!!0-juitemmedia.jpg",
+              "picUrlM": "//gju3.alicdn.com/tps/i2/0/TB2RaiRilDH8KJjSspnXXbNAVXa_!!0-juitemmedia.jpg",
+              "postage": "false",
+              "preRemindTime": "",
+              "preSale": "false",
+              "push": "false",
+              "salesSite": "2",
+              "setime": "0",
+              "shopType": "2",
+              "soldAmount": "0",
+              "soldRatio": "89",
+              "sstime": "0",
+              "totalStock": "0"
+            },
+            "extend": {
+              "tqgZdqText": "",
+              "qgjText": "",
+              "tqgZdqEndTime": "1514505600000",
+              "tqgDetailUrl": "//a.m.taobao.com/i561998219335.htm?umpChannel=qianggou&u_channel=qianggou",
+              "tqgRemindTime": "180",
+              "tqgLabelPics": {},
+              "tqgSellPoint": "免费试用 无效退！",
+              "labelPics": {},
+              "appEntryImage": "//gju4.alicdn.com/tps/i3/0/TB2FCLeczgy_uJjSZKPXXaGlFXa_!!0-juitemmedia.jpg",
+              "tqgQhbText": "",
+              "tqgTemplate": "tbqgitem",
+              "tqgShowStockPercent": "true"
+            },
+            "general": {},
+            "global": {
+              "isBaoshui": "false",
+              "isZhiyou": "false"
+            },
+            "name": {
+              "shortName": "屈臣氏爆卖！超薄巨补水超嫩白"
+            },
+            "price": {
+              "actPrice": "69.9",
+              "hangtagPrice": "false",
+              "longerPrice": "false",
+              "origPrice": "299.00",
+              "timeLimited": "false"
+            },
+            "promotion": {
+              "hongbaoPrice": "0",
+              "hongbaoTotalCount": "0",
+              "marketing": {
+                "crossShop": null
+              }
+            },
+            "remind": {
+              "fire": "false",
+              "remindNum": "690",
+              "soldCount": "2302"
+            }
+          }, {
+            "baseinfo": {
+              "goJuH5": "false",
+              "itemActSignId": "29227821",
+              "itemId": "44016469071",
+              "itemLabel": ["qtth", "yhq", "sys_sign_1", "sys_ict_6215", "sys_domestic", "sys_mj_3", "sys_play_tool_29", "sys_kcgj", "yhbltqg", "tqgt12", "sys_wrfq", "mjs", "sys_mj_period_3600", "sys_mj_start_2017122912", "sys_qghome", "sys_sucai_entry", "sys_sucai_png", "sys_play_activity_24084", "sys_mj_lijian", "sys_market_0"],
+              "itemStatus": "avil",
+              "itemUrl": "https://item.taobao.com/item.htm?id=44016469071",
+              "juId": "10000066760849",
+              "limitNum": "0",
+              "oetime": "1514606399000",
+              "ostime": "1514520000000",
+              "picUrl": "//gju1.alicdn.com/tps/i3/1217705014288161363/TB22dkefmFjpuFjSspbXXXagVXa_!!0-juitemmedia.jpg",
+              "picUrlM": "//gju1.alicdn.com/tps/i3/1217705014288161363/TB22dkefmFjpuFjSspbXXXagVXa_!!0-juitemmedia.jpg",
+              "postage": "false",
+              "preRemindTime": "",
+              "preSale": "false",
+              "push": "false",
+              "salesSite": "2",
+              "setime": "0",
+              "shopType": "2",
+              "soldAmount": "0",
+              "soldRatio": "82",
+              "sstime": "0",
+              "totalStock": "0"
+            },
+            "extend": {
+              "tqgZdqText": "前1小时立减8元",
+              "qgjText": "",
+              "tqgZdqEndTime": "1514523600000",
+              "tqgDetailUrl": "//a.m.taobao.com/i44016469071.htm?umpChannel=qianggou&u_channel=qianggou",
+              "tqgRemindTime": "180",
+              "tqgLabelPics": {},
+              "tqgSellPoint": "买2发4罐+陶瓷茶具",
+              "labelPics": {},
+              "appEntryImage": "//gju3.alicdn.com/tps/i2/0/TB2r1gNiJrJ8KJjSspaXXXuKpXa_!!0-juitemmedia.jpg",
+              "tqgQhbText": "",
+              "tqgTemplate": "tbqgitem",
+              "tqgShowStockPercent": "true"
+            },
+            "general": {},
+            "global": {
+              "isBaoshui": "false",
+              "isZhiyou": "false"
+            },
+            "name": {
+              "shortName": "买1送1共500g正山小种红茶暖胃"
+            },
+            "price": {
+              "actPrice": "49.9",
+              "hangtagPrice": "false",
+              "longerPrice": "false",
+              "origPrice": "199.00",
+              "timeLimited": "false"
+            },
+            "promotion": {
+              "hongbaoPrice": "0",
+              "hongbaoTotalCount": "0",
+              "marketing": {
+                "crossShop": null
+              }
+            },
+            "remind": {
+              "fire": "false",
+              "remindNum": "356",
+              "soldCount": "2884"
+            }
+          }, {
+            "baseinfo": {
+              "goJuH5": "false",
+              "itemActSignId": "29270564",
+              "itemId": "526121150678",
+              "itemLabel": ["qtth", "yhq", "sys_sign_1", "sys_ict_5895", "sys_ju_site", "sys_domestic", "sys_mj_3", "sys_mj_period_900", "sys_play_tool_29", "sys_dpyhq", "sys_kcgj", "yhbltqg", "tqgt0", "mjs", "sys_qghome", "sys_sucai_entry", "sys_mj_start_2017122900", "sys_sucai_png", "sys_play_activity_24084", "sys_mj_lijian", "sys_market_0"],
+              "itemStatus": "avil",
+              "itemUrl": "https://item.taobao.com/item.htm?id=526121150678",
+              "juId": "10000066945542",
+              "limitNum": "0",
+              "oetime": "1514563199000",
+              "ostime": "1514476800000",
+              "picUrl": "//gju3.alicdn.com/tps/i4/1378106050709133011/TB2cVezurJmpuFjSZFwXXaE4VXa_!!0-juitemmedia.jpg",
+              "picUrlM": "//gju3.alicdn.com/tps/i4/1378106050709133011/TB2cVezurJmpuFjSZFwXXaE4VXa_!!0-juitemmedia.jpg",
+              "postage": "false",
+              "preRemindTime": "",
+              "preSale": "false",
+              "push": "false",
+              "salesSite": "2",
+              "setime": "0",
+              "shopType": "1",
+              "soldAmount": "0",
+              "soldRatio": "84",
+              "sstime": "0",
+              "totalStock": "0"
+            },
+            "extend": {
+              "tqgZdqText": "前15分钟立减20元",
+              "qgjText": "",
+              "tqgZdqEndTime": "1514477700000",
+              "tqgDetailUrl": "//a.m.taobao.com/i526121150678.htm?umpChannel=qianggou&u_channel=qianggou",
+              "tqgRemindTime": "180",
+              "tqgLabelPics": {},
+              "tqgSellPoint": "买3送1买5送2同款",
+              "labelPics": {},
+              "appEntryImage": "//gju1.alicdn.com/tps/i1/0/TB2xRavjf2H8KJjy1zkXXXr7pXa_!!0-juitemmedia.jpg",
+              "tqgQhbText": "",
+              "tqgTemplate": "tbqgitem",
+              "tqgShowStockPercent": "true"
+            },
+            "general": {},
+            "global": {
+              "isBaoshui": "false",
+              "isZhiyou": "false"
+            },
+            "name": {
+              "shortName": "灵芝孢子粉提高免疫力睡得好"
+            },
+            "price": {
+              "actPrice": "138",
+              "hangtagPrice": "false",
+              "longerPrice": "false",
+              "origPrice": "398.00",
+              "timeLimited": "false"
+            },
+            "promotion": {
+              "hongbaoPrice": "0",
+              "hongbaoTotalCount": "0",
+              "marketing": {
+                "crossShop": null
+              }
+            },
+            "remind": {
+              "fire": "false",
+              "remindNum": "211",
+              "soldCount": "714"
+            }
+          }, {
+            "baseinfo": {
+              "goJuH5": "false",
+              "itemActSignId": "29265694",
+              "itemId": "562066204450",
+              "itemLabel": ["qtth", "yhq", "sys_sign_1", "sys_mj_second_half_price", "sys_domestic", "sys_mj_3", "sys_ict_16779", "sys_play_tool_29", "yhbltqg", "tqgt23", "sys_wrfq", "mjs", "sys_mj_period_3600", "sys_qghome", "sys_sucai_entry", "sys_mj_start_2017122823", "sys_sucai_png", "sys_play_activity_24085", "sys_market_0"],
+              "itemStatus": "avil",
+              "itemUrl": "https://item.taobao.com/item.htm?id=562066204450",
+              "juId": "10000066923866",
+              "limitNum": "0",
+              "oetime": "1514559599000",
+              "ostime": "1514473200000",
+              "picUrl": "//gju1.alicdn.com/tps/i1/0/TB2IN83b4k98KJjSZFoXXXS6pXa_!!0-juitemmedia.jpg",
+              "picUrlM": "//gju1.alicdn.com/tps/i1/0/TB2IN83b4k98KJjSZFoXXXS6pXa_!!0-juitemmedia.jpg",
+              "postage": "false",
+              "preRemindTime": "",
+              "preSale": "false",
+              "push": "false",
+              "salesSite": "2",
+              "setime": "0",
+              "shopType": "2",
+              "soldAmount": "0",
+              "soldRatio": "94",
+              "sstime": "0",
+              "totalStock": "0"
+            },
+            "extend": {
+              "tqgZdqText": "前1小时第二件半价",
+              "qgjText": "",
+              "tqgZdqEndTime": "1514476800000",
+              "tqgDetailUrl": "//a.m.taobao.com/i562066204450.htm?umpChannel=qianggou&u_channel=qianggou",
+              "tqgRemindTime": "180",
+              "tqgLabelPics": {},
+              "tqgSellPoint": "细腻柔软 下灰不疼",
+              "labelPics": {},
+              "appEntryImage": "//gju4.alicdn.com/tps/i1/0/TB2JiCDczgy_uJjSZSyXXbqvVXa_!!0-juitemmedia.jpg",
+              "tqgQhbText": "",
+              "tqgTemplate": "tbqgitem",
+              "tqgShowStockPercent": "true"
+            },
+            "general": {},
+            "global": {
+              "isBaoshui": "false",
+              "isZhiyou": "false"
+            },
+            "name": {
+              "shortName": "3只装 无痛搓澡神器下灰不疼"
+            },
+            "price": {
+              "actPrice": "25",
+              "hangtagPrice": "false",
+              "longerPrice": "false",
+              "origPrice": "164.00",
+              "timeLimited": "false"
+            },
+            "promotion": {
+              "hongbaoPrice": "0",
+              "hongbaoTotalCount": "0",
+              "marketing": {
+                "crossShop": null
+              }
+            },
+            "remind": {
+              "fire": "false",
+              "remindNum": "2729",
+              "soldCount": "3770"
+            }
+          }, {
+            "baseinfo": {
+              "goJuH5": "false",
+              "itemActSignId": "29214837",
+              "itemId": "561910041442",
+              "itemLabel": ["qtth", "yhq", "sys_sign_1", "sys_domestic", "sys_mj_3", "sys_ict_5831", "tqgt17", "sys_play_tool_29", "sys_ict_5835", "sys_kcgj", "yhbltqg", "sys_wrfq", "mjs", "sys_mj_period_3600", "sys_qghome", "sys_sucai_entry", "sys_sucai_png", "sys_play_activity_24084", "sys_mj_start_2017122817", "sys_mj_lijian", "sys_market_0"],
+              "itemStatus": "avil",
+              "itemUrl": "https://item.taobao.com/item.htm?id=561910041442",
+              "juId": "10000066713602",
+              "limitNum": "0",
+              "oetime": "1514537999000",
+              "ostime": "1514451600000",
+              "picUrl": "//gju3.alicdn.com/tps/i4/0/TB28NOCiTvI8KJjSspjXXcgjXXa_!!0-juitemmedia.jpg",
+              "picUrlM": "//gju3.alicdn.com/tps/i4/0/TB28NOCiTvI8KJjSspjXXcgjXXa_!!0-juitemmedia.jpg",
+              "postage": "false",
+              "preRemindTime": "",
+              "preSale": "false",
+              "push": "false",
+              "salesSite": "2",
+              "setime": "0",
+              "shopType": "2",
+              "soldAmount": "0",
+              "soldRatio": "92",
+              "sstime": "0",
+              "totalStock": "0"
+            },
+            "extend": {
+              "tqgZdqText": "前1小时立减10元",
+              "qgjText": "",
+              "tqgZdqEndTime": "1514455200000",
+              "tqgDetailUrl": "//a.m.taobao.com/i561910041442.htm?umpChannel=qianggou&u_channel=qianggou",
+              "tqgRemindTime": "180",
+              "tqgLabelPics": {},
+              "tqgSellPoint": "最后200件 买送手包",
+              "labelPics": {},
+              "appEntryImage": "//gju2.alicdn.com/tps/i1/0/TB2ltejiInI8KJjSsziXXb8QpXa_!!0-juitemmedia.jpg",
+              "tqgQhbText": "",
+              "tqgTemplate": "tbqgitem",
+              "tqgShowStockPercent": "true"
+            },
+            "general": {},
+            "global": {
+              "isBaoshui": "false",
+              "isZhiyou": "false"
+            },
+            "name": {
+              "shortName": "过年回家、2018新款百搭双肩包"
+            },
+            "price": {
+              "actPrice": "98",
+              "hangtagPrice": "false",
+              "longerPrice": "false",
+              "origPrice": "509.00",
+              "timeLimited": "false"
+            },
+            "promotion": {
+              "hongbaoPrice": "0",
+              "hongbaoTotalCount": "0",
+              "marketing": {
+                "crossShop": null
+              }
+            },
+            "remind": {
+              "fire": "false",
+              "remindNum": "1903",
+              "soldCount": "1130"
+            }
+          }],
+          "countDown": "10",
+          "title": "手慢无"
+        },
+        "type": "6"
+      }, {
+        "data": {
+          "urlgif": "",
+          "pos": "0",
+          "url": "https://tqg.taobao.com/m/jusp/sp/tuokayi/mtp.htm",
+          "picture": "https://img.alicdn.com/tfs/TB1QRmfkvDH8KJjy1XcXXcpdXXa-1125-330.png"
+        },
+        "type": "3"
+      }, {
+        "data": {
+          "baseinfo": {
+            "goJuH5": "false",
+            "itemActSignId": "29280952",
+            "itemId": "544162213156",
+            "itemLabel": ["qtth", "yhq", "sys_sign_1", "sys_ict_6215", "sys_ju_site", "sys_ict_5831", "sys_overseas", "sys_dpyhq", "sys_kcgj", "yhbltqg", "sys_sucai_global", "sys_country_ita", "tqgt15", "mjs", "sys_qghome", "sys_sucai_entry", "sys_sucai_png", "qiangyanghuo", "sys_market_0"],
+            "itemStatus": "avil",
+            "itemUrl": "https://item.taobao.com/item.htm?id=544162213156",
+            "juId": "10000066996000",
+            "limitNum": "0",
+            "oetime": "1514617199000",
+            "ostime": "1514530800000",
+            "picUrl": "//gju4.alicdn.com/tps/i3/70892321/TB2poPvaaagSKJjy0FhXXcrbFXa_!!0-juitemmedia.jpg",
+            "picUrlM": "//gju4.alicdn.com/tps/i3/70892321/TB2poPvaaagSKJjy0FhXXcrbFXa_!!0-juitemmedia.jpg",
+            "postage": "false",
+            "preRemindTime": "",
+            "preSale": "false",
+            "push": "false",
+            "salesSite": "2",
+            "setime": "0",
+            "shopType": "2",
+            "soldAmount": "0",
+            "soldRatio": "34",
+            "sstime": "0",
+            "totalStock": "0"
+          },
+          "extend": {
+            "tqgZdqText": "",
+            "qgjText": "",
+            "tqgZdqEndTime": "1514530800000",
+            "tqgDetailUrl": "//a.m.taobao.com/i544162213156.htm?umpChannel=qianggou&u_channel=qianggou",
+            "tqgRemindTime": "180",
+            "tqgLabelPics": {
+              "qiangyanghuo": "https://img.alicdn.com/tfs/TB1d0F0RFXXXXbdXXXXXXXXXXXX-102-36.png"
+            },
+            "tqgSellPoint": "前60分钟多送5颗",
+            "labelPics": {
+              "qiangyanghuo": "//img.alicdn.com/tps/TB1lUEgLpXXXXbzXXXXXXXXXXXX-114-114.png"
+            },
+            "appEntryImage": "//gju3.alicdn.com/tps/i2/0/TB2cgkidXLM8KJjSZFBXXXJHVXa_!!0-juitemmedia.jpg",
+            "tqgQhbText": "",
+            "tqgTemplate": "tbqgitem",
+            "tqgShowStockPercent": "true"
+          },
+          "general": {},
+          "global": {
+            "country": {
+              "cnName": "意大利",
+              "enName": "Italy",
+              "flag": "//gju4.alicdn.com/tps/TB17FiDGVXXXXc2aXXXTSel1FXX-960-640.png"
+            },
+            "isBaoshui": "false",
+            "isZhiyou": "false"
+          },
+          "name": {
+            "shortName": "费列罗进口巧克力礼盒经典礼品"
+          },
+          "price": {
+            "actPrice": "96",
+            "hangtagPrice": "false",
+            "longerPrice": "false",
+            "origPrice": "195.00",
+            "timeLimited": "false"
+          },
+          "promotion": {
+            "hongbaoPrice": "0",
+            "hongbaoTotalCount": "0",
+            "marketing": {
+              "crossShop": null
+            }
+          },
+          "remind": {
+            "fire": "false",
+            "remindNum": "978",
+            "soldCount": "538"
+          }
+        },
+        "type": "1"
+      }, {
+        "data": {
+          "baseinfo": {
+            "goJuH5": "false",
+            "itemActSignId": "29271024",
+            "itemId": "533858450704",
+            "itemLabel": ["qtth", "yhq", "sys_ict_15691", "sys_sign_1", "sys_ict_5895", "sys_domestic", "sys_ict_16843", "sys_dpyhq", "wuyouanzhuang", "yhbltqg", "tqgt15", "mjs", "sys_qghome", "sys_sucai_entry", "sys_sucai_png", "sys_market_0"],
+            "itemStatus": "avil",
+            "itemUrl": "https://item.taobao.com/item.htm?id=533858450704",
+            "juId": "10000066947518",
+            "limitNum": "0",
+            "oetime": "1514617199000",
+            "ostime": "1514530800000",
+            "picUrl": "//gju4.alicdn.com/tps/i4/0/TB22bvBcPihSKJjy0FfXXbGzFXa_!!0-juitemmedia.jpg",
+            "picUrlM": "//gju4.alicdn.com/tps/i4/0/TB22bvBcPihSKJjy0FfXXbGzFXa_!!0-juitemmedia.jpg",
+            "postage": "false",
+            "preRemindTime": "",
+            "preSale": "false",
+            "push": "false",
+            "salesSite": "2",
+            "setime": "0",
+            "shopType": "1",
+            "soldAmount": "0",
+            "soldRatio": "23",
+            "sstime": "0",
+            "totalStock": "0"
+          },
+          "extend": {
+            "tqgZdqText": "",
+            "qgjText": "",
+            "tqgZdqEndTime": "1514530800000",
+            "tqgDetailUrl": "//a.m.taobao.com/i533858450704.htm?umpChannel=qianggou&u_channel=qianggou",
+            "tqgRemindTime": "180",
+            "tqgLabelPics": {},
+            "tqgSellPoint": "领券下单立减10元",
+            "labelPics": {},
+            "appEntryImage": "//gju2.alicdn.com/tps/i1/0/TB2HbqZcAfb_uJkHFrdXXX2IVXa_!!0-juitemmedia.jpg",
+            "tqgQhbText": "",
+            "tqgTemplate": "tbqgitem",
+            "tqgShowStockPercent": "true"
+          },
+          "general": {},
+          "global": {
+            "isBaoshui": "false",
+            "isZhiyou": "false"
+          },
+          "name": {
+            "shortName": "东联LED全屋三室两厅灯具套餐"
+          },
+          "price": {
+            "actPrice": "698",
+            "hangtagPrice": "false",
+            "longerPrice": "false",
+            "origPrice": "1998.00",
+            "timeLimited": "false"
+          },
+          "promotion": {
+            "hongbaoPrice": "0",
+            "hongbaoTotalCount": "0",
+            "marketing": {
+              "crossShop": null
+            }
+          },
+          "remind": {
+            "fire": "false",
+            "remindNum": "430",
+            "soldCount": "28"
+          }
+        },
+        "type": "1"
+      }, {
+        "data": {
+          "baseinfo": {
+            "goJuH5": "false",
+            "itemActSignId": "29269626",
+            "itemId": "18666794642",
+            "itemLabel": ["qtth", "yhq", "sys_ict_15691", "sys_sign_1", "sys_ict_5895", "sys_domestic", "sys_ict_16843", "sys_dpyhq", "yhbltqg", "tqgt15", "mjs", "sys_qghome", "sys_sucai_entry", "sys_sucai_png", "sys_ict_28802", "sys_market_0"],
+            "itemStatus": "avil",
+            "itemUrl": "https://item.taobao.com/item.htm?id=18666794642",
+            "juId": "10000066942177",
+            "limitNum": "0",
+            "oetime": "1514617199000",
+            "ostime": "1514530800000",
+            "picUrl": "//gju1.alicdn.com/tps/i1/0/TB2TOy3b6gy_uJjSZK9XXXvlFXa_!!2-juitemmedia.png",
+            "picUrlM": "//gju1.alicdn.com/tps/i1/0/TB2TOy3b6gy_uJjSZK9XXXvlFXa_!!2-juitemmedia.png",
+            "postage": "false",
+            "preRemindTime": "",
+            "preSale": "false",
+            "push": "false",
+            "salesSite": "2",
+            "setime": "0",
+            "shopType": "1",
+            "soldAmount": "0",
+            "soldRatio": "21",
+            "sstime": "0",
+            "totalStock": "0"
+          },
+          "extend": {
+            "tqgZdqText": "",
+            "qgjText": "",
+            "tqgZdqEndTime": "1514530800000",
+            "tqgDetailUrl": "//a.m.taobao.com/i18666794642.htm?umpChannel=qianggou&u_channel=qianggou",
+            "tqgRemindTime": "180",
+            "tqgLabelPics": {},
+            "tqgSellPoint": "买一送一光源",
+            "labelPics": {},
+            "appEntryImage": "//gju2.alicdn.com/tps/i4/0/TB2cUSdjcbI8KJjy1zdXXbe1VXa_!!0-juitemmedia.jpg",
+            "tqgQhbText": "",
+            "tqgTemplate": "tbqgitem",
+            "tqgShowStockPercent": "true"
+          },
+          "general": {},
+          "global": {
+            "isBaoshui": "false",
+            "isZhiyou": "false"
+          },
+          "name": {
+            "shortName": "欧式台灯卧室床头灯送礼包邮"
+          },
+          "price": {
+            "actPrice": "168",
+            "hangtagPrice": "false",
+            "longerPrice": "false",
+            "origPrice": "700.00",
+            "timeLimited": "false"
+          },
+          "promotion": {
+            "hongbaoPrice": "0",
+            "hongbaoTotalCount": "0",
+            "marketing": {
+              "crossShop": null
+            }
+          },
+          "remind": {
+            "fire": "false",
+            "remindNum": "254",
+            "soldCount": "83"
+          }
+        },
+        "type": "1"
+      }, {
+        "data": {
+          "baseinfo": {
+            "goJuH5": "false",
+            "itemActSignId": "29280951",
+            "itemId": "557514803283",
+            "itemLabel": ["qtth", "yhq", "sys_sign_1", "sys_ict_172226", "sys_ict_5895", "sys_ict_2178", "sys_domestic", "sys_ict_15435", "yhbltqg", "tqgt15", "mjs", "sys_qghome", "sys_sucai_entry", "sys_sucai_png", "sys_market_0"],
+            "itemStatus": "avil",
+            "itemUrl": "https://item.taobao.com/item.htm?id=557514803283",
+            "juId": "10000066997325",
+            "limitNum": "0",
+            "oetime": "1514617199000",
+            "ostime": "1514530800000",
+            "picUrl": "//gju4.alicdn.com/tps/i4/0/TB25EfSeNPI8KJjSspfXXcCFXXa_!!2-juitemmedia.png",
+            "picUrlM": "//gju4.alicdn.com/tps/i4/0/TB25EfSeNPI8KJjSspfXXcCFXXa_!!2-juitemmedia.png",
+            "postage": "false",
+            "preRemindTime": "",
+            "preSale": "false",
+            "push": "false",
+            "salesSite": "2",
+            "setime": "0",
+            "shopType": "1",
+            "soldAmount": "0",
+            "soldRatio": "19",
+            "sstime": "0",
+            "totalStock": "0"
+          },
+          "extend": {
+            "tqgZdqText": "",
+            "qgjText": "",
+            "tqgZdqEndTime": "1514530800000",
+            "tqgDetailUrl": "//a.m.taobao.com/i557514803283.htm?umpChannel=qianggou&u_channel=qianggou",
+            "tqgRemindTime": "180",
+            "tqgLabelPics": {},
+            "tqgSellPoint": "送3599元双立人套装",
+            "labelPics": {},
+            "appEntryImage": "//gju1.alicdn.com/tps/i1/0/TB2UW3.hQfb_uJjSsrbXXb6bVXa_!!0-juitemmedia.jpg",
+            "tqgQhbText": "",
+            "tqgTemplate": "tbqgitem",
+            "tqgShowStockPercent": "true"
+          },
+          "general": {},
+          "global": {
+            "isBaoshui": "false",
+            "isZhiyou": "false"
+          },
+          "name": {
+            "shortName": "美的二代蒸烤一体机"
+          },
+          "price": {
+            "actPrice": "4599",
+            "hangtagPrice": "false",
+            "longerPrice": "false",
+            "origPrice": "9999.00",
+            "timeLimited": "false"
+          },
+          "promotion": {
+            "hongbaoPrice": "0",
+            "hongbaoTotalCount": "0",
+            "marketing": {
+              "crossShop": null
+            }
+          },
+          "remind": {
+            "fire": "false",
+            "remindNum": "211",
+            "soldCount": "4"
+          }
+        },
+        "type": "1"
+      }, {
+        "data": {
+          "activityId": "29269020",
+          "attentionInfo": "已抢7660件",
+          "blockType": "1",
+          "extend": {},
+          "logoUrl": "//gtms04.alicdn.com/tps/i4/TB1Z.9bKXXXXXasXVXXFCm1HVXX-183-42.png",
+          "order": "1",
+          "template": "tbqgbranditem",
+          "title": "Vero Moda",
+          "url": "//tqg.taobao.com/m/jusp/alone/brandminisite/mtp.htm?id=29269020&salesSite=1"
+        },
+        "type": "2"
+      }, {
+        "data": {
+          "urlgif": "",
+          "pos": "1",
+          "url": "https://tqg.taobao.com/m/jusp/sp/thj/mtp.htm",
+          "picture": "https://gw.alicdn.com/tfs/TB1eN1Nkb_I8KJjy1XaXXbsxpXa-1125-330.jpg"
+        },
+        "type": "3"
+      }, {
+        "data": {
+          "baseinfo": {
+            "goJuH5": "false",
+            "itemActSignId": "29248455",
+            "itemId": "561798832863",
+            "itemLabel": ["yhbltqg", "qtth", "yhq", "sys_sign_1", "tqgt15", "mjs", "sys_domestic", "sys_qghome", "sys_sucai_entry", "sys_sucai_png", "sys_market_0", "sys_dpyhq"],
+            "itemStatus": "avil",
+            "itemUrl": "https://item.taobao.com/item.htm?id=561798832863",
+            "juId": "10000066849720",
+            "limitNum": "0",
+            "oetime": "1514617199000",
+            "ostime": "1514530800000",
+            "picUrl": "//gju3.alicdn.com/tps/i4/0/TB2lpC1i_TI8KJjSsphXXcFppXa_!!0-juitemmedia.jpg",
+            "picUrlM": "//gju3.alicdn.com/tps/i4/0/TB2lpC1i_TI8KJjSsphXXcFppXa_!!0-juitemmedia.jpg",
+            "postage": "false",
+            "preRemindTime": "",
+            "preSale": "false",
+            "push": "false",
+            "salesSite": "2",
+            "setime": "0",
+            "shopType": "1",
+            "soldAmount": "0",
+            "soldRatio": "20",
+            "sstime": "0",
+            "totalStock": "0"
+          },
+          "extend": {
+            "tqgZdqText": "",
+            "qgjText": "",
+            "tqgZdqEndTime": "1514530800000",
+            "tqgDetailUrl": "//a.m.taobao.com/i561798832863.htm?umpChannel=qianggou&u_channel=qianggou",
+            "tqgRemindTime": "180",
+            "tqgLabelPics": {},
+            "tqgSellPoint": "新年特惠领券再减50",
+            "labelPics": {},
+            "appEntryImage": "//gju3.alicdn.com/tps/i2/0/TB2rWrxi3vD8KJjy0FlXXagBFXa_!!0-juitemmedia.jpg",
+            "tqgQhbText": "",
+            "tqgTemplate": "tbqgitem",
+            "tqgShowStockPercent": "true"
+          },
+          "general": {},
+          "global": {
+            "isBaoshui": "false",
+            "isZhiyou": "false"
+          },
+          "name": {
+            "shortName": "新品上市 卡西欧TRM10美颜相机"
+          },
+          "price": {
+            "actPrice": "3448",
+            "hangtagPrice": "false",
+            "longerPrice": "false",
+            "origPrice": "3999.00",
+            "timeLimited": "false"
+          },
+          "promotion": {
+            "hongbaoPrice": "0",
+            "hongbaoTotalCount": "0",
+            "marketing": {
+              "crossShop": null
+            }
+          },
+          "remind": {
+            "fire": "false",
+            "remindNum": "863",
+            "soldCount": "4"
+          }
+        },
+        "type": "1"
+      }, {
+        "data": {
+          "baseinfo": {
+            "goJuH5": "false",
+            "itemActSignId": "29384527",
+            "itemId": "545255794359",
+            "itemLabel": ["qtth", "yhq", "sys_sign_1", "sys_ju_site", "sys_domestic", "sys_ict_5259", "yhbltqg", "sys_ict_2759", "tqgt15", "mjs", "sys_qghome", "sys_sucai_entry", "sys_sucai_png", "sys_market_0"],
+            "itemStatus": "avil",
+            "itemUrl": "https://item.taobao.com/item.htm?id=545255794359",
+            "juId": "10000067583857",
+            "limitNum": "0",
+            "oetime": "1514617199000",
+            "ostime": "1514530800000",
+            "picUrl": "//gju1.alicdn.com/tps/i3/1947406054778439550/TB2zw75rHplpuFjSspiXXcdfFXa_!!0-juitemmedia.jpg",
+            "picUrlM": "//gju1.alicdn.com/tps/i3/1947406054778439550/TB2zw75rHplpuFjSspiXXcdfFXa_!!0-juitemmedia.jpg",
+            "postage": "false",
+            "preRemindTime": "",
+            "preSale": "false",
+            "push": "false",
+            "salesSite": "2",
+            "setime": "0",
+            "shopType": "1",
+            "soldAmount": "0",
+            "soldRatio": "0",
+            "sstime": "0",
+            "totalStock": "0"
+          },
+          "extend": {
+            "tqgZdqText": "",
+            "qgjText": "",
+            "tqgZdqEndTime": "1514530800000",
+            "tqgDetailUrl": "//a.m.taobao.com/i545255794359.htm?umpChannel=qianggou&u_channel=qianggou",
+            "tqgRemindTime": "180",
+            "tqgLabelPics": {},
+            "tqgSellPoint": "12期免息 送原厂耳",
+            "labelPics": {},
+            "appEntryImage": "//gju1.alicdn.com/tps/i1/0/TB24bVyklDH8KJjSspnXXbNAVXa_!!0-juitemmedia.jpg",
+            "tqgQhbText": "",
+            "tqgTemplate": "tbqgitem",
+            "tqgShowStockPercent": "true"
+          },
+          "general": {},
+          "global": {
+            "isBaoshui": "false",
+            "isZhiyou": "false"
+          },
+          "name": {
+            "shortName": "Meitu/美图 T8 美颜拍照手机"
+          },
+          "price": {
+            "actPrice": "3299",
+            "hangtagPrice": "false",
+            "longerPrice": "false",
+            "origPrice": "3999.01",
+            "timeLimited": "false"
+          },
+          "promotion": {
+            "hongbaoPrice": "0",
+            "hongbaoTotalCount": "0",
+            "marketing": {
+              "crossShop": null
+            }
+          },
+          "remind": {
+            "fire": "false",
+            "remindNum": "513",
+            "soldCount": "0"
+          }
+        },
+        "type": "1"
+      }, {
+        "data": {
+          "baseinfo": {
+            "goJuH5": "false",
+            "itemActSignId": "29253063",
+            "itemId": "538537195534",
+            "itemLabel": ["qtth", "yhq", "sys_sign_1", "sys_ict_5895", "sys_ju_site", "sys_ict_2178", "sys_domestic", "yhbltqg", "tqgt15", "mjs", "sys_qghome", "sys_sucai_entry", "sys_sucai_png", "sys_market_0"],
+            "itemStatus": "avil",
+            "itemUrl": "https://item.taobao.com/item.htm?id=538537195534",
+            "juId": "10000066868436",
+            "limitNum": "0",
+            "oetime": "1514617199000",
+            "ostime": "1514530800000",
+            "picUrl": "//gju4.alicdn.com/tps/i4/0/TB2KjbAXvjM8KJjSZFNXXbQjFXa_!!0-juitemmedia.jpg",
+            "picUrlM": "//gju4.alicdn.com/tps/i4/0/TB2KjbAXvjM8KJjSZFNXXbQjFXa_!!0-juitemmedia.jpg",
+            "postage": "false",
+            "preRemindTime": "",
+            "preSale": "false",
+            "push": "false",
+            "salesSite": "2",
+            "setime": "0",
+            "shopType": "1",
+            "soldAmount": "0",
+            "soldRatio": "18",
+            "sstime": "0",
+            "totalStock": "0"
+          },
+          "extend": {
+            "tqgZdqText": "",
+            "qgjText": "",
+            "tqgZdqEndTime": "1514530800000",
+            "tqgDetailUrl": "//a.m.taobao.com/i538537195534.htm?umpChannel=qianggou&u_channel=qianggou",
+            "tqgRemindTime": "180",
+            "tqgLabelPics": {},
+            "tqgSellPoint": "领券立减500元",
+            "labelPics": {},
+            "appEntryImage": "//gju4.alicdn.com/tps/i1/0/TB2bw6Xi8fH8KJjy1XbXXbLdXXa_!!0-juitemmedia.jpg",
+            "tqgQhbText": "",
+            "tqgTemplate": "tbqgitem",
+            "tqgShowStockPercent": "true"
+          },
+          "general": {},
+          "global": {
+            "isBaoshui": "false",
+            "isZhiyou": "false"
+          },
+          "name": {
+            "shortName": "九阳液晶大屏旗舰型智能破壁机"
+          },
+          "price": {
+            "actPrice": "1399",
+            "hangtagPrice": "false",
+            "longerPrice": "false",
+            "origPrice": "4999.00",
+            "timeLimited": "false"
+          },
+          "promotion": {
+            "hongbaoPrice": "0",
+            "hongbaoTotalCount": "0",
+            "marketing": {
+              "crossShop": null
+            }
+          },
+          "remind": {
+            "fire": "false",
+            "remindNum": "275",
+            "soldCount": "18"
+          }
+        },
+        "type": "1"
+      }, {
+        "data": {
+          "baseinfo": {
+            "goJuH5": "false",
+            "itemActSignId": "29253716",
+            "itemId": "556831316373",
+            "itemLabel": ["qtth", "yhq", "sys_sign_1", "sys_ict_172226", "sys_ict_5895", "sys_ju_site", "sys_ict_2178", "sys_domestic", "sys_mj_3", "sys_ict_459", "sys_play_tool_29", "yhbltqg", "sys_mj_in_prom", "tqgt15", "mjs", "sys_mj_period_3600", "sys_qghome", "sys_sucai_entry", "sys_sucai_png", "sys_play_activity_24084", "sys_ict_28802", "sys_mj_lijian", "sys_mj_start_2017122915", "sys_market_0"],
+            "itemStatus": "avil",
+            "itemUrl": "https://item.taobao.com/item.htm?id=556831316373",
+            "juId": "10000066871600",
+            "limitNum": "0",
+            "oetime": "1514617199000",
+            "ostime": "1514530800000",
+            "picUrl": "//gju2.alicdn.com/tps/i2/0/TB2Idc_gxPI8KJjSspfXXcCFXXa_!!0-juitemmedia.jpg",
+            "picUrlM": "//gju2.alicdn.com/tps/i2/0/TB2Idc_gxPI8KJjSspfXXcCFXXa_!!0-juitemmedia.jpg",
+            "postage": "false",
+            "preRemindTime": "",
+            "preSale": "false",
+            "push": "false",
+            "salesSite": "2",
+            "setime": "0",
+            "shopType": "1",
+            "soldAmount": "0",
+            "soldRatio": "27",
+            "sstime": "0",
+            "totalStock": "0"
+          },
+          "extend": {
+            "tqgZdqText": "前1小时立减20元",
+            "qgjText": "",
+            "tqgZdqEndTime": "1514534400000",
+            "tqgDetailUrl": "//a.m.taobao.com/i556831316373.htm?umpChannel=qianggou&u_channel=qianggou",
+            "tqgRemindTime": "180",
+            "tqgLabelPics": {},
+            "tqgSellPoint": "直降50晒图送好礼",
+            "labelPics": {},
+            "appEntryImage": "//gju2.alicdn.com/tps/i1/0/TB29Knqi3vD8KJjSsplXXaIEFXa_!!0-juitemmedia.jpg",
+            "tqgQhbText": "",
+            "tqgTemplate": "tbqgitem",
+            "tqgShowStockPercent": "true"
+          },
+          "general": {},
+          "global": {
+            "isBaoshui": "false",
+            "isZhiyou": "false"
+          },
+          "name": {
+            "shortName": "2.5K夏普屏平板/台电10.1英寸"
+          },
+          "price": {
+            "actPrice": "1349",
+            "hangtagPrice": "false",
+            "longerPrice": "false",
+            "origPrice": "1499.00",
+            "timeLimited": "false"
+          },
+          "promotion": {
+            "hongbaoPrice": "0",
+            "hongbaoTotalCount": "0",
+            "marketing": {
+              "crossShop": null
+            }
+          },
+          "remind": {
+            "fire": "false",
+            "remindNum": "526",
+            "soldCount": "27"
+          }
+        },
+        "type": "1"
+      }, {
+        "data": {
+          "data": {
+            "imgUrl": "https://gw.alicdn.com/tfs/TB1Uqp4ktfJ8KJjy0FeXXXKEXXa-750-360.jpg",
+            "linkUrl": "https://www.tmall.com/wow/dpzx/act/home?wh_weex=true&juId1=10000067732901&juId2=10000067632498&juId3=10000067538406",
+            "model": "banner-lua",
+            "url": "",
+            "order": "14"
+          },
+          "defaultHeight": "0.2688",
+          "defaultImg": "",
+          "defaultUrl": "",
+          "id": "1005",
+          "name": "banner-lua",
+          "order": "14",
+          "trackParams": {}
+        },
+        "type": "8"
+      }, {
+        "data": {
+          "activityId": "28746501",
+          "attentionInfo": "已抢1178件",
+          "blockType": "1",
+          "extend": {},
+          "itemList": [{
+            "baseinfo": {
+              "goJuH5": "false",
+              "itemActSignId": "28746501",
+              "itemId": "45438219941",
+              "itemLabel": ["sys_sign_2", "2017661", "qtth", "yhq", "sc_tp_23_171", "我要的家", "sys_ict_6795", "sys_domestic", "tqgbrandtag", "themejiabei", "sys_dpyhq", "topicitem", "sys_ict_14859", "mjs", "tqgbrand", "sys_sucai_entry", "sys_sucai_png", "sys_ict_41922", "sys_ict_28802", "sys_market_0"],
+              "itemStatus": "avil",
+              "itemUrl": "//detail.ju.taobao.com/home.htm?id=10000067055902&item_id=45438219941",
+              "juId": "10000067055902",
+              "limitNum": "0",
+              "oetime": "1514768399000",
+              "ostime": "1514512800000",
+              "picUrl": "//gju1.alicdn.com/tps/i2/0/TB2_giLd_nI8KJjy0FfXXcdoVXa_!!0-juitemmedia.jpg",
+              "picUrlM": "//gju1.alicdn.com/tps/i2/0/TB2_giLd_nI8KJjy0FfXXcdoVXa_!!0-juitemmedia.jpg",
+              "postage": "false",
+              "preRemindTime": "",
+              "preSale": "false",
+              "push": "false",
+              "salesSite": "1",
+              "setime": "0",
+              "shopType": "1",
+              "soldAmount": "0",
+              "soldRatio": "40",
+              "sstime": "0",
+              "totalStock": "0"
+            },
+            "extend": {
+              "qgjText": "疯抢进行中",
+              "tqgDetailUrl": "//detail.ju.taobao.com/home.htm?id=10000067055902&item_id=45438219941",
+              "tqgLabelPics": {},
+              "labelPics": {},
+              "appEntryImage": "//gju2.alicdn.com/tps/i4/0/TB29US8cPgy_uJjSZKPXXaGlFXa_!!0-juitemmedia.jpg",
+              "tqgShowStockPercent": "true"
+            },
+            "general": {},
+            "global": {
+              "isBaoshui": "false",
+              "isZhiyou": "false"
+            },
+            "name": {
+              "shortName": "源氏木语橡木双人床"
+            },
+            "price": {
+              "actPrice": "2180",
+              "hangtagPrice": "false",
+              "longerPrice": "false",
+              "origPrice": "6200.00",
+              "timeLimited": "false"
+            },
+            "promotion": {
+              "hongbaoPrice": "0",
+              "hongbaoTotalCount": "0",
+              "marketing": {
+                "crossShop": null
+              }
+            },
+            "remind": {
+              "fire": "false",
+              "remindNum": "258",
+              "soldCount": "121"
+            }
+          }, {
+            "baseinfo": {
+              "goJuH5": "false",
+              "itemActSignId": "28746501",
+              "itemId": "540911305210",
+              "itemLabel": ["sys_sign_2", "2017661", "qtth", "yhq", "themejiawo", "sys_ict_6795", "sys_domestic", "tqgbrandtag", "sys_dpyhq", "sys_ict_14859", "mjs", "tqgbrand", "sys_sucai_entry", "sys_sucai_png", "sys_ict_41922", "sys_ict_28802", "sys_market_0"],
+              "itemStatus": "avil",
+              "itemUrl": "//detail.ju.taobao.com/home.htm?id=10000067258380&item_id=540911305210",
+              "juId": "10000067258380",
+              "limitNum": "0",
+              "oetime": "1514768399000",
+              "ostime": "1514512800000",
+              "picUrl": "//gju3.alicdn.com/tps/i4/1506905019896783861/TB2HDi2gbFkpuFjy1XcXXclapXa_!!0-juitemmedia.jpg",
+              "picUrlM": "//gju3.alicdn.com/tps/i4/1506905019896783861/TB2HDi2gbFkpuFjy1XcXXclapXa_!!0-juitemmedia.jpg",
+              "postage": "false",
+              "preRemindTime": "",
+              "preSale": "false",
+              "push": "false",
+              "salesSite": "1",
+              "setime": "0",
+              "shopType": "1",
+              "soldAmount": "0",
+              "soldRatio": "20",
+              "sstime": "0",
+              "totalStock": "0"
+            },
+            "extend": {
+              "qgjText": "疯抢进行中",
+              "tqgDetailUrl": "//detail.ju.taobao.com/home.htm?id=10000067258380&item_id=540911305210",
+              "tqgLabelPics": {},
+              "labelPics": {},
+              "appEntryImage": "//gju3.alicdn.com/tps/i1/0/TB21kU_jJbJ8KJjy1zjXXaqapXa_!!0-juitemmedia.jpg",
+              "tqgShowStockPercent": "true"
+            },
+            "general": {},
+            "global": {
+              "isBaoshui": "false",
+              "isZhiyou": "false"
+            },
+            "name": {
+              "shortName": "源氏木语推拉门衣柜"
+            },
+            "price": {
+              "actPrice": "8730",
+              "hangtagPrice": "false",
+              "longerPrice": "false",
+              "origPrice": "24250.00",
+              "timeLimited": "false"
+            },
+            "promotion": {
+              "hongbaoPrice": "0",
+              "hongbaoTotalCount": "0",
+              "marketing": {
+                "crossShop": null
+              }
+            },
+            "remind": {
+              "fire": "false",
+              "remindNum": "60",
+              "soldCount": "13"
+            }
+          }, {
+            "baseinfo": {
+              "goJuH5": "false",
+              "itemActSignId": "28746501",
+              "itemId": "39187765503",
+              "itemLabel": ["sys_sign_2", "2017661", "qtth", "yhq", "sys_ict_6795", "sys_domestic", "tqgbrandtag", "sys_dpyhq", "sys_ict_14859", "mjs", "tqgbrand", "sys_sucai_entry", "sys_sucai_png", "sys_ict_41922", "sys_ict_28802", "sys_market_0"],
+              "itemStatus": "avil",
+              "itemUrl": "//detail.ju.taobao.com/home.htm?id=10000067285714&item_id=39187765503",
+              "juId": "10000067285714",
+              "limitNum": "0",
+              "oetime": "1514768399000",
+              "ostime": "1514512800000",
+              "picUrl": "//gju1.alicdn.com/tps/i3/150690229706943963/TB2fWBipVXXXXXFXFXXXXXXXXXX_!!0-juitemmedia.jpg",
+              "picUrlM": "//gju1.alicdn.com/tps/i3/150690229706943963/TB2fWBipVXXXXXFXFXXXXXXXXXX_!!0-juitemmedia.jpg",
+              "postage": "false",
+              "preRemindTime": "",
+              "preSale": "false",
+              "push": "false",
+              "salesSite": "1",
+              "setime": "0",
+              "shopType": "1",
+              "soldAmount": "0",
+              "soldRatio": "37",
+              "sstime": "0",
+              "totalStock": "0"
+            },
+            "extend": {
+              "qgjText": "疯抢进行中",
+              "tqgDetailUrl": "//detail.ju.taobao.com/home.htm?id=10000067285714&item_id=39187765503",
+              "tqgLabelPics": {},
+              "labelPics": {},
+              "appEntryImage": "//gju1.alicdn.com/tps/i3/0/TB2mWplj_nI8KJjSszbXXb4KFXa_!!0-juitemmedia.jpg",
+              "tqgShowStockPercent": "true"
+            },
+            "general": {},
+            "global": {
+              "isBaoshui": "false",
+              "isZhiyou": "false"
+            },
+            "name": {
+              "shortName": "源氏木语椰棕床垫"
+            },
+            "price": {
+              "actPrice": "738",
+              "hangtagPrice": "false",
+              "longerPrice": "false",
+              "origPrice": "2050.00",
+              "timeLimited": "false"
+            },
+            "promotion": {
+              "hongbaoPrice": "0",
+              "hongbaoTotalCount": "0",
+              "marketing": {
+                "crossShop": null
+              }
+            },
+            "remind": {
+              "fire": "false",
+              "remindNum": "59",
+              "soldCount": "116"
+            }
+          }],
+          "logoUrl": "//gtms04.alicdn.com/tps/i4/TB1Z.9bKXXXXXasXVXXFCm1HVXX-183-42.png",
+          "order": "1",
+          "template": "tbqgbranditem",
+          "title": "源氏木语",
+          "url": "//tqg.taobao.com/m/jusp/alone/brandminisite/mtp.htm?id=28746501&salesSite=1"
+        },
+        "type": "2"
+      }, {
+        "data": {
+          "urlgif": "",
+          "pos": "2",
+          "url": "https://h5.m.taobao.com/app/kbmainvueue/www/2018.html?chInfo=ch_taokoubei__chsub_taoqianggoukb",
+          "picture": "https://gw.alicdn.com/tfs/TB15y56kr_I8KJjy1XaXXbsxpXa-1125-330.jpg"
+        },
+        "type": "3"
+      }, {
+        "data": {
+          "baseinfo": {
+            "goJuH5": "false",
+            "itemActSignId": "29284844",
+            "itemId": "556538646826",
+            "itemLabel": ["yhq", "sys_sign_1", "sys_ict_5895", "sys_domestic", "sys_play_tool_29", "tqgt15", "sys_sucai_png", "sys_ict_41922", "sys_ict_28802", "sys_market_0", "qtth", "sys_ict_15691", "sys_ju_site", "sys_mj_3", "sys_ict_16843", "sys_dpyhq", "yhbltqg", "sys_mj_in_prom", "mjs", "sys_mj_period_3600", "sys_qghome", "sys_sucai_entry", "sys_play_activity_24084", "sys_mj_lijian", "sys_mj_start_2017122915"],
+            "itemStatus": "avil",
+            "itemUrl": "https://item.taobao.com/item.htm?id=556538646826",
+            "juId": "10000067021312",
+            "limitNum": "0",
+            "oetime": "1514617199000",
+            "ostime": "1514530800000",
+            "picUrl": "//gju1.alicdn.com/tps/i3/0/TB2ot3TgZrI8KJjy0FhXXbfnpXa_!!0-juitemmedia.jpg",
+            "picUrlM": "//gju1.alicdn.com/tps/i3/0/TB2ot3TgZrI8KJjy0FhXXbfnpXa_!!0-juitemmedia.jpg",
+            "postage": "false",
+            "preRemindTime": "",
+            "preSale": "false",
+            "push": "false",
+            "salesSite": "2",
+            "setime": "0",
+            "shopType": "1",
+            "soldAmount": "0",
+            "soldRatio": "1",
+            "sstime": "0",
+            "totalStock": "0"
+          },
+          "extend": {
+            "tqgZdqText": "前1小时立减30元",
+            "qgjText": "",
+            "tqgZdqEndTime": "1514534400000",
+            "tqgDetailUrl": "//a.m.taobao.com/i556538646826.htm?umpChannel=qianggou&u_channel=qianggou",
+            "tqgRemindTime": "180",
+            "tqgLabelPics": {},
+            "tqgSellPoint": "买就送精美排插",
+            "labelPics": {},
+            "appEntryImage": "//gju2.alicdn.com/tps/i1/0/TB2gjO6jh6I8KJjSszfXXaZVXXa_!!0-juitemmedia.jpg",
+            "tqgQhbText": "",
+            "tqgTemplate": "tbqgitem",
+            "tqgShowStockPercent": "true"
+          },
+          "general": {},
+          "global": {
+            "isBaoshui": "false",
+            "isZhiyou": "false"
+          },
+          "name": {
+            "shortName": "欧普LEDAA级照度高端台灯护眼"
+          },
+          "price": {
+            "actPrice": "369",
+            "hangtagPrice": "false",
+            "longerPrice": "false",
+            "origPrice": "999.00",
+            "timeLimited": "false"
+          },
+          "promotion": {
+            "hongbaoPrice": "0",
+            "hongbaoTotalCount": "0",
+            "marketing": {
+              "crossShop": null
+            }
+          },
+          "remind": {
+            "fire": "false",
+            "remindNum": "135",
+            "soldCount": "4"
+          }
+        },
+        "type": "1"
+      }, {
+        "data": {
+          "baseinfo": {
+            "goJuH5": "false",
+            "itemActSignId": "29250791",
+            "itemId": "7075133343",
+            "itemLabel": ["qtth", "yhq", "sys_sign_1", "sys_ict_5895", "sys_ju_site", "sys_domestic", "sys_ict_5835", "sys_dpyhq", "yhbltqg", "tqgt15", "mjs", "sys_qghome", "sys_sucai_entry", "sys_sucai_png", "sys_market_0"],
+            "itemStatus": "avil",
+            "itemUrl": "https://item.taobao.com/item.htm?id=7075133343",
+            "juId": "10000066862132",
+            "limitNum": "0",
+            "oetime": "1514617199000",
+            "ostime": "1514530800000",
+            "picUrl": "//gju4.alicdn.com/tps/i4/198680258009685556/TB2bXnqtpXXXXclXXXXXXXXXXXX_!!0-juitemmedia.jpg",
+            "picUrlM": "//gju4.alicdn.com/tps/i4/198680258009685556/TB2bXnqtpXXXXclXXXXXXXXXXXX_!!0-juitemmedia.jpg",
+            "postage": "false",
+            "preRemindTime": "",
+            "preSale": "false",
+            "push": "false",
+            "salesSite": "2",
+            "setime": "0",
+            "shopType": "1",
+            "soldAmount": "0",
+            "soldRatio": "46",
+            "sstime": "0",
+            "totalStock": "0"
+          },
+          "extend": {
+            "tqgZdqText": "",
+            "qgjText": "",
+            "tqgZdqEndTime": "1514530800000",
+            "tqgDetailUrl": "//a.m.taobao.com/i7075133343.htm?umpChannel=qianggou&u_channel=qianggou",
+            "tqgRemindTime": "180",
+            "tqgLabelPics": {},
+            "tqgSellPoint": "9折 再减60元",
+            "labelPics": {},
+            "appEntryImage": "//gju2.alicdn.com/tps/i4/0/TB2ZLbUi4PI8KJjSspoXXX6MFXa_!!0-juitemmedia.jpg",
+            "tqgQhbText": "",
+            "tqgTemplate": "tbqgitem",
+            "tqgShowStockPercent": "true"
+          },
+          "general": {},
+          "global": {
+            "isBaoshui": "false",
+            "isZhiyou": "false"
+          },
+          "name": {
+            "shortName": "星特朗天文望远镜专业超清观星"
+          },
+          "price": {
+            "actPrice": "1251",
+            "hangtagPrice": "false",
+            "longerPrice": "false",
+            "origPrice": "4170.00",
+            "timeLimited": "false"
+          },
+          "promotion": {
+            "hongbaoPrice": "0",
+            "hongbaoTotalCount": "0",
+            "marketing": {
+              "crossShop": null
+            }
+          },
+          "remind": {
+            "fire": "false",
+            "remindNum": "374",
+            "soldCount": "32"
+          }
+        },
+        "type": "1"
+      }, {
+        "data": {
+          "baseinfo": {
+            "goJuH5": "false",
+            "itemActSignId": "29231726",
+            "itemId": "45095918416",
+            "itemLabel": ["qtth", "yhq", "sys_sign_1", "sys_ict_5895", "sys_ju_site", "sys_ict_2178", "sys_domestic", "sys_dpyhq", "yhbltqg", "tqgt15", "mjs", "sys_qghome", "sys_sucai_entry", "sys_sucai_png", "sys_market_0"],
+            "itemStatus": "avil",
+            "itemUrl": "https://item.taobao.com/item.htm?id=45095918416",
+            "juId": "10000066776497",
+            "limitNum": "0",
+            "oetime": "1514617199000",
+            "ostime": "1514530800000",
+            "picUrl": "//gju3.alicdn.com/tps/i4/162070283698267335/TB2C8AFaRPzQeBjSZFLXXa3cXXa_!!0-juitemmedia.jpg",
+            "picUrlM": "//gju3.alicdn.com/tps/i4/162070283698267335/TB2C8AFaRPzQeBjSZFLXXa3cXXa_!!0-juitemmedia.jpg",
+            "postage": "false",
+            "preRemindTime": "",
+            "preSale": "false",
+            "push": "false",
+            "salesSite": "2",
+            "setime": "0",
+            "shopType": "1",
+            "soldAmount": "0",
+            "soldRatio": "2",
+            "sstime": "0",
+            "totalStock": "0"
+          },
+          "extend": {
+            "tqgZdqText": "",
+            "qgjText": "",
+            "tqgZdqEndTime": "1514530800000",
+            "tqgDetailUrl": "//a.m.taobao.com/i45095918416.htm?umpChannel=qianggou&u_channel=qianggou",
+            "tqgRemindTime": "180",
+            "tqgLabelPics": {},
+            "tqgSellPoint": "前50名送88元大礼包",
+            "labelPics": {},
+            "appEntryImage": "//gju2.alicdn.com/tps/i4/0/TB2WCoKiTTI8KJjSsphXXcFppXa_!!0-juitemmedia.jpg",
+            "tqgQhbText": "",
+            "tqgTemplate": "tbqgitem",
+            "tqgShowStockPercent": "true"
+          },
+          "general": {},
+          "global": {
+            "isBaoshui": "false",
+            "isZhiyou": "false"
+          },
+          "name": {
+            "shortName": "惠普M126a激光多功能一体机"
+          },
+          "price": {
+            "actPrice": "1159",
+            "hangtagPrice": "false",
+            "longerPrice": "false",
+            "origPrice": "1299.00",
+            "timeLimited": "false"
+          },
+          "promotion": {
+            "hongbaoPrice": "0",
+            "hongbaoTotalCount": "0",
+            "marketing": {
+              "crossShop": null
+            }
+          },
+          "remind": {
+            "fire": "false",
+            "remindNum": "281",
+            "soldCount": "2"
+          }
+        },
+        "type": "1"
+      }, {
+        "data": {
+          "baseinfo": {
+            "goJuH5": "false",
+            "itemActSignId": "29276802",
+            "itemId": "37927180113",
+            "itemLabel": ["qtth", "yhq", "sys_sign_1", "sys_ict_5895", "sys_ju_site", "sys_domestic", "sys_dpyhq", "yhbltqg", "tqgt15", "mjs", "sys_qghome", "sys_sucai_entry", "sys_sucai_png", "sys_ict_28802", "sys_market_0"],
+            "itemStatus": "avil",
+            "itemUrl": "https://item.taobao.com/item.htm?id=37927180113",
+            "juId": "10000066971067",
+            "limitNum": "0",
+            "oetime": "1514617199000",
+            "ostime": "1514530800000",
+            "picUrl": "//gju4.alicdn.com/tps/i4/0/TB2R3xsj22H8KJjy0FcXXaDlFXa_!!0-juitemmedia.jpg",
+            "picUrlM": "//gju4.alicdn.com/tps/i4/0/TB2R3xsj22H8KJjy0FcXXaDlFXa_!!0-juitemmedia.jpg",
+            "postage": "false",
+            "preRemindTime": "",
+            "preSale": "false",
+            "push": "false",
+            "salesSite": "2",
+            "setime": "0",
+            "shopType": "1",
+            "soldAmount": "0",
+            "soldRatio": "23",
+            "sstime": "0",
+            "totalStock": "0"
+          },
+          "extend": {
+            "tqgZdqText": "",
+            "qgjText": "",
+            "tqgZdqEndTime": "1514530800000",
+            "tqgDetailUrl": "//a.m.taobao.com/i37927180113.htm?umpChannel=qianggou&u_channel=qianggou",
+            "tqgRemindTime": "180",
+            "tqgLabelPics": {},
+            "tqgSellPoint": "前50名立减30元",
+            "labelPics": {},
+            "appEntryImage": "//gju2.alicdn.com/tps/i4/0/TB2DwbCcAfb_uJkSnhJXXbdDVXa_!!0-juitemmedia.jpg",
+            "tqgQhbText": "",
+            "tqgTemplate": "tbqgitem",
+            "tqgShowStockPercent": "true"
+          },
+          "general": {},
+          "global": {
+            "isBaoshui": "false",
+            "isZhiyou": "false"
+          },
+          "name": {
+            "shortName": "黄金女项链 简约超闪耀"
+          },
+          "price": {
+            "actPrice": "815",
+            "hangtagPrice": "false",
+            "longerPrice": "false",
+            "origPrice": "918.00",
+            "timeLimited": "false"
+          },
+          "promotion": {
+            "hongbaoPrice": "0",
+            "hongbaoTotalCount": "0",
+            "marketing": {
+              "crossShop": null
+            }
+          },
+          "remind": {
+            "fire": "false",
+            "remindNum": "1098",
+            "soldCount": "23"
+          }
+        },
+        "type": "1"
+      }, {
+        "data": {
+          "activityId": "28768696",
+          "attentionInfo": "已抢5294件",
+          "blockType": "1",
+          "extend": {},
+          "itemList": [{
+            "baseinfo": {
+              "goJuH5": "false",
+              "itemActSignId": "28768696",
+              "itemId": "539383950347",
+              "itemLabel": ["sys_sign_2", "yhq", "sys_ict_5895", "sys_size_80", "sys_domestic", "sys_size_85", "sys_size_m", "sys_size_l", "sys_size_s", "sys_ict_5835", "撩妹必胜决", "sys_ict_46914", "sys_sucai_png", "sys_ict_28802", "sys_market_0", "sys_dtheme_5000079936", "qtth", "sys_size_90", "toplist", "tqgbrandtag", "sys_dpyhq", "topicitem", "genderm", "mjs", "tqgbrand", "sc_jml_1_913", "sys_sucai_entry", "sc_tp_10_171"],
+              "itemStatus": "avil",
+              "itemUrl": "//detail.ju.taobao.com/home.htm?id=10000067310358&item_id=539383950347",
+              "juId": "10000067310358",
+              "limitNum": "0",
+              "oetime": "1514681999000",
+              "ostime": "1514426400000",
+              "picUrl": "//gju3.alicdn.com/tps/i3/450969373/TB1a.1IXAfb_uJkHFqDXXXVIVXa_!!0-item_pic.jpg",
+              "picUrlM": "//gju3.alicdn.com/tps/i3/450969373/TB1a.1IXAfb_uJkHFqDXXXVIVXa_!!0-item_pic.jpg",
+              "postage": "false",
+              "preRemindTime": "",
+              "preSale": "false",
+              "push": "false",
+              "salesSite": "1",
+              "setime": "0",
+              "shopType": "1",
+              "soldAmount": "0",
+              "soldRatio": "20",
+              "sstime": "0",
+              "totalStock": "0"
+            },
+            "extend": {
+              "qgjText": "疯抢进行中",
+              "tqgDetailUrl": "//detail.ju.taobao.com/home.htm?id=10000067310358&item_id=539383950347",
+              "tqgLabelPics": {},
+              "labelPics": {},
+              "appEntryImage": "//gju4.alicdn.com/tps/i2/0/TB2xuGCjRDH8KJjy1zeXXXjepXa_!!0-juitemmedia.jpg",
+              "tqgShowStockPercent": "true"
+            },
+            "general": {},
+            "global": {
+              "isBaoshui": "false",
+              "isZhiyou": "false"
+            },
+            "name": {
+              "shortName": "最后50名399元 中长款加厚男羽绒服"
+            },
+            "price": {
+              "actPrice": "499",
+              "hangtagPrice": "false",
+              "longerPrice": "false",
+              "origPrice": "2699.00",
+              "timeLimited": "false"
+            },
+            "promotion": {
+              "hongbaoPrice": "0",
+              "hongbaoTotalCount": "0",
+              "marketing": {
+                "crossShop": null
+              }
+            },
+            "remind": {
+              "fire": "false",
+              "remindNum": "261",
+              "soldCount": "859"
+            }
+          }, {
+            "baseinfo": {
+              "goJuH5": "false",
+              "itemActSignId": "28768696",
+              "itemId": "559409494234",
+              "itemLabel": ["sys_sign_2", "yhq", "sys_ict_5895", "sys_size_80", "sys_domestic", "sys_size_85", "sys_size_m", "sys_size_l", "sys_play_tool_29", "sys_ict_5835", "sys_kcgj", "撩妹必胜决", "sys_ict_46914", "sys_sucai_png", "sys_ict_28802", "sys_market_0", "qtth", "sys_size_90", "sys_mj_3", "tqgbrandtag", "sys_dpyhq", "sys_wrfq", "topicitem", "genderm", "sys_mj_start_2017122810", "sys_play_activity_23893", "mjs", "tqgbrand", "sys_mj_period_3600", "sc_jml_1_913", "sys_sucai_entry", "sys_mj_quan_limit", "sc_tp_10_171", "sys_mj_lijian"],
+              "itemStatus": "avil",
+              "itemUrl": "//detail.ju.taobao.com/home.htm?id=10000067307341&item_id=559409494234",
+              "juId": "10000067307341",
+              "limitNum": "0",
+              "oetime": "1514681999000",
+              "ostime": "1514426400000",
+              "picUrl": "//gju3.alicdn.com/tps/i3/450969373/TB1wrhCjgLD8KJjSszeXXaGRpXa_!!0-item_pic.jpg",
+              "picUrlM": "//gju3.alicdn.com/tps/i3/450969373/TB1wrhCjgLD8KJjSszeXXaGRpXa_!!0-item_pic.jpg",
+              "postage": "false",
+              "preRemindTime": "",
+              "preSale": "false",
+              "push": "false",
+              "salesSite": "1",
+              "setime": "0",
+              "shopType": "1",
+              "soldAmount": "0",
+              "soldRatio": "36",
+              "sstime": "0",
+              "totalStock": "0"
+            },
+            "extend": {
+              "qgjText": "疯抢进行中",
+              "tqgDetailUrl": "//detail.ju.taobao.com/home.htm?id=10000067307341&item_id=559409494234",
+              "tqgLabelPics": {},
+              "labelPics": {},
+              "appEntryImage": "//gju2.alicdn.com/tps/i1/0/TB2ePOOjMfH8KJjy1zcXXcTzpXa_!!0-juitemmedia.jpg",
+              "tqgShowStockPercent": "true"
+            },
+            "general": {},
+            "global": {
+              "isBaoshui": "false",
+              "isZhiyou": "false"
+            },
+            "name": {
+              "shortName": "领券198元 冬装棉衣棒球服男外套"
+            },
+            "price": {
+              "actPrice": "298",
+              "hangtagPrice": "false",
+              "longerPrice": "false",
+              "origPrice": "1059.00",
+              "timeLimited": "false"
+            },
+            "promotion": {
+              "hongbaoPrice": "0",
+              "hongbaoTotalCount": "0",
+              "marketing": {
+                "crossShop": null
+              }
+            },
+            "remind": {
+              "fire": "false",
+              "remindNum": "12065",
+              "soldCount": "1086"
+            }
+          }, {
+            "baseinfo": {
+              "goJuH5": "false",
+              "itemActSignId": "28768696",
+              "itemId": "559079120463",
+              "itemLabel": ["sys_ict_162690", "sys_sign_2", "yhq", "sys_ict_5895", "sys_size_80", "sys_domestic", "sys_size_85", "sys_size_m", "sys_size_l", "sys_ict_5835", "sys_kcgj", "撩妹必胜决", "sys_ict_46914", "sys_sucai_png", "sys_ict_28802", "sys_market_0", "qtth", "sys_size_90", "tqgbrandtag", "sys_dpyhq", "topicitem", "genderm", "mjs", "tqgbrand", "sys_sucai_entry", "sc_tp_10_171"],
+              "itemStatus": "avil",
+              "itemUrl": "//detail.ju.taobao.com/home.htm?id=10000067307333&item_id=559079120463",
+              "juId": "10000067307333",
+              "limitNum": "0",
+              "oetime": "1514681999000",
+              "ostime": "1514426400000",
+              "picUrl": "//gju4.alicdn.com/tps/i2/450969373/TB1yveNdXHM8KJjSZJiXXbx3FXa_!!0-item_pic.jpg",
+              "picUrlM": "//gju4.alicdn.com/tps/i2/450969373/TB1yveNdXHM8KJjSZJiXXbx3FXa_!!0-item_pic.jpg",
+              "postage": "false",
+              "preRemindTime": "",
+              "preSale": "false",
+              "push": "false",
+              "salesSite": "1",
+              "setime": "0",
+              "shopType": "1",
+              "soldAmount": "0",
+              "soldRatio": "17",
+              "sstime": "0",
+              "totalStock": "0"
+            },
+            "extend": {
+              "qgjText": "疯抢进行中",
+              "tqgDetailUrl": "//detail.ju.taobao.com/home.htm?id=10000067307333&item_id=559079120463",
+              "tqgLabelPics": {},
+              "labelPics": {},
+              "appEntryImage": "//gju3.alicdn.com/tps/i3/0/TB21iuIjL6H8KJjy0FjXXaXepXa_!!0-juitemmedia.jpg",
+              "tqgShowStockPercent": "true"
+            },
+            "general": {},
+            "global": {
+              "isBaoshui": "false",
+              "isZhiyou": "false"
+            },
+            "name": {
+              "shortName": "领券249元 短款黑色加厚男棉衣"
+            },
+            "price": {
+              "actPrice": "299",
+              "hangtagPrice": "false",
+              "longerPrice": "false",
+              "origPrice": "1239.00",
+              "timeLimited": "false"
+            },
+            "promotion": {
+              "hongbaoPrice": "0",
+              "hongbaoTotalCount": "0",
+              "marketing": {
+                "crossShop": null
+              }
+            },
+            "remind": {
+              "fire": "false",
+              "remindNum": "66",
+              "soldCount": "337"
+            }
+          }],
+          "logoUrl": "//gtms04.alicdn.com/tps/i4/TB1Z.9bKXXXXXasXVXXFCm1HVXX-183-42.png",
+          "order": "1",
+          "template": "tbqgbranditem",
+          "title": "No.1 dara",
+          "url": "//tqg.taobao.com/m/jusp/alone/brandminisite/mtp.htm?id=28768696&salesSite=1"
+        },
+        "type": "2"
+      }, {
+        "data": {
+          "data": {
+            "imgUrl": "https://img.alicdn.com/tfs/TB1b_U.gyqAXuNjy1XdXXaYcVXa-750-360.jpg",
+            "linkUrl": "https://tqg.taobao.com/m/jusp/nv/bangliianx/mtp.htm",
+            "model": "banner-lua",
+            "url": "",
+            "order": "21"
+          },
+          "defaultHeight": "0.2688",
+          "defaultImg": "",
+          "defaultUrl": "",
+          "id": "1006",
+          "name": "banner-lua",
+          "order": "21",
+          "trackParams": {}
+        },
+        "type": "8"
+      }, {
+        "data": {
+          "baseinfo": {
+            "goJuH5": "false",
+            "itemActSignId": "29264196",
+            "itemId": "560272333201",
+            "itemLabel": ["sys_size_xl", "qtth", "yhq", "sys_sign_1", "sys_domestic", "sys_size_m", "sys_size_l", "sys_ict_5835", "sys_dpyhq", "yhbltqg", "sys_size_2xl", "sys_size_3xl", "tqgt15", "mjs", "sys_qghome", "sys_sucai_entry", "sys_sucai_png", "sys_ict_28802", "sys_market_0"],
+            "itemStatus": "avil",
+            "itemUrl": "https://item.taobao.com/item.htm?id=560272333201",
+            "juId": "10000066917758",
+            "limitNum": "0",
+            "oetime": "1514617199000",
+            "ostime": "1514530800000",
+            "picUrl": "//gju1.alicdn.com/tps/i3/0/TB2jCwKi0rJ8KJjSspaXXXuKpXa_!!0-juitemmedia.jpg",
+            "picUrlM": "//gju1.alicdn.com/tps/i3/0/TB2jCwKi0rJ8KJjSspaXXXuKpXa_!!0-juitemmedia.jpg",
+            "postage": "false",
+            "preRemindTime": "",
+            "preSale": "false",
+            "push": "false",
+            "salesSite": "2",
+            "setime": "0",
+            "shopType": "1",
+            "soldAmount": "0",
+            "soldRatio": "13",
+            "sstime": "0",
+            "totalStock": "0"
+          },
+          "extend": {
+            "tqgZdqText": "",
+            "qgjText": "",
+            "tqgZdqEndTime": "1514530800000",
+            "tqgDetailUrl": "//a.m.taobao.com/i560272333201.htm?umpChannel=qianggou&u_channel=qianggou",
+            "tqgRemindTime": "180",
+            "tqgLabelPics": {},
+            "tqgSellPoint": "顺丰包邮送围巾",
+            "labelPics": {},
+            "appEntryImage": "//gju2.alicdn.com/tps/i4/0/TB2QBqrdffM8KJjSZPfXXbklXXa_!!0-juitemmedia.jpg",
+            "tqgQhbText": "",
+            "tqgTemplate": "tbqgitem",
+            "tqgShowStockPercent": "true"
+          },
+          "general": {},
+          "global": {
+            "isBaoshui": "false",
+            "isZhiyou": "false"
+          },
+          "name": {
+            "shortName": "90%绒中长款时尚羽绒服"
+          },
+          "price": {
+            "actPrice": "798",
+            "hangtagPrice": "false",
+            "longerPrice": "false",
+            "origPrice": "1598.00",
+            "timeLimited": "false"
+          },
+          "promotion": {
+            "hongbaoPrice": "0",
+            "hongbaoTotalCount": "0",
+            "marketing": {
+              "crossShop": null
+            }
+          },
+          "remind": {
+            "fire": "false",
+            "remindNum": "813",
+            "soldCount": "32"
+          }
+        },
+        "type": "1"
+      }, {
+        "data": {
+          "baseinfo": {
+            "goJuH5": "false",
+            "itemActSignId": "29239644",
+            "itemId": "552665050976",
+            "itemLabel": ["qtth", "yhq", "sys_sign_1", "sys_ict_172226", "sys_domestic", "sys_ict_459", "sys_dpyhq", "yhbltqg", "tqgt15", "mjs", "sys_qghome", "sys_sucai_entry", "sys_sucai_png", "sys_market_0"],
+            "itemStatus": "avil",
+            "itemUrl": "https://item.taobao.com/item.htm?id=552665050976",
+            "juId": "10000066812401",
+            "limitNum": "0",
+            "oetime": "1514617199000",
+            "ostime": "1514530800000",
+            "picUrl": "//gju1.alicdn.com/tps/i2/3261336459/TB235tTXmY9F1JjSZFFXXaBKXXa_!!0-juitemmedia.jpg",
+            "picUrlM": "//gju1.alicdn.com/tps/i2/3261336459/TB235tTXmY9F1JjSZFFXXaBKXXa_!!0-juitemmedia.jpg",
+            "postage": "false",
+            "preRemindTime": "",
+            "preSale": "false",
+            "push": "false",
+            "salesSite": "2",
+            "setime": "0",
+            "shopType": "1",
+            "soldAmount": "0",
+            "soldRatio": "21",
+            "sstime": "0",
+            "totalStock": "0"
+          },
+          "extend": {
+            "tqgZdqText": "",
+            "qgjText": "",
+            "tqgZdqEndTime": "1514530800000",
+            "tqgDetailUrl": "//a.m.taobao.com/i552665050976.htm?umpChannel=qianggou&u_channel=qianggou",
+            "tqgRemindTime": "180",
+            "tqgLabelPics": {},
+            "tqgSellPoint": "直降50元买1送16礼",
+            "labelPics": {},
+            "appEntryImage": "//gju4.alicdn.com/tps/i2/0/TB2fZOfi6nD8KJjSspbXXbbEXXa_!!0-juitemmedia.jpg",
+            "tqgQhbText": "",
+            "tqgTemplate": "tbqgitem",
+            "tqgShowStockPercent": "true"
+          },
+          "general": {},
+          "global": {
+            "isBaoshui": "false",
+            "isZhiyou": "false"
+          },
+          "name": {
+            "shortName": "华为荣耀可4G通话WIFI平板电脑"
+          },
+          "price": {
+            "actPrice": "749",
+            "hangtagPrice": "false",
+            "longerPrice": "false",
+            "origPrice": "1999.00",
+            "timeLimited": "false"
+          },
+          "promotion": {
+            "hongbaoPrice": "0",
+            "hongbaoTotalCount": "0",
+            "marketing": {
+              "crossShop": null
+            }
+          },
+          "remind": {
+            "fire": "false",
+            "remindNum": "1195",
+            "soldCount": "21"
+          }
+        },
+        "type": "1"
+      }, {
+        "data": {
+          "baseinfo": {
+            "goJuH5": "false",
+            "itemActSignId": "29281319",
+            "itemId": "558738238982",
+            "itemLabel": ["qtth", "yhq", "sys_ict_15691", "sys_sign_1", "sys_ict_6795", "sys_domestic", "sys_ict_16843", "sys_dpyhq", "wuyouanzhuang", "yhbltqg", "tqgt15", "mjs", "sys_qghome", "sys_sucai_entry", "sys_sucai_png", "sys_market_0"],
+            "itemStatus": "avil",
+            "itemUrl": "https://item.taobao.com/item.htm?id=558738238982",
+            "juId": "10000066999758",
+            "limitNum": "0",
+            "oetime": "1514617199000",
+            "ostime": "1514530800000",
+            "picUrl": "//gju2.alicdn.com/tps/i4/0/TB2eIW2fDnI8KJjSszgXXc8ApXa_!!0-juitemmedia.jpg",
+            "picUrlM": "//gju2.alicdn.com/tps/i4/0/TB2eIW2fDnI8KJjSszgXXc8ApXa_!!0-juitemmedia.jpg",
+            "postage": "false",
+            "preRemindTime": "",
+            "preSale": "false",
+            "push": "false",
+            "salesSite": "2",
+            "setime": "0",
+            "shopType": "1",
+            "soldAmount": "0",
+            "soldRatio": "7",
+            "sstime": "0",
+            "totalStock": "0"
+          },
+          "extend": {
+            "tqgZdqText": "",
+            "qgjText": "",
+            "tqgZdqEndTime": "1514530800000",
+            "tqgDetailUrl": "//a.m.taobao.com/i558738238982.htm?umpChannel=qianggou&u_channel=qianggou",
+            "tqgRemindTime": "180",
+            "tqgLabelPics": {},
+            "tqgSellPoint": "前30分钟领券减80元",
+            "labelPics": {},
+            "appEntryImage": "//gju1.alicdn.com/tps/i2/0/TB2d2YAcAfb_uJkSnfoXXb_epXa_!!0-juitemmedia.jpg",
+            "tqgQhbText": "",
+            "tqgTemplate": "tbqgitem",
+            "tqgShowStockPercent": "true"
+          },
+          "general": {},
+          "global": {
+            "isBaoshui": "false",
+            "isZhiyou": "false"
+          },
+          "name": {
+            "shortName": "箭牌淋浴花洒带喷枪"
+          },
+          "price": {
+            "actPrice": "549",
+            "hangtagPrice": "false",
+            "longerPrice": "false",
+            "origPrice": "1998.00",
+            "timeLimited": "false"
+          },
+          "promotion": {
+            "hongbaoPrice": "0",
+            "hongbaoTotalCount": "0",
+            "marketing": {
+              "crossShop": null
+            }
+          },
+          "remind": {
+            "fire": "false",
+            "remindNum": "471",
+            "soldCount": "10"
+          }
+        },
+        "type": "1"
+      }, {
+        "data": {
+          "baseinfo": {
+            "goJuH5": "false",
+            "itemActSignId": "29213400",
+            "itemId": "534410604130",
+            "itemLabel": ["qtth", "yhq", "sys_sign_1", "sys_ict_5895", "sys_ju_site", "sys_ict_2178", "sys_domestic", "sys_dpyhq", "yhbltqg", "tqgt15", "mjs", "sys_looker", "wgq2017122914", "sys_flow_7", "sys_qghome", "sys_sucai_entry", "sys_sucai_png", "sys_market_0"],
+            "itemStatus": "avil",
+            "itemUrl": "https://item.taobao.com/item.htm?id=534410604130",
+            "juId": "10000066708525",
+            "limitNum": "0",
+            "oetime": "1514617199000",
+            "ostime": "1514530800000",
+            "picUrl": "//gju3.alicdn.com/tps/i3/174730353730181735/TB24pGLdiBnpuFjSZFzXXaSrpXa_!!0-juitemmedia.jpg",
+            "picUrlM": "//gju3.alicdn.com/tps/i3/174730353730181735/TB24pGLdiBnpuFjSZFzXXaSrpXa_!!0-juitemmedia.jpg",
+            "postage": "false",
+            "preRemindTime": "",
+            "preSale": "false",
+            "push": "false",
+            "salesSite": "2",
+            "setime": "0",
+            "shopType": "1",
+            "soldAmount": "0",
+            "soldRatio": "26",
+            "sstime": "0",
+            "totalStock": "0"
+          },
+          "extend": {
+            "tqgZdqText": "",
+            "wgqHongbaoTotal": "200000",
+            "qgjText": "",
+            "tqgZdqEndTime": "1514530800000",
+            "tqgDetailUrl": "//a.m.taobao.com/i534410604130.htm?umpChannel=qianggou&u_channel=qianggou",
+            "wgqHongbaoAmount": "500",
+            "tqgRemindTime": "180",
+            "wgqLookers": "944",
+            "tqgLabelPics": {},
+            "wgqLookersStep": "200",
+            "appEntryImage": "//gju3.alicdn.com/tps/i3/0/TB29BxViNrI8KJjy0FpXXb5hVXa_!!0-juitemmedia.jpg",
+            "wgqHongbaoStep": "100",
+            "tqgTemplate": "tbqgitem",
+            "tqgShowStockPercent": "true",
+            "wgqOnlookersEndTime": "1514530799000",
+            "wgqOnlookersStartTime": "1514527200000",
+            "tqgSellPoint": "前1小时低至389送赠",
+            "labelPics": {},
+            "tqgQhbText": "",
+            "wgqRemainHongbaoNum": "276"
+          },
+          "general": {},
+          "global": {
+            "isBaoshui": "false",
+            "isZhiyou": "false"
+          },
+          "name": {
+            "shortName": "苏泊尔预约收汁球釜电压力锅5L"
+          },
+          "price": {
+            "actPrice": "499",
+            "hangtagPrice": "false",
+            "longerPrice": "false",
+            "origPrice": "1499.00",
+            "timeLimited": "false"
+          },
+          "promotion": {
+            "hongbaoPrice": "0",
+            "hongbaoTotalCount": "0",
+            "marketing": {
+              "crossShop": null
+            }
+          },
+          "remind": {
+            "fire": "false",
+            "remindNum": "1570",
+            "soldCount": "79"
+          }
+        },
+        "type": "1"
+      }, {
+        "data": {
+          "activityId": "28791089",
+          "attentionInfo": "已抢801件",
+          "blockType": "1",
+          "extend": {},
+          "itemList": [{
+            "baseinfo": {
+              "goJuH5": "false",
+              "itemActSignId": "28791089",
+              "itemId": "540803663166",
+              "itemLabel": ["sys_sign_2", "yhq", "sc_tp_23_171", "sys_domestic", "sc_cl_24_181", "sys_sucai_png", "sys_ict_41922", "sys_ict_28802", "biaoleidapai", "sys_market_0", "sc_cl_24_224", "sc_cl_24_1036", "themejiake", "2017661", "qtth", "我要的家", "sys_ict_2178", "sys_ict_6795", "fcdpbq", "tqgbrandtag", "sys_dpyhq", "topicitem", "sys_ict_14859", "mjs", "tqgbrand", "sys_sucai_entry"],
+              "itemStatus": "avil",
+              "itemUrl": "//detail.ju.taobao.com/home.htm?id=10000067587282&item_id=540803663166",
+              "juId": "10000067587282",
+              "limitNum": "0",
+              "oetime": "1514768399000",
+              "ostime": "1514512800000",
+              "picUrl": "//gju1.alicdn.com/tps/i1/0/TB2ag0zcsic_eJjSZFnXXXVwVXa_!!0-juitemmedia.jpg",
+              "picUrlM": "//gju1.alicdn.com/tps/i1/0/TB2ag0zcsic_eJjSZFnXXXVwVXa_!!0-juitemmedia.jpg",
+              "postage": "false",
+              "preRemindTime": "",
+              "preSale": "false",
+              "push": "false",
+              "salesSite": "1",
+              "setime": "0",
+              "shopType": "1",
+              "soldAmount": "0",
+              "soldRatio": "11",
+              "sstime": "0",
+              "totalStock": "0"
+            },
+            "extend": {
+              "qgjText": "疯抢进行中",
+              "tqgDetailUrl": "//detail.ju.taobao.com/home.htm?id=10000067587282&item_id=540803663166",
+              "tqgLabelPics": {},
+              "labelPics": {},
+              "appEntryImage": "//gju2.alicdn.com/tps/i2/0/TB210tRkf6H8KJjy0FjXXaXepXa_!!0-juitemmedia.jpg",
+              "tqgShowStockPercent": "true"
+            },
+            "general": {},
+            "global": {
+              "isBaoshui": "false",
+              "isZhiyou": "false"
+            },
+            "name": {
+              "shortName": "全友石材台面茶几电视柜"
+            },
+            "price": {
+              "actPrice": "1899",
+              "hangtagPrice": "false",
+              "longerPrice": "false",
+              "origPrice": "7197.00",
+              "timeLimited": "false"
+            },
+            "promotion": {
+              "hongbaoPrice": "0",
+              "hongbaoTotalCount": "0",
+              "marketing": {
+                "crossShop": null
+              }
+            },
+            "remind": {
+              "fire": "false",
+              "remindNum": "175",
+              "soldCount": "56"
+            }
+          }, {
+            "baseinfo": {
+              "goJuH5": "false",
+              "itemActSignId": "28791089",
+              "itemId": "549556531800",
+              "itemLabel": ["sys_sign_2", "yhq", "sc_tp_23_171", "sys_domestic", "sc_cl_24_181", "sys_sucai_png", "sys_ict_41922", "sys_ict_28802", "biaoleidapai", "sys_market_0", "sc_cl_24_224", "sc_cl_24_1036", "themejiake", "2017661", "qtth", "我要的家", "sys_ict_2178", "sys_ict_6795", "fcdpbq", "tqgbrandtag", "sys_dpyhq", "topicitem", "sys_ict_14859", "mjs", "tqgbrand", "sys_sucai_entry"],
+              "itemStatus": "avil",
+              "itemUrl": "//detail.ju.taobao.com/home.htm?id=10000067587261&item_id=549556531800",
+              "juId": "10000067587261",
+              "limitNum": "0",
+              "oetime": "1514768399000",
+              "ostime": "1514512800000",
+              "picUrl": "//gju1.alicdn.com/tps/i3/685563493/TB1yn7JccnI8KJjSsziXXb8QpXa_!!0-item_pic.jpg",
+              "picUrlM": "//gju1.alicdn.com/tps/i3/685563493/TB1yn7JccnI8KJjSsziXXb8QpXa_!!0-item_pic.jpg",
+              "postage": "false",
+              "preRemindTime": "",
+              "preSale": "false",
+              "push": "false",
+              "salesSite": "1",
+              "setime": "0",
+              "shopType": "1",
+              "soldAmount": "0",
+              "soldRatio": "2",
+              "sstime": "0",
+              "totalStock": "0"
+            },
+            "extend": {
+              "qgjText": "疯抢进行中",
+              "tqgDetailUrl": "//detail.ju.taobao.com/home.htm?id=10000067587261&item_id=549556531800",
+              "tqgLabelPics": {},
+              "labelPics": {},
+              "appEntryImage": "//gju1.alicdn.com/tps/i2/0/TB2fo.8j_TI8KJjSsphXXcFppXa_!!0-juitemmedia.jpg",
+              "tqgShowStockPercent": "true"
+            },
+            "general": {},
+            "global": {
+              "isBaoshui": "false",
+              "isZhiyou": "false"
+            },
+            "name": {
+              "shortName": "全友简约时尚沙发"
+            },
+            "price": {
+              "actPrice": "2699",
+              "hangtagPrice": "false",
+              "longerPrice": "false",
+              "origPrice": "11999.00",
+              "timeLimited": "false"
+            },
+            "promotion": {
+              "hongbaoPrice": "0",
+              "hongbaoTotalCount": "0",
+              "marketing": {
+                "crossShop": null
+              }
+            },
+            "remind": {
+              "fire": "false",
+              "remindNum": "129",
+              "soldCount": "22"
+            }
+          }, {
+            "baseinfo": {
+              "goJuH5": "false",
+              "itemActSignId": "28791089",
+              "itemId": "42606234510",
+              "itemLabel": ["sys_sign_2", "yhq", "sc_tp_23_171", "sys_domestic", "sc_cl_24_181", "sys_sucai_png", "sys_ict_41922", "sys_ict_28802", "biaoleidapai", "sys_market_0", "sc_cl_24_224", "sc_cl_24_1036", "themejiake", "2017661", "qtth", "我要的家", "sys_ict_2178", "sys_ict_6795", "fcdpbq", "tqgbrandtag", "sys_dpyhq", "topicitem", "sys_ict_14859", "mjs", "tqgbrand", "sys_sucai_entry"],
+              "itemStatus": "avil",
+              "itemUrl": "//detail.ju.taobao.com/home.htm?id=10000066947045&item_id=42606234510",
+              "juId": "10000066947045",
+              "limitNum": "0",
+              "oetime": "1514768399000",
+              "ostime": "1514512800000",
+              "picUrl": "//gju2.alicdn.com/tps/i1/0/TB2PyxzXsrI8KJjy0FhXXbfnpXa_!!0-juitemmedia.jpg",
+              "picUrlM": "//gju2.alicdn.com/tps/i1/0/TB2PyxzXsrI8KJjy0FhXXbfnpXa_!!0-juitemmedia.jpg",
+              "postage": "false",
+              "preRemindTime": "",
+              "preSale": "false",
+              "push": "false",
+              "salesSite": "1",
+              "setime": "0",
+              "shopType": "1",
+              "soldAmount": "0",
+              "soldRatio": "3",
+              "sstime": "0",
+              "totalStock": "0"
+            },
+            "extend": {
+              "qgjText": "疯抢进行中",
+              "tqgDetailUrl": "//detail.ju.taobao.com/home.htm?id=10000066947045&item_id=42606234510",
+              "tqgLabelPics": {},
+              "labelPics": {},
+              "appEntryImage": "//gju1.alicdn.com/tps/i4/0/TB2ENQncAfb_uJkSmFPXXcrCFXa_!!0-juitemmedia.jpg",
+              "tqgShowStockPercent": "true"
+            },
+            "general": {},
+            "global": {
+              "isBaoshui": "false",
+              "isZhiyou": "false"
+            },
+            "name": {
+              "shortName": "超舒适全布艺沙发"
+            },
+            "price": {
+              "actPrice": "3899",
+              "hangtagPrice": "false",
+              "longerPrice": "false",
+              "origPrice": "10247.00",
+              "timeLimited": "false"
+            },
+            "promotion": {
+              "hongbaoPrice": "0",
+              "hongbaoTotalCount": "0",
+              "marketing": {
+                "crossShop": null
+              }
+            },
+            "remind": {
+              "fire": "false",
+              "remindNum": "105",
+              "soldCount": "14"
+            }
+          }],
+          "logoUrl": "//gtms04.alicdn.com/tps/i4/TB1Z.9bKXXXXXasXVXXFCm1HVXX-183-42.png",
+          "order": "1",
+          "template": "tbqgbranditem",
+          "title": "QuanU/全友",
+          "url": "//tqg.taobao.com/m/jusp/alone/brandminisite/mtp.htm?id=28791089&salesSite=1"
+        },
+        "type": "2"
+      }, {
+        "data": {
+          "baseinfo": {
+            "goJuH5": "false",
+            "itemActSignId": "29287198",
+            "itemId": "556430538633",
+            "itemLabel": ["qtth", "yhq", "sys_sign_1", "sys_ict_172226", "sys_domestic", "sys_dpyhq", "yhbltqg", "tqgt15", "mjs", "sys_qghome", "sys_sucai_entry", "sys_sucai_png", "sys_market_0"],
+            "itemStatus": "avil",
+            "itemUrl": "https://item.taobao.com/item.htm?id=556430538633",
+            "juId": "10000067030828",
+            "limitNum": "0",
+            "oetime": "1514617199000",
+            "ostime": "1514530800000",
+            "picUrl": "//gju4.alicdn.com/tps/i2/0/TB29fRXjBUSMeJjy1zjXXc0dXXa_!!0-juitemmedia.jpg",
+            "picUrlM": "//gju4.alicdn.com/tps/i2/0/TB29fRXjBUSMeJjy1zjXXc0dXXa_!!0-juitemmedia.jpg",
+            "postage": "false",
+            "preRemindTime": "",
+            "preSale": "false",
+            "push": "false",
+            "salesSite": "2",
+            "setime": "0",
+            "shopType": "1",
+            "soldAmount": "0",
+            "soldRatio": "45",
+            "sstime": "0",
+            "totalStock": "0"
+          },
+          "extend": {
+            "tqgZdqText": "",
+            "qgjText": "",
+            "tqgZdqEndTime": "1514530800000",
+            "tqgDetailUrl": "//a.m.taobao.com/i556430538633.htm?umpChannel=qianggou&u_channel=qianggou",
+            "tqgRemindTime": "180",
+            "tqgLabelPics": {},
+            "tqgSellPoint": "前30分钟抢279赠芯",
+            "labelPics": {},
+            "appEntryImage": "//gju2.alicdn.com/tps/i4/0/TB2LXPOczgy_uJjSZR0XXaK5pXa_!!0-juitemmedia.jpg",
+            "tqgQhbText": "",
+            "tqgTemplate": "tbqgitem",
+            "tqgShowStockPercent": "true"
+          },
+          "general": {},
+          "global": {
+            "isBaoshui": "false",
+            "isZhiyou": "false"
+          },
+          "name": {
+            "shortName": "【爆品】TCL净水器家用净水机"
+          },
+          "price": {
+            "actPrice": "389",
+            "hangtagPrice": "false",
+            "longerPrice": "false",
+            "origPrice": "999.00",
+            "timeLimited": "false"
+          },
+          "promotion": {
+            "hongbaoPrice": "0",
+            "hongbaoTotalCount": "0",
+            "marketing": {
+              "crossShop": null
+            }
+          },
+          "remind": {
+            "fire": "false",
+            "remindNum": "236",
+            "soldCount": "134"
+          }
+        },
+        "type": "1"
+      }, {
+        "data": {
+          "baseinfo": {
+            "goJuH5": "false",
+            "itemActSignId": "29283113",
+            "itemId": "560237531854",
+            "itemLabel": ["sys_size_xl", "qtth", "yhq", "sys_sign_1", "sys_domestic", "sys_size_m", "sys_size_l", "sys_size_s", "sys_ict_5835", "yhbltqg", "tqgt15", "mjs", "sys_qghome", "sys_sucai_entry", "sys_sucai_png", "sys_ict_28802", "sys_market_0"],
+            "itemStatus": "avil",
+            "itemUrl": "https://item.taobao.com/item.htm?id=560237531854",
+            "juId": "10000067009373",
+            "limitNum": "0",
+            "oetime": "1514617199000",
+            "ostime": "1514530800000",
+            "picUrl": "//gju1.alicdn.com/tps/i1/0/TB2xCl9cwvD8KJjy0FlXXagBFXa_!!0-juitemmedia.jpg",
+            "picUrlM": "//gju1.alicdn.com/tps/i1/0/TB2xCl9cwvD8KJjy0FlXXagBFXa_!!0-juitemmedia.jpg",
+            "postage": "false",
+            "preRemindTime": "",
+            "preSale": "false",
+            "push": "false",
+            "salesSite": "2",
+            "setime": "0",
+            "shopType": "1",
+            "soldAmount": "0",
+            "soldRatio": "2",
+            "sstime": "0",
+            "totalStock": "0"
+          },
+          "extend": {
+            "tqgZdqText": "",
+            "qgjText": "",
+            "tqgZdqEndTime": "1514530800000",
+            "tqgDetailUrl": "//a.m.taobao.com/i560237531854.htm?umpChannel=qianggou&u_channel=qianggou",
+            "tqgRemindTime": "180",
+            "tqgLabelPics": {},
+            "tqgSellPoint": "90%白鸭绒羽绒服女",
+            "labelPics": {},
+            "appEntryImage": "//gju2.alicdn.com/tps/i2/0/TB2pXDHcAfb_uJkSmLyXXcxoXXa_!!0-juitemmedia.jpg",
+            "tqgQhbText": "",
+            "tqgTemplate": "tbqgitem",
+            "tqgShowStockPercent": "true"
+          },
+          "general": {},
+          "global": {
+            "isBaoshui": "false",
+            "isZhiyou": "false"
+          },
+          "name": {
+            "shortName": "超长过膝白鸭绒保暖羽绒服女潮"
+          },
+          "price": {
+            "actPrice": "388",
+            "hangtagPrice": "false",
+            "longerPrice": "false",
+            "origPrice": "688.00",
+            "timeLimited": "false"
+          },
+          "promotion": {
+            "hongbaoPrice": "0",
+            "hongbaoTotalCount": "0",
+            "marketing": {
+              "crossShop": null
+            }
+          },
+          "remind": {
+            "fire": "false",
+            "remindNum": "2900",
+            "soldCount": "17"
+          }
+        },
+        "type": "1"
+      }, {
+        "data": {
+          "baseinfo": {
+            "goJuH5": "false",
+            "itemActSignId": "29287393",
+            "itemId": "558202216543",
+            "itemLabel": ["yhbltqg", "qtth", "yhq", "sys_sign_1", "tqgt15", "mjs", "sys_domestic", "sys_qghome", "sys_sucai_entry", "sys_sucai_png", "sys_market_0"],
+            "itemStatus": "avil",
+            "itemUrl": "https://item.taobao.com/item.htm?id=558202216543",
+            "juId": "10000067031636",
+            "limitNum": "0",
+            "oetime": "1514617199000",
+            "ostime": "1514530800000",
+            "picUrl": "//gju2.alicdn.com/tps/i4/0/TB2Tn8RX2jM8KJjSZFNXXbQjFXa_!!0-juitemmedia.jpg",
+            "picUrlM": "//gju2.alicdn.com/tps/i4/0/TB2Tn8RX2jM8KJjSZFNXXbQjFXa_!!0-juitemmedia.jpg",
+            "postage": "false",
+            "preRemindTime": "",
+            "preSale": "false",
+            "push": "false",
+            "salesSite": "2",
+            "setime": "0",
+            "shopType": "1",
+            "soldAmount": "0",
+            "soldRatio": "12",
+            "sstime": "0",
+            "totalStock": "0"
+          },
+          "extend": {
+            "tqgZdqText": "",
+            "qgjText": "",
+            "tqgZdqEndTime": "1514530800000",
+            "tqgDetailUrl": "//a.m.taobao.com/i558202216543.htm?umpChannel=qianggou&u_channel=qianggou",
+            "tqgRemindTime": "180",
+            "tqgLabelPics": {},
+            "tqgSellPoint": "配送16G高速内存卡",
+            "labelPics": {},
+            "appEntryImage": "//gju2.alicdn.com/tps/i4/0/TB2piHpjmYH8KJjSspdXXcRgVXa_!!0-juitemmedia.jpg",
+            "tqgQhbText": "",
+            "tqgTemplate": "tbqgitem",
+            "tqgShowStockPercent": "true"
+          },
+          "general": {},
+          "global": {
+            "isBaoshui": "false",
+            "isZhiyou": "false"
+          },
+          "name": {
+            "shortName": "凌度高清行车记录仪"
+          },
+          "price": {
+            "actPrice": "360",
+            "hangtagPrice": "false",
+            "longerPrice": "false",
+            "origPrice": "899.00",
+            "timeLimited": "false"
+          },
+          "promotion": {
+            "hongbaoPrice": "0",
+            "hongbaoTotalCount": "0",
+            "marketing": {
+              "crossShop": null
+            }
+          },
+          "remind": {
+            "fire": "false",
+            "remindNum": "1810",
+            "soldCount": "55"
+          }
+        },
+        "type": "1"
+      }, {
+        "data": {
+          "baseinfo": {
+            "goJuH5": "false",
+            "itemActSignId": "29249282",
+            "itemId": "524447465555",
+            "itemLabel": ["sys_ocg_area_360", "yhq", "sys_sign_1", "sys_ict_5895", "sys_ju_site", "sys_ict_2178", "sys_domestic", "sys_dpyhq", "yhbltqg", "tqgt15", "mjs", "sys_qghome", "sys_sucai_entry", "sys_sucai_png", "sys_ocg_area_764", "sys_ocg_area_158", "sys_market_0"],
+            "itemStatus": "avil",
+            "itemUrl": "https://item.taobao.com/item.htm?id=524447465555",
+            "juId": "10000066853308",
+            "limitNum": "0",
+            "oetime": "1514617199000",
+            "ostime": "1514530800000",
+            "picUrl": "//gju2.alicdn.com/tps/i4/188170256574742943/TB2gCUktXXXXXXbXFXXXXXXXXXX_!!0-juitemmedia.jpg",
+            "picUrlM": "//gju2.alicdn.com/tps/i4/188170256574742943/TB2gCUktXXXXXXbXFXXXXXXXXXX_!!0-juitemmedia.jpg",
+            "postage": "false",
+            "preRemindTime": "",
+            "preSale": "false",
+            "push": "false",
+            "salesSite": "2",
+            "setime": "0",
+            "shopType": "1",
+            "soldAmount": "0",
+            "soldRatio": "57",
+            "sstime": "0",
+            "totalStock": "0"
+          },
+          "extend": {
+            "tqgZdqText": "",
+            "qgjText": "",
+            "tqgZdqEndTime": "1514530800000",
+            "tqgDetailUrl": "//a.m.taobao.com/i524447465555.htm?umpChannel=qianggou&u_channel=qianggou",
+            "tqgRemindTime": "180",
+            "tqgLabelPics": {},
+            "tqgSellPoint": "两箱减30元",
+            "labelPics": {},
+            "appEntryImage": "//gju1.alicdn.com/tps/i3/0/TB253qecAfb_uJkSnaVXXXFmVXa_!!0-juitemmedia.jpg",
+            "tqgQhbText": "",
+            "tqgTemplate": "tbqgitem",
+            "tqgShowStockPercent": "true"
+          },
+          "general": {},
+          "global": {
+            "isBaoshui": "false",
+            "isZhiyou": "false"
+          },
+          "name": {
+            "shortName": "贵州茅台富贵万年酒整箱6瓶装"
+          },
+          "price": {
+            "actPrice": "296",
+            "hangtagPrice": "false",
+            "longerPrice": "false",
+            "origPrice": "599.00",
+            "timeLimited": "false"
+          },
+          "promotion": {
+            "hongbaoPrice": "0",
+            "hongbaoTotalCount": "0",
+            "marketing": {
+              "crossShop": null
+            }
+          },
+          "remind": {
+            "fire": "false",
+            "remindNum": "351",
+            "soldCount": "199"
+          }
+        },
+        "type": "1"
+      }, {
+        "data": {
+          "activityId": "29082231",
+          "attentionInfo": "已抢3711件",
+          "blockType": "1",
+          "extend": {},
+          "itemList": [{
+            "baseinfo": {
+              "goJuH5": "false",
+              "itemActSignId": "29082231",
+              "itemId": "538354480868",
+              "itemLabel": ["sys_ict_162690", "sys_sign_2", "qtth", "bigbrandtag", "yhq", "sys_ict_7435", "sys_domestic", "weakpreheat", "tqgbrandtag", "sys_dpyhq", "mjs", "tqgbrand", "sys_ict_46914", "bigbrand", "sys_sucai_entry", "sys_sucai_png", "sys_ict_41922", "sys_ict_28802", "sys_market_0"],
+              "itemStatus": "avil",
+              "itemUrl": "//detail.ju.taobao.com/home.htm?id=10000067210970&item_id=538354480868",
+              "juId": "10000067210970",
+              "limitNum": "0",
+              "oetime": "1514768399000",
+              "ostime": "1514512800000",
+              "picUrl": "//gju4.alicdn.com/tps/i1/92042735/TB1JYfMkBDH8KJjy1zeXXXjepXa_!!0-item_pic.jpg",
+              "picUrlM": "//gju4.alicdn.com/tps/i1/92042735/TB1JYfMkBDH8KJjy1zeXXXjepXa_!!0-item_pic.jpg",
+              "postage": "false",
+              "preRemindTime": "",
+              "preSale": "false",
+              "push": "false",
+              "salesSite": "1",
+              "setime": "0",
+              "shopType": "1",
+              "soldAmount": "0",
+              "soldRatio": "8",
+              "sstime": "0",
+              "totalStock": "0"
+            },
+            "extend": {
+              "qgjText": "疯抢进行中",
+              "tqgDetailUrl": "//detail.ju.taobao.com/home.htm?id=10000067210970&item_id=538354480868",
+              "tqgLabelPics": {},
+              "labelPics": {},
+              "appEntryImage": "//gju4.alicdn.com/tps/i2/0/TB23OHejCYH8KJjSspdXXcRgVXa_!!0-juitemmedia.jpg",
+              "tqgShowStockPercent": "true"
+            },
+            "general": {},
+            "global": {
+              "isBaoshui": "false",
+              "isZhiyou": "false"
+            },
+            "name": {
+              "shortName": "水星家纺95%绒子含量白鹅绒冬被"
+            },
+            "price": {
+              "actPrice": "1699",
+              "hangtagPrice": "false",
+              "longerPrice": "false",
+              "origPrice": "5999.00",
+              "timeLimited": "false"
+            },
+            "promotion": {
+              "hongbaoPrice": "0",
+              "hongbaoTotalCount": "0",
+              "marketing": {
+                "crossShop": null
+              }
+            },
+            "remind": {
+              "fire": "false",
+              "remindNum": "85",
+              "soldCount": "228"
+            }
+          }, {
+            "baseinfo": {
+              "goJuH5": "false",
+              "itemActSignId": "29082231",
+              "itemId": "558199627742",
+              "itemLabel": ["sys_ict_162690", "sys_sign_2", "qtth", "bigbrandtag", "yhq", "sc_tp_4_171", "sys_ict_7435", "sys_domestic", "weakpreheat", "tqgbrandtag", "sys_dpyhq", "恋上我的床", "topicitem", "mjs", "tqgbrand", "sys_ict_46914", "bigbrand", "sys_sucai_entry", "sys_sucai_png", "sys_ict_41922", "sys_ict_28802", "sys_market_0"],
+              "itemStatus": "avil",
+              "itemUrl": "//detail.ju.taobao.com/home.htm?id=10000067211743&item_id=558199627742",
+              "juId": "10000067211743",
+              "limitNum": "0",
+              "oetime": "1514768399000",
+              "ostime": "1514512800000",
+              "picUrl": "//gju1.alicdn.com/tps/i3/92042735/TB1L0i.kx6I8KJjSszfXXaZVXXa_!!0-item_pic.jpg",
+              "picUrlM": "//gju1.alicdn.com/tps/i3/92042735/TB1L0i.kx6I8KJjSszfXXaZVXXa_!!0-item_pic.jpg",
+              "postage": "false",
+              "preRemindTime": "",
+              "preSale": "false",
+              "push": "false",
+              "salesSite": "1",
+              "setime": "0",
+              "shopType": "1",
+              "soldAmount": "0",
+              "soldRatio": "9",
+              "sstime": "0",
+              "totalStock": "0"
+            },
+            "extend": {
+              "qgjText": "疯抢进行中",
+              "tqgDetailUrl": "//detail.ju.taobao.com/home.htm?id=10000067211743&item_id=558199627742",
+              "tqgLabelPics": {},
+              "labelPics": {},
+              "appEntryImage": "//gju2.alicdn.com/tps/i4/0/TB2NHYIjsrI8KJjy0FhXXbfnpXa_!!0-juitemmedia.jpg",
+              "tqgShowStockPercent": "true"
+            },
+            "general": {},
+            "global": {
+              "isBaoshui": "false",
+              "isZhiyou": "false"
+            },
+            "name": {
+              "shortName": "水星家纺 全棉磨毛四件套 秋冬新品"
+            },
+            "price": {
+              "actPrice": "499",
+              "hangtagPrice": "false",
+              "longerPrice": "false",
+              "origPrice": "1499.00",
+              "timeLimited": "false"
+            },
+            "promotion": {
+              "hongbaoPrice": "0",
+              "hongbaoTotalCount": "0",
+              "marketing": {
+                "crossShop": null
+              }
+            },
+            "remind": {
+              "fire": "false",
+              "remindNum": "48",
+              "soldCount": "255"
+            }
+          }, {
+            "baseinfo": {
+              "goJuH5": "false",
+              "itemActSignId": "29082231",
+              "itemId": "537521623938",
+              "itemLabel": ["sys_sign_2", "qtth", "bigbrandtag", "yhq", "sc_tp_4_171", "sys_ict_7435", "sys_domestic", "weakpreheat", "tqgbrandtag", "sys_dpyhq", "恋上我的床", "topicitem", "mjs", "tqgbrand", "sys_ict_46914", "bigbrand", "sys_sucai_entry", "sys_sucai_png", "sys_ict_41922", "sys_ict_28802", "sys_market_0"],
+              "itemStatus": "avil",
+              "itemUrl": "//detail.ju.taobao.com/home.htm?id=10000067211655&item_id=537521623938",
+              "juId": "10000067211655",
+              "limitNum": "0",
+              "oetime": "1514768399000",
+              "ostime": "1514512800000",
+              "picUrl": "//gju1.alicdn.com/tps/i3/92042735/TB1tkWMkdzJ8KJjSspkXXbF7VXa_!!0-item_pic.jpg",
+              "picUrlM": "//gju1.alicdn.com/tps/i3/92042735/TB1tkWMkdzJ8KJjSspkXXbF7VXa_!!0-item_pic.jpg",
+              "postage": "false",
+              "preRemindTime": "",
+              "preSale": "false",
+              "push": "false",
+              "salesSite": "1",
+              "setime": "0",
+              "shopType": "1",
+              "soldAmount": "0",
+              "soldRatio": "2",
+              "sstime": "0",
+              "totalStock": "0"
+            },
+            "extend": {
+              "qgjText": "疯抢进行中",
+              "tqgDetailUrl": "//detail.ju.taobao.com/home.htm?id=10000067211655&item_id=537521623938",
+              "tqgLabelPics": {},
+              "labelPics": {},
+              "appEntryImage": "//gju1.alicdn.com/tps/i1/0/TB2562Cjv2H8KJjy0FcXXaDlFXa_!!0-juitemmedia.jpg",
+              "tqgShowStockPercent": "true"
+            },
+            "general": {},
+            "global": {
+              "isBaoshui": "false",
+              "isZhiyou": "false"
+            },
+            "name": {
+              "shortName": "水星家纺 全棉磨毛四件套"
+            },
+            "price": {
+              "actPrice": "499",
+              "hangtagPrice": "false",
+              "longerPrice": "false",
+              "origPrice": "2099.00",
+              "timeLimited": "false"
+            },
+            "promotion": {
+              "hongbaoPrice": "0",
+              "hongbaoTotalCount": "0",
+              "marketing": {
+                "crossShop": null
+              }
+            },
+            "remind": {
+              "fire": "false",
+              "remindNum": "34",
+              "soldCount": "74"
+            }
+          }],
+          "logoUrl": "//gtms04.alicdn.com/tps/i4/TB1Z.9bKXXXXXasXVXXFCm1HVXX-183-42.png",
+          "order": "1",
+          "template": "tbqgbranditem",
+          "title": "水星",
+          "url": "//tqg.taobao.com/m/jusp/alone/brandminisite/mtp.htm?id=29082231&salesSite=1"
+        },
+        "type": "2"
+      }],
+      "tqgThirdBgColor": "#f8f8f8",
+      "tqgStretchingLogo": "https://img.alicdn.com/tfs/TB1gnCZRFXXXXaCXXXXXXXXXXXX-474-132.png"
+    },
+    "debug": {},
+    "extend": {},
+    "hasNextPage": "false",
+    "pageSize": "20",
+    "totalPage": "4",
+    "trackParam": {
+      "bucket": "8",
+      "fcatids": "-1",
+      "is_load": "1",
+      "pageno": "1",
+      "stype": "etao4tqg",
+      "itemIds": "7WOC6QA^7NcsnQg^hoEaWi^87eucxj^8bdQubv^7XPNOqT^7Rzknwe^86BKVCl^86kit4G^6BJvuv^F/XhJg^zkEJth^89ORlCh^82JpSZw^88npeU6^7NJmGVy^86dS3u9^89MMBbe^87Tsu1v^7Erwk1j",
+      "_detailExpose": "bucket,pageno,impid",
+      "_expose": "bucket,fcatids,is_load,pageno,stype,itemIds,impid,fstype,scene",
+      "_click": "bucket,pageno,impid",
+      "impid": "cMUEj/tE5WX",
+      "fstype": "etao4tqg",
+      "scene": "tqg"
+    }
+  },
+  "ret": ["SUCCESS::调用成功"],
+  "v": "1.0"
+}

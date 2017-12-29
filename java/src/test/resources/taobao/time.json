@@ -1,0 +1,8 @@
+{
+  "api": "mtop.common.getTimestamp",
+  "v": "*",
+  "ret": ["SUCCESS::接口调用成功"],
+  "data": {
+    "t": "1514533376314"
+  }
+}

@@ -74,7 +74,71 @@ public class PrepareWsonFile extends TestCase {
                 "/data/integers.json",
                 "/data/mixed.json",
                 "/data/nulls.json",
-                "/data/paragraphs.json"
+                "/data/paragraphs.json",
+
+
+
+                "/taobao/aggregation.json",
+                "/taobao/airborne.json",
+                "/taobao/airborne2.json",
+                "/taobao/amp.json",
+                "/taobao/appsearch.json",
+                "/taobao/appsearch2.json",
+                "/taobao/avengers.json",
+                "/taobao/beenhive.json",
+                "/taobao/biji.json",
+                "/taobao/cloudvideo.json",
+                "/taobao/config.json",
+                "/taobao/contract.json",
+                "/taobao/cybertron.json",
+                "/taobao/detail.json",
+                "/taobao/detail2.json",
+                "/taobao/gooditem.json",
+                "/taobao/gooditem2.json",
+                "/taobao/graphql.json",
+                "/taobao/guang.json",
+                "/taobao/guang1.json",
+                "/taobao/guess.json",
+                "/taobao/home.json",
+                "/taobao/location.json",
+                "/taobao/mclaren.json",
+                "/taobao/meiri.json",
+                "/taobao/mytaobao.json",
+                "/taobao/navigation.json",
+                "/taobao/orange.json",
+                "/taobao/orange2.json",
+                "/taobao/order.json",
+                "/taobao/orderlist.json",
+                "/taobao/qiangdan.json",
+                "/taobao/qianggou1.json",
+                "/taobao/qianggou2.json",
+                "/taobao/qianggou3.json",
+                "/taobao/qianggou4.json",
+                "/taobao/qianqiu1.json",
+                "/taobao/qianqiu2.json",
+                "/taobao/qingdan2.json",
+                "/taobao/qingdan3.json",
+                "/taobao/quanqiu.json",
+                "/taobao/querybought.json",
+                "/taobao/range.json",
+
+
+
+                "/taobao/recentcontact.json",
+                "/taobao/refresh.json",
+                "/taobao/searchmall.json",
+                "/taobao/secondfloor.json",
+                "/taobao/serviceload.json",
+                "/taobao/steins.json",
+                "/taobao/steins3.json",
+                "/taobao/story.json",
+                "/taobao/suggest.json",
+
+                "/taobao/tejie.json",
+                "/taobao/time.json",
+                "/taobao/userinfo.json",
+                "/taobao/video.json",
+                "/taobao/wsearch.json"
         };
 
 
@@ -111,8 +175,8 @@ public class PrepareWsonFile extends TestCase {
         }catch (Throwable e){
             System.out.println("fileName " + jsonFile);
             e.printStackTrace();
-           String sjsonFile = "src/test/resources/" + (jsonFile.substring(1, jsonFile.indexOf('.')) + ".json");
-           saveFile(sjsonFile, JSON.parseObject(data).toJSONString().getBytes("UTF-8"));
+           //String sjsonFile = "src/test/resources/" + (jsonFile.substring(1, jsonFile.indexOf('.')) + ".json");
+           //saveFile(sjsonFile, JSON.parseObject(data).toJSONString().getBytes("UTF-8"));
        }
     }
 

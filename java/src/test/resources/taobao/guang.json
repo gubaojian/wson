@@ -1,0 +1,56 @@
+{
+  "api": "mtop.taobao.phenix.index.initialize",
+  "data": {
+    "bannerBackground": "//gw.alicdn.com/tfs/TB1V9CKSFXXXXXPXFXXXXXXXXXX-750-694.png",
+    "banners": [{
+      "item": {
+        "pic": "//img.alicdn.com/tfs/TB1WouJkm_I8KJjy0FoXXaFnVXa-1125-804.jpg",
+        "url": "https://market.m.taobao.com/apps/guang/ishopping/channel.html?channelId=1331&wh_weex=true"
+      },
+      "type": "1"
+    }, {
+      "item": {
+        "pic": "//img.alicdn.com/tfs/TB1a4R6kvDH8KJjy1XcXXcpdXXa-1125-804.jpg",
+        "url": "https://market.m.taobao.com/apps/guang/ishopping/channel.html?channelId=1145&wh_weex=true"
+      },
+      "type": "1"
+    }, {
+      "item": {
+        "pic": "//gw.alicdn.com/tfs/TB1LgEIjxrI8KJjy0FpXXb5hVXa-1125-804.jpg",
+        "url": "https://www.taobao.com/markets/guang/mojing005"
+      },
+      "type": "1"
+    }, {
+      "item": {
+        "pic": "//gw.alicdn.com/tfs/TB1Ns6Vjv6H8KJjy0FjXXaXepXa-1125-804.jpg",
+        "url": "https://market.m.taobao.com/apps/guang/ishopping/channel.html?channelId=1329&wh_weex=true"
+      },
+      "type": "1"
+    }, {
+      "item": {
+        "pic": "//gw.alicdn.com/tfs/TB1jOJtjILJ8KJjy0FnXXcFDpXa-1125-804.jpg",
+        "url": "https://www.taobao.com/markets/guang/mojing006"
+      },
+      "type": "1"
+    }, {
+      "item": {
+        "pic": "//gw.alicdn.com/tfs/TB1tpI4ihrI8KJjy0FpXXb5hVXa-1125-804.jpg",
+        "url": "https://market.m.taobao.com/apps/guang/ishopping/channel.html?channelId=1311&wh_weex=true"
+      },
+      "type": "1"
+    }],
+    "displayFloatingLayer": "true",
+    "feedRowCount": "0",
+    "hasFeed": "false",
+    "popup": {
+      "display": "false",
+      "displayDelay": "0"
+    },
+    "showBDTalentGuide": "false",
+    "showBangdanTab": "false",
+    "userId": "0",
+    "userNick": ""
+  },
+  "ret": ["SUCCESS::调用成功"],
+  "v": "3.0"
+}

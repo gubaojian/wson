@@ -187,9 +187,6 @@ var wsonTestSuit = {
             _self.testWSONFile(dir + "/data/string_array_10000.wson", dir + "/data/string_array_10000.json");
             _self.testWSONFile(dir + "/data/trade.wson", dir + "/data/trade.json");
             _self.testWSONFile(dir + "/data/monitor.wson", dir + "/data/monitor.json");
-            _self.testWSONFile(dir + "/data/Bug_2_Test.wson", dir + "/data/Bug_2_Test.json");
-            _self.testWSONFile(dir + "/data/Bug_0_Test.wson", dir + "/data/Bug_0_Test.json");
-            _self.testWSONFile(dir + "/data/json.wson", dir + "/data/json.json");
             _self.testWSONFile(dir + "/data/wuyexiong.wson", dir + "/data/wuyexiong.json");
             _self.testWSONFile(dir + "/data/glossary.wson", dir + "/data/glossary.json");
             _self.testWSONFile(dir + "/data/menu.wson", dir + "/data/menu.json");
@@ -202,6 +199,82 @@ var wsonTestSuit = {
             _self.testWSONFile(dir + "/data/mixed.wson", dir + "/data/mixed.json");
             _self.testWSONFile(dir + "/data/nulls.wson", dir + "/data/nulls.json");
             _self.testWSONFile(dir + "/data/paragraphs.wson", dir + "/data/paragraphs.json");
+
+
+
+
+            _self.testWSONFile(dir + "/taobao/aggregation.wson", dir + "/taobao/aggregation.json");
+            _self.testWSONFile(dir + "/taobao/airborne.wson", dir + "/taobao/airborne.json");
+            _self.testWSONFile(dir + "/taobao/airborne2.wson", dir + "/taobao/airborne2.json");
+            _self.testWSONFile(dir + "/taobao/amp.wson", dir + "/taobao/amp.json");
+            _self.testWSONFile(dir + "/taobao/appsearch.wson", dir + "/taobao/appsearch.json");
+            _self.testWSONFile(dir + "/taobao/appsearch2.wson", dir + "/taobao/appsearch2.json");
+            _self.testWSONFile(dir + "/taobao/avengers.wson", dir + "/taobao/avengers.json");
+            _self.testWSONFile(dir + "/taobao/beenhive.wson", dir + "/taobao/beenhive.json");
+            _self.testWSONFile(dir + "/taobao/biji.wson", dir + "/taobao/biji.json");
+            _self.testWSONFile(dir + "/taobao/cloudvideo.wson", dir + "/taobao/cloudvideo.json");
+            _self.testWSONFile(dir + "/taobao/config.wson", dir + "/taobao/config.json");
+            _self.testWSONFile(dir + "/taobao/contract.wson", dir + "/taobao/contract.json");
+            _self.testWSONFile(dir + "/taobao/cybertron.wson", dir + "/taobao/cybertron.json");
+            _self.testWSONFile(dir + "/taobao/detail.wson", dir + "/taobao/detail.json");
+            _self.testWSONFile(dir + "/taobao/detail2.wson", dir + "/taobao/detail2.json");
+            _self.testWSONFile(dir + "/taobao/gooditem.wson", dir + "/taobao/gooditem.json");
+            _self.testWSONFile(dir + "/taobao/gooditem2.wson", dir + "/taobao/gooditem2.json");
+            _self.testWSONFile(dir + "/taobao/graphql.wson", dir + "/taobao/graphql.json");
+            _self.testWSONFile(dir + "/taobao/guang.wson", dir + "/taobao/guang.json");
+            _self.testWSONFile(dir + "/taobao/guang1.wson", dir + "/taobao/guang1.json");
+            _self.testWSONFile(dir + "/taobao/guess.wson", dir + "/taobao/guess.json");
+            _self.testWSONFile(dir + "/taobao/home.wson", dir + "/taobao/home.json");
+            _self.testWSONFile(dir + "/taobao/location.wson", dir + "/taobao/location.json");
+            _self.testWSONFile(dir + "/taobao/mclaren.wson", dir + "/taobao/mclaren.json");
+            _self.testWSONFile(dir + "/taobao/meiri.wson", dir + "/taobao/meiri.json");
+            _self.testWSONFile(dir + "/taobao/mytaobao.wson", dir + "/taobao/mytaobao.json");
+            _self.testWSONFile(dir + "/taobao/navigation.wson", dir + "/taobao/navigation.json");
+            _self.testWSONFile(dir + "/taobao/orange.wson", dir + "/taobao/orange.json");
+            _self.testWSONFile(dir + "/taobao/orange2.wson", dir + "/taobao/orange2.json");
+
+
+            _self.testWSONFile(dir + "/taobao/order.wson", dir + "/taobao/order.json");
+            _self.testWSONFile(dir + "/taobao/orderlist.wson", dir + "/taobao/orderlist.json");
+
+            _self.testWSONFile(dir + "/taobao/qiangdan.wson", dir + "/taobao/qiangdan.json");
+            _self.testWSONFile(dir + "/taobao/qianggou1.wson", dir + "/taobao/qianggou1.json");
+            _self.testWSONFile(dir + "/taobao/qianggou2.wson", dir + "/taobao/qianggou2.json");
+            _self.testWSONFile(dir + "/taobao/qianggou3.wson", dir + "/taobao/qianggou3.json");
+            _self.testWSONFile(dir + "/taobao/qianggou4.wson", dir + "/taobao/qianggou4.json");
+            _self.testWSONFile(dir + "/taobao/qianqiu1.wson", dir + "/taobao/qianqiu1.json");
+            _self.testWSONFile(dir + "/taobao/qianqiu2.wson", dir + "/taobao/qianqiu2.json");
+            _self.testWSONFile(dir + "/taobao/qingdan3.wson", dir + "/taobao/qingdan3.json");
+            _self.testWSONFile(dir + "/taobao/quanqiu.wson", dir + "/taobao/quanqiu.json");
+            _self.testWSONFile(dir + "/taobao/querybought.wson", dir + "/taobao/querybought.json");
+            _self.testWSONFile(dir + "/taobao/range.wson", dir + "/taobao/range.json");
+            _self.testWSONFile(dir + "/taobao/recentcontact.wson", dir + "/taobao/recentcontact.json");
+            _self.testWSONFile(dir + "/taobao/refresh.wson", dir + "/taobao/refresh.json");
+            _self.testWSONFile(dir + "/taobao/searchmall.wson", dir + "/taobao/searchmall.json");
+
+
+            _self.testWSONFile(dir + "/taobao/secondfloor.wson", dir + "/taobao/secondfloor.json");
+            _self.testWSONFile(dir + "/taobao/serviceload.wson", dir + "/taobao/serviceload.json");
+            _self.testWSONFile(dir + "/taobao/steins.wson", dir + "/taobao/steins.json");
+            _self.testWSONFile(dir + "/taobao/steins3.wson", dir + "/taobao/steins3.json");
+            _self.testWSONFile(dir + "/taobao/story.wson", dir + "/taobao/story.json");
+            _self.testWSONFile(dir + "/taobao/suggest.wson", dir + "/taobao/suggest.json");
+
+            _self.testWSONFile(dir + "/taobao/tejie.wson", dir + "/taobao/tejie.json");
+            _self.testWSONFile(dir + "/taobao/time.wson", dir + "/taobao/time.json");
+            _self.testWSONFile(dir + "/taobao/userinfo.wson", dir + "/taobao/userinfo.json");
+            _self.testWSONFile(dir + "/taobao/video.wson", dir + "/taobao/video.json");
+            _self.testWSONFile(dir + "/taobao/wsearch.wson", dir + "/taobao/wsearch.json");
+
+
+
+
+        },
+        testBugFile :function(){
+            var _self = this;
+            _self.testWSONFile(dir + "/data/Bug_2_Test.wson", dir + "/data/Bug_2_Test.json");
+            _self.testWSONFile(dir + "/data/Bug_0_Test.wson", dir + "/data/Bug_0_Test.json");
+            _self.testWSONFile(dir + "/data/json.wson", dir + "/data/json.json");
         },
         testWSONJSONBenchmarkOneFile : function(fileName){
             var _self = this;
@@ -247,6 +320,81 @@ var wsonTestSuit = {
             _self.testWSONJSONBenchmarkOneFile(dir + "/data/mixed.json");
             _self.testWSONJSONBenchmarkOneFile(dir + "/data/nulls.json");
             _self.testWSONJSONBenchmarkOneFile(dir + "/data/paragraphs.json");
+
+
+
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/aggregation.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/airborne.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/airborne2.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/amp.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/appsearch.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/appsearch2.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/avengers.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/beenhive.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/biji.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/cloudvideo.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/config.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/contract.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/cybertron.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/detail.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/detail2.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/gooditem.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/gooditem2.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/graphql.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/guang.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/guang1.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/guess.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/home.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/location.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/mclaren.json");
+            _self.testWSONJSONBenchmarkOneFile( dir + "/taobao/meiri.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/mytaobao.json");
+            _self.testWSONJSONBenchmarkOneFile( dir + "/taobao/navigation.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/orange.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/orange2.json");
+
+
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/order.json");
+            _self.testWSONJSONBenchmarkOneFile( dir + "/taobao/orderlist.json");
+
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/qiangdan.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/qianggou1.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/qianggou2.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/qianggou3.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/qianggou4.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/qianqiu1.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/qianqiu2.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/qingdan3.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/quanqiu.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/querybought.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/range.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/recentcontact.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/refresh.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/searchmall.json");
+
+
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/secondfloor.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/serviceload.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/steins.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/steins3.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/story.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/suggest.json");
+
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/tejie.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/time.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/userinfo.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/video.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/wsearch.json");
+        },
+        testWSONJSONBenchmarkFailed : function(){
+            var _self = this;
+            var dir = "/Users/furture/code/pack/java/src/test/resources";
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/searchmall.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/mytaobao.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/home.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/guess.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/appsearch2.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/taobao/appsearch.json");
         },
 }
 
@@ -260,6 +408,7 @@ function runWsonTestSuit(){
     wsonTestSuit.testJSONFileList();
     wsonTestSuit.testWSONFileList();
     wsonTestSuit.testWSONJSONBenchmark();
+    //wsonTestSuit.testWSONJSONBenchmarkFailed();
     var end = new Date().getTime();
     console.log("runing runWsonTestSuit end used " + (end - start)  + "ms");
 }
