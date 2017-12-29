@@ -62,9 +62,19 @@ public class PrepareWsonFile extends TestCase {
                 "/data/Bug_2_Test.json",
                 "/data/Bug_0_Test.json",
                 "/data/json.json",
-                "/data/wuyexiong.json"
-
-
+                "/data/wuyexiong.json",
+                "/data/glossary.json",
+                "/data/menu.json",
+                "/data/sample.json",
+                "/data/webapp.json",
+                "/data/widget.json",
+                "/data/booleans.json",
+                "/data/floats.json",
+                "/data/guids.json",
+                "/data/integers.json",
+                "/data/mixed.json",
+                "/data/nulls.json",
+                "/data/paragraphs.json"
         };
 
 
@@ -91,8 +101,8 @@ public class PrepareWsonFile extends TestCase {
 
 
     public void  convertToWson(String jsonFile) throws IOException {
-       try{
-            String data = readFile(jsonFile);
+        String data = readFile(jsonFile);
+        try{
             Object map = JSON.parse(data);
             byte[] wson = Wson.toWson(map);
             Assert.assertEquals(jsonFile + "convert not equals", Wson.parse(wson), JSON.parse(JSON.toJSONString(map)));
@@ -101,7 +111,9 @@ public class PrepareWsonFile extends TestCase {
         }catch (Throwable e){
             System.out.println("fileName " + jsonFile);
             e.printStackTrace();
-        }
+           String sjsonFile = "src/test/resources/" + (jsonFile.substring(1, jsonFile.indexOf('.')) + ".json");
+           saveFile(sjsonFile, JSON.parseObject(data).toJSONString().getBytes("UTF-8"));
+       }
     }
 
     private String readFile(String file) throws IOException {

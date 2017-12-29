@@ -191,6 +191,17 @@ var wsonTestSuit = {
             _self.testWSONFile(dir + "/data/Bug_0_Test.wson", dir + "/data/Bug_0_Test.json");
             _self.testWSONFile(dir + "/data/json.wson", dir + "/data/json.json");
             _self.testWSONFile(dir + "/data/wuyexiong.wson", dir + "/data/wuyexiong.json");
+            _self.testWSONFile(dir + "/data/glossary.wson", dir + "/data/glossary.json");
+            _self.testWSONFile(dir + "/data/menu.wson", dir + "/data/menu.json");
+            _self.testWSONFile(dir + "/data/webapp.wson", dir + "/data/webapp.json");
+            _self.testWSONFile(dir + "/data/widget.wson", dir + "/data/widget.json");
+            _self.testWSONFile(dir + "/data/booleans.wson", dir + "/data/booleans.json");
+            _self.testWSONFile(dir + "/data/floats.wson", dir + "/data/floats.json");
+            _self.testWSONFile(dir + "/data/guids.wson", dir + "/data/guids.json");
+            _self.testWSONFile(dir + "/data/integers.wson", dir + "/data/integers.json");
+            _self.testWSONFile(dir + "/data/mixed.wson", dir + "/data/mixed.json");
+            _self.testWSONFile(dir + "/data/nulls.wson", dir + "/data/nulls.json");
+            _self.testWSONFile(dir + "/data/paragraphs.wson", dir + "/data/paragraphs.json");
         },
         testWSONJSONBenchmarkOneFile : function(fileName){
             var _self = this;
@@ -221,6 +232,21 @@ var wsonTestSuit = {
             _self.testWSONJSONBenchmarkOneFile(dir + "/data/string_array_10000.json");
             _self.testWSONJSONBenchmarkOneFile(dir + "/data/trade.json");
             _self.testWSONJSONBenchmarkOneFile(dir + "/data/monitor.json");
+
+
+            _self.testWSONJSONBenchmarkOneFile(dir + "/data/json.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/data/wuyexiong.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/data/glossary.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/data/menu.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/data/webapp.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/data/widget.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/data/booleans.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/data/floats.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/data/guids.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/data/integers.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/data/mixed.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/data/nulls.json");
+            _self.testWSONJSONBenchmarkOneFile(dir + "/data/paragraphs.json");
         },
 }
 

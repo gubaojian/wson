@@ -47,8 +47,6 @@ public:
         return instance;
     }
     
-    
-    
 private:
     JSDollarVM(VM& vm, Structure* structure)
         : Base(vm, structure)
