@@ -316,6 +316,7 @@ int main(int argc, char* argv[]){
     JSC::Wasm::enableFastMemory();
 #endif
     
+    Options::useJIT();
     VM& vm = VM::create(LargeHeap).leakRef();
     
     {
