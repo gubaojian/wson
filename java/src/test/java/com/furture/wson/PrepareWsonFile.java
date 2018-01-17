@@ -2,6 +2,7 @@ package com.furture.wson;
 
 import com.alibaba.fastjson.JSON;
 import com.efurture.wson.Wson;
+import com.furture.wson.compatible.CompatibleUtils;
 import com.sun.xml.internal.messaging.saaj.util.ByteOutputStream;
 import junit.framework.TestCase;
 import org.junit.Assert;
@@ -148,6 +149,21 @@ public class PrepareWsonFile extends TestCase {
     }
 
 
+    public void testPrepareWsonError() throws IOException {
+        String[] files = {
+                "/taobao/video.json",
+        };
+
+        double a = 0;
+        System.out.println((0.0 == a) + "  " + Double.toString(0)  + "  "  + Double.toString(0.0));
+
+
+
+        for(String file : files) {
+            convertToWson(file);
+        }
+    }
+
     public void testShowWsonFileContent() throws IOException {
         byte[] bts = readFileBytes("/data/trade.wson");
         Object object = Wson.parse(bts);
@@ -169,7 +185,13 @@ public class PrepareWsonFile extends TestCase {
         try{
             Object map = JSON.parse(data);
             byte[] wson = Wson.toWson(map);
-            Assert.assertEquals(jsonFile + "convert not equals", Wson.parse(wson), JSON.parse(JSON.toJSONString(map)));
+            System.out.println(Wson.parse(wson).toString());
+            try{
+                Assert.assertEquals(jsonFile + " convert not equals", Wson.parse(wson).toString(), JSON.parse(JSON.toJSONString(map)).toString());
+            }catch (Exception e){
+                e.printStackTrace();
+                CompatibleUtils.checkDiff(map);
+            }
             String wsonFile = "src/test/resources/" + (jsonFile.substring(1, jsonFile.indexOf('.')) + ".wson");
             saveFile(wsonFile, wson);
         }catch (Throwable e){
