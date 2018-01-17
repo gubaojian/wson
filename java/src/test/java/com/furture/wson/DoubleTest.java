@@ -2,8 +2,11 @@ package com.furture.wson;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.efurture.wson.Wson;
 import junit.framework.TestCase;
+
+import java.math.BigDecimal;
 
 /**
  * Created by 剑白(jianbai.gbj) on 2017/11/27.
@@ -52,5 +55,26 @@ public class DoubleTest extends TestCase {
 
 
         + " " + Float.floatToIntBits(352.635f));
+
+
+        double a = 100.0;
+        BigDecimal ba = new BigDecimal("100.0");
+
+
+        System.out.println(ba.compareTo(new BigDecimal(a)));
+
+
+        JSONObject json = new JSONObject();
+        json.put("altitude", 100.01);
+        json = JSON.parseObject(json.toJSONString());
+        System.out.println(json.get("altitude").getClass());
+        System.out.println(json.get("altitude").getClass());
+
+
+         a = 100977747447474747477474999999999999999999.0444444444999999999944448;
+        ba = new BigDecimal("100977747447474747477474999999999999999999.0444444444999999999944448");
+
+
+        System.out.println(ba.compareTo(new BigDecimal(a)));
     }
 }

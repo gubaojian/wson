@@ -206,7 +206,8 @@
       "theme19",
       "theme20",
       "theme21",
-      "theme22"],
+      "theme22"
+    ],
     "theme1": {
       "brand": {
         "brandTxtFt": {
@@ -1163,11 +1164,11 @@
         "WuYouGouBg": {
           "ht": "35",
           "pdTp": "20",
-          "bgClr": "#ffffff",
+          "bgClr": "#ffffff"
         },
         "NoWuYouGouBg": {
           "ht": "40",
-          "bgClr": "#ffffff",
+          "bgClr": "#ffffff"
         }
       },
       "sys_button": {
