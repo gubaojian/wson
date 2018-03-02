@@ -59,14 +59,34 @@ public class StringCodingTest extends TestCase {
             decoder.reset();
         }
         end = System.currentTimeMillis();
-        System.out.println("end used "+ (end - start));
+        System.out.println("decode array buffer end used "+ (end - start));
+
+
+
+        char[] buffer = new char[2048];
+        start = System.currentTimeMillis();
+        for(int i=0; i<10000; i++) {
+            testUtf8(bts, 0, bts.length, buffer);
+        }
+        end = System.currentTimeMillis();
+        System.out.println("new string custom end used "+ (end - start));
+
 
         start = System.currentTimeMillis();
         for(int i=0; i<10000; i++) {
-           new String(bts, "UTF-8");
+           new String(bts,0, bts.length, "UTF-8");
         }
         end = System.currentTimeMillis();
         System.out.println("new string end used "+ (end - start));
+
+    }
+
+
+    private static void testUtf8(byte[] bts, int offset, int length, char[] buffer){
+        for(int i=offset; i<length; i++){
+            buffer[length-offset] = (char) bts[offset];
+        }
+        new String(buffer,0, length-offset);
     }
 
 

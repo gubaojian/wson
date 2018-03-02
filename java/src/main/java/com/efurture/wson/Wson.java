@@ -314,8 +314,15 @@ public class Wson {
             return  number;
         }
 
-        private  final double readDouble(){
+        private  final Object readDouble(){
             double number = Double.longBitsToDouble(readLong());
+            if(number > Integer.MAX_VALUE){
+                long numberLong = (long) number;
+                double doubleLong = (numberLong);
+                if(number - doubleLong < Double.MIN_NORMAL){
+                    return numberLong;
+                }
+            }
             return  number;
         }
 
@@ -488,7 +495,7 @@ public class Wson {
             ensureCapacity(12);
             if(number instanceof  Integer){
                 writeByte(NUMBER_INT_TYPE);
-                writeVarInt(number.intValue());
+                writeVarInt((int)number);
                 return;
             }
 
