@@ -402,12 +402,33 @@ wsonInit();
 function runWsonTestSuit(){
     console.log("runing runWsonTestSuit start");
     var start = new Date().getTime();
+    
+    var json = {"p":1,"refundId":6419458776149741, "longint" :  Math.pow(2, 40)};
+    var wson = toWson(json);
+    var back = parseWson(wson);
+    
+    console.log(JSON.stringify(json));
+    console.log(JSON.stringify(back));
+    
+    
+
+    
+   json = {"p":1,"refundId":6419458776149741.01};
+    wson = toWson(json);
+   back = parseWson(wson);
+    
+    console.log(JSON.stringify(json));
+    console.log(JSON.stringify(back));
+    
+    
+    /**
     wsonTestSuit.testDateType();
     wsonTestSuit.testNumber();
     wsonTestSuit.testString();
     wsonTestSuit.testJSONFileList();
     wsonTestSuit.testWSONFileList();
     wsonTestSuit.testWSONJSONBenchmark();
+     */
     //wsonTestSuit.testWSONJSONBenchmarkFailed();
     var end = new Date().getTime();
     console.log("runing runWsonTestSuit end used " + (end - start)  + "ms");

@@ -48,10 +48,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/furture/code/trylearn/WsonTest
+CMAKE_SOURCE_DIR = /Users/furture/code/pack/WsonTest
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/furture/code/trylearn/WsonTest/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/furture/code/pack/WsonTest/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/furture/code/trylearn/WsonTest/cmake-build-debug/CMakeFiles /Users/furture/code/trylearn/WsonTest/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/furture/code/pack/WsonTest/cmake-build-debug/CMakeFiles /Users/furture/code/pack/WsonTest/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/furture/code/trylearn/WsonTest/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/furture/code/pack/WsonTest/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -204,6 +204,33 @@ wson/wson.c.s:
 	$(MAKE) -f CMakeFiles/WsonTest.dir/build.make CMakeFiles/WsonTest.dir/wson/wson.c.s
 .PHONY : wson/wson.c.s
 
+wson/wsonparser.o: wson/wsonparser.c.o
+
+.PHONY : wson/wsonparser.o
+
+# target to build an object file
+wson/wsonparser.c.o:
+	$(MAKE) -f CMakeFiles/WsonTest.dir/build.make CMakeFiles/WsonTest.dir/wson/wsonparser.c.o
+.PHONY : wson/wsonparser.c.o
+
+wson/wsonparser.i: wson/wsonparser.c.i
+
+.PHONY : wson/wsonparser.i
+
+# target to preprocess a source file
+wson/wsonparser.c.i:
+	$(MAKE) -f CMakeFiles/WsonTest.dir/build.make CMakeFiles/WsonTest.dir/wson/wsonparser.c.i
+.PHONY : wson/wsonparser.c.i
+
+wson/wsonparser.s: wson/wsonparser.c.s
+
+.PHONY : wson/wsonparser.s
+
+# target to generate assembly for a file
+wson/wsonparser.c.s:
+	$(MAKE) -f CMakeFiles/WsonTest.dir/build.make CMakeFiles/WsonTest.dir/wson/wsonparser.c.s
+.PHONY : wson/wsonparser.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -222,6 +249,9 @@ help:
 	@echo "... wson/wson.o"
 	@echo "... wson/wson.i"
 	@echo "... wson/wson.s"
+	@echo "... wson/wsonparser.o"
+	@echo "... wson/wsonparser.i"
+	@echo "... wson/wsonparser.s"
 .PHONY : help
 
 

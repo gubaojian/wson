@@ -8,38 +8,38 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/Users/furture/code/trylearn/WsonTest/cmake-build-debug"/>
+				<Option working_dir="/Users/furture/code/pack/WsonTest/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/furture/code/trylearn/WsonTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/furture/code/trylearn/WsonTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/furture/code/trylearn/WsonTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/furture/code/trylearn/WsonTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/furture/code/pack/WsonTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/furture/code/pack/WsonTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/furture/code/pack/WsonTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/furture/code/pack/WsonTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/Users/furture/code/trylearn/WsonTest/cmake-build-debug"/>
+				<Option working_dir="/Users/furture/code/pack/WsonTest/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/furture/code/trylearn/WsonTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/furture/code/trylearn/WsonTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/furture/code/trylearn/WsonTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/furture/code/trylearn/WsonTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/furture/code/pack/WsonTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/furture/code/pack/WsonTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/furture/code/pack/WsonTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/furture/code/pack/WsonTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/Users/furture/code/trylearn/WsonTest/cmake-build-debug"/>
+				<Option working_dir="/Users/furture/code/pack/WsonTest/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/furture/code/trylearn/WsonTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/furture/code/trylearn/WsonTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/furture/code/trylearn/WsonTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/furture/code/trylearn/WsonTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/furture/code/pack/WsonTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/furture/code/pack/WsonTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/furture/code/pack/WsonTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/furture/code/pack/WsonTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="WsonTest">
-				<Option output="/Users/furture/code/trylearn/WsonTest/cmake-build-debug/WsonTest" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/furture/code/trylearn/WsonTest/cmake-build-debug"/>
+				<Option output="/Users/furture/code/pack/WsonTest/cmake-build-debug/WsonTest" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/furture/code/pack/WsonTest/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -53,15 +53,15 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/furture/code/trylearn/WsonTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 WsonTest"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/furture/code/trylearn/WsonTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/furture/code/trylearn/WsonTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/furture/code/trylearn/WsonTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/furture/code/pack/WsonTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 WsonTest"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/furture/code/pack/WsonTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/furture/code/pack/WsonTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/furture/code/pack/WsonTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="WsonTest/fast">
-				<Option output="/Users/furture/code/trylearn/WsonTest/cmake-build-debug/WsonTest" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/furture/code/trylearn/WsonTest/cmake-build-debug"/>
+				<Option output="/Users/furture/code/pack/WsonTest/cmake-build-debug/WsonTest" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/furture/code/pack/WsonTest/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -75,29 +75,35 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/furture/code/trylearn/WsonTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 WsonTest/fast"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/furture/code/trylearn/WsonTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/furture/code/trylearn/WsonTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/furture/code/trylearn/WsonTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/furture/code/pack/WsonTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 WsonTest/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/furture/code/pack/WsonTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/furture/code/pack/WsonTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/furture/code/pack/WsonTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/furture/code/trylearn/WsonTest/WsonTest.cpp">
+		<Unit filename="/Users/furture/code/pack/WsonTest/WsonTest.cpp">
 			<Option target="WsonTest"/>
 		</Unit>
-		<Unit filename="/Users/furture/code/trylearn/WsonTest/WsonTest.h">
+		<Unit filename="/Users/furture/code/pack/WsonTest/WsonTest.h">
 			<Option target="WsonTest"/>
 		</Unit>
-		<Unit filename="/Users/furture/code/trylearn/WsonTest/main.cpp">
+		<Unit filename="/Users/furture/code/pack/WsonTest/main.cpp">
 			<Option target="WsonTest"/>
 		</Unit>
-		<Unit filename="/Users/furture/code/trylearn/WsonTest/wson/wson.c">
+		<Unit filename="/Users/furture/code/pack/WsonTest/wson/wson.c">
 			<Option target="WsonTest"/>
 		</Unit>
-		<Unit filename="/Users/furture/code/trylearn/WsonTest/wson/wson.h">
+		<Unit filename="/Users/furture/code/pack/WsonTest/wson/wson.h">
 			<Option target="WsonTest"/>
 		</Unit>
-		<Unit filename="/Users/furture/code/trylearn/WsonTest/CMakeLists.txt">
+		<Unit filename="/Users/furture/code/pack/WsonTest/wson/wsonparser.c">
+			<Option target="WsonTest"/>
+		</Unit>
+		<Unit filename="/Users/furture/code/pack/WsonTest/wson/wsonparser.h">
+			<Option target="WsonTest"/>
+		</Unit>
+		<Unit filename="/Users/furture/code/pack/WsonTest/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

@@ -9,7 +9,10 @@
 #include "wsonjsc.h"
 #include "ObjectConstructor.h"
 #include "JSONObject.h"
+#include "B3Value.h"
+#include "B3Const64Value.h"
 #include "JSCJSValueInlines.h"
+#include "B3ValueInlines.h"
 #include <wtf/Vector.h>
 #include <wtf/HashMap.h>
 
@@ -390,10 +393,19 @@ namespace wson {
                 wson_push_type_long(buffer, int64Number);
                 return;
             }
-            
             if(val.isDouble()){
                 double number = val.asDouble();
-                wson_push_type_double(buffer, number);
+                if(number >  (((int64_t)1) << 50) ){
+                    printf("ddd %lld ", ((int64_t)1) << 50);
+                    double number64 = (double)((int64_t)number);
+                    if(number - number64 == 0.0){ //check is int64Number
+                        wson_push_type_long(buffer, (int64_t)number);
+                    }else{
+                        wson_push_type_double(buffer, number);
+                    }
+                }else{
+                    wson_push_type_double(buffer, number);
+                }
                 return;
             }
             wson_push_js_string(exec, val, buffer);

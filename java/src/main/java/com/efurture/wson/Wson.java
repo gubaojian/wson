@@ -20,6 +20,7 @@ package com.efurture.wson;
 
 
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
@@ -484,7 +485,7 @@ public class Wson {
                     writeByte(NULL_TYPE);
                 }else {
                     refs.add(object);
-                    writeMap(toMap(object));
+                    writeAdapterObject(object);
                     refs.remove(refs.size()-1);
                 }
                 return;
@@ -581,6 +582,19 @@ public class Wson {
         private final void writeByte(byte type){
             buffer[position] = type;
             position++;
+        }
+
+        private final void writeAdapterObject(Object object){
+            if(WsonAdapter.specialClass.containsKey(object.getClass().getName())){
+                writeObject(JSON.toJSON(object));
+                return;
+            }
+            try{
+                writeMap(toMap(object));
+            }catch (Exception e){
+                WsonAdapter.specialClass.put(object.getClass().getName(), true);
+                writeObject(JSON.toJSON(object));
+            }
         }
 
         private  final Map  toMap(Object object){

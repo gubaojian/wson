@@ -40,7 +40,6 @@ typedef struct wson_buffer{
 #define  WSON_NUMBER_BIG_DECIMAL_TYPE  'e'
 #define  WSON_ARRAY_TYPE  '['
 #define  WSON_MAP_TYPE   '{'
-#define  WSON_EXTEND_TYPE   'e'
 
 /**
  * create wson buffer

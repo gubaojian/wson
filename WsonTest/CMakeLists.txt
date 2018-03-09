@@ -3,5 +3,5 @@ project(WsonTest)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(SOURCE_FILES main.cpp wson/wson.h wson/wson.c WsonTest.cpp WsonTest.h)
+set(SOURCE_FILES main.cpp wson/wson.h wson/wson.c WsonTest.cpp WsonTest.h wson/wsonparser.h wson/wsonparser.c)
 add_executable(WsonTest ${SOURCE_FILES})

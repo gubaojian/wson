@@ -6,9 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/Users/furture/code/trylearn/WsonTest/WsonTest.cpp
+/Users/furture/code/pack/WsonTest/WsonTest.cpp
 
-/Users/furture/code/trylearn/WsonTest/main.cpp
+/Users/furture/code/pack/WsonTest/main.cpp
 iostream
 -
 fstream
@@ -16,9 +16,9 @@ fstream
 JavaScriptCore/JavaScriptCore.h
 -
 wson/wson.h
-/Users/furture/code/trylearn/WsonTest/wson/wson.h
+/Users/furture/code/pack/WsonTest/wson/wson.h
 
-/Users/furture/code/trylearn/WsonTest/wson/wson.h
+/Users/furture/code/pack/WsonTest/wson/wson.h
 inttypes.h
 -
 stdlib.h

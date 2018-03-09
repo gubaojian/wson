@@ -310,6 +310,10 @@ int main(int argc, char* argv[]){
         scriptPath = argv[1];
     }
     
+    printf("ddd %s ", strstr("wwww wson_offdd", "wson_off"));
+    printf("ddd %s ", strstr("wson_off", "wson_off"));
+    printf("ddd %s ", strstr("wson_off", "wson_off"));
+    
     WTF::initializeMainThread();
     JSC::initializeThreading();
 #if ENABLE(WEBASSEMBLY)

@@ -20,6 +20,7 @@ package com.efurture.wson;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.annotation.JSONField;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -80,7 +81,11 @@ class WsonAdapter {
                 map.put(fieldName, value);
             }
         }catch (Exception e){
-            throw  new RuntimeException(e);
+            if(e instanceof  RuntimeException){
+                throw  (RuntimeException)e;
+            }else{
+                throw  new RuntimeException(e);
+            }
         }
         return  map;
     }
@@ -107,6 +112,7 @@ class WsonAdapter {
     private static final String METHOD_PREFIX_IS = "is";
     private static LruCache<String, List<Method>> methodsCache = new LruCache<>(128);
     private static LruCache<String, List<Field>> fieldsCache = new LruCache<>(128);
+    public static LruCache<String, Boolean> specialClass = new LruCache<>(16);
 
 
 
@@ -121,6 +127,9 @@ class WsonAdapter {
                 }
                 if( (method.getModifiers() & Modifier.STATIC) != 0){
                     continue;
+                }
+                if(method.getAnnotation(JSONField.class) != null){
+                    throw new UnsupportedOperationException("getBeanMethod JSONField Annotation Not Handled");
                 }
                 String methodName = method.getName();
                 if(methodName.startsWith(METHOD_PREFIX_GET)
@@ -143,6 +152,9 @@ class WsonAdapter {
             for(Field field : fields){
                 if((field.getModifiers() & Modifier.STATIC) != 0){
                     continue;
+                }
+                if(field.getAnnotation(JSONField.class) != null){
+                    throw new UnsupportedOperationException("getBeanFields JSONField Annotation Not Handled");
                 }
                 fieldList.add(field);
             }

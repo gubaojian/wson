@@ -6,13 +6,13 @@
 
 #IncludeRegexTransform: 
 
-/Users/furture/code/trylearn/WsonTest/wson/wson.c
+/Users/furture/code/pack/WsonTest/wson/wson.c
 wson.h
-/Users/furture/code/trylearn/WsonTest/wson/wson.h
+/Users/furture/code/pack/WsonTest/wson/wson.h
 stdio.h
 -
 
-/Users/furture/code/trylearn/WsonTest/wson/wson.h
+/Users/furture/code/pack/WsonTest/wson/wson.h
 inttypes.h
 -
 stdlib.h
