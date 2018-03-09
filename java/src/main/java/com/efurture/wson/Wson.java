@@ -485,7 +485,11 @@ public class Wson {
                     writeByte(NULL_TYPE);
                 }else {
                     refs.add(object);
-                    writeAdapterObject(object);
+                    if(object.getClass().isEnum()){
+                        writeObject(JSON.toJSONString(object));
+                    }else{
+                        writeAdapterObject(object);
+                    }
                     refs.remove(refs.size()-1);
                 }
                 return;
