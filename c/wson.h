@@ -1,3 +1,21 @@
+/**
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
 //
 // Created by furture on 2017/8/4.
 //
@@ -8,8 +26,7 @@
 #include <inttypes.h>
 #include <stdlib.h>
 #include <string.h>
-
-
+#include <stdbool.h>
 
 
 #ifdef __cplusplus
@@ -40,6 +57,7 @@ typedef struct wson_buffer{
 #define  WSON_NUMBER_BIG_DECIMAL_TYPE  'e'
 #define  WSON_ARRAY_TYPE  '['
 #define  WSON_MAP_TYPE   '{'
+#define  WSON_EXTEND_TYPE   'e'
 
 /**
  * create wson buffer
@@ -95,7 +113,7 @@ float wson_next_float(wson_buffer *buffer);
 int64_t wson_next_long(wson_buffer *buffer);
 uint64_t wson_next_ulong(wson_buffer *buffer);
 uint8_t* wson_next_bts(wson_buffer *buffer, uint32_t length);
-inline _Bool wson_has_next(wson_buffer *buffer){
+inline bool wson_has_next(wson_buffer *buffer){
     return buffer->position < buffer->length;
 }
 

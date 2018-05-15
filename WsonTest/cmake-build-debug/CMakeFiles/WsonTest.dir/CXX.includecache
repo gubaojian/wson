@@ -17,6 +17,18 @@ JavaScriptCore/JavaScriptCore.h
 -
 wson/wson.h
 /Users/furture/code/pack/WsonTest/wson/wson.h
+wson/utf16.h
+/Users/furture/code/pack/WsonTest/wson/utf16.h
+
+/Users/furture/code/pack/WsonTest/wson/utf16.cpp
+utf16.h
+/Users/furture/code/pack/WsonTest/wson/utf16.h
+
+/Users/furture/code/pack/WsonTest/wson/utf16.h
+cstdint
+-
+string
+-
 
 /Users/furture/code/pack/WsonTest/wson/wson.h
 inttypes.h
@@ -24,5 +36,23 @@ inttypes.h
 stdlib.h
 -
 string.h
+-
+stdbool.h
+-
+
+/Users/furture/code/pack/WsonTest/wson/wson_parser.cpp
+wson_parser.h
+/Users/furture/code/pack/WsonTest/wson/wson_parser.h
+wson.h
+/Users/furture/code/pack/WsonTest/wson/wson.h
+utf16.h
+/Users/furture/code/pack/WsonTest/wson/utf16.h
+
+/Users/furture/code/pack/WsonTest/wson/wson_parser.h
+wson.h
+/Users/furture/code/pack/WsonTest/wson/wson.h
+vector
+-
+string
 -
 

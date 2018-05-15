@@ -2,18 +2,42 @@
 #include <fstream>
 #include <JavaScriptCore/JavaScriptCore.h>
 #include "wson/wson.h"
+#include "wson/utf16.h"
 
 static void  testWson();
 static void  testWsonWithJava();
 
 
 int main() {
-    testWson();
-    testWsonWithJava();
 
-    double b = 9.99999999999999999999991E+244;
+    std::wstring china = L"中国";
 
-    printf("double %lf", b);
+    std::cout << "length " << china.length() << std::endl;
+
+
+    //printf("cstr %s \n", china.c_str());
+
+
+    int length = china.length();
+    wchar_t* data = (wchar_t *) china.c_str();
+
+    printf("data测试  %d   %d  %d\n", data[1], china.at(1), sizeof(wchar_t));
+
+    std::string utf8;
+
+
+    utf16::utf16_convert_to_utf8_string((uint16_t *)data, length*2, utf8);
+
+
+    printf("cstr %s \n", utf8.c_str());
+
+
+    //testWson();
+    //testWsonWithJava();
+
+    //double b = 9.99999999999999999999991E+244;
+
+   // printf("double %lf", b);
     return 0;
 }
 

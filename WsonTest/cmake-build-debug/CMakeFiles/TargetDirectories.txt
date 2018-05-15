@@ -1,3 +1,5 @@
 /Users/furture/code/pack/WsonTest/cmake-build-debug/CMakeFiles/rebuild_cache.dir
 /Users/furture/code/pack/WsonTest/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/furture/code/pack/WsonTest/cmake-build-debug/CMakeFiles/utf16Text.dir
+/Users/furture/code/pack/WsonTest/cmake-build-debug/CMakeFiles/wsonParserTest.dir
 /Users/furture/code/pack/WsonTest/cmake-build-debug/CMakeFiles/WsonTest.dir

@@ -1,0 +1,87 @@
+//
+// Created by furture on 2018/5/15.
+//
+
+#include "wson/wson.h"
+#include "wson/wson_parser.h"
+#include "FileUtils.h"
+
+
+void test_big_unicode(){
+    const char* src = FileUtils::readFile("/Users/furture/code/pack/java/src/test/resources/bug/bigUnicode.dat");
+    const char* data = FileUtils::readFile("/Users/furture/code/pack/java/src/test/resources/bug/bigUnicode.wson");
+    wson_parser parser(data);
+    int type = parser.nextType();
+    std::string json = parser.nextStringUTF8(type);
+    if(strncmp(json.c_str(), src, strlen(json.c_str())) == 0){
+        printf("pass test_big_unicode %s %s ", json.c_str(), src);
+    }else{
+        printf("failed test_big_unicode %s %s ", json.c_str(), src);
+    }
+    free((void*)data);
+    free((void*)src);
+}
+
+void test_map_example(){
+    const char* data = FileUtils::readFile("/Users/furture/code/pack/java/src/test/resources/weex2.wson");
+    wson_parser parser(data);
+    int type = parser.nextType();
+    if(parser.isMap(type)){
+        int size = parser.nextMapSize();
+        for(int i=0; i<size; i++){
+            std::string key = parser.nextMapKeyUTF8();
+            uint8_t  valueType = parser.nextType();
+            std::string value = parser.nextStringUTF8(valueType);
+            printf("map %s == %s \n", key.c_str(), value.c_str());
+        }
+    }else{
+        printf("wson data error %s \n", parser.nextStringUTF8(type).c_str());
+    }
+    free((void*)data);
+}
+
+
+void test_array_example(){
+    const char* data = FileUtils::readFile("/Users/furture/code/pack/java/src/test/resources/data/int_array_100.wson");
+    wson_parser parser(data);
+    int type = parser.nextType();
+    if(parser.isArray(type)){
+        int size = parser.nextArraySize();
+        for(int i=0; i<size; i++){
+            uint8_t  valueType = parser.nextType();
+            std::string value = parser.nextStringUTF8(valueType);
+            printf("array %d == %s \n", i, value.c_str());
+        }
+    }else{
+        printf("wson data error %s \n", parser.nextStringUTF8(type).c_str());
+    }
+    free((void*)data);
+}
+
+
+int main(){
+    test_big_unicode();
+    test_map_example();
+    test_array_example();
+
+    const char* data = FileUtils::readFile("/Users/furture/code/pack/java/src/test/resources/bug/bigUnicode.wson");
+    printf("read file succes type \n");
+    wson_parser parser(data);
+    printf("create file succes type \n");
+    uint8_t  type = parser.nextType();
+    printf("next type %d \n", type);
+    if(parser.isMap(type)){
+        int size = parser.nextMapSize();
+        for(int i=0; i<size; i++){
+            std::string key = parser.nextMapKeyUTF8();
+            std::string value = parser.nextStringUTF8(parser.nextType());
+            printf("map key %s \n", key.c_str());
+            printf("map value %s \n", value.c_str());
+        }
+    }else{
+        printf("object value %s \n", parser.nextStringUTF8(type).c_str());
+    }
+    free((void*)data);
+
+
+}

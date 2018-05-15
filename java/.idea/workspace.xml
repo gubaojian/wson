@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="572f9c38-2698-49b6-96c6-8da5db6fedb2" name="Default" comment="" />
-    <ignored path="com.furture.tson.iws" />
+    <list default="true" id="2ec88b5c-b897-44c0-8012-bd270059f6f3" name="Default" comment="" />
+    <ignored path="wson.iws" />
     <ignored path=".idea/workspace.xml" />
-    <ignored path="$PROJECT_DIR$/.gradle/" />
-    <ignored path="$PROJECT_DIR$/build/" />
     <ignored path="$PROJECT_DIR$/test/.gradle/" />
     <ignored path="$PROJECT_DIR$/test/build/" />
+    <ignored path="$PROJECT_DIR$/.gradle/" />
+    <ignored path="$PROJECT_DIR$/build/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,147 +28,106 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
-        <task path="$PROJECT_DIR$/test">
-          <activation />
-        </task>
-        <task path="$PROJECT_DIR$">
-          <activation />
-        </task>
-        <projects_view>
-          <tree_state>
-            <PATH>
-              <PATH_ELEMENT>
-                <option name="myItemId" value="" />
-                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ExternalProjectsStructure$RootNode" />
-              </PATH_ELEMENT>
-              <PATH_ELEMENT>
-                <option name="myItemId" value="wson" />
-                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ProjectNode" />
-              </PATH_ELEMENT>
-            </PATH>
-          </tree_state>
-        </projects_view>
+        <projects_view />
       </state>
     </system>
   </component>
   <component name="FavoritesManager">
-    <favorites_list name="com.furture.tson" />
+    <favorites_list name="wson" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="DoubleTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/furture/wson/DoubleTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PrepareWsonFile.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/furture/wson/PrepareWsonFile.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2355">
+              <caret line="167" column="29" selection-start-line="167" selection-start-column="29" selection-end-line="167" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bigNumber.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/resources/bug/bigNumber.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bigUnicode.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/resources/bug/bigUnicode.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="2" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bigUnicode.dat" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/resources/bug/bigUnicode.dat">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="16" selection-start-line="0" selection-start-column="16" selection-end-line="0" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Wson.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/efurture/wson/Wson.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="489" column="26" selection-start-line="489" selection-start-column="26" selection-end-line="489" selection-end-column="26" />
-              <folding>
-                <element signature="e#20061#20062#0" expanded="true" />
-                <element signature="e#20117#20118#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HashMap.java" pinned="false" current-in-tab="false">
-        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home/src.zip!/java/util/HashMap.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="137">
-              <caret line="593" column="19" selection-start-line="593" selection-start-column="19" selection-end-line="593" selection-end-column="19" />
-              <folding>
-                <element signature="e#23597#23598#0" expanded="true" />
-                <element signature="e#23651#23652#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WsonAdapter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/efurture/wson/WsonAdapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2128">
-              <caret line="155" column="65" selection-start-line="155" selection-start-column="65" selection-end-line="155" selection-end-column="65" />
+            <state relative-caret-position="330">
+              <caret line="99" column="46" selection-start-line="99" selection-start-column="25" selection-end-line="99" selection-end-column="46" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AnnoPerson.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/furture/wson/domain/AnnoPerson.java">
+      <file leaf-file-name="JSON.java" pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.alibaba/fastjson/1.1.61.android/96e24b2aee9ba0c362a9fd95419f621c7ea9513c/fastjson-1.1.61.android-sources.jar!/com/alibaba/fastjson/JSON.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+            <state relative-caret-position="253">
+              <caret line="338" column="31" selection-start-line="338" selection-start-column="31" selection-end-line="338" selection-end-column="31" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JSONField.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.alibaba/fastjson/1.1.61.android/96e24b2aee9ba0c362a9fd95419f621c7ea9513c/fastjson-1.1.61.android-sources.jar!/com/alibaba/fastjson/annotation/JSONField.java">
+      <file leaf-file-name="WsonTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/furture/wson/WsonTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="48" column="22" selection-start-line="48" selection-start-column="22" selection-end-line="48" selection-end-column="22" />
-              <folding>
-                <element signature="e#0#1504#0" expanded="false" />
-                <element signature="imports" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JSONType.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.alibaba/fastjson/1.1.61.android/96e24b2aee9ba0c362a9fd95419f621c7ea9513c/fastjson-1.1.61.android-sources.jar!/com/alibaba/fastjson/annotation/JSONType.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="15" column="18" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="26" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JSONCreator.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.alibaba/fastjson/1.1.61.android/96e24b2aee9ba0c362a9fd95419f621c7ea9513c/fastjson-1.1.61.android-sources.jar!/com/alibaba/fastjson/annotation/JSONCreator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Class.java" pinned="false" current-in-tab="false">
-        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home/src.zip!/java/lang/Class.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="638" column="18" selection-start-line="638" selection-start-column="18" selection-end-line="638" selection-end-column="18" />
+            <state relative-caret-position="135">
+              <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AnnotationTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/furture/wson/bug/AnnotationTest.java">
+      <file leaf-file-name="ObjectToMapTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/furture/wson/ObjectToMapTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="105">
+              <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
   </component>
   <component name="GradleLocalSettings">
     <option name="availableProjects">
@@ -378,7 +337,6 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$USER_HOME$/Downloads/TestAspectJ4Gradle-master" value="1387844424000" />
         <entry key="$PROJECT_DIR$" value="3027790254522" />
       </map>
     </option>
@@ -482,57 +440,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/test/resources/taobao/airborne2.json" />
-        <option value="$PROJECT_DIR$/src/test/resources/taobao/quanqiu.json" />
-        <option value="$PROJECT_DIR$/src/test/resources/taobao/qianqiu1.json" />
-        <option value="$PROJECT_DIR$/src/test/resources/taobao/qianqiu2.json" />
-        <option value="$PROJECT_DIR$/src/test/resources/taobao/meiri.json" />
-        <option value="$PROJECT_DIR$/src/test/resources/taobao/biji.json" />
-        <option value="$PROJECT_DIR$/src/test/resources/taobao/beenhive.json" />
-        <option value="$PROJECT_DIR$/src/test/resources/taobao/range.json" />
-        <option value="$PROJECT_DIR$/src/test/resources/taobao/steins.json" />
-        <option value="$PROJECT_DIR$/src/test/resources/taobao/cloudvideo.json" />
-        <option value="$PROJECT_DIR$/src/test/resources/taobao/tejie.json" />
-        <option value="$PROJECT_DIR$/src/test/resources/taobao/steins3.json" />
-        <option value="$PROJECT_DIR$/src/test/resources/taobao/appsearch.json" />
-        <option value="$PROJECT_DIR$/src/test/resources/taobao/Suggest.json" />
-        <option value="$PROJECT_DIR$/src/test/resources/taobao/appsearch2.json" />
-        <option value="$PROJECT_DIR$/src/test/resources/taobao/searchmall.json" />
-        <option value="$PROJECT_DIR$/src/test/resources/taobao/wsearch.json" />
-        <option value="$PROJECT_DIR$/src/test/resources/taobao/detail.json" />
-        <option value="$PROJECT_DIR$/src/test/resources/taobao/orange.json" />
-        <option value="$PROJECT_DIR$/src/test/resources/taobao/detail2.json" />
-        <option value="$PROJECT_DIR$/src/test/resources/taobao/orange2.json" />
-        <option value="$PROJECT_DIR$/src/test/resources/taobao/mytaobao.json" />
-        <option value="$PROJECT_DIR$/src/test/resources/taobao/userinfo.json" />
-        <option value="$PROJECT_DIR$/src/test/resources/taobao/orderlist.json" />
-        <option value="$PROJECT_DIR$/src/test/resources/taobao/mclaren.json" />
-        <option value="$PROJECT_DIR$/src/test/resources/taobao/order.json" />
-        <option value="$PROJECT_DIR$/src/test/resources/taobao/recentcontact.json" />
-        <option value="$PROJECT_DIR$/src/test/resources/taobao/querybought.json" />
-        <option value="$PROJECT_DIR$/src/test/resources/taobao/guess.json" />
-        <option value="$PROJECT_DIR$/src/test/resources/taobao/amp.json" />
-        <option value="$PROJECT_DIR$/src/test/resources/taobao/contract.json" />
-        <option value="$PROJECT_DIR$/src/test/resources/taobao/aggregation.json" />
-        <option value="$PROJECT_DIR$/src/test/resources/taobao/navigation.json" />
-        <option value="$PROJECT_DIR$/src/test/resources/taobao/secondfloor.json" />
-        <option value="$PROJECT_DIR$/src/test/resources/taobao/cybertron.json" />
-        <option value="$PROJECT_DIR$/src/test/resources/taobao/story.json" />
-        <option value="$PROJECT_DIR$/src/test/resources/taobao/video.json" />
-        <option value="$PROJECT_DIR$/src/test/resources/taobao/avengers.json" />
-        <option value="$PROJECT_DIR$/src/test/java/com/furture/wson/DoubleTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/furture/wson/bug/DoubleLostTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/furture/wson/PrepareWsonFile.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/furture/wson/bug/LongLostTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/furture/wson/bug/EnumTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/furture/wson/feature/StringCodingTest.java" />
-        <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/src/test/java/com/furture/wson/bench/FlatBuffer.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/furture/wson/bench/FlatBufferTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/furture/wson/domain/AnnoPerson.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/efurture/wson/WsonAdapter.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/furture/wson/bug/AnnotationTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/efurture/wson/Wson.java" />
+        <option value="$PROJECT_DIR$/src/test/resources/bug/bigUnicode.json" />
+        <option value="$PROJECT_DIR$/src/test/resources/bug/bigUnicode.src" />
+        <option value="$PROJECT_DIR$/src/test/resources/bug/bigUnicode.dat" />
       </list>
     </option>
   </component>
@@ -544,32 +455,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="49" />
+    <option name="x" value="197" />
     <option name="y" value="23" />
-    <option name="width" value="1312" />
-    <option name="height" value="730" />
-  </component>
-  <component name="ProjectInspectionProfilesVisibleTreeState">
-    <entry key="Project Default">
-      <profile-state>
-        <expanded-state>
-          <State>
-            <id />
-          </State>
-          <State>
-            <id>Java</id>
-          </State>
-          <State>
-            <id>Serialization issuesJava</id>
-          </State>
-        </expanded-state>
-        <selected-state>
-          <State>
-            <id>SerializableHasSerialVersionUIDField</id>
-          </State>
-        </selected-state>
-      </profile-state>
-    </entry>
+    <option name="width" value="1243" />
+    <option name="height" value="857" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -596,52 +485,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="wson">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="java">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="wson">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="wson_test">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="wson">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="wson_main">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -649,76 +495,6 @@
               <option name="myItemId" value="wson" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wson" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Gradle: com.alibaba:fastjson:1.1.61.android" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fastjson-1.1.61.android.jar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wson" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Gradle: com.alibaba:fastjson:1.1.61.android" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fastjson-1.1.61.android.jar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fastjson" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wson" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Gradle: com.alibaba:fastjson:1.1.61.android" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fastjson-1.1.61.android.jar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fastjson" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="annotation" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -741,96 +517,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wson" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wson" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wson" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wson" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bug" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wson" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wson" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bench" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -862,93 +548,22 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com.furture.tson" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com.furture.tson" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleGroupNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com.furture.tson_test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com.furture.tson" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com.furture.tson" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleGroupNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com.furture.tson_main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com.furture.tson" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com.furture.tson" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleGroupNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com.furture.tson_main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com.efurture.tson" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
-  <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="Errors" />
-    <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../fastjson" />
-  </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/test/resources" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.furture.tson.bench" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/test/resources/data" />
-      <recent name="$PROJECT_DIR$/src/test/resources" />
-      <recent name="$PROJECT_DIR$/src/test/java/com/furture/wson/compatible" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/efurture/wson" />
-      <recent name="$PROJECT_DIR$/src/test/java/com/furture/tson" />
-    </key>
-  </component>
-  <component name="RunManager" selected="JUnit.AnnotationTest.testAnnoatation">
-    <configuration default="false" name="StringCodingTest.testEncoding" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.PrepareWsonFile.testShowFormatFile">
+    <configuration default="false" name="PrepareWsonFile.testPrepareWsonError" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="com.furture.wson.feature.*" />
+          <option name="PATTERN" value="com.furture.wson.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <module name="wson_test" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.furture.wson.feature" />
-      <option name="MAIN_CLASS_NAME" value="com.furture.wson.feature.StringCodingTest" />
-      <option name="METHOD_NAME" value="testEncoding" />
+      <option name="PACKAGE_NAME" value="com.furture.wson" />
+      <option name="MAIN_CLASS_NAME" value="com.furture.wson.PrepareWsonFile" />
+      <option name="METHOD_NAME" value="testPrepareWsonError" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -962,44 +577,18 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="FlatBufferTest.testFlatBuffer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="PrepareWsonFile" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="com.furture.wson.bench.*" />
+          <option name="PATTERN" value="com.furture.wson.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <module name="wson_test" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.furture.wson.bench" />
-      <option name="MAIN_CLASS_NAME" value="com.furture.wson.bench.FlatBufferTest" />
-      <option name="METHOD_NAME" value="testFlatBuffer" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="FlatBufferTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.furture.wson.bench.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="wson_test" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.furture.wson.bench" />
-      <option name="MAIN_CLASS_NAME" value="com.furture.wson.bench.FlatBufferTest" />
+      <option name="PACKAGE_NAME" value="com.furture.wson" />
+      <option name="MAIN_CLASS_NAME" value="com.furture.wson.PrepareWsonFile" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -1014,45 +603,19 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="AnnotationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="PrepareWsonFile.testShowFormatFile" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="com.furture.wson.bug.*" />
+          <option name="PATTERN" value="com.furture.wson.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <module name="wson_test" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.furture.wson.bug" />
-      <option name="MAIN_CLASS_NAME" value="com.furture.wson.bug.AnnotationTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="AnnotationTest.testAnnoatation" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.furture.wson.bug.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="wson_test" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.furture.wson.bug" />
-      <option name="MAIN_CLASS_NAME" value="com.furture.wson.bug.AnnotationTest" />
-      <option name="METHOD_NAME" value="testAnnoatation" />
+      <option name="PACKAGE_NAME" value="com.furture.wson" />
+      <option name="MAIN_CLASS_NAME" value="com.furture.wson.PrepareWsonFile" />
+      <option name="METHOD_NAME" value="testShowFormatFile" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -1148,15 +711,6 @@
       </ExternalSystemSettings>
       <method />
     </configuration>
-    <configuration default="true" type="GroovyScriptRunConfiguration" factoryName="Groovy">
-      <module name="" />
-      <setting name="path" value="" />
-      <setting name="vmparams" value="" />
-      <setting name="params" value="" />
-      <setting name="workDir" value="file://$PROJECT_DIR$" />
-      <setting name="debug" value="false" />
-      <method />
-    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -1229,7 +783,7 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="com.furture.tson" />
+      <module name="test" />
       <envs />
       <method />
     </configuration>
@@ -1352,195 +906,101 @@
       <envs />
       <method />
     </configuration>
-    <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.StringCodingTest.testEncoding" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.FlatBufferTest.testFlatBuffer" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.FlatBufferTest" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.AnnotationTest" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.AnnotationTest.testAnnoatation" />
+    <list size="3">
+      <item index="0" class="java.lang.String" itemvalue="JUnit.PrepareWsonFile.testPrepareWsonError" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.PrepareWsonFile" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.PrepareWsonFile.testShowFormatFile" />
     </list>
     <recent_temporary>
-      <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.AnnotationTest.testAnnoatation" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.AnnotationTest" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.FlatBufferTest" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.FlatBufferTest.testFlatBuffer" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.StringCodingTest.testEncoding" />
+      <list size="3">
+        <item index="0" class="java.lang.String" itemvalue="JUnit.PrepareWsonFile.testShowFormatFile" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.PrepareWsonFile" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.PrepareWsonFile.testPrepareWsonError" />
       </list>
     </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
-  <component name="SvnConfiguration">
-    <configuration />
-  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="572f9c38-2698-49b6-96c6-8da5db6fedb2" name="Default" comment="" />
-      <created>1502881460503</created>
+      <changelist id="2ec88b5c-b897-44c0-8012-bd270059f6f3" name="Default" comment="" />
+      <created>1526389400667</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1502881460503</updated>
+      <updated>1526389400667</updated>
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="AnnotationTest_testAnnoatation - 2018.03.09 at 15h 43m 01s.xml">
-      <configuration name="AnnotationTest.testAnnoatation" configurationId="JUnit" />
+    <history-entry file="PrepareWsonFile - 2018.05.15 at 21h 11m 37s.xml">
+      <configuration name="PrepareWsonFile" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AnnotationTest_testAnnoatation - 2018.03.09 at 15h 45m 47s.xml">
-      <configuration name="AnnotationTest.testAnnoatation" configurationId="JUnit" />
+    <history-entry file="PrepareWsonFile_testPrepareWsonError - 2018.05.15 at 21h 10m 17s.xml">
+      <configuration name="PrepareWsonFile.testPrepareWsonError" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AnnotationTest_testAnnoatation - 2018.03.09 at 15h 58m 51s.xml">
-      <configuration name="AnnotationTest.testAnnoatation" configurationId="JUnit" />
+    <history-entry file="PrepareWsonFile_testShowFormatFile - 2018.05.15 at 21h 11m 47s.xml">
+      <configuration name="PrepareWsonFile.testShowFormatFile" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AnnotationTest_testAnnoatation - 2018.03.09 at 15h 59m 13s.xml">
-      <configuration name="AnnotationTest.testAnnoatation" configurationId="JUnit" />
+    <history-entry file="PrepareWsonFile_testShowFormatFile - 2018.05.15 at 21h 12m 09s.xml">
+      <configuration name="PrepareWsonFile.testShowFormatFile" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AnnotationTest_testAnnoatation - 2018.03.09 at 15h 59m 24s.xml">
-      <configuration name="AnnotationTest.testAnnoatation" configurationId="JUnit" />
+    <history-entry file="PrepareWsonFile_testShowFormatFile - 2018.05.15 at 21h 17m 28s.xml">
+      <configuration name="PrepareWsonFile.testShowFormatFile" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AnnotationTest_testAnnoatation - 2018.03.09 at 16h 02m 13s.xml">
-      <configuration name="AnnotationTest.testAnnoatation" configurationId="JUnit" />
+    <history-entry file="PrepareWsonFile_testShowFormatFile - 2018.05.15 at 21h 19m 12s.xml">
+      <configuration name="PrepareWsonFile.testShowFormatFile" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AnnotationTest_testAnnoatation - 2018.03.09 at 16h 02m 35s.xml">
-      <configuration name="AnnotationTest.testAnnoatation" configurationId="JUnit" />
+    <history-entry file="PrepareWsonFile_testShowFormatFile - 2018.05.15 at 21h 20m 12s.xml">
+      <configuration name="PrepareWsonFile.testShowFormatFile" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AnnotationTest_testAnnoatation - 2018.03.09 at 16h 04m 01s.xml">
-      <configuration name="AnnotationTest.testAnnoatation" configurationId="JUnit" />
+    <history-entry file="PrepareWsonFile_testShowFormatFile - 2018.05.15 at 21h 36m 05s.xml">
+      <configuration name="PrepareWsonFile.testShowFormatFile" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AnnotationTest_testAnnoatation - 2018.03.09 at 16h 04m 08s.xml">
-      <configuration name="AnnotationTest.testAnnoatation" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="AnnotationTest_testAnnoatation - 2018.03.09 at 16h 04m 24s.xml">
-      <configuration name="AnnotationTest.testAnnoatation" configurationId="JUnit" />
-    </history-entry>
-  </component>
-  <component name="TodoView">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="49" y="23" width="1312" height="730" extended-state="0" />
+    <frame x="197" y="23" width="1243" height="857" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38714734" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291536" sideWeight="0.41811022" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.45859873" sideWeight="0.43779528" order="7" side_tool="true" content_ui="tabs" x="149" y="281" width="1270" height="360" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.338558" sideWeight="0.5622047" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25350317" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19527559" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="JProfiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299363" sideWeight="0.7622047" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.55172414" sideWeight="0.4559055" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24939662" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="ASM" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.081102364" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24907339" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2488189" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3375796" sideWeight="0.61811024" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20558375" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="JProfiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
-    <layout-to-restore>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.45859873" sideWeight="0.43779528" order="7" side_tool="true" content_ui="tabs" x="149" y="281" width="1270" height="360" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="ASM" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2496063" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2488189" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37707007" sideWeight="0.61811024" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38726115" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299363" sideWeight="0.41811022" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.49936306" sideWeight="0.5622047" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.062420383" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26253918" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="JProfiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299363" sideWeight="0.7622047" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16815287" sideWeight="0.4559055" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17711599" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
-    </layout-to-restore>
-  </component>
-  <component name="Vcs.Log.UiProperties">
-    <option name="RECENTLY_FILTERED_USER_GROUPS">
-      <collection />
-    </option>
-    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-      <collection />
-    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/.." />
+    </ignored-roots>
+  </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/com/furture/wson/bench/Protobuf3WsonBenchTest.java</url>
-          <line>24</line>
-          <properties />
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/com/furture/wson/bench/protobuf/MediaOuterClass.java</url>
-          <line>651</line>
-          <properties />
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.protobuf/protobuf-java/3.4.0/c57c9f6bcbdb783260d00b80c455d82a6a8b02db/protobuf-java-3.4.0-sources.jar!/com/google/protobuf/CodedOutputStream.java</url>
-          <line>1452</line>
-          <properties />
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.protobuf/protobuf-java/3.4.0/c57c9f6bcbdb783260d00b80c455d82a6a8b02db/protobuf-java-3.4.0-sources.jar!/com/google/protobuf/CodedOutputStream.java</url>
-          <line>1451</line>
-          <properties />
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.protobuf/protobuf-java/3.4.0/c57c9f6bcbdb783260d00b80c455d82a6a8b02db/protobuf-java-3.4.0-sources.jar!/com/google/protobuf/CodedOutputStream.java</url>
-          <line>1449</line>
-          <properties />
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/com/furture/wson/bench/protobuf/MediaOuterClass.java</url>
-          <line>687</line>
-          <properties />
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="24" />
-    </breakpoint-manager>
+    <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="antWorkspaceConfiguration">
@@ -1548,617 +1008,131 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/resources/weex.json">
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/furture/wson/DoubleTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/furture/wson/PrepareWsonFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2355">
+          <caret line="167" column="29" selection-start-line="167" selection-start-column="29" selection-end-line="167" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/bug/bigNumber.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/resources/weex4.json">
+    <entry file="file://$PROJECT_DIR$/src/test/resources/bug/bigUnicode.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="2" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/bug/bigUnicode.dat">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.protobuf/protobuf-java/3.4.0/c57c9f6bcbdb783260d00b80c455d82a6a8b02db/protobuf-java-3.4.0-sources.jar!/com/google/protobuf/Utf8.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/furture/wson/WsonTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
-          <caret line="67" column="62" selection-start-line="67" selection-start-column="62" selection-end-line="67" selection-end-column="62" />
+        <state relative-caret-position="135">
+          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home/src.zip!/java/nio/charset/Charset.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/furture/wson/ObjectToMapTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13129">
-          <caret line="747" column="35" selection-start-line="747" selection-start-column="35" selection-end-line="747" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#35225#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#15038#15039#0" expanded="false" />
-            <element signature="e#15094#15095#0" expanded="false" />
-            <element signature="e#15406#15407#0" expanded="false" />
-            <element signature="e#15487#15488#0" expanded="false" />
-            <element signature="e#15656#15672#0" expanded="false" />
-            <element signature="e#20409#20410#0" expanded="false" />
-            <element signature="e#20461#20462#0" expanded="false" />
-            <element signature="e#23428#23444#0" expanded="false" />
-            <element signature="e#26078#26079#0" expanded="false" />
-            <element signature="e#26105#26106#0" expanded="false" />
-            <element signature="e#26418#26426#0" expanded="false" />
-            <element signature="e#27014#27015#0" expanded="false" />
-            <element signature="e#27041#27042#0" expanded="false" />
-            <element signature="e#27402#27403#0" expanded="false" />
-            <element signature="e#27473#27474#0" expanded="false" />
-            <element signature="e#28017#28018#0" expanded="false" />
-            <element signature="e#28044#28045#0" expanded="false" />
-            <element signature="e#30485#30486#0" expanded="false" />
-            <element signature="e#30512#30513#0" expanded="false" />
-            <element signature="e#33709#33710#0" expanded="false" />
-            <element signature="e#33760#33761#0" expanded="false" />
-            <element signature="e#34223#34224#0" expanded="false" />
-            <element signature="e#34287#34288#0" expanded="false" />
-            <element signature="e#34426#34427#0" expanded="false" />
-            <element signature="e#34466#34467#0" expanded="false" />
-            <element signature="e#35191#35192#0" expanded="false" />
-            <element signature="e#35220#35221#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="105">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/furture/wson/DoubleTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/furture/wson/WsonTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/bug/bigNumber.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/furture/wson/ObjectToMapTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/furture/wson/PrepareWsonFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2355">
+          <caret line="167" column="29" selection-start-line="167" selection-start-column="29" selection-end-line="167" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/bug/bigUnicode.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="2" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/bug/bigUnicode.dat">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="16" selection-start-line="0" selection-start-column="16" selection-end-line="0" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.alibaba/fastjson/1.1.61.android/96e24b2aee9ba0c362a9fd95419f621c7ea9513c/fastjson-1.1.61.android-sources.jar!/com/alibaba/fastjson/JSON.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="338" column="31" selection-start-line="338" selection-start-column="31" selection-end-line="338" selection-end-column="31" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/efurture/wson/Wson.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4636">
-          <caret line="270" column="29" selection-start-line="270" selection-start-column="29" selection-end-line="270" selection-end-column="29" />
+        <state relative-caret-position="330">
+          <caret line="99" column="46" selection-start-line="99" selection-start-column="25" selection-end-line="99" selection-end-column="46" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/furture/wson/feature/UNSafeTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/furture/wson/feature/CopyTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.protobuf/protobuf-java/3.4.0/c57c9f6bcbdb783260d00b80c455d82a6a8b02db/protobuf-java-3.4.0-sources.jar!/com/google/protobuf/CodedOutputStream.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="58" column="22" selection-start-line="58" selection-start-column="22" selection-end-line="58" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#104504#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#6245#6246#0" expanded="false" />
-            <element signature="e#6296#6297#0" expanded="false" />
-            <element signature="e#6397#6398#0" expanded="false" />
-            <element signature="e#6446#6447#0" expanded="false" />
-            <element signature="e#7994#7995#0" expanded="false" />
-            <element signature="e#8037#8038#0" expanded="false" />
-            <element signature="e#8081#8082#0" expanded="false" />
-            <element signature="e#8124#8125#0" expanded="false" />
-            <element signature="e#29820#29821#0" expanded="false" />
-            <element signature="e#29882#29883#0" expanded="false" />
-            <element signature="e#30081#30082#0" expanded="false" />
-            <element signature="e#30110#30111#0" expanded="false" />
-            <element signature="e#30312#30313#0" expanded="false" />
-            <element signature="e#30341#30342#0" expanded="false" />
-            <element signature="e#30524#30525#0" expanded="false" />
-            <element signature="e#30570#30571#0" expanded="false" />
-            <element signature="e#31388#31389#0" expanded="false" />
-            <element signature="e#31450#31451#0" expanded="false" />
-            <element signature="e#31650#31651#0" expanded="false" />
-            <element signature="e#31679#31680#0" expanded="false" />
-            <element signature="e#31882#31883#0" expanded="false" />
-            <element signature="e#31911#31912#0" expanded="false" />
-            <element signature="e#32123#32124#0" expanded="false" />
-            <element signature="e#32152#32153#0" expanded="false" />
-            <element signature="e#32367#32368#0" expanded="false" />
-            <element signature="e#32396#32397#0" expanded="false" />
-            <element signature="e#32593#32594#0" expanded="false" />
-            <element signature="e#32611#32612#0" expanded="false" />
-            <element signature="e#32888#32889#0" expanded="false" />
-            <element signature="e#32933#32934#0" expanded="false" />
-            <element signature="e#37438#37439#0" expanded="false" />
-            <element signature="e#37466#37467#0" expanded="false" />
-            <element signature="e#37520#37521#0" expanded="false" />
-            <element signature="e#37576#37577#0" expanded="false" />
-            <element signature="e#37620#37621#0" expanded="false" />
-            <element signature="e#37655#37656#0" expanded="false" />
-            <element signature="e#40323#40324#0" expanded="false" />
-            <element signature="e#40365#40366#0" expanded="false" />
-            <element signature="e#41221#41222#0" expanded="false" />
-            <element signature="e#41267#41268#0" expanded="false" />
-            <element signature="e#41498#41499#0" expanded="false" />
-            <element signature="e#41544#41545#0" expanded="false" />
-            <element signature="e#54091#54092#0" expanded="false" />
-            <element signature="e#54128#54129#0" expanded="false" />
-            <element signature="e#54189#54190#0" expanded="false" />
-            <element signature="e#54227#54228#0" expanded="false" />
-            <element signature="e#64566#64567#0" expanded="false" />
-            <element signature="e#64605#64606#0" expanded="false" />
-            <element signature="e#64660#64661#0" expanded="false" />
-            <element signature="e#64716#64717#0" expanded="false" />
-            <element signature="e#65821#65822#0" expanded="false" />
-            <element signature="e#65884#65885#0" expanded="false" />
-            <element signature="e#76082#76083#0" expanded="false" />
-            <element signature="e#76127#76128#0" expanded="false" />
-            <element signature="e#76182#76183#0" expanded="false" />
-            <element signature="e#76237#76238#0" expanded="false" />
-            <element signature="e#76284#76285#0" expanded="false" />
-            <element signature="e#76329#76330#0" expanded="false" />
-            <element signature="e#76368#76369#0" expanded="false" />
-            <element signature="e#76410#76411#0" expanded="false" />
-            <element signature="e#77535#77536#0" expanded="false" />
-            <element signature="e#77573#77574#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/furture/wson/feature/StringCodingTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="742">
-          <caret line="56" column="30" selection-start-line="56" selection-start-column="30" selection-end-line="56" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home/src.zip!/java/lang/String.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7296">
-          <caret line="425" column="36" selection-start-line="425" selection-start-column="36" selection-end-line="425" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home/src.zip!/java/lang/StringCoding.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1957">
-          <caret line="146" column="15" selection-start-line="146" selection-start-column="15" selection-end-line="146" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.protobuf/protobuf-java/3.4.0/c57c9f6bcbdb783260d00b80c455d82a6a8b02db/protobuf-java-3.4.0-sources.jar!/com/google/protobuf/Int64Value.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="13" column="20" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.protobuf/protobuf-java/3.4.0/c57c9f6bcbdb783260d00b80c455d82a6a8b02db/protobuf-java-3.4.0-sources.jar!/com/google/protobuf/Utf8.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
-          <caret line="67" column="62" selection-start-line="67" selection-start-column="62" selection-end-line="67" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home/src.zip!/java/nio/charset/Charset.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13129">
-          <caret line="747" column="35" selection-start-line="747" selection-start-column="35" selection-end-line="747" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#35225#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#15038#15039#0" expanded="false" />
-            <element signature="e#15094#15095#0" expanded="false" />
-            <element signature="e#15406#15407#0" expanded="false" />
-            <element signature="e#15487#15488#0" expanded="false" />
-            <element signature="e#15656#15672#0" expanded="false" />
-            <element signature="e#20409#20410#0" expanded="false" />
-            <element signature="e#20461#20462#0" expanded="false" />
-            <element signature="e#23428#23444#0" expanded="false" />
-            <element signature="e#26078#26079#0" expanded="false" />
-            <element signature="e#26105#26106#0" expanded="false" />
-            <element signature="e#26418#26426#0" expanded="false" />
-            <element signature="e#27014#27015#0" expanded="false" />
-            <element signature="e#27041#27042#0" expanded="false" />
-            <element signature="e#27402#27403#0" expanded="false" />
-            <element signature="e#27473#27474#0" expanded="false" />
-            <element signature="e#28017#28018#0" expanded="false" />
-            <element signature="e#28044#28045#0" expanded="false" />
-            <element signature="e#30485#30486#0" expanded="false" />
-            <element signature="e#30512#30513#0" expanded="false" />
-            <element signature="e#33709#33710#0" expanded="false" />
-            <element signature="e#33760#33761#0" expanded="false" />
-            <element signature="e#34223#34224#0" expanded="false" />
-            <element signature="e#34287#34288#0" expanded="false" />
-            <element signature="e#34426#34427#0" expanded="false" />
-            <element signature="e#34466#34467#0" expanded="false" />
-            <element signature="e#35191#35192#0" expanded="false" />
-            <element signature="e#35220#35221#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/furture/wson/feature/UNSafeTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/furture/wson/feature/CopyTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.protobuf/protobuf-java/3.4.0/c57c9f6bcbdb783260d00b80c455d82a6a8b02db/protobuf-java-3.4.0-sources.jar!/com/google/protobuf/CodedOutputStream.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="58" column="22" selection-start-line="58" selection-start-column="22" selection-end-line="58" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#104504#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#6245#6246#0" expanded="false" />
-            <element signature="e#6296#6297#0" expanded="false" />
-            <element signature="e#6397#6398#0" expanded="false" />
-            <element signature="e#6446#6447#0" expanded="false" />
-            <element signature="e#7994#7995#0" expanded="false" />
-            <element signature="e#8037#8038#0" expanded="false" />
-            <element signature="e#8081#8082#0" expanded="false" />
-            <element signature="e#8124#8125#0" expanded="false" />
-            <element signature="e#29820#29821#0" expanded="false" />
-            <element signature="e#29882#29883#0" expanded="false" />
-            <element signature="e#30081#30082#0" expanded="false" />
-            <element signature="e#30110#30111#0" expanded="false" />
-            <element signature="e#30312#30313#0" expanded="false" />
-            <element signature="e#30341#30342#0" expanded="false" />
-            <element signature="e#30524#30525#0" expanded="false" />
-            <element signature="e#30570#30571#0" expanded="false" />
-            <element signature="e#31388#31389#0" expanded="false" />
-            <element signature="e#31450#31451#0" expanded="false" />
-            <element signature="e#31650#31651#0" expanded="false" />
-            <element signature="e#31679#31680#0" expanded="false" />
-            <element signature="e#31882#31883#0" expanded="false" />
-            <element signature="e#31911#31912#0" expanded="false" />
-            <element signature="e#32123#32124#0" expanded="false" />
-            <element signature="e#32152#32153#0" expanded="false" />
-            <element signature="e#32367#32368#0" expanded="false" />
-            <element signature="e#32396#32397#0" expanded="false" />
-            <element signature="e#32593#32594#0" expanded="false" />
-            <element signature="e#32611#32612#0" expanded="false" />
-            <element signature="e#32888#32889#0" expanded="false" />
-            <element signature="e#32933#32934#0" expanded="false" />
-            <element signature="e#37438#37439#0" expanded="false" />
-            <element signature="e#37466#37467#0" expanded="false" />
-            <element signature="e#37520#37521#0" expanded="false" />
-            <element signature="e#37576#37577#0" expanded="false" />
-            <element signature="e#37620#37621#0" expanded="false" />
-            <element signature="e#37655#37656#0" expanded="false" />
-            <element signature="e#40323#40324#0" expanded="false" />
-            <element signature="e#40365#40366#0" expanded="false" />
-            <element signature="e#41221#41222#0" expanded="false" />
-            <element signature="e#41267#41268#0" expanded="false" />
-            <element signature="e#41498#41499#0" expanded="false" />
-            <element signature="e#41544#41545#0" expanded="false" />
-            <element signature="e#54091#54092#0" expanded="false" />
-            <element signature="e#54128#54129#0" expanded="false" />
-            <element signature="e#54189#54190#0" expanded="false" />
-            <element signature="e#54227#54228#0" expanded="false" />
-            <element signature="e#64566#64567#0" expanded="false" />
-            <element signature="e#64605#64606#0" expanded="false" />
-            <element signature="e#64660#64661#0" expanded="false" />
-            <element signature="e#64716#64717#0" expanded="false" />
-            <element signature="e#65821#65822#0" expanded="false" />
-            <element signature="e#65884#65885#0" expanded="false" />
-            <element signature="e#76082#76083#0" expanded="false" />
-            <element signature="e#76127#76128#0" expanded="false" />
-            <element signature="e#76182#76183#0" expanded="false" />
-            <element signature="e#76237#76238#0" expanded="false" />
-            <element signature="e#76284#76285#0" expanded="false" />
-            <element signature="e#76329#76330#0" expanded="false" />
-            <element signature="e#76368#76369#0" expanded="false" />
-            <element signature="e#76410#76411#0" expanded="false" />
-            <element signature="e#77535#77536#0" expanded="false" />
-            <element signature="e#77573#77574#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/resources/media.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/resources/weex2.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/resources/weex.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/resources/weex4.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="18" column="21" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/settings.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/furture/wson/bench/WeexBenchTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home/src.zip!/java/nio/CharBuffer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="261" column="22" selection-start-line="261" selection-start-column="22" selection-end-line="261" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home/src.zip!/java/nio/ByteBuffer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27452">
-          <caret line="1760" column="31" selection-start-line="1760" selection-start-column="31" selection-end-line="1760" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.davidmoten/flatbuffers-java/1.8.0.1/bcbcc4b2cc0676d7c6d5e8c9404c12e7c25faeb4/flatbuffers-java-1.8.0.1-sources.jar!/com/google/flatbuffers/Constants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="39" column="1" selection-start-line="39" selection-start-column="1" selection-end-line="39" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.davidmoten/flatbuffers-java/1.8.0.1/bcbcc4b2cc0676d7c6d5e8c9404c12e7c25faeb4/flatbuffers-java-1.8.0.1-sources.jar!/com/google/flatbuffers/Table.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3695">
-          <caret line="41" column="30" selection-start-line="41" selection-start-column="30" selection-end-line="41" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.davidmoten/flatbuffers-java/1.8.0.1/bcbcc4b2cc0676d7c6d5e8c9404c12e7c25faeb4/flatbuffers-java-1.8.0.1-sources.jar!/com/google/flatbuffers/Struct.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home/src.zip!/java/lang/Integer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="839" column="22" selection-start-line="839" selection-start-column="22" selection-end-line="839" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home/src.zip!/java/lang/Number.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="62" column="29" selection-start-line="62" selection-start-column="29" selection-end-line="62" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home/src.zip!/java/lang/Object.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="741">
-          <caret line="62" column="33" selection-start-line="62" selection-start-column="33" selection-end-line="62" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.davidmoten/flatbuffers-java/1.8.0.1/bcbcc4b2cc0676d7c6d5e8c9404c12e7c25faeb4/flatbuffers-java-1.8.0.1-sources.jar!/com/google/flatbuffers/FlatBufferBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8607">
-          <caret line="488" column="15" selection-start-line="488" selection-start-column="15" selection-end-line="488" selection-end-column="15" />
-          <folding>
-            <element signature="e#0#35673#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#3162#3163#0" expanded="false" />
-            <element signature="e#3225#3226#0" expanded="false" />
-            <element signature="e#3334#3335#0" expanded="false" />
-            <element signature="e#3360#3361#0" expanded="false" />
-            <element signature="e#3907#3908#0" expanded="false" />
-            <element signature="e#3952#3953#0" expanded="false" />
-            <element signature="e#4322#4323#0" expanded="false" />
-            <element signature="e#4384#4385#0" expanded="false" />
-            <element signature="e#8242#8243#0" expanded="false" />
-            <element signature="e#8286#8287#0" expanded="false" />
-            <element signature="e#8455#8456#0" expanded="false" />
-            <element signature="e#8531#8532#0" expanded="false" />
-            <element signature="e#28254#28255#0" expanded="false" />
-            <element signature="e#28296#28297#0" expanded="false" />
-            <element signature="e#34615#34616#0" expanded="false" />
-            <element signature="e#34682#34683#0" expanded="false" />
-            <element signature="e#35408#35409#0" expanded="false" />
-            <element signature="e#35446#35447#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/furture/wson/bench/FlatBufferTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="75" column="18" selection-start-line="75" selection-start-column="18" selection-end-line="75" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home/src.zip!/java/lang/reflect/AccessibleObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="182" column="0" selection-start-line="182" selection-start-column="0" selection-end-line="182" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home/jre/lib/rt.jar!/sun/reflect/annotation/AnnotationParser.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="628" column="31" selection-start-line="628" selection-start-column="31" selection-end-line="628" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home/jre/lib/rt.jar!/sun/reflect/annotation/AnnotationSupport.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="28" column="45" selection-start-line="28" selection-start-column="45" selection-end-line="28" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home/src.zip!/java/util/Map.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="211" column="6" selection-start-line="211" selection-start-column="6" selection-end-line="211" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home/src.zip!/java/lang/reflect/Field.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="1112" column="0" selection-start-line="1112" selection-start-column="0" selection-end-line="1112" selection-end-column="0" />
-          <folding>
-            <element signature="e#46648#46649#0" expanded="false" />
-            <element signature="e#46718#46719#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/furture/wson/domain/Base.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home/src.zip!/java/lang/Class.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="638" column="18" selection-start-line="638" selection-start-column="18" selection-end-line="638" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.alibaba/fastjson/1.1.61.android/96e24b2aee9ba0c362a9fd95419f621c7ea9513c/fastjson-1.1.61.android-sources.jar!/com/alibaba/fastjson/annotation/JSONField.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="48" column="22" selection-start-line="48" selection-start-column="22" selection-end-line="48" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#1504#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.alibaba/fastjson/1.1.61.android/96e24b2aee9ba0c362a9fd95419f621c7ea9513c/fastjson-1.1.61.android-sources.jar!/com/alibaba/fastjson/annotation/JSONType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="15" column="18" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.alibaba/fastjson/1.1.61.android/96e24b2aee9ba0c362a9fd95419f621c7ea9513c/fastjson-1.1.61.android-sources.jar!/com/alibaba/fastjson/annotation/JSONCreator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/furture/wson/domain/AnnoPerson.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home/src.zip!/java/lang/NoSuchMethodException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="34" column="50" selection-start-line="34" selection-start-column="50" selection-end-line="34" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home/src.zip!/java/lang/ReflectiveOperationException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home/src.zip!/java/util/HashMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="593" column="19" selection-start-line="593" selection-start-column="19" selection-end-line="593" selection-end-column="19" />
-          <folding>
-            <element signature="e#23597#23598#0" expanded="true" />
-            <element signature="e#23651#23652#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/efurture/wson/WsonAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2128">
-          <caret line="155" column="65" selection-start-line="155" selection-start-column="65" selection-end-line="155" selection-end-column="65" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/furture/wson/bug/AnnotationTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/efurture/wson/Wson.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="489" column="26" selection-start-line="489" selection-start-column="26" selection-end-line="489" selection-end-column="26" />
-          <folding>
-            <element signature="e#20061#20062#0" expanded="true" />
-            <element signature="e#20117#20118#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>

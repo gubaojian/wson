@@ -164,6 +164,18 @@ public class PrepareWsonFile extends TestCase {
         }
     }
 
+
+    public void  testShowFormatFile() throws IOException {
+        String data = readFile("/data/Bug_2_Test.json");
+        Object map = JSON.parse(data);
+        System.out.println(JSON.toJSONString(map));
+
+
+        System.out.println(JSON.toJSONString("𝄞"));
+
+        convertToWson("/bug/bigUnicode.json");
+    }
+
     public void testShowWsonFileContent() throws IOException {
         byte[] bts = readFileBytes("/data/trade.wson");
         Object object = Wson.parse(bts);

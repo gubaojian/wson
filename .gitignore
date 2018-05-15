@@ -2,3 +2,7 @@
 **/.idea/*
 *.bin
 *.log
+WsonTest/cmake-build-debug
+WsonTest/cmake-build-debug/*
+WsonTest/cmake-build-debug/
+*.o

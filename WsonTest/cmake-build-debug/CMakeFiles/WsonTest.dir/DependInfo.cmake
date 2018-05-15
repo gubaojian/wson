@@ -6,7 +6,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
   "/Users/furture/code/pack/WsonTest/wson/wson.c" "/Users/furture/code/pack/WsonTest/cmake-build-debug/CMakeFiles/WsonTest.dir/wson/wson.c.o"
-  "/Users/furture/code/pack/WsonTest/wson/wsonparser.c" "/Users/furture/code/pack/WsonTest/cmake-build-debug/CMakeFiles/WsonTest.dir/wson/wsonparser.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")
 
@@ -16,6 +15,8 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
 set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/furture/code/pack/WsonTest/WsonTest.cpp" "/Users/furture/code/pack/WsonTest/cmake-build-debug/CMakeFiles/WsonTest.dir/WsonTest.cpp.o"
   "/Users/furture/code/pack/WsonTest/main.cpp" "/Users/furture/code/pack/WsonTest/cmake-build-debug/CMakeFiles/WsonTest.dir/main.cpp.o"
+  "/Users/furture/code/pack/WsonTest/wson/utf16.cpp" "/Users/furture/code/pack/WsonTest/cmake-build-debug/CMakeFiles/WsonTest.dir/wson/utf16.cpp.o"
+  "/Users/furture/code/pack/WsonTest/wson/wson_parser.cpp" "/Users/furture/code/pack/WsonTest/cmake-build-debug/CMakeFiles/WsonTest.dir/wson/wson_parser.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 
