@@ -17,3 +17,6 @@ https://www.ghostscript.com/doc/base/ConvertUTF.c
 
 
 https://github.com/benkasminbullock/unicode-c/blob/master/unicode.c
+
+
+http://unicodebook.readthedocs.io/unicode_encodings.html
