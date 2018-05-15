@@ -42,10 +42,16 @@ public:
     wson_parser(const char* data, int length);
     ~wson_parser();
 
+    /**
+     * has next type
+     * */
     inline bool hasNext(){
         return wson_has_next(this->buffer);
     }
 
+    /**
+     * return value type
+     * */
     inline uint8_t nextType(){
         if(buffer->data && wson_has_next(buffer)){
             return  wson_next_type(buffer);
@@ -53,36 +59,60 @@ public:
         return WSON_NULL_TYPE;
     }
 
+    /**
+     * return back type, move parse postion--;
+     * */
     inline void backType(){
         if(buffer && buffer->position > 0){
             buffer->position--;
         }
     }
 
-
+    /**
+     * return is map object
+     * */
     inline bool isMap(uint8_t type){
         return type == WSON_MAP_TYPE;
     }
 
+    /**
+     * return is array object
+     * */
     inline bool isArray(uint8_t type){
         return type == WSON_ARRAY_TYPE;
     }
 
+    /**
+     * return is string object
+     * */
     inline bool isString(uint8_t type){
         return type == WSON_STRING_TYPE
                || type == WSON_NUMBER_BIG_INT_TYPE
                || type == WSON_NUMBER_BIG_DECIMAL_TYPE;
     }
 
+    /**
+     * return is bool object
+     * */
     inline bool isBool(uint8_t type){
         return type == WSON_BOOLEAN_TYPE_FALSE || type == WSON_BOOLEAN_TYPE_TRUE;
     }
 
+    /**
+     * return is number object
+     * */
     inline bool isNumber(uint8_t type){
         return type == WSON_NUMBER_INT_TYPE
                || type == WSON_NUMBER_FLOAT_TYPE
                || type == WSON_NUMBER_LONG_TYPE
                || type == WSON_NUMBER_DOUBLE_TYPE;
+    }
+
+    /**
+     * return is null object
+     * */
+    inline bool isNull(uint8_t type){
+        return type == WSON_NULL_TYPE;
     }
 
     /**

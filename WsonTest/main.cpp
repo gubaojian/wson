@@ -21,7 +21,7 @@ int main() {
     int length = china.length();
     wchar_t* data = (wchar_t *) china.c_str();
 
-    printf("data测试  %d   %d  %d\n", data[1], china.at(1), sizeof(wchar_t));
+    printf("data测试  %d   %d  %ld\n", data[1], china.at(1), sizeof(wchar_t));
 
     std::string utf8;
 
