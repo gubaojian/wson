@@ -9,10 +9,7 @@
 #include "wsonjsc.h"
 #include "ObjectConstructor.h"
 #include "JSONObject.h"
-#include "B3Value.h"
-#include "B3Const64Value.h"
 #include "JSCJSValueInlines.h"
-#include "B3ValueInlines.h"
 #include <wtf/Vector.h>
 #include <wtf/HashMap.h>
 
