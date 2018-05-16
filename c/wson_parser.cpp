@@ -22,7 +22,7 @@
 
 #include "wson_parser.h"
 #include "wson.h"
-#include "utf16.h"
+#include "wson_util.h"
 
 wson_parser::wson_parser(const char *data) {
 
@@ -45,7 +45,7 @@ std::string wson_parser::nextMapKeyUTF8(){
     int keyLength = wson_next_uint(buffer);
     uint16_t * utf16 = ( uint16_t *)wson_next_bts(buffer, keyLength);
     std::string str;
-    utf16::utf16_convert_to_utf8_string(utf16, keyLength/sizeof(uint16_t), str);
+    wson::utf16_convert_to_utf8_string(utf16, keyLength/sizeof(uint16_t), str);
     return  str;
 }
 
@@ -57,31 +57,31 @@ void wson_parser::toJSONtring(std::string &builder){
         case WSON_NUMBER_BIG_DECIMAL_TYPE: {
                 int size = wson_next_uint(buffer);
                 uint16_t *utf16 = (uint16_t *) wson_next_bts(buffer, size);
-                utf16::utf16_convert_to_utf8_quote_string(utf16, size / sizeof(uint16_t), builder);
+                wson::utf16_convert_to_utf8_quote_string(utf16, size / sizeof(uint16_t), builder);
             }
             return;
         case WSON_NULL_TYPE:
             builder.append("\"undefined\"");
             break;
         case WSON_NUMBER_INT_TYPE: {
-            int32_t num = wson_next_int(buffer);;
-            builder.append(std::to_string(num));
-        }
+                int32_t num = wson_next_int(buffer);
+                wson::str_append_number(builder, num);
+            }
             return;
         case WSON_NUMBER_FLOAT_TYPE: {
-            float num = wson_next_float(buffer);
-            builder.append(std::to_string(num));
-        }
+                float num = wson_next_float(buffer);
+                wson::str_append_number(builder, num);
+            }
             return;
         case WSON_NUMBER_DOUBLE_TYPE: {
-            double num = wson_next_double(buffer);
-            builder.append(std::to_string(num));
-        }
+               double num = wson_next_double(buffer);
+               wson::str_append_number(builder, num);
+            }
             return;
         case WSON_NUMBER_LONG_TYPE: {
-            int64_t num = wson_next_long(buffer);
-            builder.append(std::to_string(num));
-        }
+               int64_t num = wson_next_long(buffer);
+               wson::str_append_number(builder, num);
+            }
             return;
         case WSON_BOOLEAN_TYPE_TRUE:
             builder.append("true");
@@ -95,7 +95,7 @@ void wson_parser::toJSONtring(std::string &builder){
                     for(int i=0; i<length; i++){
                         int keyLength = wson_next_uint(buffer);
                         uint16_t * utf16 = ( uint16_t *)wson_next_bts(buffer, keyLength);
-                        utf16::utf16_convert_to_utf8_quote_string(utf16, keyLength/sizeof(uint16_t), builder);
+                        wson::utf16_convert_to_utf8_quote_string(utf16, keyLength/sizeof(uint16_t), builder);
                         builder.append(":");
                         toJSONtring(builder);
                         if(i != (length - 1)){
@@ -130,7 +130,7 @@ std::string wson_parser::nextStringUTF8(uint8_t type) {
         case WSON_NUMBER_BIG_DECIMAL_TYPE: {
             int size = wson_next_uint(buffer);
             uint16_t *utf16 = (uint16_t *) wson_next_bts(buffer, size);
-            utf16::utf16_convert_to_utf8_string(utf16, size / sizeof(uint16_t), str);
+            wson::utf16_convert_to_utf8_string(utf16, size / sizeof(uint16_t), str);
             return str;
         }
         case WSON_NULL_TYPE:
@@ -181,7 +181,7 @@ double wson_parser::nextNumber(uint8_t type) {
             std::string str;
             wson_next_bts(buffer, size);
             uint16_t *utf16 = (uint16_t *) wson_next_bts(buffer, size);
-            utf16::utf16_convert_to_utf8_string(utf16, size / sizeof(uint16_t), str);
+            wson::utf16_convert_to_utf8_string(utf16, size / sizeof(uint16_t), str);
             return atof(str.c_str());
         }
         case WSON_NULL_TYPE:

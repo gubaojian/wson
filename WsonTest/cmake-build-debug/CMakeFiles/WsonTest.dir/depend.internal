@@ -8,13 +8,13 @@ CMakeFiles/WsonTest.dir/WsonTest.cpp.o
  /Users/furture/code/pack/WsonTest/WsonTest.cpp
 CMakeFiles/WsonTest.dir/main.cpp.o
  /Users/furture/code/pack/WsonTest/main.cpp
- /Users/furture/code/pack/WsonTest/wson/utf16.h
  /Users/furture/code/pack/WsonTest/wson/wson.h
-CMakeFiles/WsonTest.dir/wson/utf16.cpp.o
- /Users/furture/code/pack/WsonTest/wson/utf16.cpp
- /Users/furture/code/pack/WsonTest/wson/utf16.h
+ /Users/furture/code/pack/WsonTest/wson/wson_util.h
 CMakeFiles/WsonTest.dir/wson/wson_parser.cpp.o
- /Users/furture/code/pack/WsonTest/wson/utf16.h
  /Users/furture/code/pack/WsonTest/wson/wson.h
  /Users/furture/code/pack/WsonTest/wson/wson_parser.cpp
  /Users/furture/code/pack/WsonTest/wson/wson_parser.h
+ /Users/furture/code/pack/WsonTest/wson/wson_util.h
+CMakeFiles/WsonTest.dir/wson/wson_util.cpp.o
+ /Users/furture/code/pack/WsonTest/wson/wson_util.cpp
+ /Users/furture/code/pack/WsonTest/wson/wson_util.h

@@ -173,7 +173,7 @@ public class PrepareWsonFile extends TestCase {
 
         System.out.println(JSON.toJSONString("𝄞"));
 
-        convertToWson("/bug/bigUnicode.json");
+        convertToWson("/addElement.json");
     }
 
     public void testShowWsonFileContent() throws IOException {

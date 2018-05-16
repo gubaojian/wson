@@ -96,18 +96,18 @@ CMakeFiles/WsonTest.dir/wson/wson_parser.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/WsonTest.dir/wson/wson_parser.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/furture/code/pack/WsonTest/wson/wson_parser.cpp -o CMakeFiles/WsonTest.dir/wson/wson_parser.cpp.s
 
-CMakeFiles/WsonTest.dir/wson/utf16.cpp.o: CMakeFiles/WsonTest.dir/flags.make
-CMakeFiles/WsonTest.dir/wson/utf16.cpp.o: ../wson/utf16.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/furture/code/pack/WsonTest/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/WsonTest.dir/wson/utf16.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/WsonTest.dir/wson/utf16.cpp.o -c /Users/furture/code/pack/WsonTest/wson/utf16.cpp
+CMakeFiles/WsonTest.dir/wson/wson_util.cpp.o: CMakeFiles/WsonTest.dir/flags.make
+CMakeFiles/WsonTest.dir/wson/wson_util.cpp.o: ../wson/wson_util.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/furture/code/pack/WsonTest/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/WsonTest.dir/wson/wson_util.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/WsonTest.dir/wson/wson_util.cpp.o -c /Users/furture/code/pack/WsonTest/wson/wson_util.cpp
 
-CMakeFiles/WsonTest.dir/wson/utf16.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/WsonTest.dir/wson/utf16.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/furture/code/pack/WsonTest/wson/utf16.cpp > CMakeFiles/WsonTest.dir/wson/utf16.cpp.i
+CMakeFiles/WsonTest.dir/wson/wson_util.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/WsonTest.dir/wson/wson_util.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/furture/code/pack/WsonTest/wson/wson_util.cpp > CMakeFiles/WsonTest.dir/wson/wson_util.cpp.i
 
-CMakeFiles/WsonTest.dir/wson/utf16.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/WsonTest.dir/wson/utf16.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/furture/code/pack/WsonTest/wson/utf16.cpp -o CMakeFiles/WsonTest.dir/wson/utf16.cpp.s
+CMakeFiles/WsonTest.dir/wson/wson_util.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/WsonTest.dir/wson/wson_util.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/furture/code/pack/WsonTest/wson/wson_util.cpp -o CMakeFiles/WsonTest.dir/wson/wson_util.cpp.s
 
 CMakeFiles/WsonTest.dir/WsonTest.cpp.o: CMakeFiles/WsonTest.dir/flags.make
 CMakeFiles/WsonTest.dir/WsonTest.cpp.o: ../WsonTest.cpp
@@ -127,7 +127,7 @@ WsonTest_OBJECTS = \
 "CMakeFiles/WsonTest.dir/main.cpp.o" \
 "CMakeFiles/WsonTest.dir/wson/wson.c.o" \
 "CMakeFiles/WsonTest.dir/wson/wson_parser.cpp.o" \
-"CMakeFiles/WsonTest.dir/wson/utf16.cpp.o" \
+"CMakeFiles/WsonTest.dir/wson/wson_util.cpp.o" \
 "CMakeFiles/WsonTest.dir/WsonTest.cpp.o"
 
 # External object files for target WsonTest
@@ -136,7 +136,7 @@ WsonTest_EXTERNAL_OBJECTS =
 WsonTest: CMakeFiles/WsonTest.dir/main.cpp.o
 WsonTest: CMakeFiles/WsonTest.dir/wson/wson.c.o
 WsonTest: CMakeFiles/WsonTest.dir/wson/wson_parser.cpp.o
-WsonTest: CMakeFiles/WsonTest.dir/wson/utf16.cpp.o
+WsonTest: CMakeFiles/WsonTest.dir/wson/wson_util.cpp.o
 WsonTest: CMakeFiles/WsonTest.dir/WsonTest.cpp.o
 WsonTest: CMakeFiles/WsonTest.dir/build.make
 WsonTest: CMakeFiles/WsonTest.dir/link.txt

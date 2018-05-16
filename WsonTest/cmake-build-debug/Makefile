@@ -203,6 +203,33 @@ WsonTest.cpp.s:
 	$(MAKE) -f CMakeFiles/WsonTest.dir/build.make CMakeFiles/WsonTest.dir/WsonTest.cpp.s
 .PHONY : WsonTest.cpp.s
 
+bench.o: bench.cpp.o
+
+.PHONY : bench.o
+
+# target to build an object file
+bench.cpp.o:
+	$(MAKE) -f CMakeFiles/utf16Text.dir/build.make CMakeFiles/utf16Text.dir/bench.cpp.o
+.PHONY : bench.cpp.o
+
+bench.i: bench.cpp.i
+
+.PHONY : bench.i
+
+# target to preprocess a source file
+bench.cpp.i:
+	$(MAKE) -f CMakeFiles/utf16Text.dir/build.make CMakeFiles/utf16Text.dir/bench.cpp.i
+.PHONY : bench.cpp.i
+
+bench.s: bench.cpp.s
+
+.PHONY : bench.s
+
+# target to generate assembly for a file
+bench.cpp.s:
+	$(MAKE) -f CMakeFiles/utf16Text.dir/build.make CMakeFiles/utf16Text.dir/bench.cpp.s
+.PHONY : bench.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -256,39 +283,6 @@ utf16_test.s: utf16_test.cpp.s
 utf16_test.cpp.s:
 	$(MAKE) -f CMakeFiles/utf16Text.dir/build.make CMakeFiles/utf16Text.dir/utf16_test.cpp.s
 .PHONY : utf16_test.cpp.s
-
-wson/utf16.o: wson/utf16.cpp.o
-
-.PHONY : wson/utf16.o
-
-# target to build an object file
-wson/utf16.cpp.o:
-	$(MAKE) -f CMakeFiles/utf16Text.dir/build.make CMakeFiles/utf16Text.dir/wson/utf16.cpp.o
-	$(MAKE) -f CMakeFiles/wsonParserTest.dir/build.make CMakeFiles/wsonParserTest.dir/wson/utf16.cpp.o
-	$(MAKE) -f CMakeFiles/WsonTest.dir/build.make CMakeFiles/WsonTest.dir/wson/utf16.cpp.o
-.PHONY : wson/utf16.cpp.o
-
-wson/utf16.i: wson/utf16.cpp.i
-
-.PHONY : wson/utf16.i
-
-# target to preprocess a source file
-wson/utf16.cpp.i:
-	$(MAKE) -f CMakeFiles/utf16Text.dir/build.make CMakeFiles/utf16Text.dir/wson/utf16.cpp.i
-	$(MAKE) -f CMakeFiles/wsonParserTest.dir/build.make CMakeFiles/wsonParserTest.dir/wson/utf16.cpp.i
-	$(MAKE) -f CMakeFiles/WsonTest.dir/build.make CMakeFiles/WsonTest.dir/wson/utf16.cpp.i
-.PHONY : wson/utf16.cpp.i
-
-wson/utf16.s: wson/utf16.cpp.s
-
-.PHONY : wson/utf16.s
-
-# target to generate assembly for a file
-wson/utf16.cpp.s:
-	$(MAKE) -f CMakeFiles/utf16Text.dir/build.make CMakeFiles/utf16Text.dir/wson/utf16.cpp.s
-	$(MAKE) -f CMakeFiles/wsonParserTest.dir/build.make CMakeFiles/wsonParserTest.dir/wson/utf16.cpp.s
-	$(MAKE) -f CMakeFiles/WsonTest.dir/build.make CMakeFiles/WsonTest.dir/wson/utf16.cpp.s
-.PHONY : wson/utf16.cpp.s
 
 wson/wson.o: wson/wson.c.o
 
@@ -350,6 +344,39 @@ wson/wson_parser.cpp.s:
 	$(MAKE) -f CMakeFiles/WsonTest.dir/build.make CMakeFiles/WsonTest.dir/wson/wson_parser.cpp.s
 .PHONY : wson/wson_parser.cpp.s
 
+wson/wson_util.o: wson/wson_util.cpp.o
+
+.PHONY : wson/wson_util.o
+
+# target to build an object file
+wson/wson_util.cpp.o:
+	$(MAKE) -f CMakeFiles/utf16Text.dir/build.make CMakeFiles/utf16Text.dir/wson/wson_util.cpp.o
+	$(MAKE) -f CMakeFiles/wsonParserTest.dir/build.make CMakeFiles/wsonParserTest.dir/wson/wson_util.cpp.o
+	$(MAKE) -f CMakeFiles/WsonTest.dir/build.make CMakeFiles/WsonTest.dir/wson/wson_util.cpp.o
+.PHONY : wson/wson_util.cpp.o
+
+wson/wson_util.i: wson/wson_util.cpp.i
+
+.PHONY : wson/wson_util.i
+
+# target to preprocess a source file
+wson/wson_util.cpp.i:
+	$(MAKE) -f CMakeFiles/utf16Text.dir/build.make CMakeFiles/utf16Text.dir/wson/wson_util.cpp.i
+	$(MAKE) -f CMakeFiles/wsonParserTest.dir/build.make CMakeFiles/wsonParserTest.dir/wson/wson_util.cpp.i
+	$(MAKE) -f CMakeFiles/WsonTest.dir/build.make CMakeFiles/WsonTest.dir/wson/wson_util.cpp.i
+.PHONY : wson/wson_util.cpp.i
+
+wson/wson_util.s: wson/wson_util.cpp.s
+
+.PHONY : wson/wson_util.s
+
+# target to generate assembly for a file
+wson/wson_util.cpp.s:
+	$(MAKE) -f CMakeFiles/utf16Text.dir/build.make CMakeFiles/utf16Text.dir/wson/wson_util.cpp.s
+	$(MAKE) -f CMakeFiles/wsonParserTest.dir/build.make CMakeFiles/wsonParserTest.dir/wson/wson_util.cpp.s
+	$(MAKE) -f CMakeFiles/WsonTest.dir/build.make CMakeFiles/WsonTest.dir/wson/wson_util.cpp.s
+.PHONY : wson/wson_util.cpp.s
+
 wson_parser_test.o: wson_parser_test.cpp.o
 
 .PHONY : wson_parser_test.o
@@ -394,21 +421,24 @@ help:
 	@echo "... WsonTest.o"
 	@echo "... WsonTest.i"
 	@echo "... WsonTest.s"
+	@echo "... bench.o"
+	@echo "... bench.i"
+	@echo "... bench.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
 	@echo "... utf16_test.o"
 	@echo "... utf16_test.i"
 	@echo "... utf16_test.s"
-	@echo "... wson/utf16.o"
-	@echo "... wson/utf16.i"
-	@echo "... wson/utf16.s"
 	@echo "... wson/wson.o"
 	@echo "... wson/wson.i"
 	@echo "... wson/wson.s"
 	@echo "... wson/wson_parser.o"
 	@echo "... wson/wson_parser.i"
 	@echo "... wson/wson_parser.s"
+	@echo "... wson/wson_util.o"
+	@echo "... wson/wson_util.i"
+	@echo "... wson/wson_util.s"
 	@echo "... wson_parser_test.o"
 	@echo "... wson_parser_test.i"
 	@echo "... wson_parser_test.s"

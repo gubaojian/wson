@@ -34,7 +34,7 @@
 
 typedef std::basic_string<uint16_t, std::char_traits<uint16_t>, std::allocator<uint16_t> > u16string;
 
-
+/** utf16 support which is so fast and cross javascriptcore java and c plus*/
 class wson_parser {
 
 public:
@@ -151,6 +151,28 @@ public:
      * skip current value type
      * */
     void skipValue(uint8_t type);
+
+
+    /**
+     * reset to start position
+     * */
+    inline void  resetState(){
+        if(this->buffer){
+            this->buffer->position = 0;
+        }
+    }
+
+    /**
+     * get current state position
+     * */
+    inline int getState(){
+        return this->buffer->position;
+    }
+
+    /**restore parse to state */
+    inline int restoreToState(int state){
+        return this->buffer->position = state;
+    }
 
 
 private:

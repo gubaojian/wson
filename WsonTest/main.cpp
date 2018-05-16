@@ -2,7 +2,7 @@
 #include <fstream>
 #include <JavaScriptCore/JavaScriptCore.h>
 #include "wson/wson.h"
-#include "wson/utf16.h"
+#include "wson/wson_util.h"
 
 static void  testWson();
 static void  testWsonWithJava();
@@ -26,7 +26,7 @@ int main() {
     std::string utf8;
 
 
-    utf16::utf16_convert_to_utf8_string((uint16_t *)data, length*2, utf8);
+    wson::utf16_convert_to_utf8_string((uint16_t *)data, length*2, utf8);
 
 
     printf("cstr %s \n", utf8.c_str());

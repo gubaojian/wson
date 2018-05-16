@@ -7,14 +7,14 @@ CMakeFiles/WsonTest.dir/wson/wson.c.o: ../wson/wson.h
 CMakeFiles/WsonTest.dir/WsonTest.cpp.o: ../WsonTest.cpp
 
 CMakeFiles/WsonTest.dir/main.cpp.o: ../main.cpp
-CMakeFiles/WsonTest.dir/main.cpp.o: ../wson/utf16.h
 CMakeFiles/WsonTest.dir/main.cpp.o: ../wson/wson.h
+CMakeFiles/WsonTest.dir/main.cpp.o: ../wson/wson_util.h
 
-CMakeFiles/WsonTest.dir/wson/utf16.cpp.o: ../wson/utf16.cpp
-CMakeFiles/WsonTest.dir/wson/utf16.cpp.o: ../wson/utf16.h
-
-CMakeFiles/WsonTest.dir/wson/wson_parser.cpp.o: ../wson/utf16.h
 CMakeFiles/WsonTest.dir/wson/wson_parser.cpp.o: ../wson/wson.h
 CMakeFiles/WsonTest.dir/wson/wson_parser.cpp.o: ../wson/wson_parser.cpp
 CMakeFiles/WsonTest.dir/wson/wson_parser.cpp.o: ../wson/wson_parser.h
+CMakeFiles/WsonTest.dir/wson/wson_parser.cpp.o: ../wson/wson_util.h
+
+CMakeFiles/WsonTest.dir/wson/wson_util.cpp.o: ../wson/wson_util.cpp
+CMakeFiles/WsonTest.dir/wson/wson_util.cpp.o: ../wson/wson_util.h
 

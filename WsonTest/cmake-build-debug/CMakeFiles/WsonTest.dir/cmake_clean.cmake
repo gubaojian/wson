@@ -2,7 +2,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/WsonTest.dir/main.cpp.o"
   "CMakeFiles/WsonTest.dir/wson/wson.c.o"
   "CMakeFiles/WsonTest.dir/wson/wson_parser.cpp.o"
-  "CMakeFiles/WsonTest.dir/wson/utf16.cpp.o"
+  "CMakeFiles/WsonTest.dir/wson/wson_util.cpp.o"
   "CMakeFiles/WsonTest.dir/WsonTest.cpp.o"
   "WsonTest.pdb"
   "WsonTest"

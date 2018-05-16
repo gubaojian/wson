@@ -2,10 +2,11 @@
 // Created by furture on 2018/5/15.
 //
 
-#include "utf16.h"
+#include "wson_util.h"
+#include <stdio.h>
 
 
-namespace utf16 {
+namespace wson {
 
     /**
      * see java jdk source to handle handle utf-16 in 4 byte
@@ -217,5 +218,56 @@ namespace utf16 {
         *utf8 = '\0';
         return src;
     }
+
+
+    /** min size is 32 + 1 = 33 */
+    inline void number_to_buffer(char* buffer, int32_t num){
+        snprintf(buffer, 32,"%d", num);
+    }
+
+    /** min size is 64 + 1 = 65 */
+    inline void number_to_buffer(char* buffer, float num){
+        snprintf(buffer, 64, "%f", num);
+    }
+
+    /** min size is 64 + 1 = 65 */
+    inline void number_to_buffer(char* buffer, double num){
+        snprintf(buffer, 64, "%f", num);
+    }
+
+    /** min size is 64 + 1 = 65 */
+    inline void number_to_buffer(char* buffer, int64_t num){
+        snprintf(buffer, 64, "%lld", num);
+    }
+
+
+    void str_append_number(std::string& str, double  num){
+        char src[64 + 2];
+        char* buffer = src;
+        number_to_buffer(buffer, num);
+        str.append(src);
+    }
+
+    void str_append_number(std::string& str, float  num){
+        char src[64 + 2];
+        char* buffer = src;
+        number_to_buffer(buffer, num);
+        str.append(src);
+    }
+
+    void str_append_number(std::string& str, int32_t  num){
+        char src[32 + 2];
+        char* buffer = src;
+        number_to_buffer(buffer, num);
+        str.append(src);
+    }
+
+    void str_append_number(std::string& str, int64_t  num){
+        char src[64 + 2];
+        char* buffer = src;
+        number_to_buffer(buffer, num);
+        str.append(src);
+    }
+
 
 }

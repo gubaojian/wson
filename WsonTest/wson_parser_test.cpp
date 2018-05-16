@@ -5,6 +5,7 @@
 #include "wson/wson.h"
 #include "wson/wson_parser.h"
 #include "FileUtils.h"
+#include "bench.h"
 
 
 void test_big_unicode(){
@@ -20,6 +21,21 @@ void test_big_unicode(){
     }
     free((void*)data);
     free((void*)src);
+}
+
+
+void test_bench_example(){
+    const char* data = FileUtils::readFile("/Users/furture/code/pack/java/src/test/resources/weex2.wson");
+    wson_parser parser(data);
+    double start = bench::now_ms();
+    for(int i=0; i<10000; i++){
+        int type = parser.nextType();
+        parser.nextStringUTF8(type);
+        parser.resetState();
+    }
+    printf("bench end used %f ms \n", (bench::now_ms() - start));
+
+    free((void*)data);
 }
 
 void test_map_example(){
@@ -39,6 +55,25 @@ void test_map_example(){
     }
     free((void*)data);
 }
+
+void test_add_element_example(){
+    const char* data = FileUtils::readFile("/Users/furture/code/pack/java/src/test/resources/addElement.wson");
+    wson_parser parser(data);
+    int type = parser.nextType();
+    if(parser.isMap(type)){
+        int size = parser.nextMapSize();
+        for(int i=0; i<size; i++){
+            std::string key = parser.nextMapKeyUTF8();
+            uint8_t  valueType = parser.nextType();
+            std::string value = parser.nextStringUTF8(valueType);
+            printf("map %s == %s \n", key.c_str(), value.c_str());
+        }
+    }else{
+        printf("wson data error %s \n", parser.nextStringUTF8(type).c_str());
+    }
+    free((void*)data);
+}
+
 
 
 void test_array_example(){
@@ -60,9 +95,18 @@ void test_array_example(){
 
 
 int main(){
+    test_add_element_example();
+    test_bench_example();
     test_big_unicode();
     test_map_example();
     test_array_example();
+
+
+    char*  floatBuffer = new char[64];
+
+    snprintf(floatBuffer, 64, "%d", 10);
+
+    printf("floatBuffer %s ", floatBuffer);
 
     const char* data = FileUtils::readFile("/Users/furture/code/pack/java/src/test/resources/bug/bigUnicode.wson");
     printf("read file succes type \n");

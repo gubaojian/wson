@@ -396,7 +396,6 @@ namespace wson {
             if(val.isDouble()){
                 double number = val.asDouble();
                 if(number >  (((int64_t)1) << 50) ){
-                    printf("ddd %lld ", ((int64_t)1) << 50);
                     double number64 = (double)((int64_t)number);
                     if(number - number64 == 0.0){ //check is int64Number
                         wson_push_type_long(buffer, (int64_t)number);

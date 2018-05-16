@@ -182,19 +182,17 @@
 		<Unit filename="/Users/furture/code/pack/WsonTest/WsonTest.h">
 			<Option target="WsonTest"/>
 		</Unit>
+		<Unit filename="/Users/furture/code/pack/WsonTest/bench.cpp">
+			<Option target="utf16Text"/>
+		</Unit>
+		<Unit filename="/Users/furture/code/pack/WsonTest/bench.h">
+			<Option target="utf16Text"/>
+		</Unit>
 		<Unit filename="/Users/furture/code/pack/WsonTest/main.cpp">
 			<Option target="WsonTest"/>
 		</Unit>
 		<Unit filename="/Users/furture/code/pack/WsonTest/utf16_test.cpp">
 			<Option target="utf16Text"/>
-		</Unit>
-		<Unit filename="/Users/furture/code/pack/WsonTest/wson/utf16.cpp">
-			<Option target="utf16Text"/>
-			<Option target="wsonParserTest"/>
-			<Option target="WsonTest"/>
-		</Unit>
-		<Unit filename="/Users/furture/code/pack/WsonTest/wson/utf16.h">
-			<Option target="WsonTest"/>
 		</Unit>
 		<Unit filename="/Users/furture/code/pack/WsonTest/wson/wson.c">
 			<Option target="wsonParserTest"/>
@@ -208,6 +206,14 @@
 			<Option target="WsonTest"/>
 		</Unit>
 		<Unit filename="/Users/furture/code/pack/WsonTest/wson/wson_parser.h">
+			<Option target="WsonTest"/>
+		</Unit>
+		<Unit filename="/Users/furture/code/pack/WsonTest/wson/wson_util.cpp">
+			<Option target="utf16Text"/>
+			<Option target="wsonParserTest"/>
+			<Option target="WsonTest"/>
+		</Unit>
+		<Unit filename="/Users/furture/code/pack/WsonTest/wson/wson_util.h">
 			<Option target="WsonTest"/>
 		</Unit>
 		<Unit filename="/Users/furture/code/pack/WsonTest/wson_parser_test.cpp">
