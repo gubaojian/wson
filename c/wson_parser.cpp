@@ -26,60 +26,81 @@
 
 wson_parser::wson_parser(const char *data) {
 
-    this->buffer = wson_buffer_from((void *) data, 1024*1024);
+    this->wsonBuffer = wson_buffer_from((void *) data, 1024*1024);
 }
 
 wson_parser::wson_parser(const char *data, int length) {
-    this->buffer = wson_buffer_from((void *) data, length);
+    this->wsonBuffer = wson_buffer_from((void *) data, length);
 }
 
 wson_parser::~wson_parser() {
-    if(buffer){
-        buffer->data = nullptr;
-        free(buffer);
-        buffer = NULL;
+    if(wsonBuffer){
+        wsonBuffer->data = nullptr;
+        free(wsonBuffer);
+        wsonBuffer = NULL;
+    }
+    if(decodingBuffer != nullptr && decodingBufferSize > 0){
+        delete [] decodingBuffer;
+        decodingBuffer = nullptr;
     }
 }
 
 std::string wson_parser::nextMapKeyUTF8(){
-    int keyLength = wson_next_uint(buffer);
-    uint16_t * utf16 = ( uint16_t *)wson_next_bts(buffer, keyLength);
+    int keyLength = wson_next_uint(wsonBuffer);
+    uint16_t * utf16 = ( uint16_t *)wson_next_bts(wsonBuffer, keyLength);
     std::string str;
-    wson::utf16_convert_to_utf8_string(utf16, keyLength/sizeof(uint16_t), str);
+    wson::utf16_convert_to_utf8_string(utf16, keyLength/sizeof(uint16_t), requireDecodingBuffer(keyLength*2), str);
     return  str;
 }
 
+
+
+char* wson_parser::requireDecodingBuffer(int length){
+    if(decodingBufferSize <= 0 || decodingBufferSize < length){
+        if(decodingBuffer != nullptr && decodingBufferSize > 0){
+            delete [] decodingBuffer;
+            decodingBuffer = nullptr;
+        }
+        decodingBuffer = new char[length];
+        decodingBufferSize = length;
+    }else{
+        return decodingBuffer;
+    }
+    return decodingBuffer;
+}
+
+
 void wson_parser::toJSONtring(std::string &builder){
-    uint8_t  type = wson_next_type(buffer);
+    uint8_t  type = wson_next_type(wsonBuffer);
     switch (type) {
         case WSON_STRING_TYPE:
         case WSON_NUMBER_BIG_INT_TYPE:
         case WSON_NUMBER_BIG_DECIMAL_TYPE: {
-                int size = wson_next_uint(buffer);
-                uint16_t *utf16 = (uint16_t *) wson_next_bts(buffer, size);
-                wson::utf16_convert_to_utf8_quote_string(utf16, size / sizeof(uint16_t), builder);
+                int size = wson_next_uint(wsonBuffer);
+                uint16_t *utf16 = (uint16_t *) wson_next_bts(wsonBuffer, size);
+                wson::utf16_convert_to_utf8_quote_string(utf16, size / sizeof(uint16_t),  requireDecodingBuffer(size*2), builder);
             }
             return;
         case WSON_NULL_TYPE:
             builder.append("\"undefined\"");
             break;
         case WSON_NUMBER_INT_TYPE: {
-                int32_t num = wson_next_int(buffer);
+                int32_t num = wson_next_int(wsonBuffer);
                 wson::str_append_number(builder, num);
             }
             return;
         case WSON_NUMBER_FLOAT_TYPE: {
-                float num = wson_next_float(buffer);
+                float num = wson_next_float(wsonBuffer);
                 wson::str_append_number(builder, num);
             }
             return;
         case WSON_NUMBER_DOUBLE_TYPE: {
-               double num = wson_next_double(buffer);
+               double num = wson_next_double(wsonBuffer);
                wson::str_append_number(builder, num);
             }
             return;
         case WSON_NUMBER_LONG_TYPE: {
-               int64_t num = wson_next_long(buffer);
+               int64_t num = wson_next_long(wsonBuffer);
                wson::str_append_number(builder, num);
             }
             return;
@@ -90,12 +111,12 @@ void wson_parser::toJSONtring(std::string &builder){
             builder.append("false");
             return;
         case WSON_MAP_TYPE:{
-                    int length = wson_next_uint(buffer);
+                    int length = wson_next_uint(wsonBuffer);
                     builder.append("{");
                     for(int i=0; i<length; i++){
-                        int keyLength = wson_next_uint(buffer);
-                        uint16_t * utf16 = ( uint16_t *)wson_next_bts(buffer, keyLength);
-                        wson::utf16_convert_to_utf8_quote_string(utf16, keyLength/sizeof(uint16_t), builder);
+                        int keyLength = wson_next_uint(wsonBuffer);
+                        uint16_t * utf16 = ( uint16_t *)wson_next_bts(wsonBuffer, keyLength);
+                        wson::utf16_convert_to_utf8_quote_string(utf16, keyLength/sizeof(uint16_t), requireDecodingBuffer(keyLength*2),  builder);
                         builder.append(":");
                         toJSONtring(builder);
                         if(i != (length - 1)){
@@ -107,7 +128,7 @@ void wson_parser::toJSONtring(std::string &builder){
             return;
         case WSON_ARRAY_TYPE:{
                 builder.append("[");
-                int length = wson_next_uint(buffer);
+                int length = wson_next_uint(wsonBuffer);
                 for(int i=0; i<length; i++){
                     toJSONtring(builder);
                     if(i != (length - 1)){
@@ -128,31 +149,31 @@ std::string wson_parser::nextStringUTF8(uint8_t type) {
         case WSON_STRING_TYPE:
         case WSON_NUMBER_BIG_INT_TYPE:
         case WSON_NUMBER_BIG_DECIMAL_TYPE: {
-            int size = wson_next_uint(buffer);
-            uint16_t *utf16 = (uint16_t *) wson_next_bts(buffer, size);
-            wson::utf16_convert_to_utf8_string(utf16, size / sizeof(uint16_t), str);
+            int size = wson_next_uint(wsonBuffer);
+            uint16_t *utf16 = (uint16_t *) wson_next_bts(wsonBuffer, size);
+            wson::utf16_convert_to_utf8_string(utf16, size / sizeof(uint16_t), requireDecodingBuffer(size*2), str);
             return str;
         }
         case WSON_NULL_TYPE:
             str.append("undefined");
             break;
         case WSON_NUMBER_INT_TYPE: {
-              int32_t num = wson_next_int(buffer);;
+              int32_t num = wson_next_int(wsonBuffer);;
               str.append(std::to_string(num));
             }
             return str;
         case WSON_NUMBER_FLOAT_TYPE: {
-            float num = wson_next_float(buffer);
+            float num = wson_next_float(wsonBuffer);
             str.append(std::to_string(num));
         }
             return str;
         case WSON_NUMBER_DOUBLE_TYPE: {
-            double num = wson_next_double(buffer);
+            double num = wson_next_double(wsonBuffer);
             str.append(std::to_string(num));
         }
             return str;
         case WSON_NUMBER_LONG_TYPE: {
-            int64_t num = wson_next_long(buffer);
+            int64_t num = wson_next_long(wsonBuffer);
             str.append(std::to_string(num));
         }
             return str;
@@ -164,7 +185,7 @@ std::string wson_parser::nextStringUTF8(uint8_t type) {
             return str;
         case WSON_MAP_TYPE:
         case WSON_ARRAY_TYPE:
-            buffer->position--;
+            wsonBuffer->position--;
             toJSONtring(str);
         default:
             break;
@@ -177,32 +198,32 @@ double wson_parser::nextNumber(uint8_t type) {
         case WSON_STRING_TYPE:
         case WSON_NUMBER_BIG_INT_TYPE:
         case WSON_NUMBER_BIG_DECIMAL_TYPE: {
-            int size = wson_next_uint(buffer);
+            int size = wson_next_uint(wsonBuffer);
             std::string str;
-            wson_next_bts(buffer, size);
-            uint16_t *utf16 = (uint16_t *) wson_next_bts(buffer, size);
-            wson::utf16_convert_to_utf8_string(utf16, size / sizeof(uint16_t), str);
+            wson_next_bts(wsonBuffer, size);
+            uint16_t *utf16 = (uint16_t *) wson_next_bts(wsonBuffer, size);
+            wson::utf16_convert_to_utf8_string(utf16, size/sizeof(uint16_t), requireDecodingBuffer(size*2),str);
             return atof(str.c_str());
         }
         case WSON_NULL_TYPE:
             return  0;
         case WSON_NUMBER_INT_TYPE:{
-              int32_t num = wson_next_int(buffer);
+              int32_t num = wson_next_int(wsonBuffer);
               return num;
             }
             break;
         case WSON_NUMBER_FLOAT_TYPE:{
-                float num = wson_next_float(buffer);
+                float num = wson_next_float(wsonBuffer);
                 return num;
             }
             break;
         case WSON_NUMBER_DOUBLE_TYPE:{
-                double num = wson_next_double(buffer);
+                double num = wson_next_double(wsonBuffer);
                 return num;
             }
             break;
         case WSON_NUMBER_LONG_TYPE:{
-                int64_t num = wson_next_long(buffer);
+                int64_t num = wson_next_long(wsonBuffer);
                 return num;
             }
             break;
@@ -232,41 +253,41 @@ void wson_parser::skipValue(uint8_t type) {
         case WSON_STRING_TYPE:
         case WSON_NUMBER_BIG_INT_TYPE:
         case WSON_NUMBER_BIG_DECIMAL_TYPE: {
-            int size = wson_next_uint(buffer);
-            wson_next_bts(buffer, size);
+            int size = wson_next_uint(wsonBuffer);
+            wson_next_bts(wsonBuffer, size);
             return;
         }
         case WSON_NULL_TYPE:
             break;
         case WSON_NUMBER_INT_TYPE:
-             wson_next_int(buffer);
+             wson_next_int(wsonBuffer);
             return;
         case WSON_NUMBER_FLOAT_TYPE:
-            wson_next_float(buffer);
+            wson_next_float(wsonBuffer);
             return;
         case WSON_NUMBER_DOUBLE_TYPE:
-            wson_next_double(buffer);
+            wson_next_double(wsonBuffer);
             return;
         case WSON_NUMBER_LONG_TYPE:
-             wson_next_long(buffer);
+             wson_next_long(wsonBuffer);
             return;
         case WSON_BOOLEAN_TYPE_TRUE:
             return;
         case WSON_BOOLEAN_TYPE_FALSE:
             return;
         case WSON_MAP_TYPE:{
-                int length = wson_next_uint(buffer);
+                int length = wson_next_uint(wsonBuffer);
                 for(int i=0; i<length; i++){
-                    int keyLength = wson_next_uint(buffer);
-                    wson_next_bts(buffer, keyLength);
-                    skipValue(wson_next_type(buffer));
+                    int keyLength = wson_next_uint(wsonBuffer);
+                    wson_next_bts(wsonBuffer, keyLength);
+                    skipValue(wson_next_type(wsonBuffer));
                 }
             }
             return;
         case WSON_ARRAY_TYPE:{
-                int length = wson_next_uint(buffer);
+                int length = wson_next_uint(wsonBuffer);
                 for(int i=0; i<length; i++){
-                    skipValue(wson_next_type(buffer));
+                    skipValue(wson_next_type(wsonBuffer));
                 }
             }
             return;

@@ -28,7 +28,7 @@ void test_bench_example(){
     const char* data = FileUtils::readFile("/Users/furture/code/pack/java/src/test/resources/weex2.wson");
     wson_parser parser(data);
     double start = bench::now_ms();
-    for(int i=0; i<10000; i++){
+    for(int i=0; i<100000; i++){
         int type = parser.nextType();
         parser.nextStringUTF8(type);
         parser.resetState();

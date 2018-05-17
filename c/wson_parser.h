@@ -46,15 +46,15 @@ public:
      * has next type
      * */
     inline bool hasNext(){
-        return wson_has_next(this->buffer);
+        return wson_has_next(this->wsonBuffer);
     }
 
     /**
      * return value type
      * */
     inline uint8_t nextType(){
-        if(buffer->data && wson_has_next(buffer)){
-            return  wson_next_type(buffer);
+        if(wsonBuffer->data && wson_has_next(wsonBuffer)){
+            return  wson_next_type(wsonBuffer);
         }
         return WSON_NULL_TYPE;
     }
@@ -63,8 +63,8 @@ public:
      * return back type, move parse postion--;
      * */
     inline void backType(){
-        if(buffer && buffer->position > 0){
-            buffer->position--;
+        if(wsonBuffer && wsonBuffer->position > 0){
+            wsonBuffer->position--;
         }
     }
 
@@ -119,14 +119,14 @@ public:
      * return map size
      * */
     inline  int  nextMapSize(){
-        return wson_next_uint(buffer);
+        return wson_next_uint(wsonBuffer);
     }
 
     /**
      * return array size
      * */
     inline  int  nextArraySize(){
-        return wson_next_uint(buffer);
+        return wson_next_uint(wsonBuffer);
     }
 
     /**
@@ -157,8 +157,8 @@ public:
      * reset to start position
      * */
     inline void  resetState(){
-        if(this->buffer){
-            this->buffer->position = 0;
+        if(this->wsonBuffer){
+            this->wsonBuffer->position = 0;
         }
     }
 
@@ -166,18 +166,23 @@ public:
      * get current state position
      * */
     inline int getState(){
-        return this->buffer->position;
+        return this->wsonBuffer->position;
     }
 
     /**restore parse to state */
     inline int restoreToState(int state){
-        return this->buffer->position = state;
+        return this->wsonBuffer->position = state;
     }
 
 
 private:
-    wson_buffer* buffer;
+    wson_buffer* wsonBuffer;
     void toJSONtring(std::string &builder);
+
+    /**reuse buffer for decoding */
+    char *requireDecodingBuffer(int length);
+    char* decodingBuffer = nullptr;
+    int  decodingBufferSize = 0;
 };
 
 

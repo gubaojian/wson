@@ -13,14 +13,22 @@ namespace wson{
     /**
      *  unicode to utf8 convertor with zero dependency inspired by java sdk character source
      * */
-    void utf16_convert_to_utf8_string(uint16_t * utf16, int length, std::string& utf8);
-
-    char* utf16_convert_to_utf8_cstr(uint16_t * utf16, int length);
-
-    void utf16_convert_to_utf8_quote_string(uint16_t * utf16, int length, std::string& utf8);
+    void utf16_convert_to_utf8_string(uint16_t *utf16, int length, char* decodingBuffer, std::string& utf8);
+    void utf16_convert_to_utf8_quote_string(uint16_t *utf16, int length, char* decodingBuffer, std::string& utf8);
 
     /**
-     * support double float int32 int64 , not thread safe
+     *  unicode to utf8 convertor with zero dependency inspired by java sdk character source
+     * */
+    void utf16_convert_to_utf8_string(uint16_t *utf16, int length, std::string& utf8);
+    void utf16_convert_to_utf8_quote_string(uint16_t *utf16, int length, std::string& utf8);
+    /**
+     * return byte count in utf8, buffer size should can contains convert values
+     * */
+    int utf16_convert_to_utf8_cstr(uint16_t *utf16, int length, char* buffer);
+    int utf16_convert_to_utf8_quote_cstr(uint16_t *utf16, int length, char* buffer);
+
+    /**
+     * append support double float int32 int64
      * */
     void str_append_number(std::string& str, double  num);
     void str_append_number(std::string& str, float  num);
