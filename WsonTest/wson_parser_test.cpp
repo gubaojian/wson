@@ -2,6 +2,8 @@
 // Created by furture on 2018/5/15.
 //
 
+///Users/furture/Library/Android/sdk/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-addr2line -piCfe libweexjss.so 00052d7d
+
 #include "wson/wson.h"
 #include "wson/wson_parser.h"
 #include "FileUtils.h"
@@ -94,12 +96,20 @@ void test_array_example(){
 }
 
 
+void test_to_string_example(){
+    const char* data = FileUtils::readFile("/Users/furture/code/pack/java/src/test/resources/data/int_array_100.wson");
+    wson_parser parser(data);
+    printf("toString %s \n", parser.toStringUTF8().c_str());
+}
+
+
 int main(){
     test_add_element_example();
     test_bench_example();
     test_big_unicode();
     test_map_example();
     test_array_example();
+    test_to_string_example();
 
 
     char*  floatBuffer = new char[64];

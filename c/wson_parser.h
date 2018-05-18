@@ -173,6 +173,9 @@ public:
     inline int restoreToState(int state){
         return this->wsonBuffer->position = state;
     }
+    
+    /** conver wson to json string */
+    std::string wson_parser::toStringUTF8();
 
 
 private:

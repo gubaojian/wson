@@ -82,7 +82,7 @@ void wson_parser::toJSONtring(std::string &builder){
             }
             return;
         case WSON_NULL_TYPE:
-            builder.append("\"undefined\"");
+            builder.append("\"\"");
             break;
         case WSON_NUMBER_INT_TYPE: {
                 int32_t num = wson_next_int(wsonBuffer);
@@ -155,26 +155,26 @@ std::string wson_parser::nextStringUTF8(uint8_t type) {
             return str;
         }
         case WSON_NULL_TYPE:
-            str.append("undefined");
+            str.append("");
             break;
         case WSON_NUMBER_INT_TYPE: {
               int32_t num = wson_next_int(wsonBuffer);;
-              str.append(std::to_string(num));
+               wson::str_append_number(str, num);
             }
             return str;
         case WSON_NUMBER_FLOAT_TYPE: {
             float num = wson_next_float(wsonBuffer);
-            str.append(std::to_string(num));
+            wson::str_append_number(str, num);
         }
             return str;
         case WSON_NUMBER_DOUBLE_TYPE: {
             double num = wson_next_double(wsonBuffer);
-            str.append(std::to_string(num));
+            wson::str_append_number(str, num);
         }
             return str;
         case WSON_NUMBER_LONG_TYPE: {
             int64_t num = wson_next_long(wsonBuffer);
-            str.append(std::to_string(num));
+            wson::str_append_number(str, num);
         }
             return str;
         case WSON_BOOLEAN_TYPE_TRUE:
@@ -294,4 +294,13 @@ void wson_parser::skipValue(uint8_t type) {
         default:
             break;
     }
+}
+
+
+std::string wson_parser::toStringUTF8() {
+    int position = this->wsonBuffer->position;
+    this->wsonBuffer->position = 0;
+    std::string json = nextStringUTF8(nextType());
+    this->wsonBuffer->position = position;
+    return json;
 }
