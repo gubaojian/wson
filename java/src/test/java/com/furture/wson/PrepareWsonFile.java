@@ -173,7 +173,7 @@ public class PrepareWsonFile extends TestCase {
 
         System.out.println(JSON.toJSONString("𝄞"));
 
-        convertToWson("/addElement.json");
+        convertToWson("/plus/parser.json");
     }
 
     public void testShowWsonFileContent() throws IOException {
@@ -190,6 +190,9 @@ public class PrepareWsonFile extends TestCase {
         String wsonFile = "src/test/resources/" + (jsonFile.substring(1, jsonFile.indexOf('.')) + ".wson");
         saveFile(wsonFile, wson);
     }
+
+
+
 
 
     public void  convertToWson(String jsonFile) throws IOException {

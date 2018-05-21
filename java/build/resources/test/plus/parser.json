@@ -1,0 +1,4 @@
+{
+  "hello": "world\"hello' '\\world",
+  "break": "b\\reak\n\r\t"
+}

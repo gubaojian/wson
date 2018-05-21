@@ -18,7 +18,7 @@
  */
 
 /**
- * c++ friendly interface for
+ * c++ friendly interface for wson
  * */
 //
 // Created by furture on 2018/5/15.
@@ -175,7 +175,7 @@ public:
     }
     
     /** conver wson to json string */
-    std::string wson_parser::toStringUTF8();
+    std::string toStringUTF8();
 
 
 private:

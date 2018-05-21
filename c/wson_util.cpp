@@ -165,9 +165,28 @@ namespace wson {
                 if(c1 == '"' || c1 == '\\'){
                     src[count++] = '\\';
                 }else{
-                    if(c1 <= 0x1F){
-                        if(c1 == '\t' || c1 == '\r' || c1 == '\n' || c1 == '\f' || c1 == '\b'){
-                            src[count++] = '\\';
+                    if(c1 <= 0x1F){ //max control latter
+                        switch (c1){
+                            case '\t':
+                                src[count++] = '\\';
+                                src[count++] = 't';
+                                continue;
+                            case '\r':
+                                src[count++] = '\\';
+                                src[count++] = 'r';
+                                continue;
+                            case '\n':
+                                src[count++] = '\\';
+                                src[count++] = 'n';
+                                continue;
+                            case '\f':
+                                src[count++] = '\\';
+                                src[count++] = 'f';
+                                continue;
+                            case '\b':
+                                src[count++] = '\\';
+                                src[count++] = 'b';
+                                continue;
                         }
                     }
                 }

@@ -103,6 +103,19 @@ void test_to_string_example(){
 }
 
 
+void test_quote_example(){
+    const char* data = FileUtils::readFile("/Users/furture/code/pack/java/src/test/resources/plus/parser.wson");
+    wson_parser parser(data);
+    printf("toString %s \n", parser.toStringUTF8().c_str());
+}
+
+void test_next_line_example(){
+    const char* data = FileUtils::readFile("/Users/furture/code/pack/java/src/test/resources/plus/parser.wson");
+    wson_parser parser(data);
+    printf("toString %s \n", parser.toStringUTF8().c_str());
+}
+
+
 int main(){
     test_add_element_example();
     test_bench_example();
@@ -110,6 +123,8 @@ int main(){
     test_map_example();
     test_array_example();
     test_to_string_example();
+
+    test_quote_example();
 
 
     char*  floatBuffer = new char[64];
