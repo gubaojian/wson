@@ -174,6 +174,9 @@ public class PrepareWsonFile extends TestCase {
         System.out.println(JSON.toJSONString("𝄞"));
 
         convertToWson("/plus/parser.json");
+
+
+        System.out.println(JSON.toJSONString(null));
     }
 
     public void testShowWsonFileContent() throws IOException {
