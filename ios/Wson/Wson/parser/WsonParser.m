@@ -8,6 +8,9 @@
 
 #import "WsonParser.h"
 #include <objc/runtime.h>
+#include <inttypes.h>
+#include <CoreGraphics/CoreGraphics.h>
+#import <UIKit/UIKit.h>
 
 @implementation WsonParser
 
@@ -194,7 +197,7 @@
             case _C_STRUCT_B:{
                 type++;
                 if(strncmp(type, "CGRect", 6) == 0){
-                    CGRect rect = [value rectValue];
+                    CGRect rect = [value CGRectValue];
                     wson_push_type_map(buffer, 4);
                     [WsonParser wson_push_key_string:@"x" buffer:buffer];
                     wson_push_type_float(buffer, rect.origin.x);
@@ -206,7 +209,7 @@
                     wson_push_type_float(buffer, rect.size.height);
                     return;
                 }else if(strncmp(type, "CGPoint", 7) == 0){
-                    CGPoint point = [value pointValue];
+                    CGPoint point = [value CGPointValue];
                     wson_push_type_map(buffer, 2);
                     [WsonParser wson_push_key_string:@"width"buffer:buffer];
                     wson_push_type_float(buffer, point.x);
@@ -214,7 +217,7 @@
                     wson_push_type_float(buffer, point.y);
                     return;
                 }else if(strncmp(type, "CGSize", 6) == 0){
-                    CGSize size = [value sizeValue];
+                    CGSize size = [value CGSizeValue];
                     wson_push_type_map(buffer, 2);
                     [WsonParser wson_push_key_string:@"width"buffer:buffer];
                     wson_push_type_float(buffer, size.width);
@@ -229,8 +232,15 @@
                     [WsonParser wson_push_key_string:@"length" buffer:buffer];
                     wson_push_type_float(buffer,  range.length);
                     return;
-                }if(strncmp(type, "NSEdgeInsets", 12) == 0){
-                     NSEdgeInsets edge = [value edgeInsetsValue];
+                }else if(strncmp(type, "CGVector", 8) == 0){
+                    CGVector result = [val CGVectorValue];
+                    wson_push_type_map(buffer, 2);
+                    [WsonParser wson_push_key_string:@"dx" buffer:buffer];
+                    wson_push_type_float(buffer, result.dx);
+                    [WsonParser wson_push_key_string:@"dy" buffer:buffer];
+                    wson_push_type_float(buffer,  result.dy);
+                }else if(strncmp(type, "UIEdgeInsets", 12) == 0){
+                     UIEdgeInsets edge = [value UIEdgeInsetsValue];
                      wson_push_type_map(buffer, 4);
                      [WsonParser wson_push_key_string:@"left" buffer:buffer];
                      wson_push_type_float(buffer,  edge.left);
