@@ -1,5 +1,5 @@
 # wson
-fast tiny binary json libaray inspired by bson and message pack，less than 1000 line code you can embed in your application with super speed to transfer data in local machine.
+fast tiny binary json libaray inspired by bson and message pack，less than 1000 line code you can embed in your application with super speed to transfer data.
 
 
 ### wson data format
