@@ -4,3 +4,4 @@
 *.log
 *.o
 WsonTest/cmake-build-debug/
+java/build/classes
