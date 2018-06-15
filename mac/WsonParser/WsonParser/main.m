@@ -20,6 +20,54 @@ void test_wson(id val){
     wson_buffer_free(buffer);
 }
 
+static double now_ms(void) {
+    struct timespec res;
+    clock_gettime(CLOCK_REALTIME, &res);
+    return 1000.0 * res.tv_sec + (double) res.tv_nsec / 1e6;
+}
+
+
+void test_bechmark(id val){
+    
+    NSData* fileData = [NSData dataWithContentsOfFile:@"/Users/furture/code/pack/java/src/test/resources/media2.json"];
+    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:fileData options:0 error:nil];
+    
+    double start = now_ms();
+    for(int i=0; i<1000; i++){
+        [NSJSONSerialization dataWithJSONObject:json options:0 error:nil];
+    }
+    NSLog(@"json serial used %f", (now_ms() - start));
+    
+    
+    start = now_ms();
+    for(int i=0; i<1000; i++){
+       wson_buffer* buffer =  [WsonParser toWson:json];
+        wson_buffer_free(buffer);
+    }
+    NSLog(@"wson serial used %f", (now_ms() - start));
+    
+    NSData* data  = [NSJSONSerialization dataWithJSONObject:json options:0 error:nil];
+    
+    start = now_ms();
+    for(int i=0; i<1000; i++){
+       [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    }
+    NSLog(@"json parse used %f", (now_ms() - start));
+    
+    wson_buffer* buffer =  [WsonParser toWson:json];
+    start = now_ms();
+    for(int i=0; i<1000; i++){
+        buffer->position =0;
+        [WsonParser toVal:buffer];
+    }
+    NSLog(@"wson parse used %f", (now_ms() - start));
+    buffer->position =0;
+    NSLog(@"wson parse used %@",  [WsonParser toVal:buffer]);
+    wson_buffer_free(buffer);
+    //NSData* data = [string dataUsingEncoding:NSUTF8StringEncoding];
+    //[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+}
+
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         NSString* string = [NSString stringWithUTF8String:"中国"];
@@ -38,6 +86,14 @@ int main(int argc, const char * argv[]) {
         NSArray* array = [NSArray arrayWithObjects:map,  date, nil];
         
          test_wson(array);
+        
+        test_bechmark(nil);
+        
+        
+        
+        
+        
+        
     }
     return 0;
 }

@@ -52,7 +52,7 @@
             break;
         case WSON_MAP_TYPE:{
              uint32_t mapLength = wson_next_uint(buffer);
-             NSMutableDictionary* dic = [NSMutableDictionary dictionaryWithCapacity:mapLength*2];
+             NSMutableDictionary* dic = [NSMutableDictionary dictionaryWithCapacity:mapLength];
              for(int i=0; i<mapLength; i++){
                 uint32_t strLength = wson_next_uint(buffer);
                 unichar* charSrc = (unichar*)wson_next_bts(buffer, strLength);
@@ -91,7 +91,7 @@
         }
             break;
         case WSON_NULL_TYPE:{
-            return nil;
+            return [NSNull null];
            }
             break;
         default:
