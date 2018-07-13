@@ -119,7 +119,7 @@ namespace wson {
 
     int utf16_convert_to_utf8_cstr(uint16_t * utf16, int length, char* buffer){
         char* src = buffer;
-        register int count =0;
+        int count =0;
         for(int i=0; i<length;){
             u_int16_t c1 = utf16[i++];
             if(isHighSurrogate(c1)){
@@ -142,7 +142,7 @@ namespace wson {
     }
 
     int utf16_convert_to_utf8_quote_cstr(uint16_t *utf16, int length, char* buffer){
-        register int count =0;
+        int count =0;
 
         char* src = buffer;
         src[count++] = '"';
