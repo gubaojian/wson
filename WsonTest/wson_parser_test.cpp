@@ -120,10 +120,7 @@ void test_emoji(){
     const char* data = FileUtils::readFile("/Users/furture/code/pack/java/src/test/resources/emoji.wson");
     wson_parser parser(data);
     std::string str = parser.toStringUTF8();
-    printf("toString %d  %s \n", str.size(), str.c_str());
-    for(int i=0; i<str.size(); i++){
-        printf("%d\n", str[i]);
-    }
+    printf("emoji toString %d  %s \n", str.size(), str.c_str());
 }
 
 
