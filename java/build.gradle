@@ -12,6 +12,8 @@ repositories {
 
 
 dependencies {
+
+
     compile 'com.alibaba:fastjson:1.1.61.android'
     // https://mvnrepository.com/artifact/com.github.davidmoten/flatbuffers-java
     compile group: 'com.github.davidmoten', name: 'flatbuffers-java', version: '1.8.0.1'

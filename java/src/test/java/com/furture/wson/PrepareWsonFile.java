@@ -179,6 +179,8 @@ public class PrepareWsonFile extends TestCase {
         System.out.println(JSON.toJSONString(null));
     }
 
+
+
     public void testShowWsonFileContent() throws IOException {
         byte[] bts = readFileBytes("/data/trade.wson");
         Object object = Wson.parse(bts);
@@ -218,6 +220,11 @@ public class PrepareWsonFile extends TestCase {
            //String sjsonFile = "src/test/resources/" + (jsonFile.substring(1, jsonFile.indexOf('.')) + ".json");
            //saveFile(sjsonFile, JSON.parseObject(data).toJSONString().getBytes("UTF-8"));
        }
+    }
+
+    public void testJsonToWson(){
+        String a = "[{\"args\":[\"67\",\"input\",{\"timeStamp\":1542864306658,\"value\":\"\uD83D\uDE33\uD83D\uDE33\"},{\"attrs\":{\"value\":\"\uD83D\uDE33\uD83D\uDE33\"}}],\"method\":\"fireEvent\"}]";
+        System.out.println(a);
     }
 
     private String readFile(String file) throws IOException {

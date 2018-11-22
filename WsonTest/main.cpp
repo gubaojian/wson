@@ -10,7 +10,9 @@ static void  testWsonWithJava();
 
 int main() {
 
-    std::wstring china = L"中国";
+
+
+    std::wstring china = L"中国\uD83D\uDE33";
 
     std::cout << "length " << china.length() << std::endl;
 

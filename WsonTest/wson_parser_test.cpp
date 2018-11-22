@@ -116,6 +116,17 @@ void test_next_line_example(){
 }
 
 
+void test_emoji(){
+    const char* data = FileUtils::readFile("/Users/furture/code/pack/java/src/test/resources/emoji.wson");
+    wson_parser parser(data);
+    std::string str = parser.toStringUTF8();
+    printf("toString %d  %s \n", str.size(), str.c_str());
+    for(int i=0; i<str.size(); i++){
+        printf("%d\n", str[i]);
+    }
+}
+
+
 int main(){
     test_add_element_example();
     test_bench_example();
@@ -125,6 +136,9 @@ int main(){
     test_to_string_example();
 
     test_quote_example();
+
+
+
 
 
     char*  floatBuffer = new char[64];
@@ -152,5 +166,7 @@ int main(){
     }
     free((void*)data);
 
+
+    test_emoji();
 
 }

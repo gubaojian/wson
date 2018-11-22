@@ -115,6 +115,11 @@ int  main(){
     nortmal_convert(L"ABCDEFG", (char*)"ABCDEFG");
 
 
+    nortmal_convert(L"中国", (char*)"中国");
+
+    printf("hello [{\"args\":[\"67\",\"input\",{\"timeStamp\":1542864306658,\"value\":\"\uD83D\uDE33\uD83D\uDE33\"},{\"attrs\":{\"value\":\"\uD83D\uDE33\uD83D\uDE33\"}}],\"method\":\"fireEvent\"}]");
+
+
     test_bench_chinese_code();
 
 
