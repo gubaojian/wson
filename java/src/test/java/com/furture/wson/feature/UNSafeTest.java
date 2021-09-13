@@ -1,11 +1,6 @@
 package com.furture.wson.feature;
 
 import junit.framework.TestCase;
-import sun.misc.Unsafe;
-
-import java.lang.reflect.Field;
-import java.security.AccessController;
-import java.security.PrivilegedExceptionAction;
 
 /**
  * Created by 剑白(jianbai.gbj) on 2017/9/25.
@@ -15,6 +10,7 @@ public class UNSafeTest extends TestCase {
 
 
     public void  testUnsafeTest(){
+        /*
         Unsafe unsafe = getUnsafe();
         long start = 0;
         long end = 0;
@@ -39,13 +35,14 @@ public class UNSafeTest extends TestCase {
         end = System.currentTimeMillis();
         System.out.println((end - start));
 
+         */
 
     }
 
 
     /**
      * Gets the {@code sun.misc.Unsafe} instance, or {@code null} if not available on this platform.
-     */
+
     private static sun.misc.Unsafe getUnsafe() {
         sun.misc.Unsafe unsafe = null;
         try {
@@ -72,5 +69,5 @@ public class UNSafeTest extends TestCase {
             // for Unsafe.
         }
         return unsafe;
-    }
+    }    */
 }

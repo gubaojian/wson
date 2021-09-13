@@ -1,7 +1,7 @@
 package com.furture.wson.bench;
 
 import com.alibaba.fastjson.JSON;
-import com.efurture.wson.Wson;
+import com.github.gubaojian.pson.wson.Wson;
 import junit.framework.TestCase;
 
 import java.io.ByteArrayOutputStream;
@@ -19,7 +19,7 @@ public class WsonFastJSONDeSerializeBenchTest extends TestCase {
     }
 
     public void testMediaJSON() throws IOException {
-        benchBuild("/media.json", 1000, false);
+        benchBuild("/media.json", 100*10000, false);
     }
 
     public void testMedia2Wson() throws IOException {

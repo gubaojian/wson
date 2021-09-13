@@ -2,8 +2,7 @@ package com.furture.wson.bug;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
-import com.efurture.wson.Wson;
+import com.github.gubaojian.pson.wson.Wson;
 import junit.framework.TestCase;
 import org.junit.Assert;
 import org.junit.Test;
@@ -11,7 +10,6 @@ import org.junit.Test;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.math.BigInteger;
 
 /**
  * Created by 剑白(jianbai.gbj) on 2017/12/22.

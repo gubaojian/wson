@@ -20,5 +20,6 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
     testCompile 'com.google.protobuf:protobuf-java:3.4.0'
     testCompile 'com.googlecode.protobuf-java-format:protobuf-java-format:1.4'
+    testCompile "org.apache.commons:commons-lang3:3.4"
 
 }

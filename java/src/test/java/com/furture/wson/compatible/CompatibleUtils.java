@@ -21,7 +21,7 @@ package com.furture.wson.compatible;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.efurture.wson.Wson;
+import com.github.gubaojian.pson.wson.Wson;
 
 import java.util.Set;
 

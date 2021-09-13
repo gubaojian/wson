@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.efurture.wson;
+package com.github.gubaojian.pson.wson;
 
 
 
@@ -28,6 +28,7 @@ import java.lang.reflect.Array;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.nio.ByteOrder;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 /**
@@ -204,72 +205,14 @@ public class Wson {
 
 
         private final String readMapKeyUTF16() {
-                int length = readUInt();
-                length = length/2;
-                if(charsBuffer.length < length){
-                    charsBuffer = new char[length];
-                }
-                int hash = 5381;
-                if(IS_NATIVE_LITTLE_ENDIAN){
-                    for(int i=0; i<length; i++){
-                        char ch = (char) ((buffer[position] & 0xFF) +
-                                (buffer[position + 1] << 8));
-                        charsBuffer[i] = (ch);
-                        hash = ((hash << 5) + hash)  + ch;
-                        position+=2;
-                    }
-                }else{
-                    for(int i=0; i<length; i++){
-                        char ch = (char) ((buffer[position + 1] & 0xFF) +
-                                (buffer[position] << 8));
-                        charsBuffer[i] = (ch);
-                        hash = ((hash << 5) + hash)  + ch;
-                        position+=2;
-                    }
-                }
-                int globalIndex = (globalStringBytesCache.length - 1)&hash;
-               String cache = globalStringBytesCache[globalIndex];
-                if(cache != null
-                        && cache.length() == length){
-                    boolean isStringEqual  = true;
-                    for(int i=0; i<length; i++){
-                        if(charsBuffer[i] != cache.charAt(i)){
-                            isStringEqual = false;
-                            break;
-                        }
-                    }
-                    if(isStringEqual) {
-                        return cache;
-                    }
-                }
-                cache = new String(charsBuffer, 0, length);
-                if(length < 64) {
-                    globalStringBytesCache[globalIndex] = cache;
-                }
-                return  cache;
+                return readUTF16String();
         }
 
         private final String readUTF16String(){
-            int length = readUInt()/2;
-            if(charsBuffer.length < length){
-                charsBuffer = new char[length];
-            }
-            if(IS_NATIVE_LITTLE_ENDIAN){
-                for(int i=0; i<length; i++){
-                    char ch = (char) ((buffer[position] & 0xFF) +
-                            (buffer[position + 1] << 8));
-                    charsBuffer[i] = (ch);
-                    position+=2;
-                }
-            }else{
-                for(int i=0; i<length; i++){
-                    char ch = (char) ((buffer[position + 1] & 0xFF) +
-                            (buffer[position] << 8));
-                    charsBuffer[i] = (ch);
-                    position+=2;
-                }
-            }
-            return  new String(charsBuffer, 0, length);
+            int length = readUInt();
+            String value =  new String(buffer, position, length);
+            position+=length;
+            return value;
         }
 
 
@@ -391,7 +334,7 @@ public class Wson {
             if(object instanceof  CharSequence){
                 ensureCapacity(2);
                 writeByte(STRING_TYPE);
-                writeUTF16String((CharSequence) object);
+                writeUTF16String(object.toString());
                 return;
             }else if (object instanceof Map){
                 if(refs.contains(object)){
@@ -606,34 +549,32 @@ public class Wson {
         }
 
         private  final void writeMapKeyUTF16(String value){
-            writeUTF16String(value);
+            //writeUTF16String(value);
+            //writeVarInt(value.length());
+
         }
-
-
 
 
         /**
          * writeString UTF-16
          * */
-        private  final void writeUTF16String(CharSequence value){
-            int length = value.length();
-            ensureCapacity(length*2 + 8);
-            writeUInt(length*2);
-            if(IS_NATIVE_LITTLE_ENDIAN){
-                for(int i=0; i<length; i++){
-                    char ch = value.charAt(i);
-                    buffer[position] = (byte) (ch);
-                    buffer[position+1] = (byte) (ch >>> 8);
-                    position+=2;
-                }
-            }else{
-                for(int i=0; i<length; i++){
-                    char ch = value.charAt(i);
-                    buffer[position + 1] = (byte) (ch      );
-                    buffer[position] = (byte) (ch >>> 8);
-                    position+=2;
+        private  final void writeUTF16String(String value){
+            byte[] bts = value.getBytes(StandardCharsets.UTF_8);
+            int length = bts.length;
+            ensureCapacity(length + 8);
+            writeUInt(length);
+            System.arraycopy(bts, 0, buffer, position, length);
+            position +=length;
+        }
+
+        private final boolean isAscii(CharSequence str) {
+            int charCount =  str.length();
+            for(int i = 0; i < charCount; i++){
+                if(str.charAt(i) > 127){
+                    return false;
                 }
             }
+            return true;
         }
 
 

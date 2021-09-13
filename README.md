@@ -1,5 +1,5 @@
 # wson
-fast tiny binary json libaray inspired by bson and message pack，less than 1000 line code you can embed in your application with super speed to transfer data.
+fast tiny pack binary json with meta data support. inspired by bson and message pack and android binary. 10 faster than normal json library with half data size.less. you can embed in your application with super speed and reduce trafic
 
 
 ### wson data format
@@ -8,11 +8,12 @@ fast tiny binary json libaray inspired by bson and message pack，less than 1000
 | number int     | 'i'    | signature + varint    |
 | number double    | 'd'   | signature + 8 byte (big endian)|
 | number float    | 'F'   | signature + 4 byte (big endian)|
-| string   | 's'   | signature + var length + bytes( unicoder utf-16)|
+| string   | 's'   | signature + var length + bytes( unicoder utf-8)|
 | null    | '0'   |  signature |
 | boolean    | 't' or 'f'   | signature |
 | array    | '['   | signature + var length + elements|
-| map    |  '{'   | signature + var size + key, value, key, value|
+| object    |  '{'   | signature + var size + key, value, key, value|
+| meta    |  'm'   | signature + varint|
 
 string length, map size ar store used usigned varint.
 
