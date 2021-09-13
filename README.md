@@ -1,4 +1,116 @@
-# wson
+# pson
+parcel binary object nation, which is schema less and symbol table support. aim to be fastest serializable tiny binary protocol.
+
+
+https://amzn.github.io/ion-docs/docs/binary.html#5-decimal
+
+
+# pbson data fotmat
+
+every value is composed by type and encoding value as belows
+
+       7       4 3       0
+      +---------+---------+
+      |    T   |    V    |
+      +---------+---------+
+we will introduction each as belows:
+
+### 1.1 constant value type
+
+current standard for const such as true/false/null/nan/undefined
+       7       4 3       0
+      +---------+---------+
+      |    0   |    V    |
+      +---------+---------+
+T 0    V 0 false 1 true 2 NULL 3 N
+
+### 1.2 ints number value type
+
+       7       4 3       0
+      +---------+---------+
+      |    1   |    V    |
+      +---------+---------+
+
+ int long     
+
+ ### 1.3 float/double number value type
+
+       7       4 3       0
+      +---------+---------+
+      |    2   |    4/8    |
+      +---------+---------+
+ 4 for float 8 for double
+ double may use varint or compact
+### 1.4 string type
+       7       4 3       0
+      +---------+---------+
+      |    3   |    V    |
+      +---------+---------+
+
+ v for string length less than 14, others use var length data format
+
+ ### 1.5 array/list type
+
+       7       4 3       0
+      +---------+---------+
+      |    4   |    V    |
+      +---------+---------+
+0 empty array
+varints array
+float array
+double array
+string array
+
+value array
+
+table  array(~ checks)
+
+
+
+ ### 1.6 object type
+       7       4 3       0
+      +---------+---------+
+      |    5   |    V    |
+      +---------+---------+
+
+V standard for the size of property.
+
+property string name / value
+property string name / value
+
+is property should symbol name
+
+
+ ### 1.7 symbol value
+        7       4 3       0
+      +---------+---------+
+      |    6   |    V    |
+      +---------+---------+
+
+ standard for symol table id
+ like id name
+   
+ ### 1.8 table value // improve version
+        7       4 3       0
+      +---------+---------+
+      |    7   |    V    |
+      +---------+---------+
+
+ standard for length table header
+ string property header
+ varlint row length
+ row values
+
+
+ 
+ like id name
+   
+
+## 7-43-0
+
+
+pbon perfert
+
 fast tiny pack binary json with meta data support. inspired by bson and message pack and android binary. 10 faster than normal json library with half data size.less. you can embed in your application with super speed and reduce trafic
 
 

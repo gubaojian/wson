@@ -5,42 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3937d7e1-b078-4bd8-ad74-034f9d9fcf8a" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/Pson.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/config/Config.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/furture/wson/base/Utf8EncodeTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/furture/wson/benckmark/Benckmark.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/furture/wson/message/MessageTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/furture/wson/types/StringTypeTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/furture/wson/util/CHStringUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/types/Types.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/efurture/wson/Wson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/wson/Wson.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/efurture/wson/WsonAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/wson/WsonAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/furture/wson/DoubleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/furture/wson/DoubleTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/furture/wson/ObjectToMapTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/furture/wson/ObjectToMapTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/furture/wson/PrepareWsonFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/furture/wson/PrepareWsonFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/furture/wson/WsonTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/furture/wson/WsonTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/furture/wson/bench/FastJSONTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/furture/wson/bench/FastJSONTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/furture/wson/bench/FastJsonVsWson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/furture/wson/bench/FastJsonVsWson.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/furture/wson/bench/FlatBufferTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/furture/wson/bench/FlatBufferTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/furture/wson/bench/WeexBenchTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/furture/wson/bench/WeexBenchTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/furture/wson/bench/WsonFastJSONDeSerializeBenchTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/furture/wson/bench/WsonFastJSONDeSerializeBenchTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/furture/wson/bench/WsonFastJSONSerializeBenchTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/furture/wson/bench/WsonFastJSONSerializeBenchTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/furture/wson/bug/AnnotationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/furture/wson/bug/AnnotationTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/furture/wson/bug/BigNumberTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/furture/wson/bug/BigNumberTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/furture/wson/bug/BugFieldNotRight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/furture/wson/bug/BugFieldNotRight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/furture/wson/bug/DoubleLostTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/furture/wson/bug/DoubleLostTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/furture/wson/bug/EmojiTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/furture/wson/bug/EmojiTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/furture/wson/bug/IntDoubleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/furture/wson/bug/IntDoubleTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/furture/wson/bug/LongLostTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/furture/wson/bug/LongLostTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/furture/wson/compatible/CompatibleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/furture/wson/compatible/CompatibleTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/furture/wson/compatible/CompatibleUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/furture/wson/compatible/CompatibleUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/furture/wson/feature/StringCodingTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/furture/wson/feature/StringCodingTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/furture/wson/feature/UNSafeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/furture/wson/feature/UNSafeTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -637,6 +604,8 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
