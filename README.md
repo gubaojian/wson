@@ -1,5 +1,5 @@
 # pson
-parcel binary object nation, which is schema less and symbol table support. aim to be fastest serializable tiny binary protocol.
+parcel binary object nation, which is schema less with symbol table support. aim to be fastest serializable binary protocol.
 
 
 https://amzn.github.io/ion-docs/docs/binary.html#5-decimal
@@ -59,6 +59,7 @@ T 0    V 0 false 1 true 2 NULL 3 N
 varints array
 float array
 double array
+byte array
 string array
 
 value array

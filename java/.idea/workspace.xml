@@ -5,9 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3937d7e1-b078-4bd8-ad74-034f9d9fcf8a" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/types/Types.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/serializers/BigIntegerSerializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/serializers/ConstSerializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/serializers/IntsSerializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/serializers/LongSerializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/serializers/ObjectSerializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/serializers/SerializersConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/cache.properties.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/cache.properties.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/Pson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/Pson.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/config/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/config/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/types/Types.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/types/Types.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,12 +52,22 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="GradleLocalSettings">
     <option name="availableProjects">
@@ -610,6 +629,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.github.gubaojian.pson.serializers" />
       <recent name="com.furture.wson.util" />
       <recent name="com.furture.wson.bug" />
     </key>

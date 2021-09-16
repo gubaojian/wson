@@ -2,6 +2,9 @@ package com.github.gubaojian.pson;
 
 import com.github.gubaojian.pson.config.Config;
 
+/**
+ * convenience method for serializable/deserializable Pson
+ * */
 public class Pson {
 
     public static <T> T parse(byte[] data){
@@ -12,7 +15,7 @@ public class Pson {
         return null;
     }
 
-    public static byte[] toWson(Object object){
+    public static byte[] toPson(Object object){
         return null;
     }
 }
