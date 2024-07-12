@@ -64,6 +64,8 @@ public class FastJsonVsWson extends TestCase {
         user.name = "中国";
         user.country = "中国";
 
+        System.out.println("user object wson towson used start ");
+
         long start = System.currentTimeMillis();
         for(int i=0; i<10000; i++) {
            Wson.toWson(user);

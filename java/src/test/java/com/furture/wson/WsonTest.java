@@ -190,4 +190,16 @@ public class WsonTest extends TestCase {
 
         Assert.assertEquals(object.get("number").getClass(), Float.class);
     }
+
+    @Test
+    public void testNull(){
+        String json = "[{\"args\":[\"4\",{\"type\":\"change\",\"module\":\"connection\",\"data\":null},null],\"method\":\"callback\"}]";
+        JSONArray object = JSON.parseArray(json);
+        System.out.println(JSON.toJSONString(object));
+        Assert.assertNotEquals(object, Wson.parse(Wson.toWson(object)));
+        Assert.assertEquals(JSON.parse(JSON.toJSONString(object)), Wson.parse(Wson.toWson(object)));
+
+        System.out.println(JSON.toJSONString(Wson.toWson(object)));
+
+    }
 }

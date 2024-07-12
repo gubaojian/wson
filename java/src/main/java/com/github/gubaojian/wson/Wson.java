@@ -36,10 +36,12 @@ import java.lang.reflect.Modifier;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.nio.ByteOrder;
+import java.security.Key;
 import java.util.*;
 
 /**
  * fast binary json format for parse map and serialize map
+ * 字符串编码采用utf16 和jsc相同，仅适合本地，不适合网络通信
  * Created by efurture on 2017/8/16.
  */
 public class Wson {
@@ -57,12 +59,12 @@ public class Wson {
         if(data == null){
             return  null;
         }
-        try{
+        try {
             Parser parser =  new Parser(data);
             Object object = parser.parse();
             parser.close();
             return object;
-        }catch (Exception e){
+        } catch (Exception e){
             e.printStackTrace();
             return  null;
         }
@@ -490,13 +492,52 @@ public class Wson {
             }
             try{
                 writeMap(toMap(object));
-            }catch (Exception e){
+            } catch (Exception e){
+                e.printStackTrace();
                 specialClass.put(object.getClass().getName(), true);
                 writeObject(JSON.toJSON(object));
             }
         }
 
         private  final Map  toMap(Object object){
+            return  toMap1(object);
+        }
+
+        private  final Map  toMap1(Object object){
+            Map map = new JSONObject();
+            try {
+                Class<?> targetClass = object.getClass();
+                String key = targetClass.getName();
+                ObjectBean bean = getBean(key, targetClass);
+                List<Method> methods = bean.methods;
+                //System.out.println("method length " + methods.size() + " " + bean.fields.size() + " " + bean.names.size() );
+                int nameIndex = 0;
+                for (Method method : methods) {
+                    Object value = method.invoke(object);
+                    if(value != null){
+                        map.put(bean.names.get(nameIndex), value);
+                    }
+                    nameIndex++;
+                }
+                List<Field> fields = bean.fields;
+                for(Field field : fields){
+                    Object value  = field.get(object);
+                    if(value != null){
+                        map.put(bean.names.get(nameIndex), value);
+                    }
+                    nameIndex++;
+                }
+            } catch (Exception e){
+                if(e instanceof  RuntimeException){
+                    throw  (RuntimeException)e;
+                }else{
+                    throw  new RuntimeException(e);
+                }
+            }
+            return  map;
+        }
+
+        private  final Map  toMap2(Object object){
             Map map = new JSONObject();
             try {
                 Class<?> targetClass = object.getClass();
@@ -532,7 +573,7 @@ public class Wson {
                     }
                     map.put(fieldName, value);
                 }
-            }catch (Exception e){
+            } catch (Exception e){
                 if(e instanceof  RuntimeException){
                     throw  (RuntimeException)e;
                 }else{
@@ -545,7 +586,6 @@ public class Wson {
         private  final void writeMapKeyUTF16(String value){
             writeUTF16String(value);
         }
-
 
         /**
          * writeString UTF-16
@@ -574,7 +614,30 @@ public class Wson {
             }
         }
 
+    }
 
+    private static final class ObjectBean {
+        private List<Method> methods; //仅遍历
+        private List<Field> fields; //仅遍历
+        private ArrayList<String> names; //随机访问
+
+        public ObjectBean(List<Method> methods, List<Field> fields, ArrayList<String> names) {
+            this.methods = methods;
+            this.fields = fields;
+            this.names = names;
+        }
+
+        public List<Method> getMethods() {
+            return methods;
+        }
+
+        public List<Field> getFields() {
+            return fields;
+        }
+
+        public List<String> getNames() {
+            return names;
+        }
     }
 
 
@@ -588,7 +651,63 @@ public class Wson {
     private static LruCache<String, List<Field>> fieldsCache = new LruCache<>(128);
     private static LruCache<String, Boolean> specialClass = new LruCache<>(16);
 
+    private static LruCache<String, ObjectBean> beanCache = new LruCache<>(128);
 
+
+    private static final ObjectBean getBean(String key, Class targetClass){
+        ObjectBean bean = beanCache.get(key);
+        if (bean == null) {
+            ArrayList<String> names = new ArrayList<>();
+            List<Method> methods = new LinkedList<>();
+            Method[]  allMethods = targetClass.getMethods();
+            for(Method method : allMethods){
+                if(method.getDeclaringClass() == Object.class){
+                    continue;
+                }
+                if( (method.getModifiers() & Modifier.STATIC) != 0){
+                    continue;
+                }
+                String methodName = method.getName();
+                if(methodName.startsWith(METHOD_PREFIX_GET)
+                        || methodName.startsWith(METHOD_PREFIX_IS)) {
+                    if(method.getAnnotation(JSONField.class) != null){
+                        throw new UnsupportedOperationException("getBeanMethod JSONField Annotation Not Handled, Use toJSON");
+                    }
+                    if (methodName.startsWith(METHOD_PREFIX_GET)) {
+                        StringBuilder builder = new StringBuilder(method.getName().substring(3));
+                        builder.setCharAt(0, Character.toLowerCase(builder.charAt(0)));
+                        names.add(builder.toString());
+                        methods.add(method);
+                    }else if(methodName.startsWith(METHOD_PREFIX_IS)){
+                        StringBuilder builder = new StringBuilder(method.getName().substring(2));
+                        builder.setCharAt(0, Character.toLowerCase(builder.charAt(0)));
+                        names.add(builder.toString());
+                        methods.add(method);
+                    }
+                }
+            }
+
+            Field[] fields = targetClass.getFields();
+            List<Field> fieldList = new LinkedList<>();
+            for(Field field : fields){
+                if((field.getModifiers() & Modifier.STATIC) != 0){
+                    continue;
+                }
+                if(field.getAnnotation(JSONField.class) != null){
+                    throw new UnsupportedOperationException("getBeanMethod JSONField Annotation Not Handled, Use toJSON");
+                }
+                String fieldName = field.getName();
+                if (names.contains(fieldName)) {
+                    continue;
+                }
+                names.add(fieldName);
+                fieldList.add(field);
+            }
+            bean = new ObjectBean(methods, fieldList, names);
+            beanCache.put(key, bean);
+        }
+        return  bean;
+    }
     private static final List<Method> getBeanMethod(String key, Class targetClass){
         List<Method> methods = methodsCache.get(key);
         if(methods == null){
