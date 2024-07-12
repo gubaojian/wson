@@ -28,7 +28,6 @@ import com.github.gubaojian.wson.cache.LruCache;
 import com.github.gubaojian.wson.config.Protocol;
 import com.github.gubaojian.wson.io.Input;
 import com.github.gubaojian.wson.io.Output;
-import com.github.gubaojian.wson.io.Platform;
 
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
@@ -37,14 +36,7 @@ import java.lang.reflect.Modifier;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.nio.ByteOrder;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * fast binary json format for parse map and serialize map
@@ -99,10 +91,10 @@ public class Wson {
         private Input input = null;
         private Parser(byte[] buffer) {
             this.input = new Input(buffer);
-            charsBuffer = Platform.localCharsBufferCache.get();
+            charsBuffer = localCharsBufferCache.get();
             //FIXME Lazy Init
             if(charsBuffer != null){
-                Platform.localCharsBufferCache.set(null);
+                localCharsBufferCache.set(null);
             }else{
                 charsBuffer = new char[512];
             }
@@ -115,7 +107,7 @@ public class Wson {
         private final void close(){
             input.close();
             if(charsBuffer != null){
-                Platform.localCharsBufferCache.set(charsBuffer);
+                localCharsBufferCache.set(charsBuffer);
             }
             charsBuffer = null;
         }
@@ -180,9 +172,9 @@ public class Wson {
         private final String readMapKeyUTF16() {
             int length = input.readUInt()/2; //one char 2 byte
             //TODO improve, REMOVE FROM THREAD LOCAL
-            charsBuffer = Platform.localCharsBufferCache.get();
+            charsBuffer = localCharsBufferCache.get();
             if(charsBuffer != null){
-                Platform.localCharsBufferCache.set(null);
+                localCharsBufferCache.set(null);
             }else{
                 if (length > 256) {
                     charsBuffer = new char[length]; //设置cache
@@ -195,7 +187,7 @@ public class Wson {
             }
             int hash = 5381;
             byte[] buffer = input.getBuffer();
-            if(Platform.IS_NATIVE_LITTLE_ENDIAN){
+            if(IS_NATIVE_LITTLE_ENDIAN){
                 for(int i=0; i<length; i++){
                     int position = input.getPosition();
                     char ch = (char) ((buffer[position] & 0xFF) +
@@ -214,7 +206,6 @@ public class Wson {
                     input.move(2);
                 }
             }
-            String[] globalStringBytesCache = Platform.globalStringBytesCache;
             int globalIndex = (globalStringBytesCache.length - 1)&hash;
             String cache = globalStringBytesCache[globalIndex];
             if(cache != null
@@ -247,7 +238,7 @@ public class Wson {
             }
             //FIXME String UTF8
             final byte[] buffer = input.getBuffer();
-            if(Platform.IS_NATIVE_LITTLE_ENDIAN){
+            if(IS_NATIVE_LITTLE_ENDIAN){
                 for(int i=0; i<length; i++){
                     int position = input.getPosition();
                     char ch = (char) ((buffer[position] & 0xFF) +
@@ -273,21 +264,19 @@ public class Wson {
      * wson builder
      * */
     private static final class Builder {
-        private ArrayList refs;
+        private List refs;
         private Output output;
         private final static ThreadLocal<byte[]> bufLocal = new ThreadLocal<byte[]>();
-        private final static ThreadLocal<ArrayList> refsLocal = new ThreadLocal<ArrayList>();
-
-
 
         private Builder(){
-            output = new Output();
-            refs = refsLocal.get();
-            if(refs != null){
-                refsLocal.set(null);
+            byte[] buffer =  bufLocal.get();
+            if(buffer != null) {
+                bufLocal.set(null);
             }else{
-                refs = new ArrayList<>(16); //FIXME 用set提示查找性能，或者用lnkedlist，因为一般深度不深
+                buffer = new byte[4096];
             }
+            output = new Output(buffer);
+            refs = new LinkedList();
         }
 
         private final byte[] toWson(Object object){
@@ -296,12 +285,11 @@ public class Wson {
         }
 
         private final void close(){
-            output.close();
-            if(refs.isEmpty()){
-                refsLocal.set(refs);
-            }else{
-                refs.clear();
+            byte[] buffer = output.getBuffer();
+            if(buffer.length <= 1024*16){
+                bufLocal.set(buffer);
             }
+            output.close();
             refs = null;
         }
 
@@ -310,7 +298,6 @@ public class Wson {
                 output.ensureCapacity(2);
                 output.writeByte(Protocol.STRING_TYPE);
                 writeUTF16String((CharSequence) object);
-                return;
             }else if (object instanceof Map){
                 if(refs.contains(object)){
                     output.ensureCapacity(2);
@@ -321,7 +308,6 @@ public class Wson {
                 Map map = (Map) object;
                 writeMap(map);
                 refs.remove(refs.size()-1);
-                return;
             }else if (object instanceof List){
                 if(refs.contains(object)){
                     output.ensureCapacity(2);
@@ -337,11 +323,9 @@ public class Wson {
                     writeObject(value);
                 }
                 refs.remove(refs.size()-1);
-                return;
             }else if (object instanceof Number){
                 Number number = (Number) object;
                 writeNumber(number);
-                return;
             }else if (object instanceof  Boolean){
                 output.ensureCapacity(2);
                 Boolean value  = (Boolean) object;
@@ -350,11 +334,9 @@ public class Wson {
                 }else{
                     output.writeByte(Protocol.BOOLEAN_TYPE_FALSE);
                 }
-                return;
             }else if(object == null){
                 output.ensureCapacity(2);
                 output.writeByte(Protocol.NULL_TYPE);
-                return;
             }else if (object.getClass().isArray()){
                 if(refs.contains(object)){
                     output.ensureCapacity(2);
@@ -565,7 +547,6 @@ public class Wson {
         }
 
 
-
         /**
          * writeString UTF-16
          * */
@@ -574,7 +555,7 @@ public class Wson {
             output.ensureCapacity(length*2 + 8);
             output.writeUInt(length*2);
             byte[] buffer = output.getBuffer();
-            if(Platform.IS_NATIVE_LITTLE_ENDIAN){
+            if(IS_NATIVE_LITTLE_ENDIAN){
                 for(int i=0; i<length; i++){
                     int position = output.getPosition();
                     char ch = value.charAt(i);
@@ -599,7 +580,7 @@ public class Wson {
 
 
     /**
-     * lru cache, to map helper
+     * lru cache, to map helper, 优化空间很大，应该用class封装一下。
      * */
     private static final String METHOD_PREFIX_GET = "get";
     private static final String METHOD_PREFIX_IS = "is";
@@ -654,5 +635,17 @@ public class Wson {
         }
         return  fieldList;
     }
+
+
+    /**
+     * cache json property key, most of them all same
+     * */
+    private static final int GLOBAL_STRING_CACHE_SIZE = 2*1024;
+    private static final String[] globalStringBytesCache = new String[GLOBAL_STRING_CACHE_SIZE];
+    private static final ThreadLocal<char[]> localCharsBufferCache = new ThreadLocal<>();
+    /**
+     * StringUTF-16, byte order with native byte order
+     * */
+    private static final boolean IS_NATIVE_LITTLE_ENDIAN = (ByteOrder.nativeOrder() == ByteOrder.LITTLE_ENDIAN);
 
 }

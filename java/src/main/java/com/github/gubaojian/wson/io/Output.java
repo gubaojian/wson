@@ -9,24 +9,18 @@ import java.util.Arrays;
 public class Output {
     private byte[] buffer;
     private int position;
-    private final static ThreadLocal<byte[]> bufLocal = new ThreadLocal<byte[]>();
 
     public Output() {
-        buffer =  bufLocal.get();
-        if(buffer != null) {
-            bufLocal.set(null);
-        }else{
-            buffer = new byte[1024];
-        }
+        this(new byte[4096], 0);
     }
 
-    public Output(int bufferSize){
-        buffer =  bufLocal.get();
-        if(buffer != null) {
-            bufLocal.set(null);
-        }else{
-            buffer = new byte[1024];
-        }
+    public Output(byte[] buffer){
+        this(buffer, 0);
+    }
+
+    public Output(byte[] buffer, int position){
+        this.buffer = buffer;
+        this.position = position;
     }
 
     public final void move(int step) {
@@ -42,9 +36,6 @@ public class Output {
     }
 
     public final void close(){
-        if(buffer.length <= 1024*16){
-            bufLocal.set(buffer);
-        }
         buffer = null;
         position = 0;
     }
@@ -113,7 +104,8 @@ public class Output {
             if(newCapacity < 1024*16){
                 newCapacity = 1024*16;
             }
-            if (newCapacity - minCapacity < 0) {
+            //seems none use
+            if (newCapacity < minCapacity) {
                 newCapacity = minCapacity;
             }
             buffer = Arrays.copyOf(buffer, newCapacity);

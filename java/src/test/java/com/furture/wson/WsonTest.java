@@ -26,7 +26,6 @@ import java.util.Map;
 public class WsonTest extends TestCase {
 
 
-
     @Test
     public void testParse(){
         Map<String, Object> map = new HashMap<>();
