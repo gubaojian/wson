@@ -7,22 +7,20 @@ package com.github.gubaojian.wson.io;
 public class Input {
     private int position;
     private byte[] buffer;
-    private int end;
     private int start;
 
     public Input(byte[] buffer) {
-        this(buffer, 0, buffer.length);
+        this(buffer, 0);
     }
 
     /**
      *  contains start， exclude end
      *  start <= data < end
      * */
-    public Input(byte[] buffer, int start, int end) {
+    public Input(byte[] buffer, int start) {
         this.buffer = buffer;
         this.position = start;
         this.start = start;
-        this.end = end;
     }
 
     /**
@@ -58,8 +56,8 @@ public class Input {
         return position;
     }
 
-    public final int getEnd() {
-        return end;
+    public final int getLength() {
+        return buffer.length;
     }
 
     /**

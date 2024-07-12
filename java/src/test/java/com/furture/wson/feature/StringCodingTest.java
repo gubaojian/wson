@@ -24,7 +24,6 @@ public class StringCodingTest extends TestCase {
         long end = 0;
 
 
-
         byte[] bts = content.getBytes("UTF-8");
         start = System.currentTimeMillis();
         for(int i=0; i<10000; i++){
@@ -33,15 +32,15 @@ public class StringCodingTest extends TestCase {
         end = System.currentTimeMillis();
         System.out.println("get utf-8 used "+ (end - start));
 
-
-
-
         start = System.currentTimeMillis();
         for(int i=0; i<10000; i++){
             content.getBytes(StandardCharsets.UTF_8);
         }
         end = System.currentTimeMillis();
         System.out.println("std used "+ (end - start));
+
+
+
 
         start = System.currentTimeMillis();
         CharsetDecoder decoder = charset.newDecoder();

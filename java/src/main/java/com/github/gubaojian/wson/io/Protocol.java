@@ -10,14 +10,14 @@ public class Protocol {
     public static final byte NULL_TYPE = '0';
 
     /**
-     * UTF-16 string
+     * 默认 UTF-16 string
      * */
     public static final byte STRING_TYPE = 's';
 
     /**
      * UTF-8 string
      * */
-    public static final byte UTF8_STRING_TYPE = 'u';
+    public static final byte STRING_TYPE_UTF8 = 'u';
 
     public static final byte BOOLEAN_TYPE_TRUE = 't';
 
@@ -27,9 +27,26 @@ public class Protocol {
 
     public static final byte NUMBER_LONG_TYPE = 'l';
 
+    /**
+     * 大数字，采用UTF-16字符串存储
+     * */
     public static final byte NUMBER_BIG_INTEGER_TYPE = 'g';
 
+    /**
+     * 大数字，采用UTF-8字符串存储
+     * */
+    public static final byte NUMBER_BIG_INTEGER_TYPE_UTF8 = 'G';
+
+    /**
+     * 大数字，采用UTF-16字符串存储
+     * */
     public static final byte NUMBER_BIG_DECIMAL_TYPE = 'e';
+
+    /**
+     * 大数字，采用UTF-16字符串存储
+     * */
+    public static final byte NUMBER_BIG_DECIMAL_TYPE_UTF8 = 'E';
+
 
     public static final byte NUMBER_DOUBLE_TYPE = 'd';
 
@@ -37,7 +54,15 @@ public class Protocol {
 
     public static final byte ARRAY_TYPE = '[';
 
+    /**
+     * key默认采用 UTF-16 编码
+     * */
     public static final byte MAP_TYPE = '{';
+
+    /**
+     * key默认采用 UTF-8 编码
+     * */
+    public static final byte MAP_TYPE_UTF8 = '}';
 
 
 }

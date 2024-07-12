@@ -38,12 +38,14 @@ import java.lang.reflect.Modifier;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.nio.ByteOrder;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 /**
  * fast binary json format for parse map and serialize map
  * 字符串编码采用utf16 和jsc相同，仅适合本地，不适合网络通信。
- * 后续改成UTF-8版本，适合网络传输
+ * 网络传输需要使用utf-8版本，适合网络传输，在转换时可以选择UTF-8编码
+ * 传输其实一般有压缩，是否采用二进制相对json主要是编解码性能。
  * Created by efurture on 2017/8/16.
  */
 public class Wson {
@@ -57,12 +59,16 @@ public class Wson {
      * parse wson data  to object, please use WXJsonUtils.parseWson
      * @param  data  byte array
      * */
-    public static final Object parse(byte[] data){
+    public static final Object parse(byte[] data) {
+        return parse(data, 0);
+    }
+
+    public static final Object parse(byte[] data, int position) {
         if(data == null){
             return  null;
         }
         try {
-            Parser parser =  new Parser(data);
+            Parser parser =  new Parser(data, position);
             Object object = parser.parse();
             parser.close();
             return object;
@@ -92,9 +98,9 @@ public class Wson {
      * */
     private static final class Parser {
         private char[]  charsBuffer;
-        private Input input = null;
-        private Parser(byte[] buffer) {
-            this.input = new Input(buffer);
+        private Input input;
+        private Parser(byte[] buffer, int pos) {
+            this.input = new Input(buffer, pos);
         }
 
         private final Object parse(){
@@ -136,7 +142,7 @@ public class Wson {
                     return  null;
                 default:
                     throw new RuntimeException("wson unhandled type " + type + " " +
-                            input.getPosition()  +  " length " + input.getEnd());
+                            input.getPosition()  +  " length " + input.getLength());
             }
         }
 
@@ -558,6 +564,11 @@ public class Wson {
             }
         }
 
+        private  final void writeUTF8String(CharSequence value){
+            byte[] bts = value.toString().getBytes(StandardCharsets.UTF_8);
+
+        }
+
     }
 
     private static final class ObjectBean {
@@ -583,8 +594,6 @@ public class Wson {
             return names;
         }
     }
-
-
 
     /**
      * lru cache, to map helper, 优化空间很大，应该用class封装一下。
