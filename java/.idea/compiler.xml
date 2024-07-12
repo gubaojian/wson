@@ -2,6 +2,9 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
+      <module name="Test" target="11" />
+      <module name="Test.main" target="11" />
+      <module name="Test.test" target="11" />
       <module name="wson_main" target="1.8" />
       <module name="wson_test" target="1.8" />
     </bytecodeTargetLevel>

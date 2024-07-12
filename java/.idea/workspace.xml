@@ -5,18 +5,59 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3937d7e1-b078-4bd8-ad74-034f9d9fcf8a" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/serializers/BigIntegerSerializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/serializers/ConstSerializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/serializers/IntsSerializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/serializers/LongSerializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/serializers/ObjectSerializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/serializers/SerializersConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/cache.properties.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/cache.properties.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/Pson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/Pson.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/config/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/config/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/types/Types.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/types/Types.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/Pson.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/config/Config.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/deserializers/Love.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/io/Input.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/wson/io/Input.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/io/Output.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/wson/io/Output.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/serializers/ArraySerializer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/serializers/BigDecimalSerializer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/serializers/BigIntegerSerializer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/serializers/ConstSerializer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/serializers/DoubleSerializer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/serializers/FloatSerializer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/serializers/IntsSerializer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/serializers/ListSerializer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/serializers/LongSerializer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/serializers/MapSerializer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/serializers/NumberSerializer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/serializers/ObjectSerializer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/serializers/Serializer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/serializers/SerializersConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/serializers/StringSerializer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/types/Types.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/wson/Wson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/wson/Wson.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/wson/WsonAdapter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/furture/wson/DoubleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/furture/wson/DoubleTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/furture/wson/ObjectToMapTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/furture/wson/ObjectToMapTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/furture/wson/PrepareWsonFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/furture/wson/PrepareWsonFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/furture/wson/WsonTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/furture/wson/WsonTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/furture/wson/bench/FastJSONTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/furture/wson/bench/FastJSONTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/furture/wson/bench/FastJsonVsWson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/furture/wson/bench/FastJsonVsWson.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/furture/wson/bench/FlatBufferTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/furture/wson/bench/FlatBufferTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/furture/wson/bench/WeexBenchTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/furture/wson/bench/WeexBenchTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/furture/wson/bench/WsonFastJSONDeSerializeBenchTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/furture/wson/bench/WsonFastJSONDeSerializeBenchTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/furture/wson/bench/WsonFastJSONSerializeBenchTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/furture/wson/bench/WsonFastJSONSerializeBenchTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/furture/wson/bug/AnnotationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/furture/wson/bug/AnnotationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/furture/wson/bug/BigNumberTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/furture/wson/bug/BigNumberTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/furture/wson/bug/BugFieldNotRight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/furture/wson/bug/BugFieldNotRight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/furture/wson/bug/DoubleLostTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/furture/wson/bug/DoubleLostTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/furture/wson/bug/EmojiTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/furture/wson/bug/EmojiTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/furture/wson/bug/IntDoubleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/furture/wson/bug/IntDoubleTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/furture/wson/bug/LongLostTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/furture/wson/bug/LongLostTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/furture/wson/compatible/CompatibleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/furture/wson/compatible/CompatibleTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/furture/wson/compatible/CompatibleUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/furture/wson/compatible/CompatibleUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/furture/wson/message/MessageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/furture/wson/message/MessageTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/furture/wson/types/StringTypeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/furture/wson/types/StringTypeTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,15 +80,33 @@
         </task>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Wson" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Wson" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Wson" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Wson" type="f1a62948:ProjectNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
       </state>
     </system>
-  </component>
-  <component name="FavoritesManager">
-    <favorites_list name="wson" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -440,6 +499,10 @@
       </list>
     </option>
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectFrameBounds">
     <option name="x" value="237" />
     <option name="y" value="58" />
@@ -622,19 +685,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.WsonFastJSONDeSerializeBenchTest.testMediaJSON.executor": "Run",
+    "Gradle.WsonTest.executor": "Run",
+    "Gradle.WsonTest.testIntMin.executor": "Run",
+    "Gradle.java [assemble].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/efurture/code/wson/java/src/main/java/com/github/gubaojian/wson/wson"
+  }
+}]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/com/github/gubaojian/wson/wson" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.github.gubaojian.pson.serializers" />
       <recent name="com.furture.wson.util" />
       <recent name="com.furture.wson.bug" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.WsonFastJSONDeSerializeBenchTest.testMediaJSON">
+  <component name="RunManager" selected="Gradle.WsonTest">
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
       <module name="" />
       <option name="DEPLOY" value="true" />
@@ -757,6 +829,15 @@
       <listeners />
       <method />
     </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file enabled="true" id="idea.log" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="com.alipay.sofa" factoryName="SOFA Application" enableHotCode="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" />
@@ -797,69 +878,7 @@
       <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="MessageTest.testSize" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;com.furture.wson.message.MessageTest.testSize&quot;" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="MessageTest.testSize2" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;com.furture.wson.message.MessageTest.testSize2&quot;" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="Utf8EncodeTest.testUtf8Encode" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;com.furture.wson.base.Utf8EncodeTest.testUtf8Encode&quot;" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
     <configuration name="WsonFastJSONDeSerializeBenchTest.testMediaJSON" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -881,6 +900,77 @@
       <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="WsonTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.furture.wson.WsonTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="WsonTest.testIntMin" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.furture.wson.WsonTest.testIntMin&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="java [assemble]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="assemble" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
@@ -905,29 +995,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
-      <module name="" />
-      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
-      <option name="PROGRAM_PARAMETERS" />
-      <predefined_log_file enabled="true" id="idea.log" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
-      <item itemvalue="Gradle.MessageTest.testSize" />
-      <item itemvalue="Gradle.MessageTest.testSize2" />
-      <item itemvalue="Gradle.Utf8EncodeTest.testUtf8Encode" />
+      <item itemvalue="Gradle.WsonTest" />
+      <item itemvalue="Gradle.WsonTest.testIntMin" />
+      <item itemvalue="Gradle.java [assemble]" />
       <item itemvalue="Gradle.FastJSONTest.testNull" />
       <item itemvalue="Gradle.WsonFastJSONDeSerializeBenchTest.testMediaJSON" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.WsonTest" />
+        <item itemvalue="Gradle.WsonTest.testIntMin" />
+        <item itemvalue="Gradle.java [assemble]" />
         <item itemvalue="Gradle.WsonFastJSONDeSerializeBenchTest.testMediaJSON" />
         <item itemvalue="Gradle.FastJSONTest.testNull" />
-        <item itemvalue="Gradle.Utf8EncodeTest.testUtf8Encode" />
-        <item itemvalue="Gradle.MessageTest.testSize2" />
-        <item itemvalue="Gradle.MessageTest.testSize" />
       </list>
     </recent_temporary>
   </component>
@@ -1031,7 +1112,7 @@
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/github/gubaojian/pson/wson/Wson.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/com/github/gubaojian/wson/Wson.java</url>
           <line>552</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>

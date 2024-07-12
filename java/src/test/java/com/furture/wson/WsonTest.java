@@ -3,7 +3,7 @@ package com.furture.wson;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.github.gubaojian.pson.wson.Wson;
+import com.github.gubaojian.wson.Wson;
 import com.furture.wson.domain.Node;
 import junit.framework.TestCase;
 import org.junit.Assert;
@@ -26,6 +26,8 @@ import java.util.Map;
 public class WsonTest extends TestCase {
 
 
+
+    @Test
     public void testParse(){
         Map<String, Object> map = new HashMap<>();
         map.put("name", "hello");
@@ -38,7 +40,7 @@ public class WsonTest extends TestCase {
 
     }
 
-
+    @Test
     public void testParseInt(){
         Map<String, Object> map = new HashMap<>();
         map.put("name", 1);
@@ -48,7 +50,7 @@ public class WsonTest extends TestCase {
         Assert.assertEquals(map, parsed);
     }
 
-
+    @Test
     public void testIntMax(){
         String key = "num";
         Map<String, Object> map = new HashMap<>();
@@ -61,6 +63,7 @@ public class WsonTest extends TestCase {
         Assert.assertEquals((int)max, (int)Integer.MAX_VALUE);
     }
 
+    @Test
     public void testIntMin(){
         String key = "num";
         Map<String, Object> map = new HashMap<>();
@@ -73,6 +76,7 @@ public class WsonTest extends TestCase {
         Assert.assertEquals((int)max, (int)Integer.MIN_VALUE);
     }
 
+    @Test
     public void testLongMax(){
         String key = "max";
         Map<String, Object> map = new HashMap<>();
@@ -84,6 +88,7 @@ public class WsonTest extends TestCase {
         Assert.assertEquals(map, parsed);
     }
 
+    @Test
     public void testLongMin(){
         String key = "max";
         Map<String, Object> map = new HashMap<>();
@@ -97,6 +102,7 @@ public class WsonTest extends TestCase {
         Assert.assertEquals(max, Long.MIN_VALUE);
     }
 
+    @Test
     public void testMapValueNull(){
         String key = "name";
         Map<String, Object> map = new HashMap<>();
@@ -109,6 +115,7 @@ public class WsonTest extends TestCase {
     }
 
 
+    @Test
     public void testList(){
         List<String> names = new ArrayList<String>();
         names.add("china");
@@ -121,6 +128,7 @@ public class WsonTest extends TestCase {
     /**
      * map key will be conver to string
      * */
+    @Test
     public void  testObject(){
         Map<Object, Object> map = new HashMap<>();
         map.put("100", "333");
@@ -129,7 +137,7 @@ public class WsonTest extends TestCase {
         Assert.assertEquals(JSON.toJSONString(parseMap), JSON.toJSONString(map));
     }
 
-
+    @Test
     public void  testRecursive(){
         Node node = new Node();
         node.name = "测试";
@@ -142,7 +150,7 @@ public class WsonTest extends TestCase {
         System.out.println(JSON.toJSONString(node));
     }
 
-
+    @Test
     public void  testRecommend() throws IOException {
         String json = readFile("/recommend2.json");
         byte[] bts = Wson.toWson(JSON.parse(json));
@@ -151,7 +159,7 @@ public class WsonTest extends TestCase {
         Assert.assertEquals(json, JSON.toJSONString(src));
     }
 
-
+    @Test
     private String readFile(String file) throws IOException {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream(1024);
         InputStream inputStream = this.getClass().getResourceAsStream(file);

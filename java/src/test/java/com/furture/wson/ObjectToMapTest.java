@@ -1,7 +1,7 @@
 package com.furture.wson;
 
 import com.alibaba.fastjson.JSON;
-import com.github.gubaojian.pson.wson.Wson;
+import com.github.gubaojian.wson.Wson;
 import com.furture.wson.domain.Node;
 import com.furture.wson.domain.User;
 import com.furture.wson.util.LruCache;

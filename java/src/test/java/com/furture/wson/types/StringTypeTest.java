@@ -1,6 +1,6 @@
 package com.furture.wson.types;
 
-import com.github.gubaojian.pson.wson.Wson;
+import com.github.gubaojian.wson.Wson;
 import junit.framework.TestCase;
 import org.junit.Assert;
 import org.junit.Test;

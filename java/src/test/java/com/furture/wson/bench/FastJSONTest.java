@@ -2,7 +2,7 @@ package com.furture.wson.bench;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
-import com.github.gubaojian.pson.wson.Wson;
+import com.github.gubaojian.wson.Wson;
 import junit.framework.TestCase;
 import org.junit.Assert;
 import org.junit.Test;

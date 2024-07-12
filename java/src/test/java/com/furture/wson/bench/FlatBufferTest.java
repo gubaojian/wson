@@ -1,6 +1,6 @@
 package com.furture.wson.bench;
 
-import com.github.gubaojian.pson.wson.Wson;
+import com.github.gubaojian.wson.Wson;
 import com.google.flatbuffers.FlatBufferBuilder;
 import junit.framework.TestCase;
 

@@ -7,3 +7,4 @@ WsonTest/cmake-build-debug/
 java/build/classes
 java/build/reports/
 java/build/
+java/.gradle/

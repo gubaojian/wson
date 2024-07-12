@@ -16,20 +16,31 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.github.gubaojian.pson.wson;
+package com.github.gubaojian.wson;
 
 
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.annotation.JSONField;
+import com.github.gubaojian.wson.cache.LruCache;
 
 import java.lang.reflect.Array;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.nio.ByteOrder;
-import java.nio.charset.StandardCharsets;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Collection;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * fast binary json format for parse map and serialize map
@@ -60,7 +71,6 @@ public class Wson {
 
     private static final byte NUMBER_BIG_DECIMAL_TYPE = 'e';
 
-
     private static final byte NUMBER_DOUBLE_TYPE = 'd';
 
     private static final byte NUMBER_FLOAT_TYPE = 'F';
@@ -76,10 +86,10 @@ public class Wson {
 
 
     /**
-     * parse wson data  to object
+     * parse wson data  to object, please use WXJsonUtils.parseWson
      * @param  data  byte array
      * */
-    public static Object parse(byte[] data){
+    public static final Object parse(byte[] data){
         if(data == null){
             return  null;
         }
@@ -96,9 +106,9 @@ public class Wson {
 
 
     /**
-     * serialize object to wson data
+     * serialize object to wson data, please use WXJsonUtils.toWsonOrJsonWXJSObject
      * */
-    public static byte[] toWson(Object object){
+    public static final byte[] toWson(Object object){
         if(object == null){
             return  null;
         }
@@ -118,7 +128,7 @@ public class Wson {
         private byte[] buffer;
         private char[]  charsBuffer;
 
-        public Parser(byte[] buffer) {
+        private Parser(byte[] buffer) {
             this.buffer = buffer;
             charsBuffer = localCharsBufferCache.get();
             if(charsBuffer != null){
@@ -129,11 +139,11 @@ public class Wson {
         }
 
 
-        public  final Object parse(){
+        private   final Object parse(){
             return  readObject();
         }
 
-        public final void close(){
+        private final void close(){
             position = 0;
             buffer = null;
             if(charsBuffer != null){
@@ -171,7 +181,7 @@ public class Wson {
                     return  null;
                 default:
                     throw new RuntimeException("wson unhandled type " + type + " " +
-                     position  +  " length " + buffer.length);
+                            position  +  " length " + buffer.length);
             }
         }
 
@@ -205,14 +215,72 @@ public class Wson {
 
 
         private final String readMapKeyUTF16() {
-                return readUTF16String();
+            int length = readUInt();
+            length = length/2;
+            if(charsBuffer.length < length){
+                charsBuffer = new char[length];
+            }
+            int hash = 5381;
+            if(IS_NATIVE_LITTLE_ENDIAN){
+                for(int i=0; i<length; i++){
+                    char ch = (char) ((buffer[position] & 0xFF) +
+                            (buffer[position + 1] << 8));
+                    charsBuffer[i] = (ch);
+                    hash = ((hash << 5) + hash)  + ch;
+                    position+=2;
+                }
+            }else{
+                for(int i=0; i<length; i++){
+                    char ch = (char) ((buffer[position + 1] & 0xFF) +
+                            (buffer[position] << 8));
+                    charsBuffer[i] = (ch);
+                    hash = ((hash << 5) + hash)  + ch;
+                    position+=2;
+                }
+            }
+            int globalIndex = (globalStringBytesCache.length - 1)&hash;
+            String cache = globalStringBytesCache[globalIndex];
+            if(cache != null
+                    && cache.length() == length){
+                boolean isStringEqual  = true;
+                for(int i=0; i<length; i++){
+                    if(charsBuffer[i] != cache.charAt(i)){
+                        isStringEqual = false;
+                        break;
+                    }
+                }
+                if(isStringEqual) {
+                    return cache;
+                }
+            }
+            cache = new String(charsBuffer, 0, length);
+            if(length < 64) {
+                globalStringBytesCache[globalIndex] = cache;
+            }
+            return  cache;
         }
 
         private final String readUTF16String(){
-            int length = readUInt();
-            String value =  new String(buffer, position, length);
-            position+=length;
-            return value;
+            int length = readUInt()/2;
+            if(charsBuffer.length < length){
+                charsBuffer = new char[length];
+            }
+            if(IS_NATIVE_LITTLE_ENDIAN){
+                for(int i=0; i<length; i++){
+                    char ch = (char) ((buffer[position] & 0xFF) +
+                            (buffer[position + 1] << 8));
+                    charsBuffer[i] = (ch);
+                    position+=2;
+                }
+            }else{
+                for(int i=0; i<length; i++){
+                    char ch = (char) ((buffer[position + 1] & 0xFF) +
+                            (buffer[position] << 8));
+                    charsBuffer[i] = (ch);
+                    position+=2;
+                }
+            }
+            return  new String(charsBuffer, 0, length);
         }
 
 
@@ -283,7 +351,7 @@ public class Wson {
     /**
      * wson builder
      * */
-    public static final class Builder {
+    private static final class Builder {
 
         private byte[] buffer;
         private int position;
@@ -293,10 +361,10 @@ public class Wson {
 
 
 
-        public Builder(){
+        private Builder(){
             buffer =  bufLocal.get();
             if(buffer != null) {
-                 bufLocal.set(null);
+                bufLocal.set(null);
             }else{
                 buffer = new byte[1024];
             }
@@ -334,7 +402,7 @@ public class Wson {
             if(object instanceof  CharSequence){
                 ensureCapacity(2);
                 writeByte(STRING_TYPE);
-                writeUTF16String(object.toString());
+                writeUTF16String((CharSequence) object);
                 return;
             }else if (object instanceof Map){
                 if(refs.contains(object)){
@@ -443,7 +511,7 @@ public class Wson {
             ensureCapacity(12);
             if(number instanceof  Integer){
                 writeByte(NUMBER_INT_TYPE);
-                writeVarInt((int)number);
+                writeVarInt(number.intValue());
                 return;
             }
 
@@ -464,7 +532,6 @@ public class Wson {
                 return;
             }
 
-
             if(number instanceof  Short
                     || number instanceof  Byte){
                 writeByte(NUMBER_INT_TYPE);
@@ -480,9 +547,10 @@ public class Wson {
 
             if(number instanceof BigDecimal){
                 String value = number.toString();
-                if(value.equals(Double.toString(number.doubleValue()))){
+                double doubleValue = number.doubleValue();
+                if(value.equals(Double.toString(doubleValue))){
                     writeByte(NUMBER_DOUBLE_TYPE);
-                    writeDouble(number.doubleValue());
+                    writeDouble(doubleValue);
                 }else {
                     writeByte(NUMBER_BIG_DECIMAL_TYPE);
                     writeUTF16String(value);
@@ -491,6 +559,7 @@ public class Wson {
             }
             writeByte(STRING_TYPE);
             writeUTF16String(number.toString());
+
         }
 
         private final  void writeMap(Map map) {
@@ -532,49 +601,93 @@ public class Wson {
         }
 
         private final void writeAdapterObject(Object object){
-            if(WsonAdapter.specialClass.containsKey(object.getClass().getName())){
+            if(specialClass.get(object.getClass().getName()) != null){
                 writeObject(JSON.toJSON(object));
                 return;
             }
             try{
                 writeMap(toMap(object));
             }catch (Exception e){
-                WsonAdapter.specialClass.put(object.getClass().getName(), true);
+                specialClass.put(object.getClass().getName(), true);
                 writeObject(JSON.toJSON(object));
             }
         }
 
         private  final Map  toMap(Object object){
-            return WsonAdapter.toMap(object);
+            Map map = new JSONObject();
+            try {
+                Class<?> targetClass = object.getClass();
+                String key = targetClass.getName();
+                List<Method> methods = getBeanMethod(key, targetClass);
+                for (Method method : methods) {
+                    String methodName = method.getName();
+                    if (methodName.startsWith(METHOD_PREFIX_GET)) {
+                        Object value = method.invoke(object);
+                        if(value != null){
+                            StringBuilder builder = new StringBuilder(method.getName().substring(3));
+                            builder.setCharAt(0, Character.toLowerCase(builder.charAt(0)));
+                            map.put(builder.toString(), (Object) value);
+                        }
+                    }else if(methodName.startsWith(METHOD_PREFIX_IS)){
+                        Object value = method.invoke(object);
+                        if(value != null){
+                            StringBuilder builder = new StringBuilder(method.getName().substring(2));
+                            builder.setCharAt(0, Character.toLowerCase(builder.charAt(0)));
+                            map.put(builder.toString(), value);
+                        }
+                    }
+                }
+                List<Field> fields = getBeanFields(key, targetClass);
+                for(Field field : fields){
+                    String fieldName = field.getName();
+                    if(map.containsKey(fieldName)){
+                        continue;
+                    }
+                    Object value  = field.get(object);
+                    if(value == null){
+                        continue;
+                    }
+                    map.put(fieldName, value);
+                }
+            }catch (Exception e){
+                if(e instanceof  RuntimeException){
+                    throw  (RuntimeException)e;
+                }else{
+                    throw  new RuntimeException(e);
+                }
+            }
+            return  map;
         }
 
         private  final void writeMapKeyUTF16(String value){
-            //writeUTF16String(value);
-            //writeVarInt(value.length());
-
+            writeUTF16String(value);
         }
+
+
 
 
         /**
          * writeString UTF-16
          * */
-        private  final void writeUTF16String(String value){
-            byte[] bts = value.getBytes(StandardCharsets.UTF_8);
-            int length = bts.length;
-            ensureCapacity(length + 8);
-            writeUInt(length);
-            System.arraycopy(bts, 0, buffer, position, length);
-            position +=length;
-        }
-
-        private final boolean isAscii(CharSequence str) {
-            int charCount =  str.length();
-            for(int i = 0; i < charCount; i++){
-                if(str.charAt(i) > 127){
-                    return false;
+        private  final void writeUTF16String(CharSequence value){
+            int length = value.length();
+            ensureCapacity(length*2 + 8);
+            writeUInt(length*2);
+            if(IS_NATIVE_LITTLE_ENDIAN){
+                for(int i=0; i<length; i++){
+                    char ch = value.charAt(i);
+                    buffer[position] = (byte) (ch);
+                    buffer[position+1] = (byte) (ch >>> 8);
+                    position+=2;
+                }
+            }else{
+                for(int i=0; i<length; i++){
+                    char ch = value.charAt(i);
+                    buffer[position + 1] = (byte) (ch      );
+                    buffer[position] = (byte) (ch >>> 8);
+                    position+=2;
                 }
             }
-            return true;
         }
 
 
@@ -642,4 +755,65 @@ public class Wson {
     private static final int GLOBAL_STRING_CACHE_SIZE = 2*1024;
     private static final ThreadLocal<char[]> localCharsBufferCache = new ThreadLocal<>();
     private static final String[] globalStringBytesCache = new String[GLOBAL_STRING_CACHE_SIZE];
+
+
+
+
+    /**
+     * lru cache, to map helper
+     * */
+    private static final String METHOD_PREFIX_GET = "get";
+    private static final String METHOD_PREFIX_IS = "is";
+    private static LruCache<String, List<Method>> methodsCache = new LruCache<>(128);
+    private static LruCache<String, List<Field>> fieldsCache = new LruCache<>(128);
+    private static LruCache<String, Boolean> specialClass = new LruCache<>(16);
+
+
+    private static final List<Method> getBeanMethod(String key, Class targetClass){
+        List<Method> methods = methodsCache.get(key);
+        if(methods == null){
+            methods = new ArrayList<>();
+            Method[]  allMethods = targetClass.getMethods();
+            for(Method method : allMethods){
+                if(method.getDeclaringClass() == Object.class){
+                    continue;
+                }
+                if( (method.getModifiers() & Modifier.STATIC) != 0){
+                    continue;
+                }
+                String methodName = method.getName();
+                if(methodName.startsWith(METHOD_PREFIX_GET)
+                        || methodName.startsWith(METHOD_PREFIX_IS)) {
+                    if(method.getAnnotation(JSONField.class) != null){
+                        throw new UnsupportedOperationException("getBeanMethod JSONField Annotation Not Handled, Use toJSON");
+                    }
+                    methods.add(method);
+                }
+            }
+            methodsCache.put(key, methods);
+        }
+        return methods;
+    }
+
+
+
+    private static  final List<Field> getBeanFields(String key, Class targetClass){
+        List<Field> fieldList = fieldsCache.get(key);
+        if(fieldList == null) {
+            Field[] fields = targetClass.getFields();
+            fieldList = new ArrayList<>(fields.length);
+            for(Field field : fields){
+                if((field.getModifiers() & Modifier.STATIC) != 0){
+                    continue;
+                }
+                if(field.getAnnotation(JSONField.class) != null){
+                    throw new UnsupportedOperationException("getBeanMethod JSONField Annotation Not Handled, Use toJSON");
+                }
+                fieldList.add(field);
+            }
+            fieldsCache.put(key, fieldList);
+        }
+        return  fieldList;
+    }
+
 }
