@@ -25,6 +25,9 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.github.gubaojian.wson.cache.LruCache;
+import com.github.gubaojian.wson.config.Protocol;
+import com.github.gubaojian.wson.io.Input;
+import com.github.gubaojian.wson.io.Platform;
 
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
@@ -52,38 +55,6 @@ public class Wson {
      * skip map null values
      * */
     public static final boolean WriteMapNullValue = false;
-    /**
-     * wson data type
-     * */
-    private static final byte NULL_TYPE = '0';
-
-    private static final byte STRING_TYPE = 's';
-
-    private static final byte BOOLEAN_TYPE_TRUE = 't';
-
-    private static final byte BOOLEAN_TYPE_FALSE = 'f';
-
-    private static final byte NUMBER_INT_TYPE = 'i';
-
-    private static final byte NUMBER_LONG_TYPE = 'l';
-
-    private static final byte NUMBER_BIG_INTEGER_TYPE = 'g';
-
-    private static final byte NUMBER_BIG_DECIMAL_TYPE = 'e';
-
-    private static final byte NUMBER_DOUBLE_TYPE = 'd';
-
-    private static final byte NUMBER_FLOAT_TYPE = 'F';
-
-    private static final byte ARRAY_TYPE = '[';
-
-    private static final byte MAP_TYPE = '{';
-
-    /**
-     * StringUTF-16, byte order with native byte order
-     * */
-    private static final boolean IS_NATIVE_LITTLE_ENDIAN = (ByteOrder.nativeOrder() == ByteOrder.LITTLE_ENDIAN);
-
 
     /**
      * parse wson data  to object, please use WXJsonUtils.parseWson
@@ -123,72 +94,66 @@ public class Wson {
      * wson data parser
      * */
     private static final class Parser {
-
-        private int position = 0;
-        private byte[] buffer;
         private char[]  charsBuffer;
-
+        private Input input = null;
         private Parser(byte[] buffer) {
-            this.buffer = buffer;
-            charsBuffer = localCharsBufferCache.get();
+            this.input = new Input(buffer);
+            charsBuffer = Platform.localCharsBufferCache.get();
+            //FIXME Lazy Init
             if(charsBuffer != null){
-                localCharsBufferCache.set(null);
+                Platform.localCharsBufferCache.set(null);
             }else{
                 charsBuffer = new char[512];
             }
         }
 
-
-        private   final Object parse(){
+        private final Object parse(){
             return  readObject();
         }
 
         private final void close(){
-            position = 0;
-            buffer = null;
+            input.close();
             if(charsBuffer != null){
-                localCharsBufferCache.set(charsBuffer);
+                Platform.localCharsBufferCache.set(charsBuffer);
             }
             charsBuffer = null;
         }
 
         private final Object readObject(){
-            byte type  = readType();
+            byte type  = input.readType();
             switch (type){
-                case STRING_TYPE:
+                case Protocol.STRING_TYPE:
                     return readUTF16String();
-                case NUMBER_INT_TYPE :
-                    return  readVarInt();
-                case NUMBER_FLOAT_TYPE :
-                    return  readFloat();
-                case MAP_TYPE:
+                case Protocol.NUMBER_INT_TYPE :
+                    return  input.readVarInt();
+                case Protocol.NUMBER_FLOAT_TYPE :
+                    return  input.readFloat();
+                case Protocol.MAP_TYPE:
                     return readMap();
-                case ARRAY_TYPE:
+                case Protocol.ARRAY_TYPE:
                     return readArray();
-                case NUMBER_DOUBLE_TYPE :
-                    return readDouble();
-                case NUMBER_LONG_TYPE :
-                    return  readLong();
-                case NUMBER_BIG_INTEGER_TYPE :
+                case Protocol.NUMBER_DOUBLE_TYPE :
+                    return input.readDouble();
+                case Protocol.NUMBER_LONG_TYPE :
+                    return  input.readLong();
+                case Protocol.NUMBER_BIG_INTEGER_TYPE :
                     return  new BigInteger(readUTF16String());
-                case NUMBER_BIG_DECIMAL_TYPE :
+                case Protocol.NUMBER_BIG_DECIMAL_TYPE :
                     return  new BigDecimal(readUTF16String());
-                case BOOLEAN_TYPE_FALSE:
+                case Protocol.BOOLEAN_TYPE_FALSE:
                     return  Boolean.FALSE;
-                case BOOLEAN_TYPE_TRUE:
+                case Protocol.BOOLEAN_TYPE_TRUE:
                     return  Boolean.TRUE;
-                case NULL_TYPE:
+                case Protocol.NULL_TYPE:
                     return  null;
                 default:
                     throw new RuntimeException("wson unhandled type " + type + " " +
-                            position  +  " length " + buffer.length);
+                            input.getPosition()  +  " length " + input.getEnd());
             }
         }
 
-
-
         private final Object readMap(){
-            int size = readUInt();
+            int size = input.readUInt();
             Map<String, Object> object = new JSONObject();;
             for(int i=0; i<size; i++){
                 String key = readMapKeyUTF16();
@@ -199,7 +164,7 @@ public class Wson {
         }
 
         private final Object readArray(){
-            int length = readUInt();
+            int length = input.readUInt();
             List<Object> array = new JSONArray(length);
             for(int i=0; i<length; i++){
                 array.add(readObject());
@@ -207,37 +172,48 @@ public class Wson {
             return  array;
         }
 
-        private  final byte readType(){
-            byte type = buffer[position];
-            position ++;
-            return  type;
-        }
-
-
+        /**
+         * speed read for json key with cache
+         * FIXME 移动出去。
+         * */
         private final String readMapKeyUTF16() {
-            int length = readUInt();
-            length = length/2;
+            int length = input.readUInt()/2; //one char 2 byte
+            //TODO improve, REMOVE FROM THREAD LOCAL
+            charsBuffer = Platform.localCharsBufferCache.get();
+            if(charsBuffer != null){
+                Platform.localCharsBufferCache.set(null);
+            }else{
+                if (length > 256) {
+                    charsBuffer = new char[length]; //设置cache
+                } else {
+                    charsBuffer = new char[256];
+                }
+            }
             if(charsBuffer.length < length){
                 charsBuffer = new char[length];
             }
             int hash = 5381;
-            if(IS_NATIVE_LITTLE_ENDIAN){
+            final byte[] buffer = input.getBuffer();
+            if(Platform.IS_NATIVE_LITTLE_ENDIAN){
                 for(int i=0; i<length; i++){
+                    int position = input.getPosition();
                     char ch = (char) ((buffer[position] & 0xFF) +
                             (buffer[position + 1] << 8));
                     charsBuffer[i] = (ch);
                     hash = ((hash << 5) + hash)  + ch;
-                    position+=2;
+                    input.move(2);
                 }
             }else{
                 for(int i=0; i<length; i++){
+                    int position = input.getPosition();
                     char ch = (char) ((buffer[position + 1] & 0xFF) +
                             (buffer[position] << 8));
                     charsBuffer[i] = (ch);
                     hash = ((hash << 5) + hash)  + ch;
-                    position+=2;
+                    input.move(2);
                 }
             }
+            String[] globalStringBytesCache = Platform.globalStringBytesCache;
             int globalIndex = (globalStringBytesCache.length - 1)&hash;
             String cache = globalStringBytesCache[globalIndex];
             if(cache != null
@@ -259,93 +235,37 @@ public class Wson {
             }
             return  cache;
         }
-
+        /**
+         * method for json value
+         * FIXME 移动出去。
+         * */
         private final String readUTF16String(){
-            int length = readUInt()/2;
-            if(charsBuffer.length < length){
+            int length = input.readUInt()/2; //one char 2 byte
+            if(charsBuffer == null || charsBuffer.length < length){
                 charsBuffer = new char[length];
             }
-            if(IS_NATIVE_LITTLE_ENDIAN){
+            //FIXME String UTF8
+            final byte[] buffer = input.getBuffer();
+            if(Platform.IS_NATIVE_LITTLE_ENDIAN){
                 for(int i=0; i<length; i++){
+                    int position = input.getPosition();
                     char ch = (char) ((buffer[position] & 0xFF) +
                             (buffer[position + 1] << 8));
                     charsBuffer[i] = (ch);
-                    position+=2;
+                    input.move(2);
                 }
             }else{
                 for(int i=0; i<length; i++){
+                    int position = input.getPosition();
                     char ch = (char) ((buffer[position + 1] & 0xFF) +
                             (buffer[position] << 8));
                     charsBuffer[i] = (ch);
-                    position+=2;
+                    input.move(2);
                 }
             }
             return  new String(charsBuffer, 0, length);
         }
 
-
-
-
-
-        private   final int readVarInt(){
-            int raw = readUInt();
-            // This undoes the trick in putVarInt()
-            int num = (((raw << 31) >> 31) ^ raw) >> 1;
-            // This extra step lets us deal with the largest signed values by treating
-            // negative results from read unsigned methods as like unsigned values.
-            // Must re-flip the top bit if the original read value had it set.
-            return num ^ (raw & (1 << 31));
-        }
-
-        private final  int readUInt(){
-            int value = 0;
-            int i = 0;
-            int b;
-            while (((b = buffer[position]) & 0x80) != 0) {
-                value |= (b & 0x7F) << i;
-                i += 7;
-                position+=1;
-                if (i > 35) {
-                    throw new IllegalArgumentException("Variable length quantity is too long");
-                }
-            }
-            position+=1;
-            return value | (b << i);
-        }
-
-        private final long readLong(){
-            long number = (((buffer[position + 7] & 0xFFL)      ) +
-                    ((buffer[position + 6] & 0xFFL) <<  8) +
-                    ((buffer[position + 5] & 0xFFL) << 16) +
-                    ((buffer[position + 4] & 0xFFL) << 24) +
-                    ((buffer[position + 3] & 0xFFL) << 32) +
-                    ((buffer[position + 2] & 0xFFL) << 40) +
-                    ((buffer[position + 1] & 0xFFL) << 48) +
-                    (((long) buffer[position])      << 56));
-            position += 8;
-            return  number;
-        }
-
-        private  final Object readDouble(){
-            double number = Double.longBitsToDouble(readLong());
-            if(number > Integer.MAX_VALUE){
-                long numberLong = (long) number;
-                double doubleLong = (numberLong);
-                if(number - doubleLong < Double.MIN_NORMAL){
-                    return numberLong;
-                }
-            }
-            return  number;
-        }
-
-        private Object readFloat() {
-            int number = (((buffer[position + 3] & 0xFF)      ) +
-                    ((buffer[position + 2] & 0xFF) <<  8) +
-                    ((buffer[position + 1] & 0xFF) << 16) +
-                    ((buffer[position  ] & 0xFF) << 24));
-            position +=4;
-            return  Float.intBitsToFloat(number);
-        }
     }
 
     /**
@@ -401,13 +321,13 @@ public class Wson {
         private final void writeObject(Object object) {
             if(object instanceof  CharSequence){
                 ensureCapacity(2);
-                writeByte(STRING_TYPE);
+                writeByte(Protocol.STRING_TYPE);
                 writeUTF16String((CharSequence) object);
                 return;
             }else if (object instanceof Map){
                 if(refs.contains(object)){
                     ensureCapacity(2);
-                    writeByte(NULL_TYPE);
+                    writeByte(Protocol.NULL_TYPE);
                     return;
                 }
                 refs.add(object);
@@ -418,13 +338,13 @@ public class Wson {
             }else if (object instanceof List){
                 if(refs.contains(object)){
                     ensureCapacity(2);
-                    writeByte(NULL_TYPE);
+                    writeByte(Protocol.NULL_TYPE);
                     return;
                 }
                 refs.add(object);
                 ensureCapacity(8);
                 List list = (List) object;
-                writeByte(ARRAY_TYPE);
+                writeByte(Protocol.ARRAY_TYPE);
                 writeUInt(list.size());
                 for(Object value : list){
                     writeObject(value);
@@ -439,25 +359,25 @@ public class Wson {
                 ensureCapacity(2);
                 Boolean value  = (Boolean) object;
                 if(value){
-                    writeByte(BOOLEAN_TYPE_TRUE);
+                    writeByte(Protocol.BOOLEAN_TYPE_TRUE);
                 }else{
-                    writeByte(BOOLEAN_TYPE_FALSE);
+                    writeByte(Protocol.BOOLEAN_TYPE_FALSE);
                 }
                 return;
             }else if(object == null){
                 ensureCapacity(2);
-                writeByte(NULL_TYPE);
+                writeByte(Protocol.NULL_TYPE);
                 return;
             }else if (object.getClass().isArray()){
                 if(refs.contains(object)){
                     ensureCapacity(2);
-                    writeByte(NULL_TYPE);
+                    writeByte(Protocol.NULL_TYPE);
                     return;
                 }
                 refs.add(object);
                 ensureCapacity(8);
                 int length = Array.getLength(object);
-                writeByte(ARRAY_TYPE);
+                writeByte(Protocol.ARRAY_TYPE);
                 writeUInt(length);
                 for(int i=0; i<length; i++){
                     Object value = Array.get(object, i);
@@ -468,23 +388,23 @@ public class Wson {
             }else  if(object instanceof  Date){
                 ensureCapacity(10);
                 double date = ((Date)object).getTime();
-                writeByte(NUMBER_DOUBLE_TYPE);
+                writeByte(Protocol.NUMBER_DOUBLE_TYPE);
                 writeDouble(date);
             }else  if(object instanceof  Calendar){
                 ensureCapacity(10);
                 double date = ((Calendar)object).getTime().getTime();
-                writeByte(NUMBER_DOUBLE_TYPE);
+                writeByte(Protocol.NUMBER_DOUBLE_TYPE);
                 writeDouble(date);
             }else  if(object instanceof  Collection){
                 if(refs.contains(object)){
                     ensureCapacity(2);
-                    writeByte(NULL_TYPE);
+                    writeByte(Protocol.NULL_TYPE);
                     return;
                 }
                 refs.add(object);
                 ensureCapacity(8);
                 Collection list = (Collection) object;
-                writeByte(ARRAY_TYPE);
+                writeByte(Protocol.ARRAY_TYPE);
                 writeUInt(list.size());
                 for(Object value : list){
                     writeObject(value);
@@ -493,7 +413,7 @@ public class Wson {
             }else{
                 if(refs.contains(object)){
                     ensureCapacity(2);
-                    writeByte(NULL_TYPE);
+                    writeByte(Protocol.NULL_TYPE);
                 }else {
                     refs.add(object);
                     if(object.getClass().isEnum()){
@@ -510,37 +430,37 @@ public class Wson {
         private final void writeNumber(Number number) {
             ensureCapacity(12);
             if(number instanceof  Integer){
-                writeByte(NUMBER_INT_TYPE);
+                writeByte(Protocol.NUMBER_INT_TYPE);
                 writeVarInt(number.intValue());
                 return;
             }
 
             if(number instanceof Float){
-                writeByte(NUMBER_FLOAT_TYPE);
+                writeByte(Protocol.NUMBER_FLOAT_TYPE);
                 writeFloat(number.floatValue());
                 return;
             }
             if(number instanceof  Double){
-                writeByte(NUMBER_DOUBLE_TYPE);
+                writeByte(Protocol.NUMBER_DOUBLE_TYPE);
                 writeDouble(number.doubleValue());
                 return;
             }
 
             if(number instanceof  Long){
-                writeByte(NUMBER_LONG_TYPE);
+                writeByte(Protocol.NUMBER_LONG_TYPE);
                 writeLong(number.longValue());
                 return;
             }
 
             if(number instanceof  Short
                     || number instanceof  Byte){
-                writeByte(NUMBER_INT_TYPE);
+                writeByte(Protocol.NUMBER_INT_TYPE);
                 writeVarInt(number.intValue());
                 return;
             }
 
             if(number instanceof BigInteger){
-                writeByte(NUMBER_BIG_INTEGER_TYPE);
+                writeByte(Protocol.NUMBER_BIG_INTEGER_TYPE);
                 writeUTF16String(number.toString());
                 return;
             }
@@ -549,15 +469,15 @@ public class Wson {
                 String value = number.toString();
                 double doubleValue = number.doubleValue();
                 if(value.equals(Double.toString(doubleValue))){
-                    writeByte(NUMBER_DOUBLE_TYPE);
+                    writeByte(Protocol.NUMBER_DOUBLE_TYPE);
                     writeDouble(doubleValue);
                 }else {
-                    writeByte(NUMBER_BIG_DECIMAL_TYPE);
+                    writeByte(Protocol.NUMBER_BIG_DECIMAL_TYPE);
                     writeUTF16String(value);
                 }
                 return;
             }
-            writeByte(STRING_TYPE);
+            writeByte(Protocol.STRING_TYPE);
             writeUTF16String(number.toString());
 
         }
@@ -565,7 +485,7 @@ public class Wson {
         private final  void writeMap(Map map) {
             if(WriteMapNullValue){
                 ensureCapacity(8);
-                writeByte(MAP_TYPE);
+                writeByte(Protocol.MAP_TYPE);
                 writeUInt(map.size());
                 Set<Map.Entry<Object,Object>>  entries = map.entrySet();
                 for(Map.Entry<Object,Object> entry : entries){
@@ -582,7 +502,7 @@ public class Wson {
                 }
 
                 ensureCapacity(8);
-                writeByte(MAP_TYPE);
+                writeByte(Protocol.MAP_TYPE);
                 writeUInt(map.size()-nullValueSize);
                 for(Map.Entry<Object,Object> entry : entries){
                     if(entry.getValue() == null){
@@ -665,7 +585,6 @@ public class Wson {
 
 
 
-
         /**
          * writeString UTF-16
          * */
@@ -673,7 +592,7 @@ public class Wson {
             int length = value.length();
             ensureCapacity(length*2 + 8);
             writeUInt(length*2);
-            if(IS_NATIVE_LITTLE_ENDIAN){
+            if(Platform.IS_NATIVE_LITTLE_ENDIAN){
                 for(int i=0; i<length; i++){
                     char ch = value.charAt(i);
                     buffer[position] = (byte) (ch);
@@ -747,15 +666,6 @@ public class Wson {
             }
         }
     }
-
-
-    /**
-     * cache json property key, most of them all same
-     * */
-    private static final int GLOBAL_STRING_CACHE_SIZE = 2*1024;
-    private static final ThreadLocal<char[]> localCharsBufferCache = new ThreadLocal<>();
-    private static final String[] globalStringBytesCache = new String[GLOBAL_STRING_CACHE_SIZE];
-
 
 
 

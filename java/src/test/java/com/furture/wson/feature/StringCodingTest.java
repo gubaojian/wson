@@ -79,6 +79,17 @@ public class StringCodingTest extends TestCase {
         end = System.currentTimeMillis();
         System.out.println("new string end used "+ (end - start));
 
+
+        start = System.currentTimeMillis();
+        for(int i=0; i<10000; i++) {
+            new String(bts,0, bts.length, StandardCharsets.UTF_8);
+        }
+        end = System.currentTimeMillis();
+        System.out.println("new 2string end used "+ (end - start));
+
+
+
+
     }
 
 
