@@ -266,7 +266,7 @@ public class Wson {
      * wson builder
      * */
     private static final class Builder {
-        private List refs;
+        private ArrayList refs;
         private Output output;
         private final static ThreadLocal<byte[]> bufLocal = new ThreadLocal<byte[]>();
 
@@ -278,7 +278,7 @@ public class Wson {
                 buffer = new byte[4096];
             }
             output = new Output(buffer);
-            refs = new LinkedList();
+            refs = new ArrayList();
         }
 
         private final byte[] toWson(Object object){
@@ -500,10 +500,6 @@ public class Wson {
         }
 
         private  final Map  toMap(Object object){
-            return  toMap1(object);
-        }
-
-        private  final Map  toMap1(Object object){
             Map map = new JSONObject();
             try {
                 Class<?> targetClass = object.getClass();
@@ -526,52 +522,6 @@ public class Wson {
                         map.put(bean.names.get(nameIndex), value);
                     }
                     nameIndex++;
-                }
-            } catch (Exception e){
-                if(e instanceof  RuntimeException){
-                    throw  (RuntimeException)e;
-                }else{
-                    throw  new RuntimeException(e);
-                }
-            }
-            return  map;
-        }
-
-        private  final Map  toMap2(Object object){
-            Map map = new JSONObject();
-            try {
-                Class<?> targetClass = object.getClass();
-                String key = targetClass.getName();
-                List<Method> methods = getBeanMethod(key, targetClass);
-                for (Method method : methods) {
-                    String methodName = method.getName();
-                    if (methodName.startsWith(METHOD_PREFIX_GET)) {
-                        Object value = method.invoke(object);
-                        if(value != null){
-                            StringBuilder builder = new StringBuilder(method.getName().substring(3));
-                            builder.setCharAt(0, Character.toLowerCase(builder.charAt(0)));
-                            map.put(builder.toString(), (Object) value);
-                        }
-                    }else if(methodName.startsWith(METHOD_PREFIX_IS)){
-                        Object value = method.invoke(object);
-                        if(value != null){
-                            StringBuilder builder = new StringBuilder(method.getName().substring(2));
-                            builder.setCharAt(0, Character.toLowerCase(builder.charAt(0)));
-                            map.put(builder.toString(), value);
-                        }
-                    }
-                }
-                List<Field> fields = getBeanFields(key, targetClass);
-                for(Field field : fields){
-                    String fieldName = field.getName();
-                    if(map.containsKey(fieldName)){
-                        continue;
-                    }
-                    Object value  = field.get(object);
-                    if(value == null){
-                        continue;
-                    }
-                    map.put(fieldName, value);
                 }
             } catch (Exception e){
                 if(e instanceof  RuntimeException){
@@ -647,10 +597,7 @@ public class Wson {
      * */
     private static final String METHOD_PREFIX_GET = "get";
     private static final String METHOD_PREFIX_IS = "is";
-    private static LruCache<String, List<Method>> methodsCache = new LruCache<>(128);
-    private static LruCache<String, List<Field>> fieldsCache = new LruCache<>(128);
     private static LruCache<String, Boolean> specialClass = new LruCache<>(16);
-
     private static LruCache<String, ObjectBean> beanCache = new LruCache<>(128);
 
 
@@ -708,53 +655,6 @@ public class Wson {
         }
         return  bean;
     }
-    private static final List<Method> getBeanMethod(String key, Class targetClass){
-        List<Method> methods = methodsCache.get(key);
-        if(methods == null){
-            methods = new ArrayList<>();
-            Method[]  allMethods = targetClass.getMethods();
-            for(Method method : allMethods){
-                if(method.getDeclaringClass() == Object.class){
-                    continue;
-                }
-                if( (method.getModifiers() & Modifier.STATIC) != 0){
-                    continue;
-                }
-                String methodName = method.getName();
-                if(methodName.startsWith(METHOD_PREFIX_GET)
-                        || methodName.startsWith(METHOD_PREFIX_IS)) {
-                    if(method.getAnnotation(JSONField.class) != null){
-                        throw new UnsupportedOperationException("getBeanMethod JSONField Annotation Not Handled, Use toJSON");
-                    }
-                    methods.add(method);
-                }
-            }
-            methodsCache.put(key, methods);
-        }
-        return methods;
-    }
-
-
-
-    private static  final List<Field> getBeanFields(String key, Class targetClass){
-        List<Field> fieldList = fieldsCache.get(key);
-        if(fieldList == null) {
-            Field[] fields = targetClass.getFields();
-            fieldList = new ArrayList<>(fields.length);
-            for(Field field : fields){
-                if((field.getModifiers() & Modifier.STATIC) != 0){
-                    continue;
-                }
-                if(field.getAnnotation(JSONField.class) != null){
-                    throw new UnsupportedOperationException("getBeanMethod JSONField Annotation Not Handled, Use toJSON");
-                }
-                fieldList.add(field);
-            }
-            fieldsCache.put(key, fieldList);
-        }
-        return  fieldList;
-    }
-
 
     /**
      * cache json property key, most of them all same
