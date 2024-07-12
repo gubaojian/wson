@@ -1,10 +1,10 @@
 package com.github.gubaojian.wson.io;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * 解析基础类，方便手工操作，自定义数据格式
+ * 序列化基础类，方便手工操作，自定义数据格式。也方便定义混合数据格式。
+ * 你也可以扩展或者自定义协议。
  * */
 public class Output {
     private byte[] buffer;
@@ -56,11 +56,17 @@ public class Output {
         position++;
     }
 
+    /**
+     * 仅写入值，不写入类型
+     * */
     public final void writeDouble(double value){
         writeLong(Double.doubleToLongBits(value));
     }
 
-    public final void writeFloat(float value){
+    /**
+     * 仅写入值，不写入类型
+     * */
+    public final void writeFloat(float value) {
         int val = Float.floatToIntBits(value);
         buffer[position + 3] = (byte) (val       );
         buffer[position + 2] = (byte) (val >>>  8);
@@ -69,7 +75,18 @@ public class Output {
         position += 4;
     }
 
-    public final void writeLong(long val){
+    /**
+     * 写入值和类型
+     * */
+    public final void writeFloatWithType(float value) {
+        writeByte(Protocol.NUMBER_FLOAT_TYPE);
+        writeFloat(value);
+    }
+
+    /**
+     * 仅写入值，不写入类型
+     * */
+    public final void writeLong(long val) {
         buffer[position + 7] = (byte) (val       );
         buffer[position + 6] = (byte) (val >>>  8);
         buffer[position + 5] = (byte) (val >>> 16);
@@ -81,10 +98,17 @@ public class Output {
         position += 8;
     }
 
+    /**
+     * 仅写入值，不写入类型
+     * */
     public final void writeVarInt(int value){
         writeUInt((value << 1) ^ (value >> 31));
     }
 
+
+    /**
+     * 仅写入值，不写入类型
+     * */
     public final void  writeUInt(int value){
         while ((value & 0xFFFFFF80) != 0) {
             buffer[position] = (byte)((value & 0x7F) | 0x80);

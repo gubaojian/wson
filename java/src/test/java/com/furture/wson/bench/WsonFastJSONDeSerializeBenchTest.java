@@ -19,7 +19,7 @@ public class WsonFastJSONDeSerializeBenchTest extends TestCase {
     }
 
     public void testMediaJSON() throws IOException {
-        benchBuild("/media.json", 100*10000, false);
+        benchBuild("/media.json", 1000, false);
     }
 
     public void testMedia2Wson() throws IOException {
@@ -54,20 +54,20 @@ public class WsonFastJSONDeSerializeBenchTest extends TestCase {
 
     /** 下面两个数据太大,单次存性能对比, 多次就是对比GC了 */
     public void testHomeWson() throws IOException {
-        benchBuild("/home.json", 1, true);
+        benchBuild("/home.json", 1000, true);
     }
 
     public void testHomeJSON() throws IOException {
-        benchBuild("/home.json", 1, false);
+        benchBuild("/home.json", 1000, false);
     }
 
 
     public void testDataWson() throws IOException {
-        benchBuild("/data.json", 1, true);
+        benchBuild("/data.json", 1000, true);
     }
 
     public void testDataJSON() throws IOException {
-        benchBuild("/data.json", 1, false);
+        benchBuild("/data.json", 1000, false);
     }
 
 
@@ -80,15 +80,16 @@ public class WsonFastJSONDeSerializeBenchTest extends TestCase {
         long start = 0;
         long end = 0;
 
-        if(wson) {
+        System.out.println("file name " + file);
+        if (wson) {
             Wson.parse(bts);
             start = System.currentTimeMillis();
             for(int i=0; i<count; i++) {
                 Wson.parse(bts);
             }
             end = System.currentTimeMillis();
-            System.out.println("TSON parse used " + (end - start));
-        }else{
+            System.out.println("WSON parse used " + (end - start));
+
             JSON.parse(data);
             start = System.currentTimeMillis();
             for(int i=0; i<count; i++) {
@@ -96,6 +97,23 @@ public class WsonFastJSONDeSerializeBenchTest extends TestCase {
             }
             end = System.currentTimeMillis();
             System.out.println("FastJSON parse used " + (end - start));
+        } else {
+            JSON.parse(data);
+            start = System.currentTimeMillis();
+            for(int i=0; i<count; i++) {
+                JSON.parse(data);
+            }
+            end = System.currentTimeMillis();
+            System.out.println("FastJSON parse used " + (end - start));
+
+            Wson.parse(bts);
+            start = System.currentTimeMillis();
+            for(int i=0; i<count; i++) {
+                Wson.parse(bts);
+            }
+            end = System.currentTimeMillis();
+            System.out.println("WSON parse used " + (end - start));
+
         }
     }
 

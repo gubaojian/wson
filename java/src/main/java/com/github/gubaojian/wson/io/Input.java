@@ -1,7 +1,8 @@
 package com.github.gubaojian.wson.io;
 
 /**
- * 解析基础类，方便手工操作，自定义数据格式
+ * 解析基础类，方便手工操作，自定义数据格式。
+ * 你也可以扩展或者自定义协议。
  * */
 public class Input {
     private int position;
@@ -61,6 +62,9 @@ public class Input {
         return end;
     }
 
+    /**
+     * 仅读取值，不读取类型
+     * */
     public final int readVarInt(){
         int raw = readUInt();
         // This undoes the trick in putVarInt()
@@ -71,6 +75,9 @@ public class Input {
         return num ^ (raw & (1 << 31));
     }
 
+    /**
+     * 仅读取值，不读取类型
+     * */
     public final int readUInt(){
         int value = 0;
         int i = 0;
@@ -87,6 +94,9 @@ public class Input {
         return value | (b << i);
     }
 
+    /**
+     * 仅读取值，不读取类型
+     * */
     public final long readLong(){
         long number = (((buffer[position + 7] & 0xFFL)      ) +
                 ((buffer[position + 6] & 0xFFL) <<  8) +
@@ -100,6 +110,9 @@ public class Input {
         return  number;
     }
 
+    /**
+     * 仅读取值，不读取类型
+     * */
     public final double readDouble(){
         double number = Double.longBitsToDouble(readLong());
         if(number > Integer.MAX_VALUE){
@@ -112,6 +125,9 @@ public class Input {
         return  number;
     }
 
+    /**
+     * 仅读取值，不读取类型
+     * */
     public float readFloat() {
         int number = (((buffer[position + 3] & 0xFF)      ) +
                 ((buffer[position + 2] & 0xFF) <<  8) +

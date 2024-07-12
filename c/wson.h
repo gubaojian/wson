@@ -39,8 +39,9 @@ typedef struct wson_buffer{
     uint32_t length;
 } wson_buffer;
 
-
-
+/**
+ * FIXME 通过inline提升性能，代码整理
+ */
 
 /**
  * wson data type
@@ -116,6 +117,7 @@ float wson_next_float(wson_buffer *buffer);
 int64_t wson_next_long(wson_buffer *buffer);
 uint64_t wson_next_ulong(wson_buffer *buffer);
 uint8_t* wson_next_bts(wson_buffer *buffer, uint32_t length);
+
 inline bool wson_has_next(wson_buffer *buffer){
     return buffer->position < buffer->length;
 }

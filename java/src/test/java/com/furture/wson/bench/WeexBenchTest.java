@@ -76,7 +76,7 @@ public class WeexBenchTest extends TestCase {
         String data = readFile(file);
         Object map = JSON.parse(data);
         byte[] wson = Wson.toWson(map);
-        System.out.println("\nbench file " + file + ":\n");
+        System.out.println("\nbench file " + wson.length + " " + file + ":\n");
         long start = 0;
         long end = 0;
 

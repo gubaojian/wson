@@ -1,7 +1,7 @@
 package com.github.gubaojian.wson.io;
 
 /**
- * 数据协议类型
+ * 数据协议类型，你也可以扩展或者自定义协议。
  * */
 public class Protocol {
     /**

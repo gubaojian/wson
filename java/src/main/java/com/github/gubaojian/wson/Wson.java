@@ -25,10 +25,12 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.github.gubaojian.wson.cache.LruCache;
-import com.github.gubaojian.wson.io.Protocol;
 import com.github.gubaojian.wson.io.Input;
+import com.github.gubaojian.wson.io.LocalBuffer;
 import com.github.gubaojian.wson.io.Output;
+import com.github.gubaojian.wson.io.Protocol;
 
+import java.lang.ref.WeakReference;
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -101,9 +103,7 @@ public class Wson {
 
         private final void close(){
             input.close();
-            if(charsBuffer != null && charsBuffer.length < 8*1024){
-                localCharsBufferCache.set(charsBuffer);
-            }
+            returnCharBuffer();
             charsBuffer = null;
         }
 
@@ -235,21 +235,28 @@ public class Wson {
             return  new String(charsBuffer, 0, length);
         }
 
+        private void returnCharBuffer() {
+            if(charsBuffer != null && charsBuffer.length < 16*1024){
+                localCharsBufferCache.set(new WeakReference<>(charsBuffer));
+            }
+        }
         private void ensureCharBuffer(int length) {
             // first get charsBuffer from local
             if (charsBuffer == null) {
-                charsBuffer = localCharsBufferCache.get();
-                if(charsBuffer != null){
-                    localCharsBufferCache.set(null);
+                WeakReference<char[]> reference =  localCharsBufferCache.get();
+                if (reference != null) {
+                    charsBuffer = reference.get();
+                    if(charsBuffer != null){
+                        localCharsBufferCache.set(null);
+                    }
                 }
             }
-
             // create char buffer if null
             if (charsBuffer == null) {
-                if (length > 1024) {
+                if (length > 2048) {
                     charsBuffer = new char[length + 1024]; //设置cache
                 } else {
-                    charsBuffer = new char[1024];
+                    charsBuffer = new char[2048];
                 }
             }
 
@@ -267,16 +274,9 @@ public class Wson {
     private static final class Builder {
         private ArrayList refs;
         private Output output;
-        private final static ThreadLocal<byte[]> bufLocal = new ThreadLocal<byte[]>();
 
         private Builder(){
-            byte[] buffer =  bufLocal.get();
-            if(buffer != null) {
-                bufLocal.set(null);
-            }else{
-                buffer = new byte[4096];
-            }
-            output = new Output(buffer);
+            output = new Output(LocalBuffer.requireBuffer(4096));
             refs = new ArrayList();
         }
 
@@ -286,10 +286,7 @@ public class Wson {
         }
 
         private final void close(){
-            byte[] buffer = output.getBuffer();
-            if(buffer.length <= 1024*16){
-                bufLocal.set(buffer);
-            }
+            LocalBuffer.returnBuffer(output.getBuffer(), 128*1024);
             output.close();
             refs = null;
         }
@@ -499,7 +496,7 @@ public class Wson {
             }
         }
 
-        private  final Map  toMap(Object object, String key, Class targetClass){
+        private final Map  toMap(Object object, String key, Class targetClass){
             Map map = new JSONObject();
             try {
                 ObjectBean bean = getBean(key, targetClass);
@@ -658,7 +655,7 @@ public class Wson {
      * */
     private static final int GLOBAL_STRING_CACHE_SIZE = 2*1024;
     private static final String[] globalStringBytesCache = new String[GLOBAL_STRING_CACHE_SIZE];
-    private static final ThreadLocal<char[]> localCharsBufferCache = new ThreadLocal<>();
+    private static final ThreadLocal<WeakReference<char[]>> localCharsBufferCache = new ThreadLocal<>();
     /**
      * StringUTF-16, byte order with native byte order
      * */
