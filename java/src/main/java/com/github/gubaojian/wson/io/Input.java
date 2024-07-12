@@ -27,7 +27,7 @@ public class Input {
     /**
      * none need call
      * */
-    public void reset(){
+    public final void reset(){
         position = start;
     }
 

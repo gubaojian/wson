@@ -27,6 +27,7 @@ import com.alibaba.fastjson.annotation.JSONField;
 import com.github.gubaojian.wson.cache.LruCache;
 import com.github.gubaojian.wson.config.Protocol;
 import com.github.gubaojian.wson.io.Input;
+import com.github.gubaojian.wson.io.Output;
 import com.github.gubaojian.wson.io.Platform;
 
 import java.lang.reflect.Array;
@@ -193,7 +194,7 @@ public class Wson {
                 charsBuffer = new char[length];
             }
             int hash = 5381;
-            final byte[] buffer = input.getBuffer();
+            byte[] buffer = input.getBuffer();
             if(Platform.IS_NATIVE_LITTLE_ENDIAN){
                 for(int i=0; i<length; i++){
                     int position = input.getPosition();
@@ -272,62 +273,48 @@ public class Wson {
      * wson builder
      * */
     private static final class Builder {
-
-        private byte[] buffer;
-        private int position;
         private ArrayList refs;
+        private Output output;
         private final static ThreadLocal<byte[]> bufLocal = new ThreadLocal<byte[]>();
         private final static ThreadLocal<ArrayList> refsLocal = new ThreadLocal<ArrayList>();
 
 
 
         private Builder(){
-            buffer =  bufLocal.get();
-            if(buffer != null) {
-                bufLocal.set(null);
-            }else{
-                buffer = new byte[1024];
-            }
+            output = new Output();
             refs = refsLocal.get();
             if(refs != null){
                 refsLocal.set(null);
             }else{
-                refs = new ArrayList<>(16);
+                refs = new ArrayList<>(16); //FIXME 用set提示查找性能，或者用lnkedlist，因为一般深度不深
             }
         }
-
 
         private final byte[] toWson(Object object){
             writeObject(object);
-            byte[] bts = new byte[position];
-            System.arraycopy(buffer, 0, bts, 0, position);
-            return  bts;
+            return  output.toBytes();
         }
 
         private final void close(){
-            if(buffer.length <= 1024*16){
-                bufLocal.set(buffer);
-            }
+            output.close();
             if(refs.isEmpty()){
                 refsLocal.set(refs);
             }else{
                 refs.clear();
             }
             refs = null;
-            buffer = null;
-            position = 0;
         }
 
         private final void writeObject(Object object) {
             if(object instanceof  CharSequence){
-                ensureCapacity(2);
-                writeByte(Protocol.STRING_TYPE);
+                output.ensureCapacity(2);
+                output.writeByte(Protocol.STRING_TYPE);
                 writeUTF16String((CharSequence) object);
                 return;
             }else if (object instanceof Map){
                 if(refs.contains(object)){
-                    ensureCapacity(2);
-                    writeByte(Protocol.NULL_TYPE);
+                    output.ensureCapacity(2);
+                    output.writeByte(Protocol.NULL_TYPE);
                     return;
                 }
                 refs.add(object);
@@ -337,15 +324,15 @@ public class Wson {
                 return;
             }else if (object instanceof List){
                 if(refs.contains(object)){
-                    ensureCapacity(2);
-                    writeByte(Protocol.NULL_TYPE);
+                    output.ensureCapacity(2);
+                    output.writeByte(Protocol.NULL_TYPE);
                     return;
                 }
                 refs.add(object);
-                ensureCapacity(8);
+                output.ensureCapacity(8);
                 List list = (List) object;
-                writeByte(Protocol.ARRAY_TYPE);
-                writeUInt(list.size());
+                output.writeByte(Protocol.ARRAY_TYPE);
+                output.writeUInt(list.size());
                 for(Object value : list){
                     writeObject(value);
                 }
@@ -356,64 +343,63 @@ public class Wson {
                 writeNumber(number);
                 return;
             }else if (object instanceof  Boolean){
-                ensureCapacity(2);
+                output.ensureCapacity(2);
                 Boolean value  = (Boolean) object;
                 if(value){
-                    writeByte(Protocol.BOOLEAN_TYPE_TRUE);
+                    output.writeByte(Protocol.BOOLEAN_TYPE_TRUE);
                 }else{
-                    writeByte(Protocol.BOOLEAN_TYPE_FALSE);
+                    output.writeByte(Protocol.BOOLEAN_TYPE_FALSE);
                 }
                 return;
             }else if(object == null){
-                ensureCapacity(2);
-                writeByte(Protocol.NULL_TYPE);
+                output.ensureCapacity(2);
+                output.writeByte(Protocol.NULL_TYPE);
                 return;
             }else if (object.getClass().isArray()){
                 if(refs.contains(object)){
-                    ensureCapacity(2);
-                    writeByte(Protocol.NULL_TYPE);
+                    output.ensureCapacity(2);
+                    output.writeByte(Protocol.NULL_TYPE);
                     return;
                 }
                 refs.add(object);
-                ensureCapacity(8);
+                output.ensureCapacity(8);
                 int length = Array.getLength(object);
-                writeByte(Protocol.ARRAY_TYPE);
-                writeUInt(length);
+                output.writeByte(Protocol.ARRAY_TYPE);
+                output.writeUInt(length);
                 for(int i=0; i<length; i++){
                     Object value = Array.get(object, i);
                     writeObject(value);
                 }
                 refs.remove(refs.size()-1);
-                return;
             }else  if(object instanceof  Date){
-                ensureCapacity(10);
+                output.ensureCapacity(10);
                 double date = ((Date)object).getTime();
-                writeByte(Protocol.NUMBER_DOUBLE_TYPE);
-                writeDouble(date);
+                output.writeByte(Protocol.NUMBER_DOUBLE_TYPE);
+                output.writeDouble(date);
             }else  if(object instanceof  Calendar){
-                ensureCapacity(10);
+                output.ensureCapacity(10);
                 double date = ((Calendar)object).getTime().getTime();
-                writeByte(Protocol.NUMBER_DOUBLE_TYPE);
-                writeDouble(date);
+                output.writeByte(Protocol.NUMBER_DOUBLE_TYPE);
+                output.writeDouble(date);
             }else  if(object instanceof  Collection){
                 if(refs.contains(object)){
-                    ensureCapacity(2);
-                    writeByte(Protocol.NULL_TYPE);
+                    output.ensureCapacity(2);
+                    output.writeByte(Protocol.NULL_TYPE);
                     return;
                 }
                 refs.add(object);
-                ensureCapacity(8);
+                output.ensureCapacity(8);
                 Collection list = (Collection) object;
-                writeByte(Protocol.ARRAY_TYPE);
-                writeUInt(list.size());
+                output.writeByte(Protocol.ARRAY_TYPE);
+                output.writeUInt(list.size());
                 for(Object value : list){
                     writeObject(value);
                 }
                 refs.remove(refs.size()-1);
             }else{
                 if(refs.contains(object)){
-                    ensureCapacity(2);
-                    writeByte(Protocol.NULL_TYPE);
+                    output.ensureCapacity(2);
+                    output.writeByte(Protocol.NULL_TYPE);
                 }else {
                     refs.add(object);
                     if(object.getClass().isEnum()){
@@ -423,44 +409,43 @@ public class Wson {
                     }
                     refs.remove(refs.size()-1);
                 }
-                return;
             }
         }
 
         private final void writeNumber(Number number) {
-            ensureCapacity(12);
+            output.ensureCapacity(12);
             if(number instanceof  Integer){
-                writeByte(Protocol.NUMBER_INT_TYPE);
-                writeVarInt(number.intValue());
+                output.writeByte(Protocol.NUMBER_INT_TYPE);
+                output.writeVarInt(number.intValue());
                 return;
             }
 
             if(number instanceof Float){
-                writeByte(Protocol.NUMBER_FLOAT_TYPE);
-                writeFloat(number.floatValue());
+                output.writeByte(Protocol.NUMBER_FLOAT_TYPE);
+                output.writeFloat(number.floatValue());
                 return;
             }
             if(number instanceof  Double){
-                writeByte(Protocol.NUMBER_DOUBLE_TYPE);
-                writeDouble(number.doubleValue());
+                output.writeByte(Protocol.NUMBER_DOUBLE_TYPE);
+                output.writeDouble(number.doubleValue());
                 return;
             }
 
             if(number instanceof  Long){
-                writeByte(Protocol.NUMBER_LONG_TYPE);
-                writeLong(number.longValue());
+                output.writeByte(Protocol.NUMBER_LONG_TYPE);
+                output.writeLong(number.longValue());
                 return;
             }
 
             if(number instanceof  Short
                     || number instanceof  Byte){
-                writeByte(Protocol.NUMBER_INT_TYPE);
-                writeVarInt(number.intValue());
+                output.writeByte(Protocol.NUMBER_INT_TYPE);
+                output.writeVarInt(number.intValue());
                 return;
             }
 
             if(number instanceof BigInteger){
-                writeByte(Protocol.NUMBER_BIG_INTEGER_TYPE);
+                output.writeByte(Protocol.NUMBER_BIG_INTEGER_TYPE);
                 writeUTF16String(number.toString());
                 return;
             }
@@ -469,24 +454,24 @@ public class Wson {
                 String value = number.toString();
                 double doubleValue = number.doubleValue();
                 if(value.equals(Double.toString(doubleValue))){
-                    writeByte(Protocol.NUMBER_DOUBLE_TYPE);
-                    writeDouble(doubleValue);
+                    output.writeByte(Protocol.NUMBER_DOUBLE_TYPE);
+                    output.writeDouble(doubleValue);
                 }else {
-                    writeByte(Protocol.NUMBER_BIG_DECIMAL_TYPE);
+                    output.writeByte(Protocol.NUMBER_BIG_DECIMAL_TYPE);
                     writeUTF16String(value);
                 }
                 return;
             }
-            writeByte(Protocol.STRING_TYPE);
+            output.writeByte(Protocol.STRING_TYPE);
             writeUTF16String(number.toString());
 
         }
 
         private final  void writeMap(Map map) {
             if(WriteMapNullValue){
-                ensureCapacity(8);
-                writeByte(Protocol.MAP_TYPE);
-                writeUInt(map.size());
+                output.ensureCapacity(8);
+                output.writeByte(Protocol.MAP_TYPE);
+                output.writeUInt(map.size());
                 Set<Map.Entry<Object,Object>>  entries = map.entrySet();
                 for(Map.Entry<Object,Object> entry : entries){
                     writeMapKeyUTF16(entry.getKey().toString());
@@ -501,9 +486,9 @@ public class Wson {
                     }
                 }
 
-                ensureCapacity(8);
-                writeByte(Protocol.MAP_TYPE);
-                writeUInt(map.size()-nullValueSize);
+                output.ensureCapacity(8);
+                output.writeByte(Protocol.MAP_TYPE);
+                output.writeUInt(map.size()-nullValueSize);
                 for(Map.Entry<Object,Object> entry : entries){
                     if(entry.getValue() == null){
                         continue;
@@ -515,10 +500,6 @@ public class Wson {
         }
 
 
-        private final void writeByte(byte type){
-            buffer[position] = type;
-            position++;
-        }
 
         private final void writeAdapterObject(Object object){
             if(specialClass.get(object.getClass().getName()) != null){
@@ -590,81 +571,29 @@ public class Wson {
          * */
         private  final void writeUTF16String(CharSequence value){
             int length = value.length();
-            ensureCapacity(length*2 + 8);
-            writeUInt(length*2);
+            output.ensureCapacity(length*2 + 8);
+            output.writeUInt(length*2);
+            byte[] buffer = output.getBuffer();
             if(Platform.IS_NATIVE_LITTLE_ENDIAN){
                 for(int i=0; i<length; i++){
+                    int position = output.getPosition();
                     char ch = value.charAt(i);
                     buffer[position] = (byte) (ch);
                     buffer[position+1] = (byte) (ch >>> 8);
-                    position+=2;
+                    output.move(2);
                 }
             }else{
                 for(int i=0; i<length; i++){
+                    int position = output.getPosition();
                     char ch = value.charAt(i);
                     buffer[position + 1] = (byte) (ch      );
                     buffer[position] = (byte) (ch >>> 8);
-                    position+=2;
+                    output.move(2);
                 }
             }
         }
 
 
-        private final void writeDouble(double value){
-            writeLong(Double.doubleToLongBits(value));
-        }
-
-        private final void writeFloat(float value){
-            int val = Float.floatToIntBits(value);
-            buffer[position + 3] = (byte) (val       );
-            buffer[position + 2] = (byte) (val >>>  8);
-            buffer[position + 1] = (byte) (val >>> 16);
-            buffer[position ] = (byte) (val >>> 24);
-            position += 4;
-        }
-
-        private final void writeLong(long val){
-            buffer[position + 7] = (byte) (val       );
-            buffer[position + 6] = (byte) (val >>>  8);
-            buffer[position + 5] = (byte) (val >>> 16);
-            buffer[position + 4] = (byte) (val >>> 24);
-            buffer[position + 3] = (byte) (val >>> 32);
-            buffer[position + 2] = (byte) (val >>> 40);
-            buffer[position + 1] = (byte) (val >>> 48);
-            buffer[position    ] = (byte) (val >>> 56);
-            position += 8;
-        }
-
-        private final void writeVarInt(int value){
-            writeUInt((value << 1) ^ (value >> 31));
-        }
-
-        private final void  writeUInt(int value){
-            while ((value & 0xFFFFFF80) != 0) {
-                buffer[position] = (byte)((value & 0x7F) | 0x80);
-                position++;
-                value >>>= 7;
-            }
-            buffer[position] = (byte)(value & 0x7F);
-            position++;
-        }
-
-
-        private final void ensureCapacity(int minCapacity) {
-            minCapacity += position;
-            // overflow-conscious code
-            if (minCapacity - buffer.length > 0){
-                int oldCapacity = buffer.length;
-                int newCapacity = oldCapacity << 1;
-                if(newCapacity < 1024*16){
-                    newCapacity = 1024*16;
-                }
-                if (newCapacity - minCapacity < 0) {
-                    newCapacity = minCapacity;
-                }
-                buffer = Arrays.copyOf(buffer, newCapacity);
-            }
-        }
     }
 
 
