@@ -1,0 +1,105 @@
+{
+  "api": "mtop.taobao.need.graphql.gate",
+  "appConf": "",
+  "data": {
+    "emsNormal": {
+      "preheat": null
+    },
+    "result": {
+      "activities": [{
+        "activityId": 29358560,
+        "ostime": 1514512800000,
+        "oetime": 1514599199000,
+        "start": "12月29日",
+        "title": "英伦潮范女神必备",
+        "brandId": 7117286,
+        "bgImg": "//gw.alicdn.com/tps/TB1SuT0kBDH8KJjSspnXXbNAVXa.png",
+        "coupons": "[{\"applyEndTime\":0,\"applyStartTime\":1505809667000,\"couponNone\":0,\"couponType\":0,\"fazhi\":100800,\"mianzhi\":15000,\"playActivityId\":24540,\"sellerId\":3399157622,\"shopName\":\"radley海外旗舰店\",\"uuid\":\"1a019b594db54759b07fb70cb732fb56\"},{\"applyEndTime\":0,\"applyStartTime\":1505809667000,\"couponNone\":0,\"couponType\":0,\"fazhi\":81800,\"mianzhi\":10000,\"playActivityId\":24540,\"sellerId\":3399157622,\"shopName\":\"radley海外旗舰店\",\"uuid\":\"e5baf47c7c3d4bf69a7154776ecfd71e\"},{\"applyEndTime\":0,\"applyStartTime\":1505809667000,\"couponNone\":0,\"couponType\":0,\"fazhi\":49800,\"mianzhi\":3000,\"playActivityId\":24540,\"sellerId\":3399157622,\"shopName\":\"radley海外旗舰店\",\"uuid\":\"0bb5e2ccabcd44f99469b53343f2b16e\"}]",
+        "brandName": "Radley"
+      }, {
+        "activityId": 29022404,
+        "ostime": 1514599200000,
+        "oetime": 1514685599000,
+        "start": "12月30日",
+        "title": "年终囤货好奶粉",
+        "brandId": 9312409,
+        "bgImg": "//gw.alicdn.com/tps/TB15owmjrYI8KJjy0FaXXbAiVXa.png",
+        "coupons": "[{\"applyEndTime\":0,\"applyStartTime\":1505809667000,\"couponNone\":0,\"couponType\":0,\"fazhi\":49900,\"mianzhi\":2000,\"playActivityId\":24540,\"sellerId\":2735056875,\"shopName\":\"Woolworths海外旗舰店\",\"uuid\":\"abcb27b798f74140b67eeaf63ee88ba0\"},{\"applyEndTime\":0,\"applyStartTime\":1505809667000,\"couponNone\":0,\"couponType\":0,\"fazhi\":29900,\"mianzhi\":1000,\"playActivityId\":24540,\"sellerId\":2735056875,\"shopName\":\"Woolworths海外旗舰店\",\"uuid\":\"cc7bc38f03bc4c1fa04c9b70a1d0491e\"},{\"applyEndTime\":0,\"applyStartTime\":1505809667000,\"couponNone\":0,\"couponType\":0,\"fazhi\":2002,\"mianzhi\":2000,\"playActivityId\":24540,\"sellerId\":2735056875,\"shopName\":\"Woolworths海外旗舰店\",\"uuid\":\"5a14aed8228645d685a423cef73aa4ca\"}]",
+        "brandName": "a2"
+      }],
+      "nowTime": 1514534268129,
+      "currentActId": 29358560,
+      "floorItemSets": [{
+        "topItems": [{
+          "brandId": 7117286,
+          "image": "//gju4.alicdn.com/tps/i2/0/TB26zlzdNk98KJjSZFoXXXS6pXa_!!0-juitemmedia.jpg",
+          "isOnline": true,
+          "itemId": 559975588977,
+          "itemSellPoint": "包邮包税",
+          "originalPrice": "2395.00",
+          "priceSellPoint": null,
+          "promotionPrice": "1439",
+          "shortTitle": null,
+          "title": "Radley牛皮手提包",
+          "sellPoint1_131": "满1008减150",
+          "bpuId": 894301273,
+          "mainPic": "//gw.alicdn.com/tps/TB1t17dba_85uJjSZFlL6RemXXa",
+          "showTitle": "女士摩登搭盖通勤单肩包10211黑色"
+        }, {
+          "brandId": 7117286,
+          "image": "//gju3.alicdn.com/tps/i3/0/TB2d01jdFTM8KJjSZFlXXaO8FXa_!!0-juitemmedia.jpg",
+          "isOnline": true,
+          "itemId": 562006663921,
+          "itemSellPoint": "包邮包税",
+          "originalPrice": "1159.00",
+          "priceSellPoint": null,
+          "promotionPrice": "809",
+          "shortTitle": null,
+          "title": "Radley大号双肩包",
+          "sellPoint1_131": "满818减100",
+          "bpuId": 913691035,
+          "mainPic": "//gw.alicdn.com/tps/TB1NOhqckfb_uJkHFqDL6RVIVXa",
+          "showTitle": "英国女士防水大号拉链双肩包 11551 深藏青色带苏格兰小狗印花"
+        }, {
+          "brandId": 7117286,
+          "image": "//gju2.alicdn.com/tps/i4/0/TB2RUzMkfDH8KJjy1XcXXcpdXXa_!!0-juitemmedia.jpg",
+          "isOnline": true,
+          "itemId": 560970171909,
+          "itemSellPoint": "包邮包税",
+          "originalPrice": "1055.00",
+          "priceSellPoint": null,
+          "promotionPrice": "649",
+          "shortTitle": null,
+          "title": "Radley简约双肩包",
+          "sellPoint1_131": "满818减100",
+          "bpuId": 897631020,
+          "mainPic": "//gw.alicdn.com/tps/TB1QIurXqzB9uJjSZFML6Rq4XXa",
+          "showTitle": "女士中号简约百搭实用双肩手提包11235宝石红"
+        }, {
+          "brandId": 7117286,
+          "image": "//gju2.alicdn.com/tps/i2/0/TB2.4LxkgvD8KJjy0FlXXagBFXa_!!0-juitemmedia.jpg",
+          "isOnline": true,
+          "itemId": 559818336209,
+          "itemSellPoint": "包邮包税",
+          "originalPrice": "905.00",
+          "priceSellPoint": null,
+          "promotionPrice": "589",
+          "shortTitle": null,
+          "title": "Radley牛皮长款钱包",
+          "sellPoint1_131": "满818减100",
+          "bpuId": 892671086,
+          "mainPic": "//gw.alicdn.com/tps/TB1o88BjzihSKJjy0FiL6UuiFXa",
+          "showTitle": "女士风景牛皮俏皮翻盖长款钱包10575棕黄色"
+        }]
+      }, {
+        "topItems": null
+      }]
+    },
+    "success": true
+  },
+  "resultSerializeConfig": {
+    "commonVOResult": false
+  },
+  "ret": ["SUCCESS::调用成功"],
+  "v": "1.0"
+}

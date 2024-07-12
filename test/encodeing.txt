@@ -1,0 +1,22 @@
+##unicode utf-8
+http://www.unicode.org/faq/utf_bom.html
+
+
+http://tidy.sourceforge.net/cgi-bin/lxr/source/src/utf8.c
+
+
+https://blog.csdn.net/tge7618291/article/details/7599902
+
+
+http://blog.51cto.com/11998200/1867446
+
+
+https://stackoverflow.com/questions/21456926/how-do-i-convert-a-string-in-utf-16-to-utf-8-in-c
+
+https://www.ghostscript.com/doc/base/ConvertUTF.c
+
+
+https://github.com/benkasminbullock/unicode-c/blob/master/unicode.c
+
+
+http://unicodebook.readthedocs.io/unicode_encodings.html

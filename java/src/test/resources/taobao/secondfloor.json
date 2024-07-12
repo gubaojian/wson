@@ -1,0 +1,40 @@
+{
+  "api": "mtop.cybertron.micro.secondfloor.config",
+  "data": {
+    "pullFgImageWidthAndroid": "750",
+    "emptyText": "精彩内容已经看完了，明天再来吧",
+    "pullFgImageUrl": "https://gw.alicdn.com/bao/uploaded/TB1tIWYXTnI8KJjSszbXXb4KFXa-1125-1191.png",
+    "shareImage": "https://gw.alicdn.com/bao/uploaded/TB1tIWYXTnI8KJjSszbXXb4KFXa-1125-1191.png",
+    "pullBgImageHeight": "1334",
+    "headerImageHeight": "0",
+    "headerImageWidth": "0",
+    "pageName": "微淘二楼",
+    "pullCriticalHeight": "150",
+    "queryPageId": "148",
+    "pullFgImageWidth": "750",
+    "headerImage": "",
+    "pullTimes": [{
+      "start": "1509502800000",
+      "end": "1510416000000"
+    }],
+    "shareText": "微淘有料，嗨翻热榜大比拼",
+    "navIconColor": "#ffffff",
+    "navBackgroundColor": "#ff0819",
+    "pullFgImageHeightAndroid": "794",
+    "pullBgImageWidth": "750",
+    "pullBgImageUrlAndroid": "http://gw.alicdn.com/mt/TB1BxhbdGigSKJjSsppXXabnpXa-1125-2001.png",
+    "pullBgImageWidthAndroid": "750",
+    "pullBgImageUrl": "http://gw.alicdn.com/mt/TB1BxhbdGigSKJjSsppXXabnpXa-1125-2001.png",
+    "pullFgImageUrlAndroid": "https://gw.alicdn.com/bao/uploaded/TB1tIWYXTnI8KJjSszbXXb4KFXa-1125-1191.png",
+    "pullText": "释放和明星互动",
+    "pullCriticalRatioAndroid": 0.3,
+    "pullTextColor": "#ffffff",
+    "shareUrl": "http://h5.m.taobao.com/we/secondfloor.html",
+    "pullBgImageHeightAndroid": "1334",
+    "pullFgImageHeight": "794",
+    "tabPageId": "2",
+    "queryStr": "pageId=148&needLogin=false"
+  },
+  "ret": ["SUCCESS::调用成功"],
+  "v": "4.0"
+}

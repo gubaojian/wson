@@ -1,0 +1,23 @@
+{
+  "wrapper": {
+    "flexDirection": "column",
+    "justifyContent": "center"
+  },
+  "button": {
+    "width": 450,
+    "marginTop": 30,
+    "marginLeft": 150,
+    "paddingTop": 20,
+    "paddingBottom": 20,
+    "borderWidth": 2,
+    "borderStyle": "solid",
+    "borderColor": "#DDDDDD",
+    "backgroundColor": "#F5F5F5"
+  },
+  "text": {
+    "fontSize": 60,
+    "color": "#666666",
+    "textAlign": "center",
+    "value":"你好"
+  }
+}

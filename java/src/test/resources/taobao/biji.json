@@ -1,0 +1,661 @@
+{
+  "api": "mtop.taobao.need.graphql.gate",
+  "appConf": "",
+  "data": {
+    "currentTimestamp": 1514534379167,
+    "choicenessSlot": {
+      "listModule": [{
+        "slotImage": "//img.alicdn.com/bao/uploaded/i1/i1/TB1XFQ2h3DD8KJjy0FdSuwjvXXa.jpg"
+      }],
+      "onlineNum": 0
+    },
+    "emsBannerList": {
+      "bannerList": [{
+        "type": "longTxt",
+        "bg": "https://gw.alicdn.com/tfs/TB11Fb0kcjI8KJjSsppXXXbyVXa-1126-421.png",
+        "index": 1,
+        "id": "200456516559",
+        "url": null,
+        "start": 1.5143904E12,
+        "end": 1.5145632E12,
+        "current": 1.514534379167E12
+      }, {
+        "type": "longTxt",
+        "bg": "https://gw.alicdn.com/tfs/TB1h._ZkcjI8KJjSsppXXXbyVXa-1125-420.jpg",
+        "index": 2,
+        "id": "200456185334",
+        "url": null,
+        "start": 1.5143904E12,
+        "end": 1.5145632E12,
+        "current": 1.514534379167E12
+      }, {
+        "type": "longTxt",
+        "bg": "https://gw.alicdn.com/tfs/TB16pZxkgDD8KJjy0FdXXcjvXXa-1125-420.jpg",
+        "index": 3,
+        "id": "200460764867",
+        "url": null,
+        "start": 1.5143904E12,
+        "end": 1.5145632E12,
+        "current": 1.514534379167E12
+      }, {
+        "type": "longTxt",
+        "bg": "https://gw.alicdn.com/tfs/TB1k_IIbvNNTKJjSspkXXaeWFXa-1125-420.jpg",
+        "index": 3,
+        "id": "200328309540",
+        "url": null,
+        "start": 1.5145632E12,
+        "end": 1.5148224E12,
+        "current": 1.514534379167E12
+      }, {
+        "type": "longTxt",
+        "bg": "https://gw.alicdn.com/tfs/TB1PsPDcaigSKJjSsppXXabnpXa-1125-420.jpg",
+        "index": 2,
+        "id": "200309623564",
+        "url": null,
+        "start": 1.5145632E12,
+        "end": 1.5148224E12,
+        "current": 1.514534379167E12
+      }, {
+        "type": "longTxt",
+        "bg": "https://gw.alicdn.com/tfs/TB1n1oNbvJNTKJjSspoXXc6mpXa-1125-420.jpg",
+        "index": 1,
+        "id": "200303237319",
+        "url": null,
+        "start": 1.5145632E12,
+        "end": 1.5148224E12,
+        "current": 1.514534379167E12
+      }, {
+        "type": "longTxt",
+        "bg": "https://gw.alicdn.com/tfs/TB1Gc7ykv6H8KJjy0FjXXaXepXa-1125-420.png",
+        "index": 1,
+        "id": "200447787243",
+        "url": null,
+        "start": 1.5148224E12,
+        "end": 1.5149952E12,
+        "current": 1.514534379167E12
+      }, {
+        "type": "longTxt",
+        "bg": "https://gw.alicdn.com/tfs/TB1vx.YkDnI8KJjy0FfXXcdoVXa-1125-420.jpg",
+        "index": 2,
+        "id": "200387896843",
+        "url": null,
+        "start": 1.5148224E12,
+        "end": 1.5149952E12,
+        "current": 1.514534379167E12
+      }, {
+        "type": "longTxt",
+        "bg": "https://gw.alicdn.com/tfs/TB1PZ3pkwvD8KJjy0FlXXagBFXa-1125-420.jpg",
+        "index": 3,
+        "id": "200380464955",
+        "url": null,
+        "start": 1.5148224E12,
+        "end": 1.5149952E12,
+        "current": 1.514534379167E12
+      }]
+    },
+    "emsTopicList": {
+      "topics": [{
+        "bg": "https://gw.alicdn.com/tfs/TB1AHirf9_I8KJjy0FoXXaFnVXa-455-234.png",
+        "txt": "手殘也能涂得很好看的唇膏",
+        "tagId": "202775",
+        "answerNum": 186,
+        "tagDetail": {
+          "tagName": "颜色漂亮易涂抹的唇膏"
+        }
+      }, {
+        "bg": "https://gw.alicdn.com/tfs/TB1GnO0fZLJ8KJjy0FnXXcFDpXa-455-234.png",
+        "txt": "打造潮童必备的童装潮T",
+        "tagId": "170291",
+        "answerNum": 62,
+        "tagDetail": {
+          "tagName": "款式不错面料手感不错的婴童T恤"
+        }
+      }, {
+        "bg": "https://gw.alicdn.com/tfs/TB1FDO0fZLJ8KJjy0FnXXcFDpXa-455-234.png",
+        "txt": "让你口袋不再鼓鼓的男包",
+        "tagId": "159479",
+        "answerNum": 86,
+        "tagDetail": {
+          "tagName": "看着很好颜色很美的男士包袋"
+        }
+      }]
+    },
+    "emsRmdList": {
+      "rmdList": null
+    },
+    "emsAnswerList": {
+      "answerList": null
+    },
+    "shareRmdsInfo": {},
+    "response": {
+      "hasMore": true,
+      "usedNeedIds": "589005,167295,100006,870861960,3131893,200517164,846035398,22486998,859679411,24464975,734430997,29988748,200516050,881935159,22205674,",
+      "scm": "1007.14536.93801.0",
+      "pvid": "07461c2e-110f-4a3b-be00-effa75ca22fb",
+      "result": [{
+        "matchType": "HOT",
+        "contentType": 1,
+        "contentId": 589005,
+        "utLogMap": {
+          "answerList": "7391874",
+          "bpuList": "734070586",
+          "pvid": "07461c2e-110f-4a3b-be00-effa75ca22fb",
+          "bpu_id": 0,
+          "contentId": 589005,
+          "scm": "1007.14536.93801.0",
+          "answer_id": 0,
+          "contentType": 1
+        },
+        "videoId": 0,
+        "contextStyle": 0,
+        "tagDetail": null,
+        "answerList": [{
+          "answer": {
+            "needId": 589005,
+            "needKeywords": null,
+            "mainBpuId": "734070586",
+            "replyId": 7391874,
+            "content": "我也是第一次买香水，大一。这个ck的香水非常不错，清新淡雅，是正品，非常的好闻。价格也不贵很平价，比较适合学生使用，性价比非常的高。我买的是一百毫升的，非常的耐用，香味也很持久。",
+            "picInfo": {
+              "tagInfo": {
+                "brand": "Calvin Klein/卡尔文克雷恩"
+              }
+            },
+            "bpuPic": {
+              "bpuId": 734070586,
+              "mainPic": "//gw.alicdn.com/tps/LB1TatNQVXXXXcOXXXXXXXXXXXX.png",
+              "brandId": 20022,
+              "showTitle": "Be中性香水100ML黑色",
+              "brandDetail": {
+                "locationPic": "//g.alicdn.com/mui/flag-img/circle/US.png",
+                "location": "美国",
+                "name": "Calvin Klein"
+              }
+            },
+            "needDTO": {
+              "keyWords": ["清新", "经济实惠", "大学生", "淡雅", "香水"]
+            },
+            "owner": {
+              "userNick": "小***6",
+              "userIcon": "https://wwc.alicdn.com/avatar/getAvatar.do?userIdStr=PFZIvCcYPC7hOmIWOmx0PFcyOm7zOHcWvmNuOm9hvGcT&type=sns"
+            }
+          }
+        }],
+        "longTxtList": null
+      }, {
+        "matchType": "HOT",
+        "contentType": 1,
+        "contentId": 167295,
+        "utLogMap": {
+          "answerList": "4799367",
+          "bpuList": "817495181",
+          "pvid": "07461c2e-110f-4a3b-be00-effa75ca22fb",
+          "bpu_id": 0,
+          "contentId": 167295,
+          "scm": "1007.14536.93801.0",
+          "answer_id": 0,
+          "contentType": 1
+        },
+        "videoId": 0,
+        "contextStyle": 0,
+        "tagDetail": null,
+        "answerList": [{
+          "answer": {
+            "needId": 167295,
+            "needKeywords": null,
+            "mainBpuId": "817495181",
+            "replyId": 4799367,
+            "content": "第一次买了一瓶，刚开始没有什么明显的效果，之后关节疼的的症状就好了些。原来我妈上楼梯很不方便，一瓶之后，上楼梯关节好多了，不怎么疼了。还以为是吃别的药死的作用，后来就一直吃那个药，但是，关节又开始疼了，上下楼梯也开始不方便了，这才发现原来是这个药的作用。所以我又买了两瓶，准备吃。我自己觉得这个药还是不错的。",
+            "picInfo": {
+              "tagInfo": {
+                "brand": "Schiff"
+              }
+            },
+            "bpuPic": {
+              "bpuId": 817495181,
+              "mainPic": "//gw.alicdn.com/tps/TB1KyTnhLDH8KJjy1XcL6UpdXXa",
+              "brandId": 3229567,
+              "showTitle": "维骨力170粒",
+              "brandDetail": {
+                "locationPic": "//g.alicdn.com/mui/flag-img/circle/US.png",
+                "location": "美国",
+                "name": "Schiff"
+              }
+            },
+            "needDTO": {
+              "keyWords": ["缓解关节疼痛", "增加润滑", "维骨力"]
+            },
+            "owner": {
+              "userNick": "晴***漫",
+              "userIcon": "https://wwc.alicdn.com/avatar/getAvatar.do?userIdStr=OH7zX8QSvHQSOmlevFQYPC7eX8QuvHPzPHgWOFP-PGcT&type=sns"
+            }
+          }
+        }],
+        "longTxtList": null
+      }, {
+        "matchType": "HOT",
+        "contentType": 2,
+        "contentId": 100006,
+        "utLogMap": {
+          "answerList": "23232312_22936065_22911534",
+          "bpuList": "854881019_817810445_852559002",
+          "pvid": "07461c2e-110f-4a3b-be00-effa75ca22fb",
+          "bpu_id": 0,
+          "contentId": 100006,
+          "scm": "1007.14536.93801.0",
+          "answer_id": 0,
+          "contentType": 2
+        },
+        "videoId": 0,
+        "contextStyle": 0,
+        "tagDetail": {
+          "tagName": "胸部细节不错聚拢效果好的文胸套装",
+          "replyCount": 73
+        },
+        "answerList": [{
+          "answer": {
+            "needId": 8899474,
+            "needKeywords": null,
+            "mainBpuId": "854881019",
+            "replyId": 23232312,
+            "content": "来自黛安芬的蕾丝V型文胸套装，采用精致的蕾丝绣花铺陈装饰罩面，做工精致，若隐若现的蕾丝，搭配花朵色彩的明暗变化，营造出女性低调的性感之美；可拆卸的海绵垫，柔软舒适，让你的胸部调整自如，两侧提升设计，让胸部更加聚拢。罩杯还增加了支撑面，不易错位更加稳定。罩杯下端的杯垫塑造自然的胸部曲线，前中点缀的搭钩型小亮钻增加了生活的儿情趣。三排两扣设计，可自由调节，可以收紧背部赘肉，三角形的特殊肩带扣，稳固不易脱落。内裤也是蕾丝的设计，若隐若现的为整天多了份性感的女人味。",
+            "picInfo": {
+              "tagInfo": {
+                "brand": "Triumph"
+              }
+            },
+            "bpuPic": {
+              "bpuId": 854881019,
+              "mainPic": "//gw.alicdn.com/tps/TB1FQWKRFXXXXbIXpXXL6TaGpXX",
+              "brandId": 60578,
+              "showTitle": "文胸套装蕾丝刺绣舒适罩杯内衣2017夏新品10179729黑色",
+              "brandDetail": {
+                "locationPic": "//g.alicdn.com/mui/flag-img/circle/DE.png",
+                "location": "德国",
+                "name": "Triumph"
+              }
+            },
+            "needDTO": {
+              "keyWords": []
+            },
+            "owner": {
+              "userNick": "流行最前线ing",
+              "userIcon": "//gw.alicdn.com/tps/TB1E3lSNVXXXXXoXFXXXXXXXXXX"
+            }
+          }
+        }, {
+          "answer": {
+            "needId": 8783718,
+            "needKeywords": null,
+            "mainBpuId": "817810445",
+            "replyId": 22936065,
+            "content": "大量蕾丝的花边打造了这件SHIROHATO甜美的文胸。文胸采用美背设计，让您的背部显得美丽而性感，十分适合穿着清凉的季节。背部装饰有可爱的蝴蝶结，搭配细绳设计，塑造魅力无限的背部曲线。前搭扣的设计能够很好地收紧和聚拢胸部，搭配内置式和可拆卸的双重插片，塑造丰满迷人的乳沟。可拆卸肩带设计，可根据服装需要自由更换自己喜欢的肩带。",
+            "picInfo": {
+              "tagInfo": {
+                "brand": "SHIROHATO"
+              }
+            },
+            "bpuPic": {
+              "bpuId": 817810445,
+              "mainPic": "//gw.alicdn.com/tps/i1/TB1oZ.RQXXXXXb5XFXX_WD37VXX",
+              "brandId": 75517896,
+              "showTitle": "SHIROHATO 文胸 红色  A971410",
+              "brandDetail": {
+                "locationPic": "//g.alicdn.com/mui/flag-img/circle/JP.png",
+                "location": "日本",
+                "name": "SHIROHATO"
+              }
+            },
+            "needDTO": {
+              "keyWords": []
+            },
+            "owner": {
+              "userNick": "户外驴小爷",
+              "userIcon": "//gw.alicdn.com/tps/TB2Ts1vkwLD8KJjSszeXXaGRpXa_!!2470765837-0-beehive-scenes.jpg"
+            }
+          }
+        }, {
+          "answer": {
+            "needId": 8800263,
+            "needKeywords": null,
+            "mainBpuId": "852559002",
+            "replyId": 22911534,
+            "content": "内衣现在可是多种多样，聚拢的、性感的、清纯的等等，推荐的这款是聚拢效果比较好的一款，罩杯里面的面料比较的舒适，全罩杯的更好的修饰胸部立挺的线条，胸部和下面的面料无缝衔接，一体的设计，保证更好的贴合皮肤，托胸的效果非常好，而且无钢圈，穿着也比较的舒适，肤色的又显得比较的清纯，很适合夏季穿。",
+            "picInfo": {
+              "tagInfo": {
+                "brand": "WONDERBRA"
+              }
+            },
+            "bpuPic": {
+              "bpuId": 852559002,
+              "mainPic": "//gw.alicdn.com/tps/TB1JnKYQVXXXXb8XpXXL6TaGpXX",
+              "brandId": 7653010,
+              "showTitle": "女士内衣上托聚拢无钢圈文胸多色可选",
+              "brandDetail": {
+                "locationPic": "//g.alicdn.com/mui/flag-img/circle/US.png",
+                "location": "美国",
+                "name": "Wonderbra"
+              }
+            },
+            "needDTO": {
+              "keyWords": []
+            },
+            "owner": {
+              "userNick": "小清新穿衣打扮优站",
+              "userIcon": "//gw.alicdn.com/tps/TB15kphHFXXXXXPaXXXXXXXXXXX"
+            }
+          }
+        }],
+        "longTxtList": null
+      }, {
+        "matchType": "HOT",
+        "contentType": 3,
+        "contentId": 3131893,
+        "utLogMap": {
+          "answerList": "3131893",
+          "bpuList": "870861960",
+          "pvid": "07461c2e-110f-4a3b-be00-effa75ca22fb",
+          "bpu_id": 0,
+          "contentId": 3131893,
+          "scm": "1007.14536.93801.0",
+          "answer_id": 3131893,
+          "contentType": 3
+        },
+        "videoId": 0,
+        "contextStyle": 0,
+        "tagDetail": null,
+        "answerList": [{
+          "answer": {
+            "needId": 1184106,
+            "needKeywords": null,
+            "mainBpuId": "870861960",
+            "replyId": 3131893,
+            "content": "味道很特别，用上一整天都香香的。质地绵软易涂开。用量比较省。颈纹不是一天形成的，也不要期待一天两天就会出效果，这款坚持用下来淡化颈纹的效果很明显。已经用上离不开它，每天早晚涂一涂，很方便。",
+            "picInfo": {
+              "tagInfo": {
+                "brand": "XHEKPON"
+              }
+            },
+            "bpuPic": {
+              "bpuId": 870861960,
+              "mainPic": "//gw.alicdn.com/tps/TB1ZRDDcWLN8KJjSZFGL6TjrVXa",
+              "brandId": 199812272,
+              "showTitle": "颈纹霜40ml*2支",
+              "brandDetail": {
+                "locationPic": "//g.alicdn.com/mui/flag-img/circle/HW.png",
+                "location": "海外",
+                "name": "Xhekpon"
+              }
+            },
+            "needDTO": {
+              "keyWords": ["海外", "好用", "美白", "颈霜", "30+抗皱"]
+            },
+            "owner": {
+              "userNick": "蓬***子",
+              "userIcon": "https://wwc.alicdn.com/avatar/getAvatar.do?userIdStr=XFvSvGH0XmQGOFNWMCQyPGNYM88WMm9HvFNGMGv0PmcT&type=sns"
+            }
+          }
+        }],
+        "longTxtList": null
+      }, {
+        "matchType": "HOT",
+        "contentType": 100,
+        "contentId": 200517164,
+        "utLogMap": {
+          "answerList": "",
+          "bpuList": "",
+          "pvid": "07461c2e-110f-4a3b-be00-effa75ca22fb",
+          "bpu_id": 0,
+          "contentId": 200517164,
+          "scm": "1007.14536.93801.0",
+          "answer_id": 0,
+          "contentType": 100
+        },
+        "videoId": 0,
+        "contextStyle": 137002,
+        "tagDetail": null,
+        "answerList": [],
+        "longTxtList": {
+          "cid": 200371329664,
+          "mainPicUrl": "//gw.alicdn.com/tps/TB2wdVFbaigSKJjSsppXXabnpXa_!!1054707943-0-beehive-scenes.jpg",
+          "title": "无谷犬粮，红肉配方满足小吃货",
+          "introduction": "家有爱犬，乐趣是不是特别多呢？狗狗萌萌哒，给全家带来了无限欢乐。那么，狗狗健康问题当然也是爱狗的我们关心的问题了。保护狗狗健康当然要从饮食开始，一款合适的狗粮可以为狗狗提高充足的营养，狗狗吃的开心了，是不是就更萌萌哒了！",
+          "nickname": "居家晓怪兽",
+          "avatar": "//gw.alicdn.com/tps/TB2xeFUog0kpuFjSspdXXX4YXXa_!!1054707943-0-beehive-scenes.jpg"
+        }
+      }, {
+        "matchType": "HOT",
+        "contentType": 3,
+        "contentId": 22486998,
+        "utLogMap": {
+          "answerList": "22486998",
+          "bpuList": "846035398",
+          "pvid": "07461c2e-110f-4a3b-be00-effa75ca22fb",
+          "bpu_id": 0,
+          "contentId": 22486998,
+          "scm": "1007.14536.93801.0",
+          "answer_id": 22486998,
+          "contentType": 3
+        },
+        "videoId": 0,
+        "contextStyle": 0,
+        "tagDetail": null,
+        "answerList": [{
+          "answer": {
+            "needId": 8570999,
+            "needKeywords": null,
+            "mainBpuId": "846035398",
+            "replyId": 22486998,
+            "content": "经典的大LOGO吊牌，纯皮面的质感十字压纹，正面小口袋设计，不难看出MK在这款托特包中下的心思。芭蕾粉和瓷质灰帮你更好的搭配鞋子",
+            "picInfo": {
+              "tagInfo": {
+                "brand": "Michael Kors"
+              }
+            },
+            "bpuPic": {
+              "bpuId": 846035398,
+              "mainPic": "//gw.alicdn.com/tps/TB11eHcQVXXXXcXapXXL6TaGpXX",
+              "brandId": 110293941,
+              "showTitle": "女士单肩手提包30S6STTT3L PEARL GREY灰色",
+              "brandDetail": {
+                "locationPic": "//g.alicdn.com/mui/flag-img/circle/US.png",
+                "location": "美国",
+                "name": "Michael Kors"
+              }
+            },
+            "needDTO": {
+              "keyWords": []
+            },
+            "owner": {
+              "userNick": "******君",
+              "userIcon": "https://wwc.alicdn.com/avatar/getAvatar.do?userIdStr=vF7evH*zMC9HPCMHP0l-M8Z-P8xGPCQLPkP-PmMzXF8T&type=sns"
+            }
+          }
+        }],
+        "longTxtList": null
+      }, {
+        "matchType": "HOT",
+        "contentType": 3,
+        "contentId": 24464975,
+        "utLogMap": {
+          "answerList": "24464975",
+          "bpuList": "859679411",
+          "pvid": "07461c2e-110f-4a3b-be00-effa75ca22fb",
+          "bpu_id": 0,
+          "contentId": 24464975,
+          "scm": "1007.14536.93801.0",
+          "answer_id": 24464975,
+          "contentType": 3
+        },
+        "videoId": 0,
+        "contextStyle": 0,
+        "tagDetail": null,
+        "answerList": [{
+          "answer": {
+            "needId": 9447435,
+            "needKeywords": null,
+            "mainBpuId": "859679411",
+            "replyId": 24464975,
+            "content": "童年时光DHA是由美国童年时光研发的一款婴幼儿童用胶囊状液体DHA。首先简单介绍一下DHA是什么：DHA（二十二碳六烯酸）是人体大脑的重要构成成分，俗称“脑黄金”。对人体眼脑发育有显著。因此，处于眼脑成长期的婴幼儿童以及眼脑疲劳的中老年人都是有帮助的。",
+            "picInfo": {
+              "tagInfo": {
+                "brand": "Childlife/童年时光"
+              }
+            },
+            "bpuPic": {
+              "bpuId": 859679411,
+              "mainPic": "//gw.alicdn.com/tps/TB1zsy1SXXXXXXnXVXXL6TaGpXX",
+              "brandId": 104356443,
+              "showTitle": "2瓶启智DHA滴剂59.15ML/瓶",
+              "brandDetail": {
+                "locationPic": "//g.alicdn.com/mui/flag-img/circle/US.png",
+                "location": "美国",
+                "name": "ChildLife"
+              }
+            },
+            "needDTO": {
+              "keyWords": []
+            },
+            "owner": {
+              "userNick": "v***v",
+              "userIcon": "https://wwc.alicdn.com/avatar/getAvatar.do?userIdStr=PCQuMkPIXmx4vCv4vkZzO8c4vkPeP8R-P884Pk8bvGgT&type=sns"
+            }
+          }
+        }],
+        "longTxtList": null
+      }, {
+        "matchType": "HOT",
+        "contentType": 3,
+        "contentId": 29988748,
+        "utLogMap": {
+          "answerList": "29988748",
+          "bpuList": "734430997",
+          "pvid": "07461c2e-110f-4a3b-be00-effa75ca22fb",
+          "bpu_id": 0,
+          "contentId": 29988748,
+          "scm": "1007.14536.93801.0",
+          "answer_id": 29988748,
+          "contentType": 3
+        },
+        "videoId": 0,
+        "contextStyle": 0,
+        "tagDetail": null,
+        "answerList": [{
+          "answer": {
+            "needId": 12487779,
+            "needKeywords": null,
+            "mainBpuId": "734430997",
+            "replyId": 29988748,
+            "content": "此款皮带来自法国著名品牌  Lanvin ，此款皮带的设计非常简洁，造型美观耐看大气没有过多的装饰，体现了男人简洁干练的气质，没有繁杂缤纷的色彩，给人成熟稳重之感，黑色纯色设计，经典永不过时满足不同搭配需求。精致走线结实耐用触感柔软展现品牌精湛的工艺和卓越的而追求，高端材质不易变形，版型搭配性强，是一款具有大牌风范的男士商务产品。",
+            "picInfo": {
+              "tagInfo": {
+                "brand": "Lanvin"
+              }
+            },
+            "bpuPic": {
+              "bpuId": 734430997,
+              "mainPic": "//gw.alicdn.com/tps/i1/TB1_QoLQXXXXXaDXVXXmBwx8FXX",
+              "brandId": 4394856,
+              "showTitle": "Lanvin 领带 BLACK Q01261213",
+              "brandDetail": {
+                "locationPic": "//g.alicdn.com/mui/flag-img/circle/FR.png",
+                "location": "法国",
+                "name": "Lanvin"
+              }
+            },
+            "needDTO": {
+              "keyWords": []
+            },
+            "owner": {
+              "userNick": "小小曾菇凉",
+              "userIcon": "//gw.alicdn.com/tps/TB2puxafSVmpuFjSZFFXXcZApXa_!!1063647504-0-beehive-scenes.jpg"
+            }
+          }
+        }],
+        "longTxtList": null
+      }, {
+        "matchType": "HOT",
+        "contentType": 100,
+        "contentId": 200516050,
+        "utLogMap": {
+          "answerList": "",
+          "bpuList": "",
+          "pvid": "07461c2e-110f-4a3b-be00-effa75ca22fb",
+          "bpu_id": 0,
+          "contentId": 200516050,
+          "scm": "1007.14536.93801.0",
+          "answer_id": 0,
+          "contentType": 100
+        },
+        "videoId": 0,
+        "contextStyle": 137003,
+        "tagDetail": null,
+        "answerList": [],
+        "longTxtList": {
+          "cid": 200370269040,
+          "mainPicUrl": "//gw.alicdn.com/tps/TB2VIKHaWmgSKJjSsphXXcy1VXa_!!821374411-0-beehive-scenes.jpg",
+          "title": "送给宝妈的美国婴儿护肤品清单",
+          "introduction": "看着超市琳琅满目的婴儿用品，怀孕的妈妈们都不知道如何选择，宝妈们总希望给孩子世界上最好最棒的东西，生怕用错一丁半点就会酿成大错。来自美国的婴儿护肤用品， 纯天然精华成分，温和呵护幼儿的肌肤， 美国千万妈咪的信赖，再也不用担心宝宝的成长问题了。",
+          "nickname": "包子君的搭配课",
+          "avatar": "//gw.alicdn.com/tps/TB1JyjCJFXXXXbLaXXXXXXXXXXX"
+        }
+      }, {
+        "matchType": "HOT",
+        "contentType": 3,
+        "contentId": 22205674,
+        "utLogMap": {
+          "answerList": "22205674",
+          "bpuList": "881935159",
+          "pvid": "07461c2e-110f-4a3b-be00-effa75ca22fb",
+          "bpu_id": 0,
+          "contentId": 22205674,
+          "scm": "1007.14536.93801.0",
+          "answer_id": 22205674,
+          "contentType": 3
+        },
+        "videoId": 0,
+        "contextStyle": 0,
+        "tagDetail": null,
+        "answerList": [{
+          "answer": {
+            "needId": 8388401,
+            "needKeywords": null,
+            "mainBpuId": "881935159",
+            "replyId": 22205674,
+            "content": "这款血压健康片来自澳大利亚品牌BLACKMORES，BLACKMORES一直将自然的原料融入产品之中，为你打造各种营养品。这款血糖平衡片以最容易吸收的方式融入了大量的铬元素，可有效补充人体所需。要知道，不管是喜欢吃甜食的人，还是经常运动受伤的人，都应该吃这款健康片，因为铬的流失，将会直接导致血压升高等一系列的问题，千万不可忽视。每天一片，就能够将疾病扼杀，为什么不？",
+            "picInfo": {
+              "tagInfo": {
+                "brand": "BLACKMORES/澳佳宝"
+              }
+            },
+            "bpuPic": {
+              "bpuId": 881935159,
+              "mainPic": "//gw.alicdn.com/tps/TB1BVqCcaagSKJjy0FhL6UrbFXa",
+              "brandId": 3323552,
+              "showTitle": "血糖灵血糖平衡片90片2瓶",
+              "brandDetail": {
+                "locationPic": "//g.alicdn.com/mui/flag-img/circle/AU.png",
+                "location": "澳洲",
+                "name": "Blackmores"
+              }
+            },
+            "needDTO": {
+              "keyWords": ["海外", "通血管", "降血糖", "保健药"]
+            },
+            "owner": {
+              "userNick": "家居搭配师rain",
+              "userIcon": "//gw.alicdn.com/tps/TB1fI9zNVXXXXbKXVXXXXXXXXXX"
+            }
+          }
+        }],
+        "longTxtList": null
+      }]
+    },
+    "success": true
+  },
+  "resultSerializeConfig": {
+    "commonVOResult": false
+  },
+  "ret": ["SUCCESS::调用成功"],
+  "v": "1.0"
+}

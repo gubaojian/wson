@@ -1,0 +1,63 @@
+{
+  "api": "mtop.taobao.cloudvideo.video.query",
+  "data": {
+    "configuration": {
+      "logo": {
+        "fullHeight": 20,
+        "fullLocationX": 0.0,
+        "fullLocationY": 0.0,
+        "fullScreenShow": true,
+        "fullWidth": 95,
+        "logoUrl": "https://gw.alicdn.com/tfs/TB1elTTd8fH8KJjy1XbXXbLdXXa-255-54.png",
+        "normalHeight": 15,
+        "normalLocationX": 0.0,
+        "normalLocationY": 0.0,
+        "normalScreenShow": true,
+        "normalWidth": 70
+      }
+    },
+    "coverUrl": "https://img.alicdn.com/imgextra/i3/6000000002687/TB2zM96hOqAXuNjy1XdXXaYcVXa_!!6000000002687-0-tbvideo.jpg",
+    "duration": 119,
+    "id": "50061400530",
+    "resources": [{
+      "bitrate": 338,
+      "cacheKey": "3b97166a630d3fbc3a7a6bc0a24788bd",
+      "definition": "sd_265",
+      "height": 480,
+      "length": "5059446",
+      "metadataLength": "0",
+      "video_url": "http://tbm.alicdn.com/GP7JtxI2oMrv9svTeqc/eEehLZ4xqWQOPtBThYC%40%40sd265.mp4",
+      "width": 854
+    }, {
+      "bitrate": 472,
+      "cacheKey": "52bcfb700fec383922267ba787906a2e",
+      "definition": "sd",
+      "height": 504,
+      "length": "7067711",
+      "metadataLength": "0",
+      "video_url": "http://tbm.alicdn.com/GP7JtxI2oMrv9svTeqc/eEehLZ4xqWQOPtBThYC%40%40sd.mp4",
+      "width": 896
+    }, {
+      "bitrate": 616,
+      "cacheKey": "92e8f4bb03285675ca872bd715175fd0",
+      "definition": "hd_265",
+      "height": 720,
+      "length": "9231481",
+      "metadataLength": "0",
+      "video_url": "http://tbm.alicdn.com/GP7JtxI2oMrv9svTeqc/eEehLZ4xqWQOPtBThYC%40%40hd265.mp4",
+      "width": 1280
+    }, {
+      "bitrate": 877,
+      "cacheKey": "0a9d2081379206ad8b1361a3eb974014",
+      "definition": "hd",
+      "height": 720,
+      "length": "13128183",
+      "metadataLength": "0",
+      "video_url": "http://tbm.alicdn.com/GP7JtxI2oMrv9svTeqc/eEehLZ4xqWQOPtBThYC%40%40hd.mp4",
+      "width": 1280
+    }],
+    "userId": "2126650380"
+  },
+  "ret": ["SUCCESS::调用成功"],
+  "v": "2.0"
+}

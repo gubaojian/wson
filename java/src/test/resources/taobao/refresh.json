@@ -1,0 +1,381 @@
+{
+  "api": "mtop.taobao.wireless.home.refresh",
+  "data": {
+    "currentTimeMillis": "1514533389788",
+    "data": {
+      "sixcard": {
+        "exposureParam": {
+          "arg1": "Page_Home_Show-widget",
+          "args": {
+            "expo_other": "a2141.1.bianlidian.2:2019.1.20.100700:1;a2141.1.widget.2:2019.1.2.10:2;a2141.1.widget.1:2019.1.2.9:3;a2141.1.widget.4:2019.1.4.311:4;a2141.1.widget.3:2019.1.2.129:5;a2141.1.widget.5:2019.1.2.200:6;",
+            "biztype": "aiguangjie",
+            "expo": "a2141.1.bianlidian.2:2019.1.20.100700;14145288565840__558637886438__0__0__1__0.4061803158889483__181__1__96__9.61101879409661E-6__0__366__14145227277988__538385867336__0__0__0__0.4061237088037099__182__1__96__0.225073193865362__0__160__1414__1007.13553.89676.000__d2bcd4ca-10f6-4232-ada6-989ceab4c7db__89676__5;a2141.1.widget.2:2019.1.2.10;71308215__560019861084__0__0__1__0.3926092953417791__197__1__96__0.0294463746633574__0__221__21099488__20233771987__0__0__0__0.35370725393900926__225__1__96__0.0168785998779042__0__264__1__1007.13553.89676.000__d2bcd4ca-10f6-4232-ada6-989ceab4c7db__89676__5;a2141.1.widget.1:2019.1.2.9;71054529__559906629071__0__0__1__0.7707596213322522__59__1__96__0.776930241969026__0__113__71461145__561847492026__0__0__0__0.7545075564873966__64__1__96__0.656237595707061__0__132__56__1007.13553.89676.000__d2bcd4ca-10f6-4232-ada6-989ceab4c7db__89676__5;a2141.1.widget.4:2019.1.4.311;34341787__521478765938__0__0__1__0.3743991993001595__209__1__96__0.0217911749923248__0__242__17089283__40384874575__0__0__0__0.37297606858736476__211__1__96__0.0103697956977199__0__301__31__1007.13553.89676.000__d2bcd4ca-10f6-4232-ada6-989ceab4c7db__89676__5;a2141.1.widget.3:2019.1.2.129;65229064__556956042871__0__0__1__0.3642904405272342__218__1__96__0.0214299082155653__0__245__66759450__558020059847__0__0__0__0.3378594977864785__244__1__96__0.00809703610381865__0__317__2__1007.13553.89676.000__d2bcd4ca-10f6-4232-ada6-989ceab4c7db__89676__5;a2141.1.widget.5:2019.1.2.200;68101526730019__200494211158__0__0__1__0.8474185458255943__28__1__96__1.0__1__93__6800505438112__555832794692__0__0__0__0.8642704730532745__22__1__96__1.0__0__11__681__1007.13553.89676.000__d2bcd4ca-10f6-4232-ada6-989ceab4c7db__89676__5;"
+          },
+          "eventId": "2201",
+          "page": "Page_Home"
+        },
+        "ext": {
+          "updateGroup": "sixcard",
+          "marginTop": "20"
+        },
+        "item": {
+          "0_0": {
+            "clickParam": {
+              "arg1": "Page_Home_Button-bianlidian-2",
+              "args": {
+                "spm": "a2141.1.bianlidian.2",
+                "trackInfo": "14145288565840__558637886438__0__0__1__0.4061803158889483__181__1__96__9.61101879409661E-6__0__366__1414__1007.13553.89676.000__d2bcd4ca-10f6-4232-ada6-989ceab4c7db__89676",
+                "six_card_expo_pos": "1",
+                "scm": "2019.1.20.100700",
+                "targetUrl": "//pages.tmall.com/wow/chaoshi/act/city-pavilion?six_card_expo_pos=1&spm=a2141.1.bianlidian.2&itemId=558637886438-538385867336&scm=2019.1.20.100700&areaId=330100"
+              },
+              "eventId": "2101",
+              "page": "Page_Home"
+            },
+            "content": {
+              "subtitle": "叠加5折券",
+              "title": "限时抢5折爆款",
+              "img2": "//img.alicdn.com/tps/TB2SfPJbGmWQ1JjSZPhXXXCJFXa_!!2746434747.png",
+              "img1": "//gw.alicdn.com/tfs/TB1ihAOflTH8KJjy0FiXXcRsXXa-204-146.png"
+            },
+            "ext": {},
+            "itemBizCode": "sixcard-tmall_left",
+            "passOnTrack": {
+              "six_card_expo_pos": "1"
+            },
+            "targetUrl": "//pages.tmall.com/wow/chaoshi/act/city-pavilion?six_card_expo_pos=1&spm=a2141.1.bianlidian.2&itemId=558637886438-538385867336&scm=2019.1.20.100700&areaId=330100",
+            "voiceText": "城市优选"
+          },
+          "0_1": {
+            "clickParam": {
+              "arg1": "Page_Home_Button-bianlidian-2",
+              "args": {
+                "spm": "a2141.1.bianlidian.2",
+                "trackInfo": "14145227277988__538385867336__0__0__0__0.4061237088037099__182__1__96__0.225073193865362__0__160__1414__1007.13553.89676.000__d2bcd4ca-10f6-4232-ada6-989ceab4c7db__89676",
+                "six_card_expo_pos": "1",
+                "scm": "2019.1.20.100700",
+                "targetUrl": "//pages.tmall.com/wow/chaoshi/act/city-pavilion?six_card_expo_pos=1&spm=a2141.1.bianlidian.2&itemId=558637886438-538385867336&scm=2019.1.20.100700&areaId=330100"
+              },
+              "eventId": "2101",
+              "page": "Page_Home"
+            },
+            "content": {
+              "img1": "//img.alicdn.com/tps/TB2joFSesjI8KJjSsppXXXbyVXa_!!2130139739.png"
+            },
+            "ext": {},
+            "itemBizCode": "sixcard-tmall_right",
+            "passOnTrack": {
+              "six_card_expo_pos": "1"
+            },
+            "targetUrl": "//pages.tmall.com/wow/chaoshi/act/city-pavilion?six_card_expo_pos=1&spm=a2141.1.bianlidian.2&itemId=558637886438-538385867336&scm=2019.1.20.100700&areaId=330100",
+            "voiceText": "城市优选"
+          },
+          "1_0": {
+            "clickParam": {
+              "arg1": "Page_Home_Button-widget-2",
+              "args": {
+                "spm": "a2141.1.widget.2",
+                "trackInfo": "21099488__20233771987__0__0__0__0.35370725393900926__225__1__96__0.0168785998779042__0__264__1__1007.13553.89676.000__d2bcd4ca-10f6-4232-ada6-989ceab4c7db__89676",
+                "six_card_expo_pos": "2",
+                "scm": "2019.1.2.10",
+                "targetUrl": "https://market.m.taobao.com/apps/youhaohuo/index/index3.html?six_card_expo_pos=2&spm=a2141.1.widget.2&content_id=2700000200482778502,125741296445&scm=2019.1.2.10&wh_weex=true&wx_navbar_transparent=true"
+              },
+              "eventId": "2101",
+              "page": "Page_Home"
+            },
+            "content": {
+              "subtitle": "高颜值美物",
+              "img2": "https://gw.alicdn.com/imgextra/i1/31/TB2Oj.oXN3X61Bjy0FdXXanuXXa_!!31-0-yamato.jpg",
+              "img1": "https://gw.alicdn.com/tfs/TB1ANZGSFXXXXXdXVXXXXXXXXXX-563-78.png"
+            },
+            "ext": {},
+            "itemBizCode": "sixcard-gooditem_left",
+            "passOnTrack": {
+              "six_card_expo_pos": "2"
+            },
+            "targetUrl": "https://market.m.taobao.com/apps/youhaohuo/index/index3.html?six_card_expo_pos=2&spm=a2141.1.widget.2&content_id=2700000200482778502,125741296445&scm=2019.1.2.10&wh_weex=true&wx_navbar_transparent=true",
+            "voiceText": "有好货"
+          },
+          "1_1": {
+            "clickParam": {
+              "arg1": "Page_Home_Button-widget-2",
+              "args": {
+                "spm": "a2141.1.widget.2",
+                "trackInfo": "71308215__560019861084__0__0__1__0.3926092953417791__197__1__96__0.0294463746633574__0__221__1__1007.13553.89676.000__d2bcd4ca-10f6-4232-ada6-989ceab4c7db__89676",
+                "six_card_expo_pos": "2",
+                "scm": "2019.1.2.10",
+                "targetUrl": "https://market.m.taobao.com/apps/youhaohuo/index/index3.html?six_card_expo_pos=2&spm=a2141.1.widget.2&content_id=2700000200482778502,125741296445&scm=2019.1.2.10&wh_weex=true&wx_navbar_transparent=true"
+              },
+              "eventId": "2101",
+              "page": "Page_Home"
+            },
+            "content": {
+              "img1": "https://gw.alicdn.com/imgextra/i2/29/TB2u28ajZLJ8KJjy0FnXXcFDpXa_!!29-0-yamato.jpg"
+            },
+            "ext": {},
+            "itemBizCode": "sixcard-gooditem_right",
+            "passOnTrack": {
+              "six_card_expo_pos": "2"
+            },
+            "targetUrl": "https://market.m.taobao.com/apps/youhaohuo/index/index3.html?six_card_expo_pos=2&spm=a2141.1.widget.2&content_id=2700000200482778502,125741296445&scm=2019.1.2.10&wh_weex=true&wx_navbar_transparent=true",
+            "voiceText": "有好货"
+          },
+          "2_0": {
+            "clickParam": {
+              "arg1": "Page_Home_Button-widget-1",
+              "args": {
+                "spm": "a2141.1.widget.1",
+                "trackInfo": "71461145__561847492026__0__0__0__0.7545075564873966__64__1__96__0.656237595707061__0__132__56__1007.13553.89676.000__d2bcd4ca-10f6-4232-ada6-989ceab4c7db__89676",
+                "six_card_expo_pos": "3",
+                "scm": "2019.1.2.9",
+                "targetUrl": "//m.taobao.com/go/QiangGou?six_card_expo_pos=3&spm=a2141.1.widget.1&content_id=10000066539713,10000067360770&scm=2019.1.2.9&query=TaoQiang&homepage_native=y"
+              },
+              "eventId": "2101",
+              "page": "Page_Home"
+            },
+            "content": {
+              "moreText": "进入查看更多",
+              "subtitle": "精选爆款低价抢",
+              "img2": "https://gw.alicdn.com/imgextra/i1/97/TB21G7ekf2H8KJjy0FcXXaDlFXa_!!97-0-yamato.jpg",
+              "img1": "https://gw.alicdn.com/tfs/TB1317ISFXXXXbxXVXXXXXXXXXX-563-78.png"
+            },
+            "ext": {
+              "futureTime": "1514537999000"
+            },
+            "itemBizCode": "sixcard-qianggou_left",
+            "passOnTrack": {
+              "six_card_expo_pos": "3"
+            },
+            "targetUrl": "//m.taobao.com/go/QiangGou?six_card_expo_pos=3&spm=a2141.1.widget.1&content_id=10000066539713,10000067360770&scm=2019.1.2.9&query=TaoQiang&homepage_native=y",
+            "voiceText": "淘抢购"
+          },
+          "2_1": {
+            "clickParam": {
+              "arg1": "Page_Home_Button-widget-1",
+              "args": {
+                "spm": "a2141.1.widget.1",
+                "trackInfo": "71054529__559906629071__0__0__1__0.7707596213322522__59__1__96__0.776930241969026__0__113__56__1007.13553.89676.000__d2bcd4ca-10f6-4232-ada6-989ceab4c7db__89676",
+                "six_card_expo_pos": "3",
+                "scm": "2019.1.2.9",
+                "targetUrl": "//m.taobao.com/go/QiangGou?six_card_expo_pos=3&spm=a2141.1.widget.1&content_id=10000066539713,10000067360770&scm=2019.1.2.9&query=TaoQiang&homepage_native=y"
+              },
+              "eventId": "2101",
+              "page": "Page_Home"
+            },
+            "content": {
+              "img1": "https://gw.alicdn.com/imgextra/i3/71/TB2RKoSjx6I8KJjSszfXXaZVXXa_!!71-0-yamato.jpg"
+            },
+            "ext": {},
+            "itemBizCode": "sixcard-qianggou_right",
+            "passOnTrack": {
+              "six_card_expo_pos": "3"
+            },
+            "targetUrl": "//m.taobao.com/go/QiangGou?six_card_expo_pos=3&spm=a2141.1.widget.1&content_id=10000066539713,10000067360770&scm=2019.1.2.9&query=TaoQiang&homepage_native=y",
+            "voiceText": "淘抢购"
+          },
+          "3_0": {
+            "clickParam": {
+              "arg1": "Page_Home_Button-widget-4",
+              "args": {
+                "spm": "a2141.1.widget.4",
+                "trackInfo": "17089283__40384874575__0__0__0__0.37297606858736476__211__1__96__0.0103697956977199__0__301__31__1007.13553.89676.000__d2bcd4ca-10f6-4232-ada6-989ceab4c7db__89676",
+                "six_card_expo_pos": "4",
+                "scm": "2019.1.4.311",
+                "targetUrl": "https://market.m.taobao.com/apps/market/qingdan/list-11.html?six_card_expo_pos=4&spm=a2141.1.widget.4&itemId=521478765938,40384874575&scm=2019.1.4.311&wh_weex=true&wx_navbar_transparent=true&data_prefetch=true"
+              },
+              "eventId": "2101",
+              "page": "Page_Home"
+            },
+            "content": {
+              "subtitle": "一站式攻略",
+              "img2": "https://gw.alicdn.com/imgextra/i4/5/TB29I96aGi5V1BjSspnXXa.3XXa_!!5-0-yamato.jpg",
+              "img1": "https://gw.alicdn.com/tfs/TB1FqhfSVXXXXaqXXXXXXXXXXXX-563-78.png"
+            },
+            "ext": {},
+            "itemBizCode": "sixcard-qingdan_left",
+            "passOnTrack": {
+              "six_card_expo_pos": "4"
+            },
+            "targetUrl": "https://market.m.taobao.com/apps/market/qingdan/list-11.html?six_card_expo_pos=4&spm=a2141.1.widget.4&itemId=521478765938,40384874575&scm=2019.1.4.311&wh_weex=true&wx_navbar_transparent=true&data_prefetch=true",
+            "voiceText": "必抢清单"
+          },
+          "3_1": {
+            "clickParam": {
+              "arg1": "Page_Home_Button-widget-4",
+              "args": {
+                "spm": "a2141.1.widget.4",
+                "trackInfo": "34341787__521478765938__0__0__1__0.3743991993001595__209__1__96__0.0217911749923248__0__242__31__1007.13553.89676.000__d2bcd4ca-10f6-4232-ada6-989ceab4c7db__89676",
+                "six_card_expo_pos": "4",
+                "scm": "2019.1.4.311",
+                "targetUrl": "https://market.m.taobao.com/apps/market/qingdan/list-11.html?six_card_expo_pos=4&spm=a2141.1.widget.4&itemId=521478765938,40384874575&scm=2019.1.4.311&wh_weex=true&wx_navbar_transparent=true&data_prefetch=true"
+              },
+              "eventId": "2101",
+              "page": "Page_Home"
+            },
+            "content": {
+              "img1": "https://gw.alicdn.com/imgextra/i3/50/TB2koGfbl4lpuFjy1zjXXcAKpXa_!!50-0-yamato.jpg"
+            },
+            "ext": {},
+            "itemBizCode": "sixcard-qingdan_right",
+            "passOnTrack": {
+              "six_card_expo_pos": "4"
+            },
+            "targetUrl": "https://market.m.taobao.com/apps/market/qingdan/list-11.html?six_card_expo_pos=4&spm=a2141.1.widget.4&itemId=521478765938,40384874575&scm=2019.1.4.311&wh_weex=true&wx_navbar_transparent=true&data_prefetch=true",
+            "voiceText": "必抢清单"
+          },
+          "4_0": {
+            "clickParam": {
+              "arg1": "Page_Home_Button-widget-3",
+              "args": {
+                "biztype": "aiguangjie",
+                "spm": "a2141.1.widget.3",
+                "trackInfo": "66759450__558020059847__0__0__0__0.3378594977864785__244__1__96__0.00809703610381865__0__317__2__1007.13553.89676.000__d2bcd4ca-10f6-4232-ada6-989ceab4c7db__89676",
+                "six_card_expo_pos": "5",
+                "scm": "2019.1.2.129",
+                "targetUrl": "https://market.m.taobao.com/apps/guang/ishopping/new_index.html?six_card_expo_pos=5&spm=a2141.1.widget.3&g_uid=2218891225,2218891225&hotStreetId=0,0&g_sid=8050126087,8067182290&g_itemId=556956042871,558020059847&scm=2019.1.2.129&wh_weex=true&wx_navbar_transparent=true"
+              },
+              "eventId": "2101",
+              "page": "Page_Home"
+            },
+            "content": {
+              "subtitle": "时髦研究所",
+              "img2": "https://gw.alicdn.com/imgextra/i2/39/TB22SYGaBDH8KJjSspnXXbNAVXa_!!39-0-yamato.jpg",
+              "img1": "https://gw.alicdn.com/tfs/TB137IOSFXXXXcMXFXXXXXXXXXX-563-78.png"
+            },
+            "ext": {},
+            "itemBizCode": "sixcard-aiguangjie_left",
+            "passOnTrack": {
+              "six_card_expo_pos": "5"
+            },
+            "targetUrl": "https://market.m.taobao.com/apps/guang/ishopping/new_index.html?six_card_expo_pos=5&spm=a2141.1.widget.3&g_uid=2218891225,2218891225&hotStreetId=0,0&g_sid=8050126087,8067182290&g_itemId=556956042871,558020059847&scm=2019.1.2.129&wh_weex=true&wx_navbar_transparent=true",
+            "voiceText": "爱逛街"
+          },
+          "4_1": {
+            "clickParam": {
+              "arg1": "Page_Home_Button-widget-3",
+              "args": {
+                "biztype": "aiguangjie",
+                "spm": "a2141.1.widget.3",
+                "trackInfo": "65229064__556956042871__0__0__1__0.3642904405272342__218__1__96__0.0214299082155653__0__245__2__1007.13553.89676.000__d2bcd4ca-10f6-4232-ada6-989ceab4c7db__89676",
+                "six_card_expo_pos": "5",
+                "scm": "2019.1.2.129",
+                "targetUrl": "https://market.m.taobao.com/apps/guang/ishopping/new_index.html?six_card_expo_pos=5&spm=a2141.1.widget.3&g_uid=2218891225,2218891225&hotStreetId=0,0&g_sid=8050126087,8067182290&g_itemId=556956042871,558020059847&scm=2019.1.2.129&wh_weex=true&wx_navbar_transparent=true"
+              },
+              "eventId": "2101",
+              "page": "Page_Home"
+            },
+            "content": {
+              "img1": "https://gw.alicdn.com/imgextra/i4/107/TB2eFhhnjihSKJjy0FeXXbJtpXa_!!107-0-yamato.jpg"
+            },
+            "ext": {},
+            "itemBizCode": "sixcard-aiguangjie_right",
+            "passOnTrack": {
+              "six_card_expo_pos": "5"
+            },
+            "targetUrl": "https://market.m.taobao.com/apps/guang/ishopping/new_index.html?six_card_expo_pos=5&spm=a2141.1.widget.3&g_uid=2218891225,2218891225&hotStreetId=0,0&g_sid=8050126087,8067182290&g_itemId=556956042871,558020059847&scm=2019.1.2.129&wh_weex=true&wx_navbar_transparent=true",
+            "voiceText": "爱逛街"
+          },
+          "5_0": {
+            "clickParam": {
+              "arg1": "Page_Home_Button-widget-5",
+              "args": {
+                "spm": "a2141.1.widget.5",
+                "trackInfo": "6800505438112__555832794692__0__0__0__0.8642704730532745__22__1__96__1.0__0__11__681__1007.13553.89676.000__d2bcd4ca-10f6-4232-ada6-989ceab4c7db__89676",
+                "six_card_expo_pos": "6",
+                "scm": "2019.1.2.200",
+                "targetUrl": "https://h5.m.taobao.com/taolive/main.html?six_card_expo_pos=6&spm=a2141.1.widget.5&contentId=200494211158_3514597070_2&scm=2019.1.2.200"
+              },
+              "eventId": "2101",
+              "page": "Page_Home"
+            },
+            "content": {
+              "subtitle": "分分钟路转粉",
+              "title": "店主开播啦",
+              "img2": "//gw.alicdn.com/imgextra/i1/35/TB2XB4gbYsTMeJjy1zeXXcOCVXa_!!35-0-luban.jpg",
+              "img1": "https://gw.alicdn.com/tfs/TB1oWZVSFXXXXaHXFXXXXXXXXXX-563-78.png"
+            },
+            "ext": {},
+            "itemBizCode": "sixcard-video_left",
+            "passOnTrack": {
+              "six_card_expo_pos": "6"
+            },
+            "targetUrl": "https://h5.m.taobao.com/taolive/main.html?six_card_expo_pos=6&spm=a2141.1.widget.5&contentId=200494211158_3514597070_2&scm=2019.1.2.200",
+            "voiceText": "淘宝直播"
+          },
+          "5_1": {
+            "clickParam": {
+              "arg1": "Page_Home_Button-widget-5",
+              "args": {
+                "spm": "a2141.1.widget.5",
+                "trackInfo": "68101526730019__200494211158__0__0__1__0.8474185458255943__28__1__96__1.0__1__93__681__1007.13553.89676.000__d2bcd4ca-10f6-4232-ada6-989ceab4c7db__89676",
+                "six_card_expo_pos": "6",
+                "scm": "2019.1.2.200",
+                "targetUrl": "https://h5.m.taobao.com/taolive/main.html?six_card_expo_pos=6&spm=a2141.1.widget.5&contentId=200494211158_3514597070_2&scm=2019.1.2.200"
+              },
+              "eventId": "2101",
+              "page": "Page_Home"
+            },
+            "content": {
+              "img2": "https://gw.alicdn.com/tfs/TB1_1RXSVXXXXbOXXXXXXXXXXXX-81-36.png",
+              "img1": "//gw.alicdn.com/imgextra/i3/94/TB278Jlg3nH8KJjSspcXXb3QFXa_!!94-0-luban.jpg"
+            },
+            "ext": {},
+            "itemBizCode": "sixcard-video_right",
+            "passOnTrack": {
+              "six_card_expo_pos": "6"
+            },
+            "targetUrl": "https://h5.m.taobao.com/taolive/main.html?six_card_expo_pos=6&spm=a2141.1.widget.5&contentId=200494211158_3514597070_2&scm=2019.1.2.200",
+            "voiceText": "淘宝直播"
+          }
+        },
+        "sectionBizCode": "sixcard",
+        "template": {
+          "columnType": "",
+          "name": "home_sixcard_tmall",
+          "provider": "",
+          "url": "https://ossgw.alicdn.com/rapid-oss-bucket/template_online/home_sixcard_tmall/19604753/home_sixcard_tmall_android.xml",
+          "version": "3"
+        }
+      },
+      "bianlidian": {
+        "exposureParam": {
+          "arg1": "Page_Home_Show-bianlidian",
+          "args": {},
+          "eventId": "2201",
+          "page": "Page_Home"
+        },
+        "ext": {
+          "updateGroup": "bianlidian",
+          "borderColor": "#fd1a48",
+          "hidden": "true",
+          "marginTop": "20"
+        },
+        "item": {
+          "bianlidianitem": {
+            "clickParam": {
+              "arg1": "Page_Home_Button-bianlidian-1",
+              "args": {},
+              "eventId": "2101",
+              "page": "Page_Home"
+            },
+            "content": {},
+            "ext": {}
+          }
+        },
+        "sectionBizCode": "bianlidian",
+        "template": {
+          "columnType": "",
+          "name": "home_v31bianlidian",
+          "provider": "",
+          "url": "https://ossgw.alicdn.com/rapid-oss-bucket/template_online/bianlidian/10598016/bianlidian_android.xml",
+          "version": "30"
+        }
+      }
+    },
+    "expireIntervalTimeMillis": "3600000",
+    "ext": {},
+    "traceId": "0bb6125915145333897763888e0a36"
+  },
+  "ret": ["SUCCESS::调用成功"],
+  "v": "1.0"
+}
