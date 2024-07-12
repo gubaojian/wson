@@ -1,13 +1,22 @@
-package com.github.gubaojian.wson.config;
+package com.github.gubaojian.wson.io;
 
+/**
+ * 数据协议类型
+ * */
 public class Protocol {
     /**
      * wson data type
      * */
     public static final byte NULL_TYPE = '0';
 
+    /**
+     * UTF-16 string
+     * */
     public static final byte STRING_TYPE = 's';
 
+    /**
+     * UTF-8 string
+     * */
     public static final byte UTF8_STRING_TYPE = 'u';
 
     public static final byte BOOLEAN_TYPE_TRUE = 't';
@@ -29,7 +38,6 @@ public class Protocol {
     public static final byte ARRAY_TYPE = '[';
 
     public static final byte MAP_TYPE = '{';
-
 
 
 }

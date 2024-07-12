@@ -64,7 +64,7 @@ public class FastJsonVsWson extends TestCase {
         user.name = "中国";
         user.country = "中国";
 
-        System.out.println("user object wson towson used start ");
+        System.out.println("user object wson json 1");
 
         long start = System.currentTimeMillis();
         for(int i=0; i<10000; i++) {
@@ -81,6 +81,31 @@ public class FastJsonVsWson extends TestCase {
         System.out.println("user object json tojson used " + (end - start));
     }
 
+
+    public void testSerializable2(){
+        User user = new User();
+        user.name = "中国";
+        user.country = "中国";
+
+        System.out.println("user object wson json 2 ");
+        long start = System.currentTimeMillis();
+        long end = System.currentTimeMillis();
+
+        start = System.currentTimeMillis();
+        for(int i=0; i<10000; i++) {
+            JSON.toJSONString(user);
+        }
+        end = System.currentTimeMillis();
+        System.out.println("user object json tojson2 used " + (end - start));
+
+        start = System.currentTimeMillis();
+        for(int i=0; i<10000; i++) {
+            Wson.toWson(user);
+        }
+        end = System.currentTimeMillis();
+        System.out.println("user object wson towson2 used " + (end - start));
+
+    }
 
 
 }

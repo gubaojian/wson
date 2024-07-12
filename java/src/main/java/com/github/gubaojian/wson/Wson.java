@@ -25,7 +25,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.github.gubaojian.wson.cache.LruCache;
-import com.github.gubaojian.wson.config.Protocol;
+import com.github.gubaojian.wson.io.Protocol;
 import com.github.gubaojian.wson.io.Input;
 import com.github.gubaojian.wson.io.Output;
 
@@ -36,12 +36,12 @@ import java.lang.reflect.Modifier;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.nio.ByteOrder;
-import java.security.Key;
 import java.util.*;
 
 /**
  * fast binary json format for parse map and serialize map
- * 字符串编码采用utf16 和jsc相同，仅适合本地，不适合网络通信
+ * 字符串编码采用utf16 和jsc相同，仅适合本地，不适合网络通信。
+ * 后续改成UTF-8版本，适合网络传输
  * Created by efurture on 2017/8/16.
  */
 public class Wson {
@@ -93,13 +93,6 @@ public class Wson {
         private Input input = null;
         private Parser(byte[] buffer) {
             this.input = new Input(buffer);
-            charsBuffer = localCharsBufferCache.get();
-            //FIXME Lazy Init
-            if(charsBuffer != null){
-                localCharsBufferCache.set(null);
-            }else{
-                charsBuffer = new char[512];
-            }
         }
 
         private final Object parse(){
@@ -108,7 +101,7 @@ public class Wson {
 
         private final void close(){
             input.close();
-            if(charsBuffer != null){
+            if(charsBuffer != null && charsBuffer.length < 8*1024){
                 localCharsBufferCache.set(charsBuffer);
             }
             charsBuffer = null;
@@ -169,24 +162,10 @@ public class Wson {
 
         /**
          * speed read for json key with cache
-         * FIXME 移动出去。
          * */
         private final String readMapKeyUTF16() {
             int length = input.readUInt()/2; //one char 2 byte
-            //TODO improve, REMOVE FROM THREAD LOCAL
-            charsBuffer = localCharsBufferCache.get();
-            if(charsBuffer != null){
-                localCharsBufferCache.set(null);
-            }else{
-                if (length > 256) {
-                    charsBuffer = new char[length]; //设置cache
-                } else {
-                    charsBuffer = new char[256];
-                }
-            }
-            if(charsBuffer.length < length){
-                charsBuffer = new char[length];
-            }
+            ensureCharBuffer(length);
             int hash = 5381;
             byte[] buffer = input.getBuffer();
             if(IS_NATIVE_LITTLE_ENDIAN){
@@ -231,14 +210,10 @@ public class Wson {
         }
         /**
          * method for json value
-         * FIXME 移动出去。
          * */
         private final String readUTF16String(){
             int length = input.readUInt()/2; //one char 2 byte
-            if(charsBuffer == null || charsBuffer.length < length){
-                charsBuffer = new char[length];
-            }
-            //FIXME String UTF8
+            ensureCharBuffer(length);
             final byte[] buffer = input.getBuffer();
             if(IS_NATIVE_LITTLE_ENDIAN){
                 for(int i=0; i<length; i++){
@@ -258,6 +233,30 @@ public class Wson {
                 }
             }
             return  new String(charsBuffer, 0, length);
+        }
+
+        private void ensureCharBuffer(int length) {
+            // first get charsBuffer from local
+            if (charsBuffer == null) {
+                charsBuffer = localCharsBufferCache.get();
+                if(charsBuffer != null){
+                    localCharsBufferCache.set(null);
+                }
+            }
+
+            // create char buffer if null
+            if (charsBuffer == null) {
+                if (length > 1024) {
+                    charsBuffer = new char[length + 1024]; //设置cache
+                } else {
+                    charsBuffer = new char[1024];
+                }
+            }
+
+            // ensure length
+            if(charsBuffer.length < length){
+                charsBuffer = new char[length];
+            }
         }
 
     }
@@ -484,29 +483,27 @@ public class Wson {
         }
 
 
-
         private final void writeAdapterObject(Object object){
-            if(specialClass.get(object.getClass().getName()) != null){
+            Class<?> targetClass = object.getClass();
+            String key = targetClass.getName();
+            if(specialClass.get(key) != null){
                 writeObject(JSON.toJSON(object));
                 return;
             }
             try{
-                writeMap(toMap(object));
+                writeMap(toMap(object, key, targetClass));
             } catch (Exception e){
                 e.printStackTrace();
-                specialClass.put(object.getClass().getName(), true);
+                specialClass.put(key, true);
                 writeObject(JSON.toJSON(object));
             }
         }
 
-        private  final Map  toMap(Object object){
+        private  final Map  toMap(Object object, String key, Class targetClass){
             Map map = new JSONObject();
             try {
-                Class<?> targetClass = object.getClass();
-                String key = targetClass.getName();
                 ObjectBean bean = getBean(key, targetClass);
                 List<Method> methods = bean.methods;
-                //System.out.println("method length " + methods.size() + " " + bean.fields.size() + " " + bean.names.size() );
                 int nameIndex = 0;
                 for (Method method : methods) {
                     Object value = method.invoke(object);
@@ -598,7 +595,7 @@ public class Wson {
     private static final String METHOD_PREFIX_GET = "get";
     private static final String METHOD_PREFIX_IS = "is";
     private static LruCache<String, Boolean> specialClass = new LruCache<>(16);
-    private static LruCache<String, ObjectBean> beanCache = new LruCache<>(128);
+    private static LruCache<String, ObjectBean> beanCache = new LruCache<>(256);
 
 
     private static final ObjectBean getBean(String key, Class targetClass){
