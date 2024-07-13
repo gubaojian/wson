@@ -1,13 +1,15 @@
-# wson
+# wson 
 
-parcel binary object nation, which is schema less with symbol table support.
+parcel binary object nation, which is schema less without symbol table support.
 aim to be fastest serializable binary protocol.
 
-fast tiny pack binary json with meta data support. inspired by bson and message pack and android binary and protobuf. 
+fast tiny binary object format. inspired by bson and message pack and android binary and protobuf. 
+
 faster than normal json library with half data size.less. you can embed in your application with super speed and reduce trafic
 
+currently is in development.
 
-### wson data format
+### wson data format example
 | type |  signature | format |
 | -------- | -------- | -------- |
 | number int     | 'i'    | signature + varint    |
@@ -18,7 +20,8 @@ faster than normal json library with half data size.less. you can embed in your 
 | boolean    | 't' or 'f'   | signature |
 | array    | '['   | signature + var length + elements|
 | object    |  '{'   | signature + var size + key, value, key, value|
-| meta    |  'm'   | signature + varint|
+
+more type please seem Protocol.java define
 
 string length, map size ar store used usigned varint.
 
