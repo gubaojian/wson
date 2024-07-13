@@ -56,6 +56,11 @@ public class Output {
         position++;
     }
 
+    public final void ensureWriteByte(int minCapacity, byte type){
+        ensureCapacity(minCapacity);
+        writeByte(type);
+    }
+
     /**
      * 仅写入值，不写入类型
      * */

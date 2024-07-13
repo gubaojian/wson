@@ -280,12 +280,12 @@ public class Wson {
      * wson builder
      * */
     private static final class Builder {
-        private ArrayList refs;
+        private ArrayList refs; //复用度很高，做个缓存，复用一下
         private Output output;
 
         private Builder(){
             output = new Output(LocalBuffer.requireBuffer(4096));
-            refs = new ArrayList();
+            refs = LocalBuffer.requireArrayList();
         }
 
         private final byte[] toWson(Object object){
@@ -295,6 +295,7 @@ public class Wson {
 
         private final void close(){
             LocalBuffer.returnBuffer(output.getBuffer(), 128*1024);
+            LocalBuffer.returnList(refs);
             output.close();
             refs = null;
         }
