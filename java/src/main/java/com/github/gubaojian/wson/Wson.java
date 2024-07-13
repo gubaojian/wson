@@ -364,7 +364,7 @@ public class Wson {
                 refs.remove(refs.size() - 1);
             } else if (object instanceof Date) {
                 output.ensureCapacity(10);
-                double date = ((Date) object).getTime();
+                double date = ((Date) object).getTime(); //FIXME time type？or long type
                 output.writeByte(Protocol.NUMBER_DOUBLE_TYPE);
                 output.writeDouble(date);
             } else if (object instanceof Calendar) {
