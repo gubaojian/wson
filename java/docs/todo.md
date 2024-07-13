@@ -33,3 +33,47 @@ WSON toWSON used 2068
 
 FASTJSON toJSON used 449
 WSON toWSON used 317
+
+file name /data.json
+FastJSON parse used 2059
+WSON parse used 940
+
+file name /data.json
+
+WSON parse used 985
+FastJSON parse used 1721
+
+file name /middle.json
+FastJSON parse used 9
+WSON parse used 8
+file name /middle.json
+WSON parse used 10
+FastJSON parse used 3
+
+file name /media.json
+FastJSON parse used 17
+WSON parse used 14
+file name /media.json
+WSON parse used 14
+FastJSON parse used 5
+
+file name /weex.json
+FastJSON parse used 4
+WSON parse used 16
+file name /weex.json
+WSON parse used 1
+FastJSON parse used 5
+
+file name /home.json
+FastJSON parse used 503
+WSON parse used 114
+file name /home.json
+WSON parse used 123
+FastJSON parse used 259
+
+file name /media2.json
+FastJSON parse used 4
+WSON parse used 2
+file name /media2.json
+WSON parse used 3
+FastJSON parse used 4
