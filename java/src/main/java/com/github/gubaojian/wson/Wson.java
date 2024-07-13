@@ -151,7 +151,6 @@ public class Wson {
         private final Object readMap() {
             int size = input.readUInt();
             Map<String, Object> object = new JSONObject();
-            ;
             for (int i = 0; i < size; i++) {
                 String key = readMapKeyUTF16();
                 Object value = readObject();
