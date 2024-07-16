@@ -17,6 +17,8 @@ json可以作为默认降级逻辑。json也是必须的，作为版本兼容及
 
 根据需要增加copy到特定buffer行为。
 
+bytes[] 数据支持
+
 后续想想如何加速这块，如何提升3倍以上。
 
 序列化性能：
@@ -77,3 +79,8 @@ WSON parse used 2
 file name /media2.json
 WSON parse used 3
 FastJSON parse used 4
+
+服务端库可以通过进行兼容：
+库要保持v1版本
+库要保持v2版本
+库要保持v3版本

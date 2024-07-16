@@ -632,11 +632,21 @@ public class Wson {
                         StringBuilder builder = new StringBuilder(method.getName().substring(3));
                         builder.setCharAt(0, Character.toLowerCase(builder.charAt(0)));
                         names.add(builder.toString());
+                        try {
+                            method.setAccessible(true);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                         methods.add(method);
                     } else if (methodName.startsWith(METHOD_PREFIX_IS)) {
                         StringBuilder builder = new StringBuilder(method.getName().substring(2));
                         builder.setCharAt(0, Character.toLowerCase(builder.charAt(0)));
                         names.add(builder.toString());
+                        try {
+                            method.setAccessible(true);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                         methods.add(method);
                     }
                 }
@@ -654,6 +664,11 @@ public class Wson {
                 String fieldName = field.getName();
                 if (names.contains(fieldName)) {
                     continue;
+                }
+                try {
+                    field.setAccessible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
                 names.add(fieldName);
                 fieldList.add(field);
