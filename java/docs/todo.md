@@ -15,6 +15,9 @@ json可以采用压缩，二进制数据也一样，因此数据大小只是一�
 二进制协议增加类型，需要升级相应的库，不然版本会不兼容，一个稳定协议需要很久才能支持。
 json可以作为默认降级逻辑。json也是必须的，作为版本兼容及降级。
 
+及时编译：
+https://github.com/trung/InMemoryJavaCompiler/tree/master
+
 根据需要增加copy到特定buffer行为。
 
 bytes[] 数据支持
