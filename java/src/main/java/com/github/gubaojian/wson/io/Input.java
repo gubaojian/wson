@@ -74,9 +74,9 @@ public class Input {
     }
 
     /**
-     * 仅读取值，不读取类型
+     * 仅读取值，不读取类型， 无符号数
      * */
-    public final int readUInt(){
+    public final int readUInt() {
         int value = 0;
         int i = 0;
         int b;
@@ -90,6 +90,28 @@ public class Input {
         }
         position+=1;
         return value | (b << i);
+    }
+
+    /**
+     * 有符号数
+     */
+    public long readVarInt64() {
+        return decodeZigZag64(readUInt64());
+    }
+
+    /**
+     * 无符号数
+     */
+    public final long readUInt64() {
+        long result = 0;
+        for (int shift = 0; shift < 64; shift += 7) {
+            final byte b = buffer[position++];
+            result |= (long) (b & 0x7F) << shift;
+            if ((b & 0x80) == 0) {
+                return result;
+            }
+        }
+        throw new IllegalArgumentException("Variable int64 Variable length is too long");
     }
 
     /**
@@ -133,6 +155,21 @@ public class Input {
                 ((buffer[position  ] & 0xFF) << 24));
         position +=4;
         return  Float.intBitsToFloat(number);
+    }
+
+
+    /**
+     * Decode a ZigZag-encoded 64-bit value. ZigZag encodes signed integers into values that can be
+     * efficiently encoded with varint. (Otherwise, negative values must be sign-extended to 64 bits
+     * to be varint encoded, thus always taking 10 bytes on the wire.)
+     * CodedInputStream
+     *
+     * @param n An unsigned 64-bit integer, stored in a signed int because Java has no explicit
+     *          unsigned support.
+     * @return A signed 64-bit integer.
+     */
+    public static long decodeZigZag64(final long n) {
+        return (n >>> 1) ^ -(n & 1);
     }
 
 }

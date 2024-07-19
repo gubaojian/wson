@@ -94,7 +94,7 @@ public class Output {
     }
 
     /**
-     * 仅写入值，不写入类型
+     * 仅写入值，不写入类型，固定长度编码
      */
     public final void writeLong(long val) {
         buffer[position + 7] = (byte) (val);
@@ -109,7 +109,8 @@ public class Output {
     }
 
     /**
-     * 仅写入值，不写入类型
+     * 仅写入值，不写入类型.
+     * 有符号变长编码
      */
     public final void writeVarInt(int value) {
         writeUInt((value << 1) ^ (value >> 31));
@@ -117,7 +118,8 @@ public class Output {
 
 
     /**
-     * 仅写入值，不写入类型
+     * 仅写入值，不写入类型.
+     * 无符号变长编码
      */
     public final void writeUInt(int value) {
         while ((value & 0xFFFFFF80) != 0) {
@@ -128,6 +130,30 @@ public class Output {
         buffer[position] = (byte) (value & 0x7F);
         position++;
     }
+
+
+    /**
+     * 有符号变长编码
+     */
+    public final void writeVarInt64(final long value) {
+        writeUInt64(encodeZigZag64(value));
+    }
+
+    /**
+     * 无符号变长编码
+     */
+    public final void writeUInt64(long value) {
+        while (true) {
+            if ((value & ~0x7FL) == 0) {
+                buffer[position++] = (byte) value;
+                return;
+            } else {
+                buffer[position++] = (byte) (((int) value | 0x80) & 0xFF);
+                value >>>= 7;
+            }
+        }
+    }
+
 
     public final void ensureCapacity(int minCapacity) {
         minCapacity += position;
@@ -144,6 +170,21 @@ public class Output {
             }
             buffer = Arrays.copyOf(buffer, newCapacity);
         }
+    }
+
+    /**
+     * Encode a ZigZag-encoded 64-bit value. ZigZag encodes signed integers into values that can be
+     * efficiently encoded with varint. (Otherwise, negative values must be sign-extended to 64 bits
+     * to be varint encoded, thus always taking 10 bytes on the wire.)
+     * CodedOutputSteam
+     *
+     * @param n A signed 64-bit integer.
+     * @return An unsigned 64-bit integer, stored in a signed int because Java has no explicit
+     * unsigned support.
+     */
+    public static long encodeZigZag64(final long n) {
+        // Note:  the right-shift must be arithmetic
+        return (n << 1) ^ (n >> 63);
     }
 
 }

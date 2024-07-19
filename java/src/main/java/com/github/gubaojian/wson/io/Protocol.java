@@ -2,6 +2,9 @@ package com.github.gubaojian.wson.io;
 
 /**
  * 数据协议类型，你也可以扩展或者自定义协议。
+ * https://www.asciim.cn/
+ * 字母和符号。
+ * 比如对小于1-22数字进行优化其实对于特定类型的值，无需编码，可以用在节省空间
  * */
 public class Protocol {
     /**

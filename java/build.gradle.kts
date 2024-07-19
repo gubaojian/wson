@@ -15,7 +15,7 @@ dependencies {
     // https://mvnrepository.com/artifact/com.google.flatbuffers/flatbuffers-java
     implementation("com.google.flatbuffers:flatbuffers-java:24.3.25")
 
-    implementation("com.google.protobuf:protobuf-java:4.26.1")
+    implementation("com.google.protobuf:protobuf-java:3.4.0")
     implementation("com.googlecode.protobuf-java-format:protobuf-java-format:1.4")
     implementation("org.apache.commons:commons-lang3:3.4")
 
