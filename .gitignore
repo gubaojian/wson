@@ -3,18 +3,26 @@
 *.bin
 *.log
 *.o
-0.1/WsonTest/cmake-build-debug/
-0.1/java/build/classes
-0.1/java/build/reports/
-0.1/java/build/
-0.1/java/.gradle/
 
 
-0.2/WsonTest/cmake-build-debug/
-0.2/java/build/classes
-0.2/java/build/reports/
-0.2/java/build/
-0.2/java/.gradle/
+aversions/0.1/WsonTest/cmake-build-debug/
+aversions/0.1/java/build/classes
+aversions/0.1/java/build/reports/
+aversions/0.1/java/build/
+aversions/0.1/java/.gradle/
+
+
+aversions/0.2/WsonTest/cmake-build-debug/
+aversions/0.2/java/build/classes
+aversions/0.2/java/build/reports/
+aversions/0.2/java/build/
+aversions/0.2/java/.gradle/
+
+aversions/*/WsonTest/cmake-build-debug/
+aversions/*/java/build/classes
+aversions/*/java/build/reports/
+aversions/*/java/build/
+aversions/*/java/.gradle/
 
 
 
