@@ -90,14 +90,15 @@ public class LocalBuffer {
     }
 
     /**
-     * 保持引用不变，避免频繁创建WeakReference，进而频繁计算hash更新map，又可以把多个thread local合并到一起。
+     * 保持引用不变，避免频繁创建WeakReference，进而频繁计算hash更新map，
+     * 又可以把多个thread local合并到一起，减少theadlocal对象创建。
      * 数据发生变化时仅更新ref，保持map不变，仅进行查找查找thread local的 map
      * 当然也可以直接weakreference差别其实不大,
      * 可以把多个缓存合并到一起减少thread local使用。
      * 首先，Java 虚拟机可能会对每个线程的ThreadLocal 数组进行限制，
      * 即每个线程最多能够持有多少个ThreadLocal 变量。 这个限制可以通过JVM 的参数进行调整，例如 -XX:ThreadLocalVariables 。 在常见的JVM 实现中，这个数量一般在1024-65536 之间
      * https://github.com/search?q=repo%3Aalibaba%2Ffastjson%20ThreadLocal&type=code
-     * 多个合并成一个。
+     * 向上面fastjson库中ThreadLocal有10个左右，可以合并成一个，减低内存，提升性能。
      */
     public static class LocalRef {
         public WeakReference<byte[]> bufferRef;
