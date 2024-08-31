@@ -31,6 +31,9 @@ public class LocalBuffer {
         return buffer;
     }
 
+    public static final void returnBuffer(byte[] buffer) {
+        returnBuffer(buffer, 128 * 1024);
+    }
     /**
      * 归还buffer
      */

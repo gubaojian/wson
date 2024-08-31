@@ -53,11 +53,13 @@ public class Output {
     }
 
     public final void writeType(byte type) {
+        ensureCapacity(4);
         buffer[position] = type;
         position++;
     }
 
     public final void writeByte(byte type) {
+        ensureCapacity(4);
         buffer[position] = type;
         position++;
     }
@@ -69,14 +71,17 @@ public class Output {
     }
 
     public final void writeStringUTF8(String str) {
-        if (str == null) {
-            writeVarInt(-1);
-        } else {
+        if (str != null) {
             byte[] bts = str.getBytes(StandardCharsets.UTF_8);
+            ensureCapacity(bts.length + 12);
             writeVarInt(bts.length);
             if (bts.length > 0) {
-                writeBytes(bts);
+                System.arraycopy(bts, 0, buffer, position, bts.length);
+                position += bts.length;
             }
+        } else {
+            ensureCapacity(8);
+            writeVarInt(-1);
         }
     }
 
@@ -178,12 +183,10 @@ public class Output {
      */
     public final void writeUInt(int value) {
         while ((value & 0xFFFFFF80) != 0) {
-            buffer[position] = (byte) ((value & 0x7F) | 0x80);
-            position++;
+            buffer[position++] = (byte) ((value & 0x7F) | 0x80);
             value >>>= 7;
         }
-        buffer[position] = (byte) (value & 0x7F);
-        position++;
+        buffer[position++] = (byte) (value & 0x7F);
     }
 
 
@@ -221,7 +224,7 @@ public class Output {
             }
             //seems none use
             if (newCapacity < minCapacity) {
-                newCapacity = minCapacity;
+                newCapacity = minCapacity + 2048;
             }
             buffer = Arrays.copyOf(buffer, newCapacity);
         }
