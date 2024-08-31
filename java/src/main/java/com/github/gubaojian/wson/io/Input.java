@@ -100,6 +100,7 @@ public class Input {
         return value | (b << i);
     }
 
+
     /**
      * 有符号数
      */
@@ -136,10 +137,41 @@ public class Input {
     }
 
     /**
+     * 4位定长编码
+     */
+    public final int readFixedInt32() {
+        return readInt();
+    }
+
+    /**
+     * 定长编码，仅读取值，不读取类型， 无符号数
+     * 参考 DataOutputStream 和 DataInputStream 和DataInput 用了大端编码，方便网络传输。
+     * 及 ProtoBuf中的CodedInputStream用了小端编码，估计为了优化性能才用的小端
+     * Writes an int value, which is comprised of four bytes, to the output stream. The byte values to be written, in the order shown, are:
+     * (byte)(0xff & (v >> 24)) (byte)(0xff & (v >> 16)) (byte)(0xff & (v >>  8)) (byte)(0xff & v)
+     * The bytes written by this method may be read by the readInt method of interface DataInput, which will then return an int equal to v.
+     */
+    public final int readInt() {
+        int number = (((buffer[position + 3])) +
+                ((buffer[position + 2]) << 8) +
+                ((buffer[position + 1]) << 16) +
+                ((buffer[position]) << 24));
+        position += 4;
+        return number;
+    }
+
+    /**
+     * 定长编码
+     */
+    public final long readFixedInt64() {
+        return readLong();
+    }
+
+    /**
      * 仅读取值，不读取类型
      * */
-    public final long readLong(){
-        long number = (((buffer[position + 7] & 0xFFL)      ) +
+    public final long readLong() {
+        long number = (((buffer[position + 7] & 0xFFL)) +
                 ((buffer[position + 6] & 0xFFL) <<  8) +
                 ((buffer[position + 5] & 0xFFL) << 16) +
                 ((buffer[position + 4] & 0xFFL) << 24) +

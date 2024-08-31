@@ -119,6 +119,36 @@ public class Output {
     }
 
     /**
+     * 4位定长编码
+     */
+    public final void writeFixedInt32(int val) {
+        writeInt(val);
+    }
+
+    /**
+     * 定长编码，仅读取值，不读取类型， 无符号数
+     * 参考 DataOutputStream 和 DataInputStream 和DataInput 用了大端编码，方便网络传输。
+     * 及 ProtoBuf中的CodedInputStream用了小端编码，估计为了优化性能才用的小端
+     * Writes an int value, which is comprised of four bytes, to the output stream. The byte values to be written, in the order shown, are:
+     * (byte)(0xff & (v >> 24)) (byte)(0xff & (v >> 16)) (byte)(0xff & (v >>  8)) (byte)(0xff & v)
+     * The bytes written by this method may be read by the readInt method of interface DataInput, which will then return an int equal to v.
+     */
+    public final void writeInt(int val) {
+        buffer[position + 3] = (byte) (val);
+        buffer[position + 2] = (byte) (val >>> 8);
+        buffer[position + 1] = (byte) (val >>> 16);
+        buffer[position] = (byte) (val >>> 24);
+        position += 4;
+    }
+
+    /**
+     * 固定8位
+     */
+    public final void writeFixedInt64(long value) {
+        writeLong(value);
+    }
+
+    /**
      * 仅写入值，不写入类型，固定长度编码
      */
     public final void writeLong(long val) {
