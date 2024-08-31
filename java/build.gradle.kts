@@ -11,7 +11,7 @@ repositories {
 
 dependencies {
 
-    implementation("com.alibaba:fastjson:1.1.61.android")
+    implementation("com.alibaba.fastjson2:fastjson2:2.0.52")
     // https://mvnrepository.com/artifact/com.google.flatbuffers/flatbuffers-java
     implementation("com.google.flatbuffers:flatbuffers-java:24.3.25")
 

@@ -1,6 +1,6 @@
 package com.furture.wson.bug;
 
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 import com.github.gubaojian.wson.Wson;
 import junit.framework.TestCase;
 import org.junit.Assert;

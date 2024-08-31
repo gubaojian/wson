@@ -1,16 +1,16 @@
 package com.furture.wson.bench;
 
-import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson2.JSON;
 import com.furture.wson.bench.custom.UserProtocol;
 import com.github.gubaojian.wson.Wson;
 import com.furture.wson.domain.User;
 import junit.framework.TestCase;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.apache.commons.lang3.RandomUtils;
 import org.apache.fury.Fury;
 import org.apache.fury.ThreadSafeFury;
 import org.apache.fury.config.Language;
 
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -90,7 +90,7 @@ public class MultiFormatBenchTest extends TestCase {
             json = JSON.toJSONString(user);
         }
         end = System.currentTimeMillis();
-        System.out.println("user object json tojson used " + (end - start) + "length " + json.length());
+        System.out.println("user object json tojson used " + (end - start) + "length " + json.getBytes(StandardCharsets.UTF_8).length);
 
         ThreadSafeFury fury = Fury.builder().withLanguage(Language.JAVA)
                 .requireClassRegistration(true)
@@ -151,7 +151,7 @@ public class MultiFormatBenchTest extends TestCase {
             json = JSON.toJSONString(user);
         }
         end = System.currentTimeMillis();
-        System.out.println("user object json tojson after jit used " + (end - start) + " length " + json.length());
+        System.out.println("user object json tojson after jit used " + (end - start) + " length " + json.getBytes(StandardCharsets.UTF_8).length);
 
         ThreadSafeFury fury = Fury.builder().withLanguage(Language.JAVA)
                 .requireClassRegistration(true)
@@ -225,7 +225,7 @@ public class MultiFormatBenchTest extends TestCase {
             json = JSON.toJSONString(user);
         }
         end = System.currentTimeMillis();
-        System.out.println("user object json tojson after jit2 used " + (end - start) + " length " + json.length());
+        System.out.println("user object json tojson after jit2 used " + (end - start) + " length " + json.getBytes(StandardCharsets.UTF_8).length);
 
         ThreadSafeFury fury = Fury.builder().withLanguage(Language.JAVA)
                 .requireClassRegistration(true)
@@ -235,7 +235,6 @@ public class MultiFormatBenchTest extends TestCase {
         for (int i = 0; i < 20000; i++) {
             user.name = RandomStringUtils.randomAlphabetic(32);
             user.country = RandomStringUtils.random(64);
-            fury.serialize(user);
         }
         byte[] bytes = fury.serialize(user);
         bytes = fury.serialize(user);
@@ -274,13 +273,13 @@ public class MultiFormatBenchTest extends TestCase {
         System.out.println("user object wson json 2 ");
         long start = System.currentTimeMillis();
         long end = System.currentTimeMillis();
-
+        String json = "";
         start = System.currentTimeMillis();
         for (int i = 0; i < 10000; i++) {
-            JSON.toJSONString(user);
+            json = JSON.toJSONString(user);
         }
         end = System.currentTimeMillis();
-        System.out.println("user object json tojson2 used " + (end - start) + " length " + JSON.toJSONString(user).length());
+        System.out.println("user object json tojson2 used " + (end - start) + " length " + json.getBytes(StandardCharsets.UTF_8).length);
 
         start = System.currentTimeMillis();
         byte[] bts = null;
@@ -300,7 +299,7 @@ public class MultiFormatBenchTest extends TestCase {
         Thread.sleep(1000);
         start = System.currentTimeMillis();
         for (int i = 0; i < 10000; i++) {
-            fury.serialize(user);
+            bytes = fury.serialize(user);
         }
         end = System.currentTimeMillis();
         System.out.println("user object to fury2  used " + (end - start) + " length " + bytes.length);
@@ -317,4 +316,104 @@ public class MultiFormatBenchTest extends TestCase {
 
     }
 
+
+    public void testSerializableSize() {
+        User user = new User();
+        user.name = "hello world";
+        user.country = "中国";
+        user.name = RandomStringUtils.randomAlphabetic(32);
+        user.country = RandomStringUtils.randomAscii(64);
+        initFury();
+        {
+            String json = "";
+            json = JSON.toJSONString(user);
+            System.out.println("user object json tojson  StringUTF16 " + json.length());
+            System.out.println("user object json tojson  lengthISO_8859_1 " + json.getBytes(StandardCharsets.ISO_8859_1).length);
+            System.out.println("user object json tojson  lengthUTF8 " + json.getBytes(StandardCharsets.UTF_8).length);
+            System.out.println("user object json tojson  json " + json);
+        }
+        {
+            byte[] bytes = furyJava.serialize(user);
+            System.out.println("user object fury length " + bytes.length);
+            System.out.println("user object fury  " + new String(bytes, StandardCharsets.UTF_8));
+
+        }
+        {
+            byte[] bytes = furyJava.serialize(user);
+            System.out.println("user object fury cpp length " + bytes.length);
+            System.out.println("user object fury  cpp " + new String(bytes, StandardCharsets.UTF_8));
+
+        }
+        {
+            byte[] bytes = UserProtocol.serialUser(user);
+            System.out.println("user object  protocol  length " + bytes.length);
+            System.out.println("user object  protocol   " + new String(bytes, StandardCharsets.UTF_8));
+        }
+    }
+
+
+    public void testSerializableRandomSize() {
+        User user = new User();
+        user.name = RandomStringUtils.randomAlphabetic(32);
+        user.country = RandomStringUtils.random(64, "中国");
+        initFury();
+        {
+            String json = "";
+            json = JSON.toJSONString(user);
+            System.out.println("user object json tojson  StringUTF16 " + json.length());
+            System.out.println("user object json tojson  lengthISO_8859_1 " + json.getBytes(StandardCharsets.ISO_8859_1).length);
+            System.out.println("user object json tojson  lengthUTF8 " + json.getBytes(StandardCharsets.UTF_8).length);
+            System.out.println("user object json tojson  json " + json);
+        }
+        {
+            byte[] bytes = furyJava.serialize(user);
+            System.out.println("user object fury length " + bytes.length);
+            System.out.println("user object fury  " + new String(bytes, StandardCharsets.UTF_8));
+
+        }
+        {
+            byte[] bytes = furyJava.serialize(user);
+            System.out.println("user object fury cpp length " + bytes.length);
+            System.out.println("user object fury  cpp " + new String(bytes, StandardCharsets.UTF_8));
+
+        }
+        {
+            byte[] bytes = UserProtocol.serialUser(user);
+            System.out.println("user object  protocol  length " + bytes.length);
+            System.out.println("user object  protocol   " + new String(bytes, StandardCharsets.UTF_8));
+        }
+    }
+
+    private void initFury() {
+        if (furyJava == null) {
+            furyJava = Fury.builder().withLanguage(Language.JAVA)
+                    .requireClassRegistration(true)
+                    .buildThreadSafeFury();
+            furyJava.register(User.class);
+            furyJava.serialize(new User());
+        }
+        if (furyCpp == null) {
+            furyCpp = Fury.builder().withLanguage(Language.CPP)
+                    .requireClassRegistration(true)
+                    .buildThreadSafeFury();
+            furyCpp.register(User.class);
+            furyCpp.serialize(new User());
+        }
+        if (furyXLang == null) {
+            furyXLang = Fury.builder().withLanguage(Language.XLANG)
+                    .requireClassRegistration(true)
+                    .buildThreadSafeFury();
+            furyXLang.register(User.class);
+            furyXLang.serialize(new User());
+        }
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private static ThreadSafeFury furyJava;
+    private static ThreadSafeFury furyCpp;
+    private static ThreadSafeFury furyXLang;
 }
