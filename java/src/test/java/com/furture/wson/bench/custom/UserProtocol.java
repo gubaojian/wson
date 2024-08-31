@@ -2,7 +2,7 @@ package com.furture.wson.bench.custom;
 
 import com.furture.wson.domain.User;
 import com.github.gubaojian.wson.io.Input;
-import com.github.gubaojian.wson.io.LocalBuffer;
+import com.github.gubaojian.wson.io.Pool;
 import com.github.gubaojian.wson.io.Output;
 
 /**
@@ -20,12 +20,12 @@ public class UserProtocol {
      * 用LocalBuffer复用缓冲器减少内存分配开销，提升性能。直接性能提升1-2倍
      */
     public static byte[] serialUser(User user) {
-        Output output = new Output(LocalBuffer.requireBuffer(1024));
+        Output output = new Output(Pool.requireBuffer(1024));
         byte version = 1;
         output.writeByte(version);
         output.writeStringUTF8(user.name);
         output.writeStringUTF8(user.country);
-        LocalBuffer.returnBuffer(output.getBuffer());
+        Pool.returnBuffer(output.getBuffer());
         return  output.toBytes();
     }
 

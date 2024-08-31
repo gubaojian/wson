@@ -70,10 +70,9 @@ public class Output {
         position += bts.length;
     }
 
-    private static byte[] stringBuffer = new byte[1024];
-
     public final void writeStringUTF8(String str) {
         if (str != null) {
+            //可以优化，自定义转换过程，可以减少一次byte[]的copy
             byte[] bts = str.getBytes(StandardCharsets.UTF_8);
             ensureCapacity(bts.length + 12);
             writeVarInt(bts.length);

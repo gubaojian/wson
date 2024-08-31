@@ -25,7 +25,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.github.gubaojian.wson.cache.LruCache;
 import com.github.gubaojian.wson.io.Input;
-import com.github.gubaojian.wson.io.LocalBuffer;
+import com.github.gubaojian.wson.io.Pool;
 import com.github.gubaojian.wson.io.Output;
 import com.github.gubaojian.wson.io.Protocol;
 
@@ -286,8 +286,8 @@ public class Wson {
         private Output output;
 
         private Builder() {
-            output = new Output(LocalBuffer.requireBuffer(4096));
-            refs = LocalBuffer.requireArrayList();
+            output = new Output(Pool.requireBuffer(4096));
+            refs = Pool.requireArrayList();
         }
 
         private final byte[] toWson(Object object) {
@@ -296,8 +296,8 @@ public class Wson {
         }
 
         private final void close() {
-            LocalBuffer.returnBuffer(output.getBuffer(), 128 * 1024);
-            LocalBuffer.returnList(refs);
+            Pool.returnBuffer(output.getBuffer(), 128 * 1024);
+            Pool.returnList(refs);
             output.close();
             refs = null;
         }
