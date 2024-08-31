@@ -53,15 +53,11 @@ public class Output {
     }
 
     public final void writeType(byte type) {
-        ensureCapacity(4);
-        buffer[position] = type;
-        position++;
+        buffer[position++] = type;
     }
 
     public final void writeByte(byte type) {
-        ensureCapacity(4);
-        buffer[position] = type;
-        position++;
+        buffer[position++] = type;
     }
 
     public final void writeBytes(byte[] bts) {
@@ -84,17 +80,6 @@ public class Output {
             ensureCapacity(8);
             writeVarInt(-1);
         }
-    }
-
-
-    public final void ensureWriteByte(int minCapacity, byte type) {
-        ensureCapacity(minCapacity);
-        writeByte(type);
-    }
-
-    public final void writeNull() {
-        ensureCapacity(2);
-        writeByte(Protocol.NULL_TYPE);
     }
 
     /**
