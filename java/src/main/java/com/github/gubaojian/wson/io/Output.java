@@ -70,6 +70,8 @@ public class Output {
         position += bts.length;
     }
 
+    private static byte[] stringBuffer = new byte[1024];
+
     public final void writeStringUTF8(String str) {
         if (str != null) {
             byte[] bts = str.getBytes(StandardCharsets.UTF_8);

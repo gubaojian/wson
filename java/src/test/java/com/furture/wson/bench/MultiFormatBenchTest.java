@@ -5,6 +5,8 @@ import com.furture.wson.bench.custom.UserProtocol;
 import com.github.gubaojian.wson.Wson;
 import com.furture.wson.domain.User;
 import junit.framework.TestCase;
+import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.lang3.RandomUtils;
 import org.apache.fury.Fury;
 import org.apache.fury.ThreadSafeFury;
 import org.apache.fury.config.Language;
@@ -178,6 +180,88 @@ public class MultiFormatBenchTest extends TestCase {
         }
         end = System.currentTimeMillis();
         System.out.println("user object to user protocol after jit  used " + (end - start) + " length " + bytes.length);
+
+    }
+
+
+    /**
+     * 设置一个方法被调用多少次之后进行编译，默认是1500次。
+     * wson 13  ms   94byte
+     * json 15  ms   74 byte
+     * fury 2-3 ms  33 byte
+     * user protocol 1-2 ms   20 byte
+     */
+    public void testSerializableJIT2() throws InterruptedException {
+        User user = new User();
+        user.name = "hello world";
+        user.country = "中国";
+
+        System.out.println("user object wson json 1");
+        byte[] wbytes = null;
+        for (int i = 0; i < 20000; i++) {
+            user.name = RandomStringUtils.randomAlphabetic(32);
+            user.country = RandomStringUtils.random(64);
+            wbytes = Wson.toWson(user);
+        }
+        long start = System.currentTimeMillis();
+        for (int i = 0; i < 10000; i++) {
+            user.name = RandomStringUtils.randomAlphabetic(32);
+            user.country = RandomStringUtils.random(64);
+            wbytes = Wson.toWson(user);
+        }
+        long end = System.currentTimeMillis();
+        System.out.println("user object wson towson after jit2 used " + (end - start) + " length " + wbytes.length);
+
+        String json = null;
+        for (int i = 0; i < 20000; i++) {
+            user.name = RandomStringUtils.randomAlphabetic(32);
+            user.country = RandomStringUtils.random(64);
+            json = JSON.toJSONString(user);
+        }
+        start = System.currentTimeMillis();
+        for (int i = 0; i < 10000; i++) {
+            user.name = RandomStringUtils.randomAlphabetic(32);
+            user.country = RandomStringUtils.random(64);
+            json = JSON.toJSONString(user);
+        }
+        end = System.currentTimeMillis();
+        System.out.println("user object json tojson after jit2 used " + (end - start) + " length " + json.length());
+
+        ThreadSafeFury fury = Fury.builder().withLanguage(Language.JAVA)
+                .requireClassRegistration(true)
+                .buildThreadSafeFury();
+        fury.register(User.class);
+        Thread.sleep(1000); //等待编译完成
+        for (int i = 0; i < 20000; i++) {
+            user.name = RandomStringUtils.randomAlphabetic(32);
+            user.country = RandomStringUtils.random(64);
+            fury.serialize(user);
+        }
+        byte[] bytes = fury.serialize(user);
+        bytes = fury.serialize(user);
+        start = System.currentTimeMillis();
+        for (int i = 0; i < 10000; i++) {
+            user.name = RandomStringUtils.randomAlphabetic(32);
+            user.country = RandomStringUtils.random(64);
+            bytes = fury.serialize(user);
+        }
+        end = System.currentTimeMillis();
+        System.out.println("user object to fury  after jit2   used " + (end - start) + " length " + bytes.length);
+
+        UserProtocol.serialUser(user);
+        for (int i = 0; i < 20000; i++) {
+            user.name = RandomStringUtils.randomAlphabetic(32);
+            user.country = RandomStringUtils.random(64);
+            bytes = UserProtocol.serialUser(user);
+        }
+        start = System.currentTimeMillis();
+        for (int i = 0; i < 10000; i++) {
+            user.name = RandomStringUtils.randomAlphabetic(32);
+            user.country = RandomStringUtils.random(64);
+            bytes = UserProtocol.serialUser(user);
+        }
+        end = System.currentTimeMillis();
+        System.out.println("user object to user protocol after jit2  used " + (end - start) + " length " + bytes.length);
 
     }
 
