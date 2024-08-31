@@ -1,5 +1,7 @@
 package com.github.gubaojian.wson.io;
 
+import java.nio.charset.StandardCharsets;
+
 /**
  * 解析基础类，方便手工操作，自定义数据格式。
  * 你也可以扩展或者自定义协议。
@@ -38,12 +40,6 @@ public class Input {
         buffer = null;
     }
 
-    public final byte readType(){
-        byte type = buffer[position];
-        position ++;
-        return  type;
-    }
-
     public final void move(int step) {
         position +=step;
     }
@@ -58,6 +54,18 @@ public class Input {
 
     public final int getLength() {
         return buffer.length;
+    }
+
+    public final byte readType() {
+        byte type = buffer[position];
+        position++;
+        return type;
+    }
+
+    public final byte readByte() {
+        byte type = buffer[position];
+        position++;
+        return type;
     }
 
     /**
@@ -97,6 +105,19 @@ public class Input {
      */
     public long readVarInt64() {
         return decodeZigZag64(readUInt64());
+    }
+
+    public final String readStringUTF8() {
+        int length = readVarInt();
+        if (length > 0) {
+            String str = new String(buffer, position, length, StandardCharsets.UTF_8);
+            move(length);
+            return str;
+        } else if (length == 0) {
+            return "";
+        } else {
+            return null;
+        }
     }
 
     /**

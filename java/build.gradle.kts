@@ -18,6 +18,7 @@ dependencies {
     implementation("com.google.protobuf:protobuf-java:3.4.0")
     implementation("com.googlecode.protobuf-java-format:protobuf-java-format:1.4")
     implementation("org.apache.commons:commons-lang3:3.4")
+    implementation("org.apache.fury:fury-core:0.7.0")
 
     // https://mvnrepository.com/artifact/junit/junit
     testImplementation("junit:junit:4.13.2")

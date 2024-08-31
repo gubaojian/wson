@@ -1,5 +1,6 @@
 package com.github.gubaojian.wson.io;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
 /**
@@ -45,16 +46,40 @@ public class Output {
         return position;
     }
 
-    public byte[] toBytes() {
+    public final byte[] toBytes() {
         byte[] bts = new byte[position];
         System.arraycopy(buffer, 0, bts, 0, position);
         return bts;
+    }
+
+    public final void writeType(byte type) {
+        buffer[position] = type;
+        position++;
     }
 
     public final void writeByte(byte type) {
         buffer[position] = type;
         position++;
     }
+
+    public final void writeBytes(byte[] bts) {
+        ensureCapacity(bts.length + 8);
+        System.arraycopy(bts, 0, buffer, position, bts.length);
+        position += bts.length;
+    }
+
+    public final void writeStringUTF8(String str) {
+        if (str == null) {
+            writeVarInt(-1);
+        } else {
+            byte[] bts = str.getBytes(StandardCharsets.UTF_8);
+            writeVarInt(bts.length);
+            if (bts.length > 0) {
+                writeBytes(bts);
+            }
+        }
+    }
+
 
     public final void ensureWriteByte(int minCapacity, byte type) {
         ensureCapacity(minCapacity);
