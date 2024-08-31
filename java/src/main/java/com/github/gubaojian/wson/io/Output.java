@@ -1,5 +1,6 @@
 package com.github.gubaojian.wson.io;
 
+
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
@@ -61,7 +62,7 @@ public class Output {
     }
 
     public final void writeBytes(byte[] bts) {
-        ensureCapacity(bts.length + 8);
+        ensureCapacity(bts.length + 16);
         System.arraycopy(bts, 0, buffer, position, bts.length);
         position += bts.length;
     }
@@ -99,14 +100,6 @@ public class Output {
         buffer[position + 1] = (byte) (val >>> 16);
         buffer[position] = (byte) (val >>> 24);
         position += 4;
-    }
-
-    /**
-     * 写入值和类型
-     */
-    public final void writeFloatWithType(float value) {
-        writeByte(Protocol.NUMBER_FLOAT_TYPE);
-        writeFloat(value);
     }
 
     /**
@@ -210,7 +203,7 @@ public class Output {
             }
             //seems none use
             if (newCapacity < minCapacity) {
-                newCapacity = minCapacity + 2048;
+                newCapacity = minCapacity << 1;
             }
             buffer = Arrays.copyOf(buffer, newCapacity);
         }

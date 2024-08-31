@@ -27,7 +27,6 @@ import com.github.gubaojian.wson.cache.LruCache;
 import com.github.gubaojian.wson.io.Input;
 import com.github.gubaojian.wson.io.Pool;
 import com.github.gubaojian.wson.io.Output;
-import com.github.gubaojian.wson.io.Protocol;
 
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Array;
@@ -302,6 +301,9 @@ public class Wson {
             refs = null;
         }
 
+        /**
+         * 递归调用比较耗时，要优化掉。改成while循环。
+         */
         private final void writeObject(Object object) {
             if (object instanceof CharSequence) {
                 output.ensureCapacity(2);

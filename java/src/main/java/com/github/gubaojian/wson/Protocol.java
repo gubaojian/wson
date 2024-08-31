@@ -1,4 +1,4 @@
-package com.github.gubaojian.wson.io;
+package com.github.gubaojian.wson;
 
 /**
  * 数据协议类型，你也可以扩展或者自定义协议。
