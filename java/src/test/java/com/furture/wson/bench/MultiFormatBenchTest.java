@@ -120,8 +120,8 @@ public class MultiFormatBenchTest extends TestCase {
      * 设置一个方法被调用多少次之后进行编译，默认是1500次。
      * wson 13  ms   94byte
      * json 15  ms   74 byte
-     * fury 2 ms  33 byte
-     * user protocol 2 ms   20 byte
+     * fury 2-3 ms  33 byte
+     * user protocol 1-2 ms   20 byte
      */
     public void testSerializableJIT() throws InterruptedException {
         User user = new User();
