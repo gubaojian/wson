@@ -61,6 +61,12 @@ public class MultiFormatBenchTest extends TestCase {
         System.out.println("wson parse used " + (end - start));
     }
 
+    /**
+     * wson 40-49  ms   94byte
+     * json 40-57  ms   74 byte
+     * fury java 3-8 - 15 ms  33 byte
+     * user protocol 8-10ms   20 byte
+     */
     public void testSerializable() throws InterruptedException {
         User user = new User();
         user.name = "hello world";
@@ -107,6 +113,7 @@ public class MultiFormatBenchTest extends TestCase {
         System.out.println("user object to  fury used " + (end - start) + " length " + bytes.length);
 
         UserProtocol.serialUser(user);
+        Thread.sleep(1000);
         start = System.currentTimeMillis();
         for (int i = 0; i < 10000; i++) {
             bytes = UserProtocol.serialUser(user);
