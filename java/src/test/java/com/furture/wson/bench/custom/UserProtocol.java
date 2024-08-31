@@ -8,6 +8,9 @@ import com.github.gubaojian.wson.io.Output;
 /**
  * 对于已只类型数据，自定义协议，双方约定好，简单通用也方便跨语言实现。性能最好, 数据量也最小。
  * 引入的库也小，基本不需要引入任何库，也能根据数据版本兼容及升级。
+ * 类似 parcel，只要语言直接约定好即可。
+ * 根据网络传输，还是本地性能调用进行有场景的优化，android parcel就不考虑网络传输及持久化。
+ * https://android.googlesource.com/platform/frameworks/native/+/jb-dev/libs/binder/Parcel.cpp
  * */
 public class UserProtocol {
 
