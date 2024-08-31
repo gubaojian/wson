@@ -113,6 +113,71 @@ public class MultiFormatBenchTest extends TestCase {
         end = System.currentTimeMillis();
         System.out.println("user object to user protocol used " + (end - start) + " length " + bytes.length);
 
+    }
+
+
+    /**
+     * 设置一个方法被调用多少次之后进行编译，默认是1500次。
+     * wson 13  ms   94byte
+     * json 15  ms   74 byte
+     * fury 2 ms  33 byte
+     * user protocol 2 ms   20 byte
+     */
+    public void testSerializableJIT() throws InterruptedException {
+        User user = new User();
+        user.name = "hello world";
+        user.country = "中国";
+
+        System.out.println("user object wson json 1");
+        byte[] wbytes = null;
+        for (int i = 0; i < 20000; i++) {
+            wbytes = Wson.toWson(user);
+        }
+        long start = System.currentTimeMillis();
+        for (int i = 0; i < 10000; i++) {
+            wbytes = Wson.toWson(user);
+        }
+        long end = System.currentTimeMillis();
+        System.out.println("user object wson towson after jit used " + (end - start) + " length " + wbytes.length);
+
+        String json = null;
+        for (int i = 0; i < 20000; i++) {
+            json = JSON.toJSONString(user);
+        }
+        start = System.currentTimeMillis();
+        for (int i = 0; i < 10000; i++) {
+            json = JSON.toJSONString(user);
+        }
+        end = System.currentTimeMillis();
+        System.out.println("user object json tojson after jit used " + (end - start) + " length " + json.length());
+
+        ThreadSafeFury fury = Fury.builder().withLanguage(Language.JAVA)
+                .requireClassRegistration(true)
+                .buildThreadSafeFury();
+        fury.register(User.class);
+        Thread.sleep(1000); //等待编译完成
+        for (int i = 0; i < 20000; i++) {
+            fury.serialize(user);
+        }
+        byte[] bytes = fury.serialize(user);
+        bytes = fury.serialize(user);
+        start = System.currentTimeMillis();
+        for (int i = 0; i < 10000; i++) {
+            bytes = fury.serialize(user);
+        }
+        end = System.currentTimeMillis();
+        System.out.println("user object to fury  after jit   used " + (end - start) + " length " + bytes.length);
+
+        UserProtocol.serialUser(user);
+        for (int i = 0; i < 20000; i++) {
+            bytes = UserProtocol.serialUser(user);
+        }
+        start = System.currentTimeMillis();
+        for (int i = 0; i < 10000; i++) {
+            bytes = UserProtocol.serialUser(user);
+        }
+        end = System.currentTimeMillis();
+        System.out.println("user object to user protocol after jit  used " + (end - start) + " length " + bytes.length);
 
     }
 
