@@ -303,8 +303,67 @@ public class Wson {
 
         /**
          * 递归调用比较耗时，要优化掉。改成while循环。
+         * instanceof 改成class自适应序列化。
          */
         private final void writeObject(Object object) {
+
+            /**
+             * 性能比下面的快一些，注意构造性能，以及string等优化。*/
+            /**
+             Class cls = object.getClass();
+             if (cls == String.class) {
+             output.ensureCapacity(12);
+             output.writeByte(Protocol.STRING_TYPE);
+             writeUTF16String((CharSequence) object);
+             return;
+             } else if (cls == Integer.class) {
+             output.ensureCapacity(12);
+             output.writeByte(Protocol.NUMBER_INT_TYPE);
+             output.writeVarInt((int) object);
+             return;
+             } else if (cls == Long.class) {
+             output.ensureCapacity(12);
+             output.writeByte(Protocol.NUMBER_LONG_TYPE);
+             output.writeLong((long) object);
+             return;
+             } else if (cls == Boolean.class) {
+             output.ensureCapacity(2);
+             Boolean value = (Boolean) object;
+             if (value) {
+             output.writeByte(Protocol.BOOLEAN_TYPE_TRUE);
+             } else {
+             output.writeByte(Protocol.BOOLEAN_TYPE_FALSE);
+             }
+             return;
+             } else if (cls == JSONObject.class) {
+             if (refs.contains(object)) {
+             output.ensureCapacity(2);
+             output.writeByte(Protocol.NULL_TYPE);
+             return;
+             }
+             refs.add(object);
+             Map map = (Map) object;
+             writeMap(map);
+             refs.remove(refs.size() - 1);
+             return;
+             } else if (cls == JSONArray.class) {
+             if (refs.contains(object)) {
+             output.ensureCapacity(2);
+             output.writeByte(Protocol.NULL_TYPE);
+             return;
+             }
+             refs.add(object);
+             output.ensureCapacity(8);
+             List list = (List) object;
+             output.writeByte(Protocol.ARRAY_TYPE);
+             output.writeUInt(list.size());
+             for (Object value : list) {
+             writeObject(value);
+             }
+             refs.remove(refs.size() - 1);
+             return;
+             }*/
+
             if (object instanceof CharSequence) {
                 output.ensureCapacity(2);
                 output.writeByte(Protocol.STRING_TYPE);
@@ -542,6 +601,36 @@ public class Wson {
 
         private final void writeMapKeyUTF16(String value) {
             writeUTF16String(value);
+        }
+
+        private static char[] chars = new char[1024 * 1024];
+
+        /**
+         * writeString UTF-16
+         */
+        private final void writeUTF16String2(String value) {
+            int length = value.length();
+            output.ensureCapacity(length * 2 + 16);
+            output.writeUInt(length * 2);
+            byte[] buffer = output.getBuffer();
+            value.getChars(0, length, chars, 0);
+            if (IS_NATIVE_LITTLE_ENDIAN) {
+                for (int i = 0; i < length; i++) {
+                    int position = output.getPosition();
+                    char ch = chars[i];
+                    buffer[position] = (byte) (ch);
+                    buffer[position + 1] = (byte) (ch >>> 8);
+                    output.move(2);
+                }
+            } else {
+                for (int i = 0; i < length; i++) {
+                    int position = output.getPosition();
+                    char ch = chars[i];
+                    buffer[position + 1] = (byte) (ch);
+                    buffer[position] = (byte) (ch >>> 8);
+                    output.move(2);
+                }
+            }
         }
 
         /**
