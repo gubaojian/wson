@@ -24,6 +24,33 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
 
 
+    // https://mvnrepository.com/artifact/com.github.luben/zstd-jni
+    implementation("com.github.luben:zstd-jni:1.5.6-5")
+
+
+    // https://mvnrepository.com/artifact/org.openjdk.jmh/jmh-core
+    testImplementation("org.openjdk.jmh:jmh-core:1.37")
+
+
+    // https://mvnrepository.com/artifact/cn.hutool/hutool-all
+    testImplementation("cn.hutool:hutool-all:5.8.32")
+
+
+    // https://mvnrepository.com/artifact/org.apache.commons/commons-compress
+    testImplementation("org.apache.commons:commons-compress:1.27.1")
+
+
+    // https://mvnrepository.com/artifact/org.openjdk.jmh/jmh-generator-annprocess
+    testImplementation("org.openjdk.jmh:jmh-generator-annprocess:1.37")
+
+
+
+    testAnnotationProcessor("org.openjdk.jmh:jmh-generator-annprocess:1.37")
+
+    // https://mvnrepository.com/artifact/com.github.luben/zstd-jni
+    implementation("com.github.luben:zstd-jni:1.5.6-5")
+
+
 
 
 
