@@ -2,6 +2,7 @@ package com.furture.wson.compress;
 
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONB;
+import com.alibaba.fastjson2.JSONWriter;
 import com.furture.wson.utils.FileUtils;
 import com.github.gubaojian.wson.io.Output;
 import com.github.luben.zstd.Zstd;
@@ -32,7 +33,9 @@ public class ZstdBase64Test {
         json.put("appId", RandomUtils.nextInt());
         json.put("hwssId", UUID.randomUUID().toString());
 
-        String str = JSON.toJSONString(json);
+        //https://github.com/alibaba/fastjson2/issues/2066
+        // FASTJSON要开启feature，不然会把byte[] 转换成 int array增大空间。
+        String str = JSON.toJSONString(json, JSONWriter.Feature.WriteByteArrayAsBase64);
         byte [] bin = JSONB.toBytes(json);
         byte[] zjson = Zstd.compress(str.getBytes(StandardCharsets.UTF_8));
         byte[] zbin = Zstd.compress(bin);
@@ -42,10 +45,11 @@ public class ZstdBase64Test {
          * 1648
          * 1055
          * */
-        System.out.println(str.getBytes(StandardCharsets.UTF_8).length);
-        System.out.println(bin.length);
-        System.out.println(zjson.length);
-        System.out.println(zbin.length);
+        System.out.println("JSON " + str.getBytes(StandardCharsets.UTF_8).length);
+        System.out.println("jsonb " + bin.length);
+
+        System.out.println("json zstd " + zjson.length);
+        System.out.println("jsonb zstd " + zbin.length);
     }
 
     /**
@@ -57,32 +61,45 @@ public class ZstdBase64Test {
      *
      * 1201
      *
-     * 对于文本：json + 压缩 和 二进制 + 压缩。 实际结果区别不大，但json通用性和可读性更好，相差在5%内。
+     * 对于文本：json + 压缩 和 二进制 + 压缩。 未压缩前有区别，但压缩后实际结果区别不大，但json通用性和可读性更好，相差在5%内。
+     * json byte array as base64 string
+     * JSON 1559
+     * jsonb 1191
+     * json zstd 1238
+     * jsonb zstd 1201
+     * base64
+     * JSON 1560
+     * jsonb 1535
+     * json zstd 1239
+     * jsonb zstd 1218
      * 字符串
-     * 2474
-     * 2216
-     *
-     * 1994
-     * 1925
-     *
+     * JSON 2487
+     * jsonb 2216
+     * json zstd 2011
+     * jsonb zstd 1943
      * json
-     * 490
-     * 372
-     *
-     * 325
-     * 312
-     *
+     * JSON 489
+     * jsonb 372
+     * json zstd 324
+     * jsonb zstd 310
+     * json1
+     * JSON 560
+     * jsonb 467
+     * json zstd 351
+     * jsonb zstd 336
      * json2
-     * 435
-     * 358
-     *
-     * 271
-     * 258
+     * JSON 435
+     * jsonb 358
+     * json zstd 270
+     * jsonb zstd 256
      *
      * */
     public static void main(String[] args) throws RunnerException, IOException, InterruptedException {
-        System.out.println("二进制");
-        testData(RandomUtils.nextBytes(1024));
+        System.out.println("json byte array as base64 string");
+        byte[] bts = RandomUtils.nextBytes(1024);
+        testData(bts);
+        System.out.println("base64");
+        testData(Base64.encodeBase64String(bts));
         System.out.println("字符串");
         testData(RandomStringUtils.random(1024));
 
