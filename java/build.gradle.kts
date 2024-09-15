@@ -40,6 +40,14 @@ dependencies {
     testImplementation("org.apache.commons:commons-compress:1.27.1")
 
 
+    // https://mvnrepository.com/artifact/org.xerial.snappy/snappy-java
+    testImplementation("org.xerial.snappy:snappy-java:1.1.10.7")
+
+
+    // https://mvnrepository.com/artifact/io.airlift/aircompressor
+    testImplementation("io.airlift:aircompressor:2.0.2")
+
+
     // https://mvnrepository.com/artifact/org.openjdk.jmh/jmh-generator-annprocess
     testImplementation("org.openjdk.jmh:jmh-generator-annprocess:1.37")
 
