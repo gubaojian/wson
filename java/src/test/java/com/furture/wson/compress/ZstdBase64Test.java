@@ -32,6 +32,26 @@ import java.util.concurrent.TimeUnit;
  * 一定要开启
  * JSONWriter.Feature.WriteByteArrayAsBase64
  * 不然，byte数组，在fastjson内部会被转换为int数组，导致空间增大。
+ *  public void writeBinary(byte[] bytes) {
+ *         if (bytes == null) {
+ *             writeArrayNull();
+ *             return;
+ *         }
+ *
+ *         if ((context.features & WriteByteArrayAsBase64.mask) != 0) {
+ *             writeBase64(bytes);
+ *             return;
+ *         }
+ *
+ *         startArray();
+ *         for (int i = 0; i < bytes.length; i++) {
+ *             if (i != 0) {
+ *                 writeComma();
+ *             }
+ *             writeInt32(bytes[i]);
+ *         }
+ *         endArray();
+ *     }
  * json byte array as base64 string
  * JSON 1560
  * jsonb 1191
