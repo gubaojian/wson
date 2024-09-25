@@ -32,6 +32,48 @@ import java.util.concurrent.TimeUnit;
  * 一定要开启
  * JSONWriter.Feature.WriteByteArrayAsBase64
  * 不然，byte数组，在fastjson内部会被转换为int数组，导致空间增大。
+ * json byte array as base64 string
+ * JSON 1560
+ * jsonb 1191
+ * msgpack 1193
+ * json zstd 1239
+ * jsonb zstd 1201
+ * msgpack zstd 1203
+ * base64
+ * JSON 1560
+ * jsonb 1535
+ * msgpack 1537
+ * json zstd 1239
+ * jsonb zstd 1224
+ * msgpack zstd 1239
+ * 字符串
+ * JSON 2468
+ * jsonb 2216
+ * msgpack 2445
+ * json zstd 1995
+ * jsonb zstd 1931
+ * msgpack zstd 1969
+ * json
+ * JSON 490
+ * jsonb 372
+ * msgpack 386
+ * json zstd 325
+ * jsonb zstd 310
+ * msgpack zstd 327
+ * json1
+ * JSON 560
+ * jsonb 467
+ * msgpack 469
+ * json zstd 350
+ * jsonb zstd 334
+ * msgpack zstd 342
+ * json2
+ * JSON 434
+ * jsonb 358
+ * msgpack 356
+ * json zstd 273
+ * jsonb zstd 258
+ * msgpack zstd 265
  */
 public class ZstdBase64Test {
 
