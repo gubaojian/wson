@@ -1,14 +1,20 @@
 package com.furture.wson.compress;
 
+import cn.hutool.socket.protocol.MsgEncoder;
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONB;
 import com.alibaba.fastjson2.JSONWriter;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.furture.wson.utils.FileUtils;
 import com.github.gubaojian.wson.io.Output;
 import com.github.luben.zstd.Zstd;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.RandomUtils;
+import org.msgpack.core.MessagePack;
+import org.msgpack.core.MessagePacker;
+import org.msgpack.jackson.dataformat.MessagePackFactory;
 import org.openjdk.jmh.runner.RunnerException;
 
 import java.io.IOException;
@@ -22,10 +28,15 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * 一定要开启
+ * JSONWriter.Feature.WriteByteArrayAsBase64
+ * 不然，byte数组，在fastjson内部会被转换为int数组，导致空间增大。
+ */
 public class ZstdBase64Test {
 
-    public  static void  testData(Object data) {
-         Map<String, Object> json = new HashMap<>();
+    public static void testData(Object data) throws JsonProcessingException {
+        Map<String, Object> json = new HashMap<>();
         json.put("action", "bmsg");
         json.put("msg",  data);
         json.put("authId", UUID.randomUUID().toString());
@@ -37,8 +48,14 @@ public class ZstdBase64Test {
         // FASTJSON要开启feature，不然会把byte[] 转换成 int array增大空间。
         String str = JSON.toJSONString(json, JSONWriter.Feature.WriteByteArrayAsBase64);
         byte [] bin = JSONB.toBytes(json);
+
+        ObjectMapper objectMapper = new ObjectMapper(new MessagePackFactory());
+        byte[] msgPackBytes = objectMapper.writeValueAsBytes(json);
+
+
         byte[] zjson = Zstd.compress(str.getBytes(StandardCharsets.UTF_8));
         byte[] zbin = Zstd.compress(bin);
+        byte[] zmsgPack = Zstd.compress(msgPackBytes);
         /**
          * 3764
          * 1045
@@ -47,9 +64,11 @@ public class ZstdBase64Test {
          * */
         System.out.println("JSON " + str.getBytes(StandardCharsets.UTF_8).length);
         System.out.println("jsonb " + bin.length);
+        System.out.println("msgpack " + msgPackBytes.length);
 
         System.out.println("json zstd " + zjson.length);
         System.out.println("jsonb zstd " + zbin.length);
+        System.out.println("msgpack zstd " + zmsgPack.length);
     }
 
     /**

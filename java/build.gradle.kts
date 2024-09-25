@@ -7,6 +7,10 @@ version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
+    maven(url = "https://maven.aliyun.com/repository/central/")
+    maven(url = "https://maven.aliyun.com/repository/public/")
+    maven(url = "https://maven.aliyun.com/repository/google/")
+    maven(url = "https://maven.aliyun.com/repository/gradle-plugin/")
 }
 
 dependencies {
@@ -19,6 +23,16 @@ dependencies {
     implementation("com.googlecode.protobuf-java-format:protobuf-java-format:1.4")
     implementation("org.apache.commons:commons-lang3:3.4")
     implementation("org.apache.fury:fury-core:0.7.0")
+
+    // https://mvnrepository.com/artifact/org.msgpack/msgpack-core
+    implementation("org.msgpack:msgpack-core:0.9.8")
+
+
+    // https://mvnrepository.com/artifact/org.msgpack/jackson-dataformat-msgpack
+    implementation("org.msgpack:jackson-dataformat-msgpack:0.9.8")
+
+
+
 
     // https://mvnrepository.com/artifact/junit/junit
     testImplementation("junit:junit:4.13.2")
