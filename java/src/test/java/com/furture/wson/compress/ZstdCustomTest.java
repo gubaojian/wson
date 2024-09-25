@@ -3,6 +3,7 @@ package com.furture.wson.compress;
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONB;
 import com.alibaba.fastjson2.JSONWriter;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.gubaojian.wson.io.Output;
 import com.github.luben.zstd.Zstd;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -42,7 +43,8 @@ public class ZstdCustomTest {
         json.put("appId", RandomUtils.nextInt());
         json.put("hwssId", UUID.randomUUID().toString());
 
-
+        ObjectMapper objectMapper = new ObjectMapper();
+        System.out.println("json" + objectMapper.writeValueAsString(json));
         String str = JSON.toJSONString(json, JSONWriter.Feature.WriteByteArrayAsBase64);
         byte [] bin = JSONB.toBytes(json);
         Output output = new Output();
