@@ -530,6 +530,7 @@ public class Wson {
                     writeObject(entry.getValue());
                 }
             } else {
+                //FIXME 优化，提前写入size，然后再修改size
                 Set<Map.Entry<Object, Object>> entries = map.entrySet();
                 int nullValueSize = 0;
                 for (Map.Entry<Object, Object> entry : entries) {
@@ -565,6 +566,37 @@ public class Wson {
                 e.printStackTrace();
                 specialClass.put(key, true);
                 writeObject(JSON.toJSON(object));
+            }
+        }
+
+
+        private final void writeMapFast(Object object, String key, Class targetClass) {
+            try {
+                ObjectBean bean = getBean(key, targetClass);
+                List<Method> methods = bean.methods;
+                int nameIndex = 0;
+                output.ensureCapacity(16);
+                output.writeByte(Protocol.MAP_TYPE);
+                output.writeVarInt(bean.names.size());
+                for (Method method : methods) {
+                    Object value = method.invoke(object);
+                    output.writeBytes(bean.namesUtf16.get(nameIndex));
+                    writeObject(value);
+                    nameIndex++;
+                }
+                List<Field> fields = bean.fields;
+                for (Field field : fields) {
+                    Object value = field.get(object);
+                    output.writeBytes(bean.namesUtf16.get(nameIndex));
+                    writeObject(value);
+                    nameIndex++;
+                }
+            } catch (Exception e) {
+                if (e instanceof RuntimeException) {
+                    throw (RuntimeException) e;
+                } else {
+                    throw new RuntimeException(e);
+                }
             }
         }
 
@@ -671,23 +703,21 @@ public class Wson {
         private List<Method> methods; //仅遍历
         private List<Field> fields; //仅遍历
         private ArrayList<String> names; //随机访问
+        private ArrayList<byte[]> namesUtf8; //随机访问
+        private ArrayList<byte[]> namesUtf16; //随机访问
+
 
         public ObjectBean(List<Method> methods, List<Field> fields, ArrayList<String> names) {
             this.methods = methods;
             this.fields = fields;
             this.names = names;
-        }
-
-        public List<Method> getMethods() {
-            return methods;
-        }
-
-        public List<Field> getFields() {
-            return fields;
-        }
-
-        public List<String> getNames() {
-            return names;
+            this.namesUtf8 = new ArrayList<>();
+            this.namesUtf16 = new ArrayList<>();
+            for (String name : names) {
+                namesUtf8.add(name.getBytes(StandardCharsets.UTF_8));
+                //FIXME BE OR LE
+                namesUtf16.add(name.getBytes(StandardCharsets.UTF_16));
+            }
         }
     }
 

@@ -20,7 +20,7 @@ public class ZstdTest {
                 new LinkedBlockingQueue<Runnable>());
         byte[] bts = FileUtils.readFileBytes("/media.json");
 
-        for(int i=0; i<1000*10000; i++) {
+        for (int i = 0; i < 100 * 10000; i++) {
             executorService.submit(new Runnable() {
                 @Override
                 public void run() {
