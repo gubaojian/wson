@@ -32,6 +32,13 @@ dependencies {
     implementation("org.msgpack:jackson-dataformat-msgpack:0.9.8")
 
 
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.18.0")
+
+
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.module/jackson-module-blackbird
+    implementation("com.fasterxml.jackson.module:jackson-module-blackbird:2.18.0")
+
 
 
     // https://mvnrepository.com/artifact/junit/junit

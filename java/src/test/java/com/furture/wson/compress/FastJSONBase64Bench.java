@@ -4,6 +4,7 @@ import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONWriter;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.module.blackbird.BlackbirdModule;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.RandomUtils;
 import org.openjdk.jmh.annotations.*;
@@ -45,6 +46,7 @@ public class FastJSONBase64Bench {
         strjson.put("hwssId", UUID.randomUUID().toString());
 
 
+        objectMapper.registerModule(new BlackbirdModule());
 
     }
 
@@ -187,6 +189,15 @@ public class FastJSONBase64Bench {
      * JSONBench.testJacksonBytesMethod          thrpt    5   699244.147 ±  68651.788  ops/s
      * JSONBench.testJacksonMethod               thrpt    5   637466.317 ±  70919.637  ops/s
      * JSONBench.testJacksonMethodStringMessage  thrpt    5  1250904.667 ± 811452.584  ops/s
+     *
+     *  enable blackbird BlackbirdModule
+     * Benchmark                                            Mode  Cnt       Score        Error  Units
+     * FastJSONBase64Bench.testFastJSONString              thrpt    5  173326.344 ±  95012.330  ops/s
+     * FastJSONBase64Bench.testFastJSONStringMessage       thrpt    5  349889.795 ± 137071.984  ops/s
+     * FastJSONBase64Bench.testFastjsonBytes               thrpt    5  177186.945 ±  58188.630  ops/s
+     * FastJSONBase64Bench.testJacksonBytesMethod          thrpt    5  136981.278 ±  36617.456  ops/s
+     * FastJSONBase64Bench.testJacksonMethod               thrpt    5  137704.100 ±  33665.272  ops/s
+     * FastJSONBase64Bench.testJacksonMethodStringMessage  thrpt    5  291031.222 ±  66608.617  ops/s
      * */
     public static void main(String[] args) throws RunnerException {
         Options opt = new OptionsBuilder()
