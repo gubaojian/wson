@@ -29,6 +29,17 @@ public class UserProtocol {
         return  output.toBytes();
     }
 
+    public static byte[] serialUser2(User user, LockFreePool<byte[]> pool) {
+        PoolObject<byte[]> poolObject = pool.getPoolObject();
+        Output output = new Output(poolObject.getObject());
+        byte version = 1;
+        output.writeByte(version);
+        output.writeStringUTF8(user.name);
+        output.writeStringUTF8(user.country);
+        pool.returnPoolObject(poolObject);
+        return output.toBytes();
+    }
+
     public static User deSerialUser(byte[] bts) {
         User user = new User();
         Input input = new Input(bts);
